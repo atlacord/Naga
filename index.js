@@ -1,5 +1,6 @@
 const Chariot = require('chariot.js');
 require('dotenv').config(); 
+const mongoose = require('mongoose');
 
 
 class Umi extends Chariot.Client {
@@ -44,13 +45,12 @@ class Umi extends Chariot.Client {
 class Mongoose{
     
     init() { mongoose.connect(`mongodb://Nanami:gQDyc6UonQdUCdSk@nanami-shard-00-00.xl1ps.mongodb.net:27017,nanami-shard-00-01.xl1ps.mongodb.net:27017,nanami-shard-00-02.xl1ps.mongodb.net:27017/Nanami?ssl=true&replicaSet=atlas-11dg2z-shard-0&authSource=admin&retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true,}).catch(console.error)
-    mongoose.set('useFindAndModify',true)
-        mongoose.connection.on('open', () => console.log('Connection Opened...')) 
-        mongoose.connection.on('connecting', () => console.log('Connecting to MongoDB...'))
-        mongoose.connection.on('connected', () => console.log('Connected to MongoDB!'))
-        mongoose.connection.on('err', (err) => console.log(`Mongoose Error:\n${err.stack}`))
-        mongoose.connection.on('disconnected', () => console.log('Disconnected to MongoDB...'))
-        mongoose.connection.on('reconnected', () => console.log('Reconnected to MongoDB!'))
+        mongoose.connection.on('open', () => Chariot.Logger.event('Connection Opened...')) 
+        mongoose.connection.on('connecting', () => Chariot.Logger.event('Connecting to MongoDB...'))
+        mongoose.connection.on('connected', () => Chariot.Logger.event('Connected to MongoDB!'))
+        mongoose.connection.on('err', (err) => Chariot.Logger.error(`Mongoose Error:\n${err.stack}`))
+        mongoose.connection.on('disconnected', () => Chariot.Logger.event('Disconnected to MongoDB...'))
+        mongoose.connection.on('reconnected', () => Chariot.Logger.event('Reconnected to MongoDB!'))
     } 
     }
     
