@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/TwoDoggo/Umi#readme",
   "dependencies": {
-    "chariot.js": "^3.5.0"
+    "chariot.js": "^3.5.0",
+    "dotenv": "^10.0.0"
   }
 }
