@@ -1,7 +1,7 @@
 const Chariot = require('chariot.js');
 const colour = require('../../Util/colorconfig.json')
 
-class commandname extends Chariot.Command {
+class Status extends Chariot.Command {
     constructor() {
         super();
 
@@ -22,8 +22,11 @@ class commandname extends Chariot.Command {
 // Command Goes here!
         let words = args.join(' ')
         chariot.editStatus('Online', {name: words});
-        message.channel.createMessage("<:twoyes:746133145195118634> Status changed to: " + words)
+        message.channel.createEmbed(new Chariot.RichEmbed()
+        .setColor(colour.coreColour)
+        .setDescription("<:twoyes:746133145195118634> **Status changed to:** " + words)
+        )
     }
 }
 
-module.exports = new commandname();
+module.exports = new Status();
