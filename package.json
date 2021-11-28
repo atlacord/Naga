@@ -1,0 +1,30 @@
+{
+  "name": "umi",
+  "version": "1.0.0",
+  "description": "A Discord bot to suit every need",
+  "main": "index.js",
+  "scripts": {
+    "test": "ping"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TwoDoggo/Umi.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot",
+    "Anime",
+    "Weeb",
+    "Eris",
+    "Chariot"
+  ],
+  "author": "TwoDog#0002",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TwoDoggo/Umi/issues"
+  },
+  "homepage": "https://github.com/TwoDoggo/Umi#readme",
+  "dependencies": {
+    "chariot.js": "^3.5.0"
+  }
+}
