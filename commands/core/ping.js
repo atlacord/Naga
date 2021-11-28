@@ -1,5 +1,6 @@
 const Chariot = require('chariot.js');
-
+const { now } = require('mongoose');
+const colour = require('../../Util/colorconfig.json')
 /**
  * This example is an extremely basic command example of how a command could look like and work with Chariot.js
  */
@@ -26,7 +27,10 @@ class Ping extends Chariot.Command {
      * @param {Object} chariot The bot client itself
      */
     async execute(message, args, chariot) {
-        message.channel.createMessage("Pong!");
+    message.channel.createEmbed(new Chariot.RichEmbed()
+        .setColor(colour.coreColour)
+        .setDescription(`<:twohi:504747816405696513> Bork! That round trip took me: **${Date.now() - message.createdAt} ms**`)
+    );
     }
 }
 
