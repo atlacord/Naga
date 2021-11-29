@@ -29,6 +29,7 @@
     "chariot.js": "^3.5.0",
     "dotenv": "^10.0.0",
     "kitsu.js": "^2.0.0",
+    "moment": "^2.29.1",
     "mongoose": "^6.0.13"
   }
 }
