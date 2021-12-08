@@ -3,5 +3,6 @@
     "animeColour": "#ffd1dc",
     "actionColour": "#d4bba3",
     "badmodColour": "#FF6961",
-    "goodmodColour": "#77DD77"
+    "goodmodColour": "#77DD77",
+    "failedColour": "#FF0000"
 }
