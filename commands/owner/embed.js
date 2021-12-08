@@ -9,11 +9,16 @@ class Embed extends Chariot.Command {
         this.cooldown = 5;
         this.owner = true;
         this.allowDMs = false;
+        this.subcommands = ['link']
         this.help = {
             message: 'Create embeds!',
             usage: 'embed rawembedtext',
             inline: true
         }
+    }
+
+    async link(message, args, chariot) {
+        return message.channel.createMessage("Here's a handy link to use to create the raw embeds! <https://glitchii.github.io/embedbuilder/?editor-gui>")
     }
 
   
