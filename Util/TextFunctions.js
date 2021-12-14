@@ -91,6 +91,35 @@ function clean(text){
   return String(text).replace(/`/g, `\`${String.fromCharCode(8203)}`).replace(/@/g, `@${String.fromCharCode(8203)}`)
 };
 
+function hyperlinkify(arr){
+  if (!arr.length) return null
+
+  let res = ''
+  let lastindex = null
+
+  for (let i = 0; res.length < 950 && lastindex === null; i++) {
+    let toAdd = ` • [${arr[i].name}](${arr[i].url})`
+
+    if (toAdd.length + res.length > 950) {
+      lastindex = i
+      return
+    }
+
+    return res += toAdd
+  }
+
+  return `${res}${lastindex && lastindex < arr.length - 1 ? ` and ${arr.length - lastindex - 1} more!`:`.`}`
+};
+
+
+function linkify(text) {
+  var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  return text.replace(urlRegex, function(url) {
+      return url;
+  });
+}
+
+
 module.exports = {
   textTruncate,
   truncate,
@@ -99,5 +128,7 @@ module.exports = {
   compactNum,
   joinArray,
   joinArrayAndLimit,
-  clean
+  clean,
+  hyperlinkify, 
+  linkify
 };
