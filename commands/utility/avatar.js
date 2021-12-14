@@ -34,50 +34,6 @@ return message.channel.createEmbed(
 
 
 
-
-
-
-
-
-/*
- if(message.mentions[0] !== undefined) {
-   return message.channel.createEmbed(
-           new Chariot.RichEmbed()
-            .setAuthor(message.mentions[0].username + '#' + message.mentions[0].discriminator + `'s Avatar!`, message.mentions[0].dynamicAvatarURL())
-            .setColor(colour.coreColour)
-            .setImage(message.mentions[0].dynamicAvatarURL(null, 1024))
-       )
-} else if (chariot.users.get(args[0] !== undefined)) {
-    const id = (args[0].match(/\d{17,19}/)||[])[0] 
-    const member = message.channel.guild.members.find(id)
-    return message.channel.createEmbed(
-        new Chariot.RichEmbed()
-         .setAuthor(member.user.username + '#' + member.user.discriminator + `'s Avatar!`, member.user.dynamicAvatarURL())
-         .setColor(colour.coreColour)
-         .setImage(args[0].dynamicAvatarURL(null, 1024))
-    )
-} else if (args.join(" ") !== "") {
-    const userRegex = new RegExp(args.join("|"), "i");
-    const member = message.channel.guild.members.find(element => {
-        return userRegex.test(element.nick) ? userRegex.test(element.nick) : userRegex.test(element.username);
-    });
-    let image = member ? member.user.dynamicAvatarURL(null, 1024) : message.author.dynamicAvatarURL(null, 1024);
-    return message.channel.createEmbed(
-        new Chariot.RichEmbed()
-         .setAuthor(member.user.username + '#' + member.user.discriminator +`'s Avatar!`, image)
-         .setColor(colour.coreColour)
-         .setImage(image)
-    )
-} else { 
-    return message.channel.createEmbed(
-        new Chariot.RichEmbed()
-         .setAuthor(message.author.username + '#' + message.author.discriminator + `'s Avatar!`, message.author.dynamicAvatarURL())
-         .setColor(colour.coreColour)
-         .setImage(message.author.dynamicAvatarURL(null, 1024))
-    )
-}
- */
-
 // Command End!
 }
 }

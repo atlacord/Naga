@@ -2,14 +2,14 @@ const Chariot = require('chariot.js');
 const colour = require('../../Util/colorconfig.json')
 const { inspect } = require('util');
 const fetch = require('node-fetch');
-const text = require('../../Util/string');
+const text = require('../../Util/TextFunctions');
 
 class Eval extends Chariot.Command {
     constructor() {
         super();
 
         this.name = 'eval';
-        this.cooldown = 5;
+        this.aliases = ['e']
         this.owner = true;
         this.allowDMs = false;
         this.help = {
