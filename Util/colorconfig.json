@@ -4,5 +4,6 @@
     "actionColour": "#d4bba3",
     "badmodColour": "#FF6961",
     "goodmodColour": "#77DD77",
-    "failedColour": "#FF0000"
+    "failedColour": "#FF0000",
+    "successColour": "#00FF00"
 }
