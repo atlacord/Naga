@@ -18,6 +18,9 @@ class Umi extends Chariot.Client {
                 owner: [
                     '123261299864895489'
                 ],
+                excludeDirectories: [
+                    'todo'
+                ],
                  customLocales: {
                     missingPermissions: 'Command **{command}** requires following permissions: **{missingPermissions}**',
                     owner: 'You should not be playing around with this! I only listen to TwoDog for this!',
