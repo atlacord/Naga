@@ -10,10 +10,7 @@ class Eval extends Chariot.Command {
 
         this.name = 'eval';
         this.aliases = ['e']
-<<<<<<< HEAD
         this.cooldown = 5;
-=======
->>>>>>> a27f6a2b69b7ab5935dcd639e6e58561b9cedbde
         this.owner = true;
         this.allowDMs = false;
         this.help = {
