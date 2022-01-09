@@ -3,6 +3,8 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 
+
+
 class Umi extends Chariot.Client {
     constructor() {
         super(new Chariot.Config(
@@ -17,6 +19,9 @@ class Umi extends Chariot.Client {
                 primaryColor: '89cff0',
                 owner: [
                     '123261299864895489'
+                ],
+                excludeDirectories: [
+                    'todo'
                 ],
                  customLocales: {
                     missingPermissions: 'Command **{command}** requires following permissions: **{missingPermissions}**',
