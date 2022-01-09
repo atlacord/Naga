@@ -42,7 +42,7 @@ if(!quantity || quantity < 2) {
 let lastMsg = message.channel.lastMessageID; 
 
 return message.channel.getMessages({ limit: quantity, before: lastMsg })
-.then(messages => {
+.then(async messages => {
 
 // Pasted
     const count = messages.size;
@@ -64,27 +64,25 @@ return message.channel.getMessages({ limit: quantity, before: lastMsg })
 
 console.log(messages)
 
-const res = senduploadchannel.createMessage(
+const res = await senduploadchannel.createMessage(
     `ARCHIVE FILE FILE - Guild: ${message.guild.id} Channel: ${message.channel.id}`,
     { file: Buffer.from(messages), name: `archive-${_id}.txt`}
   ).then(message => [message.attachments[0].url, message.attachments[0].id])
   .catch(() => ['', null]);
   
 
-    console.log(res)
-    console.log("HELLOW")
-    console.log(res[0]) 
-      // const url = (res[0].match(/\d{17,19}/)||[])[0];
-     //  const id = res[1];
-     const url = res.attachments
-     const id = res.id
+      const url = (res[0].match(/\d{17,19}/)||[])[0];
+      const id = res[1];
+     
+     //const url = lastlog.attachments().first().url
+     // const id = res.id
 
     return message.channel.createEmbed(
               new Chariot.RichEmbed()
-              .setTitle(`Successfully arhived **${count}** messages from this channel!`)
+              .setTitle(`Successfully arhived **${quantity}** messages from this channel!`)
               .setColor(colour.coreColour)
               .setDescription([
-                `[\`📄 View\`](${url ? `https://txt.discord.website/?txt=${url}/${id}/bulkdlt-${_id}`:''})`,
+                `[\`📄 View\`](${url ? `https://txt.discord.website/?txt=${url}/${id}/archive-${_id}`:''})`,
                 `[\`📩 Download\`](${res[0]})`
               ].join('\u2000\u2000•\u2000\u2000'))
           )
