@@ -54,7 +54,7 @@ return message.channel.getMessages({ limit: quantity, before: lastMsg })
     messages = messages.filter(Boolean).map(message => {
         return [
           `[${moment(message.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
-          `${message.author.tag} : ${message.content}\r\n\r\n`
+          `${message.author.tag} (${message.author.id}) : ${message.content}\r\n\r\n`
         ].join(' ');
       });
     messages.push(`Messages Archived on ![](${message.guild.dynamicIconURL('png', 32)}) **${message.guild.name}** - **#${message.channel.name}** --\r\n\r\n`);
@@ -62,7 +62,6 @@ return message.channel.getMessages({ limit: quantity, before: lastMsg })
 
 
 
-console.log(messages)
 
 const res = await senduploadchannel.createMessage(
     `ARCHIVE FILE FILE - Guild: ${message.guild.id} Channel: ${message.channel.id}`,
@@ -74,8 +73,7 @@ const res = await senduploadchannel.createMessage(
       const url = (res[0].match(/\d{17,19}/)||[])[0];
       const id = res[1];
      
-     //const url = lastlog.attachments().first().url
-     // const id = res.id
+  
 
     return message.channel.createEmbed(
               new Chariot.RichEmbed()
@@ -89,59 +87,6 @@ const res = await senduploadchannel.createMessage(
 
         
 })
-
-/* // pasted here from Naga
-return message.channel.bulkDelete(quantity, true)
-.then(async messages => {
-
-  const count = messages.size;
-  const _id = Math.random().toString(36).slice(-7);
-  const uploadch = client.channels.cache.get(client.config.channels.uploads);
-
-  messages = messages.filter(Boolean).map(message => {
-    return [
-      `[${moment(message.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
-      `${message.author.tag} : ${message.content}\r\n\r\n`
-    ].join(' ');
-  });
-
-  messages.push(`Messages Cleared on ![](${message.guild.iconURL({size: 32})}) **${message.guild.name}** - **#${message.channel.name}** --\r\n\r\n`);
-  messages = messages.reverse().join('');
-
-  const res = uploadch ? await uploadch.send(
-    `BULKDELETE FILE - ${message.guild.id} ${message.channel.id}`,
-    { files: [{ attachment: Buffer.from(messages), name: `bulkdlt-${_id}.txt`}]}
-  ).then(message => [message.attachments.first().url, message.attachments.first().id])
-  .catch(() => ['', null]) : ['', null];
-
-  const url = (res[0].match(/\d{17,19}/)||[])[0];
-  const id = res[1];
-
-  return message.channel.send(
-    `Successfully deleted **${count}** messages from this channel!`,
-    new MessageEmbed()
-    .setColor('AQUA')
-    .setDescription([
-      `[\`📄 View\`](${url ? `https://txt.discord.website/?txt=${url}/${id}/bulkdlt-${_id}`:''})`,
-      `[\`📩 Download\`](${res[0]})`
-    ].join('\u2000\u2000•\u2000\u2000'))
-  );
-});
-
-*/
-
-
-
-
-
-
-/* This is the one version I found of it, going to use Naga's old one first to try and see
-let writeMsg = []
-let lastMsg = message.channel.lastMessageID;
-
-msgCollection(message, lastMsg, writeMsg)
-*/
-//
 
     }
 }

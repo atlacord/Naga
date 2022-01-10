@@ -27,6 +27,7 @@
   "dependencies": {
     "animequote": "^1.1.1",
     "animequotes": "^2.0.0",
+    "better-sqlite3": "^7.4.6",
     "chariot.js": "^3.5.0",
     "dotenv": "^10.0.0",
     "eris": "^0.16.1",
@@ -37,6 +38,8 @@
     "mongoose-auto-increment": "^5.0.1",
     "node-kitsu": "^1.1.1",
     "request": "^2.88.2",
+    "sql": "^0.78.0",
+    "sqlite": "^4.0.23",
     "superagent": "^6.1.0"
   }
 }
