@@ -28,12 +28,13 @@ var Option2 = question.split(" or ")[1]
 const reply = new Chariot.RichEmbed()
         .setTitle("Let's play Would you Rather!")
         .setDescription(`Would you rather \n 🅰️ ${Option1} \n or \n :regional_indicator_b: ${Option2}`)
+        .setColor(colour.coreColour)
 
 
 
 message.channel.createEmbed(reply).then(embedMessage => {
-    embedMessage.addMessageReaction('🅰️');
-    embedMessage.addMessageReaction('🇧');
+    embedMessage.addReaction('🅰️');
+    embedMessage.addReaction('🇧');
   });
   //  wyrmessage = await message.channel.createEmbed(reply)
 
