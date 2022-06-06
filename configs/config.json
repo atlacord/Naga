@@ -1,0 +1,63 @@
+{
+    "settings": {
+        "lang": "english",
+        "debugMode": false,
+        "library": 0,
+        "logger": 1,
+        "db": 2,
+        "guildConfigCache": 1000
+    },
+    "prefixes": {
+        "general": "n.",
+        "admin": "n.",
+        "owner": "$"
+    },
+    "emotes": {
+        "error": "<:no:917982868922335272>",
+        "success": "<:yes:917982955362734100>"
+    },
+    "info": {
+        "name": "Naga",
+        "description": "naga v2",
+        "version": "2.0.0"
+    },
+    "staff": {
+        "owners": [
+            { "name": "TwoDog", "id": "123261299864895489" },
+            { "name": "soda", "id": "254814547326533632" }
+        ],
+        "admins": [
+            { "name": "TwoDog", "id": "123261299864895489" },
+            { "name": "Kratos", "id": "222634331384840193" },
+            { "name": "Lion", "id": "239446756599922688" },
+            { "name": "Jules", "id": "737542058138533950" },
+            { "name": "Phantom", "id": "532290521058508821" }
+        ],
+        "sentries": [
+            { "name": "Auren", "id": "331152259109093377" },
+            { "name": "TheRobedShrimp", "id": "390919457842790402" },
+            { "name": "abendstern", "id": "681334177928577066" },
+            { "name": "emmaaa", "id": "432156129603354624" },
+            { "name": "soda", "id": "254814547326533632" }
+        ],
+        "dailis": [
+            { "name": "Phoebe", "id": "877368489147527221" },
+            { "name": "Ryan", "id": "708433702769917972" },
+            { "name": "Thunder", "id": "380223584578306049" },
+            { "name": "Sapphyre", "id": "126210192378429440" },
+            { "name": "Muhi", "id": "416630867209748483" }
+        ]
+    },
+    "template": {
+        "embeds": {
+            "help": 9031664,
+            "global": 9031664,
+            "error": 15844367
+        },
+
+        "emotes": {
+            "error": "<:no:917982868922335272>",
+            "success": "<:yes:917982955362734100>"
+        }
+    }
+}
