@@ -5,7 +5,7 @@ const config = require('../configs/config.json');
 if (config.settings.db === 2) {
     try {
         const mongoose = require('mongoose');
-        mongoose.connect(`mongodb+srv://momo1:maniloveotters@cluster0.r8hji.mongodb.net/?retryWrites=true&w=majority`, {
+        mongoose.connect(`mongodb://Nanami:gQDyc6UonQdUCdSk@nanami-shard-00-00.xl1ps.mongodb.net:27017,nanami-shard-00-01.xl1ps.mongodb.net:27017,nanami-shard-00-02.xl1ps.mongodb.net:27017/Nanami?ssl=true&replicaSet=atlas-11dg2z-shard-0&authSource=admin&retryWrites=true&w=majority`, {
             useCreateIndex: true,
             autoReconnect: true,
             useNewUrlParser: true,
