@@ -1,45 +1,27 @@
 {
   "name": "umi",
-  "version": "1.0.0",
-  "description": "A Discord bot to suit every need",
+  "version": "2.0.0",
+  "description": "Discord bot",
   "main": "index.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "axoncore": "git+https://github.com/sodacova/AxonCore.git",
+    "eris": "^0.17.0",
+    "esm": "^3.2.25",
+    "moment": "^2.29.0",
+    "moment-duration-format": "^2.3.2",
+    "moment-timezone": "^0.5.31",
+    "mongoose": "^5.10.7",
+    "semver": "^7.3.2"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "ping"
+    "test": "n!ping"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TwoDoggo/Umi.git"
+    "url": "git://github.com/TwoDoggo/umi"
   },
-  "keywords": [
-    "Discord",
-    "Bot",
-    "Anime",
-    "Weeb",
-    "Eris",
-    "Chariot"
-  ],
   "author": "TwoDog#0002",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TwoDoggo/Umi/issues"
-  },
-  "homepage": "https://github.com/TwoDoggo/Umi#readme",
-  "dependencies": {
-    "animequote": "^1.1.1",
-    "animequotes": "^2.0.0",
-    "better-sqlite3": "^7.4.6",
-    "chariot.js": "^3.5.0",
-    "dotenv": "^10.0.0",
-    "eris": "^0.16.1",
-    "fs": "^0.0.1-security",
-    "kitsu.js": "^2.0.0",
-    "moment": "^2.29.1",
-    "mongoose": "^6.0.13",
-    "mongoose-auto-increment": "^5.0.1",
-    "node-kitsu": "^1.1.1",
-    "request": "^2.88.2",
-    "sql": "^0.78.0",
-    "sqlite": "^4.0.23",
-    "superagent": "^6.1.0"
-  }
+  "license": "ISC"
 }

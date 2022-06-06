@@ -1,4 +1,7 @@
-.env
-node_modules
 .DS_Store
-.vscode
+node_modules
+*.code-workspace
+package-lock.json
+configs/secret.json
+
+.npmrc
