@@ -75,7 +75,7 @@ class Build extends Command {
                 }
             }
 
-            exec('pm2 restart 0'), (error, stdout) => {
+            exec('pm2 restart NagaV2'), (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
                 if (typeof outputType === 'object') {
