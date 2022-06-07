@@ -6,3 +6,4 @@ configs/secret.json
 src/index.js
 
 .npmrc
+src/index.js

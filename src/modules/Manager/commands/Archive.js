@@ -75,7 +75,7 @@ class Archive extends Command {
 
                const res = await senduploadchannel.createMessage(`ARCHIVE FILE FILE - Guild: ${msg.channel.guild.id} Channel: ${msg.channel.id}`,
                { file: Buffer.from(messages), name: `archive-${_id}.txt`}
-             ).then(message => [msg.attachments[0].url, message.attachments[0].id])
+             ).then(msg => [msg.attachments[0].url, msg.attachments[0].id])
              .catch(() => ['', null]);
 
              const url = (res[0].match(/\d{17,19}/)||[])[0];
@@ -94,11 +94,6 @@ class Archive extends Command {
             });
 
            })
-
-
-
-
-
 
         } catch (err) {
             this.logger.error(err);
