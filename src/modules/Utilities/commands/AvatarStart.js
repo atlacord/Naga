@@ -33,7 +33,7 @@ class AvatarStart extends Command {
 
     async execute( { msg } ) {
 
-        await this.bot.editChannelPermission('557418246957957145', '546800805060280352', 1024n, 0n, 0)
+        await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 1024n, 0n, 0)
         this.sendMessage(msg.channel, 'Starting Avatar Games!');
     }
 }
