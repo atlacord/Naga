@@ -65,7 +65,7 @@ class Build extends Command {
                 }
             })
 
-            exec('git pull origin develop'), (error, stdout) => {
+            exec('git pull origin main'), (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
                 if (typeof outputType === 'object') {
