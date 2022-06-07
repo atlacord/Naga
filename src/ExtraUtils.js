@@ -38,6 +38,10 @@ class ExtraUtils extends Utils {
         "success": "<:yes:917982955362734100>"
     };
 
+    getStaff() {
+        return this.axon.staff
+    }
+
     /**
     * Convert a rgb code into a hex code
     *

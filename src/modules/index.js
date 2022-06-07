@@ -4,4 +4,5 @@ module.exports = {
     Info: require('./Info/index'),
     Manager: require('./Manager/index'),
     Misc: require('./Misc/index'),
+    Utilities: require('./Utilities/index')
 };
