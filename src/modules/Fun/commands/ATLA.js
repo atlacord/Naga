@@ -25,7 +25,7 @@ class ATLA extends Command {
         this.options = new CommandOptions(this, {
             argsMin: 0,
             cooldown: 10000,
-            guildOnly: false,
+            guildOnly: true,
         } );
     }
     /**

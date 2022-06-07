@@ -25,7 +25,7 @@ class Ping extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            guildOnly: false,
+            guildOnly: true,
         } );
     }
 

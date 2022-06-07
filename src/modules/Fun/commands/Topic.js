@@ -28,7 +28,7 @@ class Topic extends Command {
         this.options = new CommandOptions(this, {
             argsMin: 0,
             cooldown: 5000,
-            guildOnly: false,
+            guildOnly: true,
         } );
     }
     /**
