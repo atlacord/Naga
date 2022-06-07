@@ -3,5 +3,6 @@ module.exports = {
     Color: require('./Color'),
     Jumbo: require('./Jumbo'),
     Randomcolor: require('./Randomcolor'),
+    Say: require('./Say'),
     Spotify: require('./Spotify'),
 };
