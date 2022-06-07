@@ -1,5 +1,5 @@
 const { Command, CommandOptions } = require('axoncore');
-const topics = require('../../../Assets/topics.json');
+const topics = require('../../../assets/topics.json');
 
 const ATLA = require('./ATLA');
 

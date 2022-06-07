@@ -47,7 +47,7 @@ class Restart extends Command {
 
 async execute({ msg, args }) {
     try {
-        process.exec(`pm2 restart ${this.bot.user.username}`, (error, stdout) => {
+        process.exec(`pm2 restart NagaV2`, (error, stdout) => {
             const outputType = error || stdout;
             let output = outputType;
             if (typeof outputType === 'object') {

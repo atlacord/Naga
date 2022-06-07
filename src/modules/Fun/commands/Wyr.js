@@ -1,5 +1,5 @@
 const { Command, CommandOptions } = require('axoncore');
-const questions = require('../../../Assets/wyr.json');
+const questions = require('../../../assets/wyr.json');
 
 class Wyr extends Command {
     /**
