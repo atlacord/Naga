@@ -1,4 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
+const moment = require('moment');
 
 
 class Archive extends Command {
@@ -6,7 +7,7 @@ class Archive extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
-    
+
     constructor(module) {
         super(module);
 
@@ -26,6 +27,7 @@ class Archive extends Command {
 
         /**
          * @param {CommandOptions}
+
          */
 
         this.options = new CommandOptions(this, {
@@ -53,28 +55,28 @@ class Archive extends Command {
                return this.sendError(msg.channel, `Please provide the quantity of messages you want to archive!`)
            }
 
-           let lastMsg = message.channel.lastMessageID; 
+           let lastMsg = msg.channel.lastMessageID; 
 
-           return message.channel.getMessages({ limit: quantity, before: lastMsg })
+           return msg.channel.getMessages({ limit: quantity, before: lastMsg })
            .then(async messages => {
                const count = messages.size; 
                const _id = Math.random().toString(36).slice(-7); 
                let upch = '860761776342040586'
-               let senduploadchannel = this.getChannel(upch)
+               let senduploadchannel = this.bot.getChannel(upch)
 
-               messages = messages.filter(Boolean).map(message => {
+               messages = messages.filter(Boolean).map(msg => {
                    return [
-                    `[${moment(message.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
-                    `${message.author.tag} : ${message.content}\r\n\r\n`
+                    `[${moment(msg.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
+                    `${msg.author.username}#${msg.author.discriminator} : ${msg.content}\r\n\r\n`
                    ].join(' ');
                }); 
-               messages.push(`Messages Archived on ![](${message.guild.dynamicIconURL('png', 32)}) **${message.guild.name}** - **#${message.channel.name}** --\r\n\r\n`);
+               messages.push(`Messages Archived on ![](${msg.channel.guild.dynamicIconURL('png', 32)}) **${msg.channel.guild.name}** - **#${msg.channel.name}** --\r\n\r\n`);
                messages = messages.reverse().join('');
 
 
-               const res = await senduploadchannel.createMessage(`ARCHIVE FILE FILE - Guild: ${message.guild.id} Channel: ${message.channel.id}`,
+               const res = await senduploadchannel.createMessage(`ARCHIVE FILE FILE - Guild: ${msg.channel.guild.id} Channel: ${msg.channel.id}`,
                { file: Buffer.from(messages), name: `archive-${_id}.txt`}
-             ).then(message => [message.attachments[0].url, message.attachments[0].id])
+             ).then(message => [msg.attachments[0].url, message.attachments[0].id])
              .catch(() => ['', null]);
 
              const url = (res[0].match(/\d{17,19}/)||[])[0];
@@ -88,17 +90,12 @@ class Archive extends Command {
                     `[\`📄 View\`](${url ? `https://txt.discord.website/?txt=${url}/${id}/archive-${_id}`:''})`,
                     `[\`📩 Download\`](${res[0]})`
                   ].join('\u2000\u2000•\u2000\u2000'),
-                   
+
                 }
             });
 
            })
-
-
-
-
-
-
+           
         } catch (err) {
             this.logger.error(err);
 			return this.sendError(msg.channel, `Something went wrong.`,
@@ -106,4 +103,4 @@ class Archive extends Command {
     }
 }
 
-module.exports = Archive;
+module.exports = Archive; 
