@@ -2,7 +2,7 @@ const { AxonClient } = require('axoncore');
 const Bot = require('./Bot');
 const secret = require('../configs/secret.json');
 
-const modules = require('./Modules/index');
+const modules = require('./modules/index');
 
 /**
  * Example - Client constructor
