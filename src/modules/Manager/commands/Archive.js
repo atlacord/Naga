@@ -27,6 +27,7 @@ class Archive extends Command {
 
         /**
          * @param {CommandOptions}
+
          */
 
         this.options = new CommandOptions(this, {
@@ -94,12 +95,7 @@ class Archive extends Command {
             });
 
            })
-
-
-
-
-
-
+           
         } catch (err) {
             this.logger.error(err);
 			return this.sendError(msg.channel, `Something went wrong.`,
