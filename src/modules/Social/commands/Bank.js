@@ -57,7 +57,7 @@ class Bank extends Command {
                 doc.data.economy.wallet = doc.data.economy.wallet - 2500;
                 doc.data.economy.bank = 2500;
             
-                return doc.save().then(() => this.sendMessage(msg.channel, `Successfully created a bank account! The **2,500** fee was transferred to your bank. To check your balance, run \`${this.axon.settings.prefixes}balance\`!`)
+                return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully created a bank account! The **2,500** fee was transferred to your bank. To check your balance, run \`${this.axon.settings.prefixes}balance\`!`)
                 .catch((err) => this.sendError(msg.channel, `DB Error: Unable to save document - ${err}`)));
             }
         })
