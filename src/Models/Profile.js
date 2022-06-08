@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const profileSchema = new Schema({
+const profileSchema = mongoose.model('user_profiles', new Schema({
   _id: String,
   data: {
     global_xp: {type: Number, default: 0},
@@ -39,6 +39,6 @@ const profileSchema = new Schema({
 }, {
     autoIndex: true,
     minimize: false,
-});
+}));
 
-module.exports = { name: 'Profile', schema: profileSchema };
+module.exports = profileSchema;

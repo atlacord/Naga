@@ -35,21 +35,24 @@ class Daily extends Command {
      */
 
     async execute({ msg }) {
-        msg.channel.createMessage('If this command doesn\'t respond with anything else, it\'s probably broken. We are still working on re-implementing wallet features. Sorry for the inconvenience!');
         profile.findById(msg.author.id, (err, doc) => {
 
             if (err) {
                 return this.sendError(msg.channel, `Database error: ${err.message}`)
             } else if (!doc || doc.data.economy.wallet === null) {
-                msg.channel.sendError(msg.channel, `**${msg.member.nick}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
+                return msg.channel.sendError(msg.channel, `**${msg.member.nick}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
             } else {
+
+                const boostID = '666415626310516746';
+                const booster = msg.member.roles.includes(boostID);
+
                 const now = Date.now();
                 const baseAmount = 500;
-                const previousStreak = doc.data.economy.streak.current;
+
                 let overflow = false, excess = null, streakReset = false;
 
                 if (doc.data.economy.streak.timestamp !== 0 && doc.data.economy.streak.timestamp - now > 0) {
-                    msg.channel.createMessage(`**${msg.member.nick}**, you already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`);
+                    return msg.channel.createMessage(`**${msg.member.nick}**, you already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`);
                 };
 
                 if ((doc.data.economy.streak.timestamp + 86400000) < now) {
@@ -77,11 +80,11 @@ class Daily extends Command {
                 doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount + bonus;
 
                 return doc.save().then(() => msg.channel.createMessage([
-                    `**${msg.member.nick}**, you got your **${text.commatize(amount)}** daily reward!`,
+                    `**${msg.member.nick}**, you got your **${this.utils.commatize(amount)}** daily reward!`,
                     overflow ? `\n\\**Overflow Warning**: Your wallet just overflowed! You need to transfer some of your credits to your bank!` : '',
-                    streakreset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
+                    streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
                     booster ? `\n\n**Hey!** Thanks for being a booster! You recieved ` + bonus + ` bonus credits!` : `\n\n**Psssst!** Server boosters get extra rewards!`,
-                ].join(''))).catch(() => this.sendError(msg.channel, 'Unable to save the document to the database, please try again later.'));
+                ].join(''))).catch((err) => this.sendError(msg.channel, `Unable to save the document to the database: ${err}`));
             }   
         })
     }
