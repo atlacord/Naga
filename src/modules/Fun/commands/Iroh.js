@@ -1,22 +1,23 @@
 const { Command, CommandOptions } = require('axoncore');
-const atlatopics = require('../../../assets/atlatopics.json');
+const quotes = require('../../../assets/irohquotes.json');
 
-class ATLA extends Command {
+class Iroh extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'atla';
-        this.aliases = [ 'atla' ];
+        this.label = 'iroh';
+        this.aliases = [
+        ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'topic atla',
-            description: 'Provides a random topic about ATLA!',
-            usage: 'topic atla',
+            name: 'iroh',
+            description: 'Sends a random quote from Uncle Iroh',
+            usage: 'iroh',
         };
 
         /**
@@ -24,7 +25,7 @@ class ATLA extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 10000,
+            cooldown: 50000,
             guildOnly: true,
         } );
     }
@@ -34,16 +35,17 @@ class ATLA extends Command {
 
     async execute( { msg } ) {
 
-        const topic = Math.floor(Math.random() * atlatopics.length);
+        const quote = Math.floor(Math.random() * quotes.length);
         return this.sendMessage(msg.channel, {
             embed: {
                 color: this.utils.color.blue,
-                description: atlatopics[topic]
+                thumbnail: { url: 'https://i.pinimg.com/originals/4d/8c/d0/4d8cd09d595ab1cefb8098d4ec13ec0b.png' },
+                description: quotes[quote]
             }
         });
     }
 }
 
 
-module.exports = ATLA;
+module.exports = Iroh;
 

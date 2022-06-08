@@ -25,7 +25,7 @@ class Wiki extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 1,
-            guildOnly: false,
+            guildOnly: true,
         } );
     }
     /**

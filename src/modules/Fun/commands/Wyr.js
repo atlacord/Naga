@@ -25,8 +25,8 @@ class Wyr extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 5000,
-            guildOnly: false,
+            cooldown: 900000,
+            guildOnly: true,
         } );
     }
     /**

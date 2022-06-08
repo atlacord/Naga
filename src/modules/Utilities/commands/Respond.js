@@ -1,33 +1,30 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const AvatarStart = require('./AvatarStart');
-const AvatarEnd = require('./AvatarEnd');
+const RespondApprove = require('./RespondApprove');
+const RespondDeny = require('./RespondDeny');
 
-class AvatarGames extends Command {
+class Respond extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'agames';
-        this.aliases = [
-            'ag',
-            'avatargames'
-        ];
+        this.label = 'respond';
+        this.aliases = [];
 
         this.hasSubcmd = true;
 
         this.info = {
-            name: 'agames',
-            description: 'Starts/ends Avatar Games!',
-            usage: 'agames',
+            name: 'respond',
+            description: 'Respond to a suggestion',
+            usage: 'respond',
         };
 
         /**
          * @type {CommandOptions}
          */
         this.options = new CommandOptions(this, {
-            argsMin: 0,
+            argsMin: 1,
             guildOnly: true,
         } );
 
@@ -39,21 +36,21 @@ class AvatarGames extends Command {
         } );
     }
 
+    init() {
+        return [RespondApprove, RespondDeny];
+    }
+
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-     init() {
-        return [AvatarStart, AvatarEnd]
-    }
-
-    execute( { msg } ) {
+    execute({ msg }) {
         try {
-            this.sendMessage(msg.channel, `Run \`${this.axon.settings.prefixes}agames start\` or \`${this.axon.settings.prefixes}agames end\`!`);
+            msg.channel.createMessage(`Please use \`${this.axon.settings.prefixes}respond approve/deny\`!`)
         } catch (err) {
             console.log(err)
         }
     }
 }
 
-module.exports = AvatarGames;
+module.exports = Respond;

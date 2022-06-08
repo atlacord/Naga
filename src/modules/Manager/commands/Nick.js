@@ -28,8 +28,8 @@ class Nick extends Command {
          */
 
         this.options = new CommandOptions(this, {
-            argsMin: 0,
-            guildOnly: false,
+            argsMin: 1,
+            guildOnly: true,
         } );
 
         this.permissions = new CommandPermissions(this, {
