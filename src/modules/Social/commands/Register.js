@@ -10,6 +10,7 @@ class Register extends Command {
 
         this.label = 'register';
         this.aliases = [
+            'createwallet'
         ];
 
         this.hasSubcmd = false;
