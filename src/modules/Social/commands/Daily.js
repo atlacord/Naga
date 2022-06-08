@@ -35,6 +35,7 @@ class Daily extends Command {
      */
 
     async execute({ msg }) {
+        msg.channel.createMessage('If this command doesn\'t respond with anything else, it\'s probably broken. We are still working on re-implementing wallet features. Sorry for the inconvenience!');
         profile.findById(msg.author.id, (err, doc) => {
 
             if (err) {
