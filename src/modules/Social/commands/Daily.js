@@ -43,7 +43,7 @@ class Daily extends Command {
                 return msg.channel.sendError(msg.channel, `**${msg.member.nick}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
             } else {
 
-                const boostID = '666415626310516746';
+                const boostID = '586128911302131725';
                 const booster = msg.member.roles.includes(boostID);
 
                 const now = Date.now();
