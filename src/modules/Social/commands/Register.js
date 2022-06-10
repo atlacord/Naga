@@ -47,7 +47,7 @@ class Register extends Command {
 
             doc.data.economy.wallet = Math.floor(Math.random() * 250) + 250;
 
-            return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully created your wallet! You received ${doc.data.economy.wallet}** as a gift!`))
+            return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully created your wallet! You received **${doc.data.economy.wallet}** as a gift!`))
             .catch((err) => this.sendError(msg.channel, `DB Error: Unable to save you wallet to the database: ${err}`))
         })
     }
