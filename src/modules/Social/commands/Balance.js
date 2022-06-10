@@ -10,7 +10,8 @@ class Balance extends Command {
 
         this.label = 'balance';
         this.aliases = [
-            'bal'
+            'bal',
+            'wallet'
         ];
 
         this.hasSubcmd = false;
