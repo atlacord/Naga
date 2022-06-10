@@ -6,5 +6,6 @@ module.exports = {
     Daily: require('./Daily'),
     Deposit: require('./Deposit'),
     Find: require('./Find'),
-    Register: require('./Register')
+    Register: require('./Register'),
+    Withdraw: require('./Withdraw')
 }
