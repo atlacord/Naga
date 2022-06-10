@@ -26,7 +26,7 @@ class CreditLeaderboard extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 60000,
+            cooldown: 30000,
             guildOnly: true,
         } );
     }
@@ -85,6 +85,7 @@ class CreditLeaderboard extends Command {
                     ].join('\n')
                 ]
             }
+            this.sendMessage(msg.channel, { embed });
         })
     } catch (err) {
         this.sendError(msg.channel, err);
