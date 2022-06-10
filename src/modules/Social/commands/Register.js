@@ -38,15 +38,14 @@ class Register extends Command {
 
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
-                this.sendError(msg.channel, `DB Error: ${err.message}`);
+                return this.sendError(msg.channel, `DB Error: ${err.message}`);
             } else if (doc && doc.data.economy.wallet !== null) {
-                this.sendError(msg.channel, `You already have a wallet! To check your balance, run \`${this.axon.settings.prefixes}bal\`!`);
+                return this.sendError(msg.channel, `You already have a wallet! To check your balance, run \`${this.axon.settings.prefixes}bal\`!`);
             } else if (!doc) {
                 doc = new profile({ _id: msg.author.id })
             };
 
             doc.data.economy.wallet = Math.floor(Math.random() * 250) + 250;
-
             return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully created your wallet! You received **${doc.data.economy.wallet}** as a gift!`))
             .catch((err) => this.sendError(msg.channel, `DB Error: Unable to save you wallet to the database: ${err}`))
         })
