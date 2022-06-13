@@ -9,7 +9,7 @@
     },
     "prefixes": {
         "general": "n.",
-        "admin": "n.",
+        "admin": "na.",
         "owner": "$"
     },
     "emotes": {
@@ -31,7 +31,8 @@
             { "name": "Kratos", "id": "222634331384840193" },
             { "name": "Lion", "id": "239446756599922688" },
             { "name": "Jules", "id": "737542058138533950" },
-            { "name": "Phantom", "id": "532290521058508821" }
+            { "name": "Phantom", "id": "532290521058508821" }, 
+            { "name": "BushyTheBushSpirit", "id": "283451169152696320"}
         ],
         "sentries": [
             { "name": "Auren", "id": "331152259109093377" },
