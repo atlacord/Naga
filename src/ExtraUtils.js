@@ -133,27 +133,27 @@ class ExtraUtils extends Utils {
             staff.push('Naga Developer');
         }
 
-        if (user.roles.includes('987192421462990909')) {
+        if (user.roles.includes('372084219423490049')) {
             staff.push('White Lotus');
         };
 
-        if ((user.roles.includes('987192454451179561')) && (!user.roles.includes('987192421462990909'))) {
+        if ((user.roles.includes('456925799786872868')) && (!user.roles.includes('372084219423490049'))) {
             staff.push('Sentry');
         }
 
-        if (user.roles.includes('987192477217869886')) {
+        if (user.roles.includes('762573162424565780')) {
             staff.push('Dai Li');
         }
 
-        if (user.roles.includes('987192500081016832')) {
+        if (user.roles.includes('871374813288083516')) {
             staff.push('Wiki Writer');
         }
 
-        if (user.roles.includes('987192524533801001')) {
+        if (user.roles.includes('830138455337730049')) {
             staff.push('Event Master');
         }
 
-        if (user.roles.includes('987192556318248960')) {
+        if (user.roles.includes('721140469576237076')) {
             staff.push('Stream Master')
         }
         return staff;
