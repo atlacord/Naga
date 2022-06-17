@@ -41,6 +41,8 @@ class Whois extends Command {
 
     async execute({ msg, args }) {
 
+        let staff = [];
+
         const member = msg.channel.guild.members.get(args[0]) || msg.member;
 
         let userRoles, sortedRoles, roles, roleColor;
@@ -50,52 +52,67 @@ class Whois extends Command {
 
             sortedRoles = userRoles.sort((a,b) => b.position - a.position); 
             roles = sortedRoles.map(r => `<@&${r.id}>`).join(", ");
-            if (sortedRoles[0].color !== 0) {
+            if (sortedRoles[0].color === 0) {
+                roleColor = 9031664;
+            } else {
                 roleColor = sortedRoles[0].color;
             }
+
         } else {
             roles = 'No Roles';
             roleColor = this.utils.color.blue;
         }
 
+        for (let i = 0; i < this.utils.checkStaff(member).length; i += 1) {
+            staff.push(this.utils.checkStaff(member)[i]);
+        }
+
         if(!args) {
-            this.sendMessage(msg.channel, { 
-                embed: {  
-                    author: { name: msg.member.username + '#' + msg.member.discriminator, icon_url: msg.member.avatarURL },
-                    thumbnail: { url: msg.member.avatarURL },
-                    color: roleColor,
 
-                    fields: [
-                        { name: 'Username', value: `<@!${msg.member.id}>`, inline: true },
-                        { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d><t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
-                        { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d><t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
-                        { name: 'Roles', value: roles, inline: false }
-                    ],
+            let embed = {  
+                author: { name: msg.member.username + '#' + msg.member.discriminator, icon_url: msg.member.avatarURL },
+                thumbnail: { url: msg.member.avatarURL },
+                color: roleColor,
 
-                    footer: { text: `ID: ${msg.member.id}` },
-                    timestamp: new Date(),
-                }     
-            })    
+                fields: [
+                    { name: 'Username', value: `<@!${msg.member.id}>`, inline: true },
+                    { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d><t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
+                    { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d><t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
+                    { name: 'Roles', value: roles, inline: false }
+                ],
+
+                footer: { text: `ID: ${msg.member.id}` },
+                timestamp: new Date(),
+            }
+
+            if (staff.length > 0) {
+                embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
+            }
+
+            this.sendMessage(msg.channel, { embed })
                  
         } else {
-            this.sendMessage(msg.channel, {
-                embed: {
-                    author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
-                    thumbnail: { url: member.avatarURL },
-                    description: 'Who dis?',
-                    color: roleColor,
+            let embed = {
+                author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
+                thumbnail: { url: member.avatarURL },
+                description: 'Who dis?',
+                color: roleColor,
 
-                    fields: [
-                        { name: 'Username', value: `<@!${member.id}>`, inline: true },
-                        { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d><t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
-                        { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d><t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
-                        { name: 'Roles', value: roles, inline: false }
-                    ],
+                fields: [
+                    { name: 'Username', value: `<@!${member.id}>`, inline: true },
+                    { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d><t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
+                    { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d><t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
+                    { name: 'Roles', value: roles, inline: false }
+                ],
 
-                    footer: { text: `ID: ${member.id}` },
-                    timestamp: new Date(),
-                }
-            })          
+                footer: { text: `ID: ${member.id}` },
+                timestamp: new Date(),
+            }
+
+            if (staff.length > 0) {
+                embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
+            }
+            this.sendMessage(msg.channel, { embed })          
         }
     }
 }

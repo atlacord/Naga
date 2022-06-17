@@ -51,7 +51,7 @@ class Client extends AxonClient {
         // overrides default editStatus
         // used to setup custom status
         this.botClient.editStatus("online", {
-            name: `Naga v2 | ${this.settings.prefixes[0]}help`,
+            name: `${this.info.name} | ${this.settings.prefixes[0]}help`,
             type: 0,
         } );
     }

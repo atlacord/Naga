@@ -19,7 +19,7 @@ class Setgame extends Command {
          * @type {CommandOptions}
          */
         this.options = new CommandOptions(this, {
-            argsMin: 2,
+            argsMin: 1,
             cooldown: null,
             hidden: true,
         } );
