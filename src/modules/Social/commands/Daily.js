@@ -37,10 +37,12 @@ class Daily extends Command {
     async execute({ msg }) {
         profile.findById(msg.author.id, (err, doc) => {
 
+            let displayName = msg.member.nick ?? msg.author.username;
+
             if (err) {
                 return this.sendError(msg.channel, `Database error: ${err.message}`)
             } else if (!doc || doc.data.economy.wallet === null) {
-                return msg.channel.sendError(msg.channel, `**${msg.member.nick}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
+                return msg.channel.sendError(msg.channel, `**${displayName}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
             } else {
 
                 const boostID = '586128911302131725';
@@ -52,7 +54,7 @@ class Daily extends Command {
                 let overflow = false, excess = null, streakReset = false;
 
                 if (doc.data.economy.streak.timestamp !== 0 && doc.data.economy.streak.timestamp - now > 0) {
-                    return msg.channel.createMessage(`**${msg.member.nick}**, you already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`);
+                    return msg.channel.createMessage(`**${displayName}**, you already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`);
                 };
 
                 if ((doc.data.economy.streak.timestamp + 86400000) < now) {
@@ -80,7 +82,7 @@ class Daily extends Command {
                 doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount + bonus;
 
                 return doc.save().then(() => msg.channel.createMessage([
-                    `**${msg.member.nick}**, you got your **${this.utils.commatize(amount)}** daily reward!`,
+                    `**${displayName}**, you got your **${this.utils.commatize(amount)}** daily reward!`,
                     overflow ? `\n\\**Overflow Warning**: Your wallet just overflowed! You need to transfer some of your credits to your bank!` : '',
                     streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
                     booster ? `\n\n**Hey!** Thanks for being a booster! You recieved ` + bonus + ` bonus credits!` : `\n\n**Psssst!** Server boosters get extra rewards!`,
