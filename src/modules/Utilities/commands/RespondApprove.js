@@ -41,6 +41,7 @@ class RespondApprove extends Command {
      async execute({ msg, args }) {
         try {
         let suggestion = await this.bot.getMessage('792616452770627594', args[0]);
+        this.sendCode(msg.channel, suggestion.embeds[0])
 
         let embed = {
             author: { name: suggestion.embeds[0].author.name, icon_url: suggestion.embeds[0].author.icon_url },
