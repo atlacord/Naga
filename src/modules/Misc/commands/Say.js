@@ -1,4 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
+const { Channel } = require('eris');
 
 class Say extends Command {
     /**
@@ -44,7 +45,7 @@ class Say extends Command {
         try {
             let channel = args[0].replace('<#','');
             channel = channel.replace('>', '');
-            msg.channel.guild.channels.get(channel).createMessage(args[1]);
+            this.sendMessage(channel, args[1]);
         } catch (err) {
             console.log(err)
         }

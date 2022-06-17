@@ -46,7 +46,7 @@ class Respond extends Command {
 
     execute({ msg }) {
         try {
-            msg.channel.createMessage(`Please use \`${this.axon.settings.prefixes}respond approve/deny\`!`)
+            this.sendMessage(msg.channel, `Please use \`${this.axon.settings.prefixes}respond approve/deny\`!`)
         } catch (err) {
             console.log(err)
         }

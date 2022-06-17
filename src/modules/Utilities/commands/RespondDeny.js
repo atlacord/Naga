@@ -54,7 +54,7 @@ class RespondDeny extends Command {
         };
         try {
             await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
-            msg.channel.createMessage(`Successfully denied ${suggestion.embeds[0].author.name}'s suggestion.`);
+            this.sendSuccess(msg.channel, `Successfully denied ${suggestion.embeds[0].author.name}'s suggestion.`);
         } catch (err) {
             console.log(err)
             this.sendError(err);

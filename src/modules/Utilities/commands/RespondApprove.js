@@ -54,7 +54,7 @@ class RespondApprove extends Command {
         };
         try {
             await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
-            msg.channel.createMessage(`Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`);
+            this.sendSuccess(msg.channel, `Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`);
         } catch (err) {
             this.sendError(msg.channel, err)
         }

@@ -26,7 +26,6 @@ class TeamAvatar extends Listener {
      * @param {import('axoncore').GuildConfig} guildConfig
      */
     execute(member, oldMember, guildConfig) { // eslint-disable-line
-        console.log(member)
         return Promise.resolve();
     }
 }
