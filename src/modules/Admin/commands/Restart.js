@@ -47,6 +47,8 @@ class Restart extends Command {
 
 async execute({ msg, args }) {
     try {
+        this.sendSuccess(msg.channel, `Restarting ${this.bot.user.username}`);
+
         process.exec(`pm2 restart NagaV2`, (error, stdout) => {
             const outputType = error || stdout;
             let output = outputType;
