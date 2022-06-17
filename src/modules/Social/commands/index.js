@@ -7,5 +7,6 @@ module.exports = {
     Deposit: require('./Deposit'),
     Find: require('./Find'),
     Register: require('./Register'),
+    Setbio: require('./Setbio'),
     Withdraw: require('./Withdraw')
 }
