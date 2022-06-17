@@ -116,6 +116,48 @@ class ExtraUtils extends Utils {
           notation: 'compact', maximumFractionDigits
         });
     }
+
+    /**
+     * 
+     * @param {string} user User ID
+     * @returns {string} member's display name
+     */
+    displayName(user) {
+        return this.bot.getRESTGuildMember(user).nick ?? this.bot.getRESTUser(user).username;
+    }
+
+    checkStaff(user) {
+        let staff = []
+
+        if (this.axon.staff.owners.includes(user.id)) {
+            staff.push('Naga Developer');
+        }
+
+        if (user.roles.includes('987192421462990909')) {
+            staff.push('White Lotus');
+        };
+
+        if ((user.roles.includes('987192454451179561')) && (!user.roles.includes('987192421462990909'))) {
+            staff.push('Sentry');
+        }
+
+        if (user.roles.includes('987192477217869886')) {
+            staff.push('Dai Li');
+        }
+
+        if (user.roles.includes('987192500081016832')) {
+            staff.push('Wiki Writer');
+        }
+
+        if (user.roles.includes('987192524533801001')) {
+            staff.push('Event Master');
+        }
+
+        if (user.roles.includes('987192556318248960')) {
+            staff.push('Stream Master')
+        }
+        return staff;
+    }
 }
 
 module.exports = ExtraUtils;
