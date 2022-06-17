@@ -1,5 +1,6 @@
 const { Command, CommandOptions } = require('axoncore');
 const moment = require('moment-timezone');
+const profile = require('../../../Models/Profile');
 require('moment-duration-format');
 
 class Whois extends Command {
@@ -67,12 +68,13 @@ class Whois extends Command {
             staff.push(this.utils.checkStaff(member)[i]);
         }
 
-        if(!args) {
-
+        if (!args) {
+            profile.findById(msg.author.id, (err, doc) => {
             let embed = {  
                 author: { name: msg.member.username + '#' + msg.member.discriminator, icon_url: msg.member.avatarURL },
                 thumbnail: { url: msg.member.avatarURL },
                 color: roleColor,
+                description: doc.data.profile.bio,
 
                 fields: [
                     { name: 'Username', value: `<@!${msg.member.id}>`, inline: true },
@@ -90,12 +92,14 @@ class Whois extends Command {
             }
 
             this.sendMessage(msg.channel, { embed })
+        })
                  
         } else {
+            profile.findById(member.id, (err, doc) => {
             let embed = {
                 author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
                 thumbnail: { url: member.avatarURL },
-                description: 'Who dis?',
+                description: doc.data.profile.bio,
                 color: roleColor,
 
                 fields: [
@@ -113,8 +117,9 @@ class Whois extends Command {
                 embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
             }
             this.sendMessage(msg.channel, { embed })          
-        }
+        })
     }
+}
 }
                         
 module.exports = Whois;
