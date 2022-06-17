@@ -34,13 +34,13 @@ class Wiki extends Command {
 
     execute( { msg, args } ) {
         try {
-            if (!args) {
-                this.sendMessage(msg.channel, `Check out our server wiki! \nhttps://avatar-the-last-airbender-discord.fandom.com\``);
+            if (!args[0]) {
+                this.sendMessage(msg.channel, `Check out our server wiki! \nhttps://avatar-the-last-airbender-discord.fandom.com`);
             } else {
-            this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \nhttps://avatar-the-last-airbender-discord.fandom.com/wiki/${args.join('_')}`);
+                this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \nhttps://avatar-the-last-airbender-discord.fandom.com/wiki/${args.join('_')}`);
             }
         } catch (err) {
-            console.log(err)
+            this.sendError(msg.channel, err);
         }
     }
 }
