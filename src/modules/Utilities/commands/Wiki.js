@@ -17,14 +17,14 @@ class Wiki extends Command {
         this.info = {
             name: 'wiki',
             description: 'Provides a link to the specified page on the ATLA Discord wiki (case-sensitive)',
-            usage: 'wiki Soda',
+            usage: 'wiki Beach Party Gaang',
         };
 
         /**
          * @type {CommandOptions}
          */
         this.options = new CommandOptions(this, {
-            argsMin: 1,
+            argsMin: 0,
             guildOnly: true,
         } );
     }
@@ -34,7 +34,11 @@ class Wiki extends Command {
 
     execute( { msg, args } ) {
         try {
+            if (!args) {
+                this.sendMessage(msg.channel, `Check out our server wiki! \nhttps://avatar-the-last-airbender-discord.fandom.com\``);
+            } else {
             this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \nhttps://avatar-the-last-airbender-discord.fandom.com/wiki/${args.join('_')}`);
+            }
         } catch (err) {
             console.log(err)
         }
