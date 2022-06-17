@@ -54,6 +54,15 @@ class ExtraUtils extends Utils {
         return ( (blue | (green << 8) | (red << 16) ) | (1 << 24) ).toString(16).slice(1);
     }
 
+    /**
+    * Joins array via oxford comma and append 'and' on last 2 items
+    * @param {array} array the array to join
+    * @returns {string} the joined array
+    */
+    joinArray(array = []){
+        return list.format(array.map(x => String(x)));
+    }
+
         /**
      * TextTruncate -> Shortens the string to desired length
      * @param {string} str the string to test with

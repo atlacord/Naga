@@ -52,6 +52,7 @@ class Nick extends Command {
 
         try {
             msg.channel.guild.editNickname(args[0])
+            this.sendSuccess(msg.channel, `Successfully changed Naga's nickname!`)
 
         } catch (err) {
             this.logger.error(err);
