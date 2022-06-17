@@ -57,13 +57,7 @@ class Build extends Command {
     async execute({ msg }) {
 
         try {
-
-            this.sendMessage(msg.channel, {
-                embed: {
-                    color: this.utils.color.green,
-                    description: `${this.utils.emote.success} Updating ${this.bot.user.username}.`
-                }
-            })
+            this.sendSuccess(msg.channel, `Updating ${this.bot.user.username}`);
 
             exec('git pull origin main'), (error, stdout) => {
                 const outputType = error || stdout;
