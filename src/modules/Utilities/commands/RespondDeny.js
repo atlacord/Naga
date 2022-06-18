@@ -39,7 +39,6 @@ class RespondDeny extends Command {
      */
 
     async execute({ msg, args }) {
-        try {
         let suggestion = await this.bot.getMessage('792616452770627594', args[0]);
 
         let embed = {
@@ -53,7 +52,7 @@ class RespondDeny extends Command {
             ],
             footer: { text: suggestion.embeds[0].footer.text }
         };
-
+        try {
             await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
             this.sendSuccess(msg.channel, `Successfully denied ${suggestion.embeds[0].author.name}'s suggestion.`);
         } catch (err) {

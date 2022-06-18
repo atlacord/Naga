@@ -39,9 +39,7 @@ class RespondApprove extends Command {
      */
 
      async execute({ msg, args }) {
-        try {
         let suggestion = await this.bot.getMessage('792616452770627594', args[0]);
-        this.sendCode(msg.channel, suggestion.embeds[0])
 
         let embed = {
             author: { name: suggestion.embeds[0].author.name, icon_url: suggestion.embeds[0].author.icon_url },
@@ -54,8 +52,16 @@ class RespondApprove extends Command {
             ],
             footer: { text: suggestion.embeds[0].footer.text }
         };
+        try {
             await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
-            this.sendSuccess(msg.channel, `Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`);
+            this.sendMessage(msg.channel, {
+                embeds: [
+                    { 
+                        color: this.utils.color.green,
+                        description: `${this.utils.emote.success} Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`
+                    }
+                ]
+            });
         } catch (err) {
             this.sendError(msg.channel, err)
         }
