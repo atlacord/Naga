@@ -1,7 +1,6 @@
 const Bot = require('./Bot');
 const chalk = require('chalk');
 const config = require('../configs/config.json');
-const EventHandler = require('./EventHandler');
 
 if (config.settings.db === 2) {
     try {
@@ -23,6 +22,5 @@ if (config.settings.db === 2) {
 }
 
 Bot.start();
-new EventHandler;
 
 Bot.logger.notice(`${chalk.green('=== ONLINE ===')}`);

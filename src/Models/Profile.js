@@ -26,7 +26,6 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
         current: {type: Number, default: 0},
         timestamp: {type: Number, default: 0}
       },
-      title: { type: String, default: null},
       beg: { type: Date, default: 0 },
       shard: {type: Number, default: null}
     },
