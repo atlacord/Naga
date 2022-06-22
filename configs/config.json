@@ -6,7 +6,7 @@
         "logger": 1,
         "db": 2,
         "guildConfigCache": 1000,
-        "joinLogs": true
+        "joinLogs": false
     },
     "prefixes": {
         "general": "n.",
