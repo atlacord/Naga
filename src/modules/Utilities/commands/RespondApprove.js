@@ -43,7 +43,7 @@ class RespondApprove extends Command {
 
         console.log(suggestion.embeds[0].author); // figure out why it's actin' like the author doesn't exist >:(
 
-        let embed = {
+/*         let embed = {
             author: { name: suggestion.embeds[0].author.name, icon_url: suggestion.embeds[0].author.icon_url },
             title: suggestion.embeds[0].title,
             color: this.utils.color.green,
@@ -53,7 +53,13 @@ class RespondApprove extends Command {
                 { name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')}
             ],
             footer: { text: suggestion.embeds[0].footer.text }
-        };
+        }; */
+
+        let embed = suggestion.embeds[0];
+        embed.color = this.utils.color.green;
+        embed.fields.push({ name: 'Status', value: `Approved by ${msg.author.username}#${msg.author.discriminator}` });
+        embed.fields.push({ name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')});
+
         try {
             await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
             this.sendSuccess(msg.channel, `Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`)
