@@ -39,7 +39,7 @@ class RespondApprove extends Command {
      */
 
      async execute({ msg, args }) {
-        let suggestion = await this.bot.getMessage('570053930193518594', args[0]);
+        let suggestion = await this.bot.getMessage('792616452770627594', args[0]);
 
         console.log(suggestion.embeds[0].author); // figure out why it's actin' like the author doesn't exist >:(
 
@@ -61,7 +61,7 @@ class RespondApprove extends Command {
         embed.fields.push({ name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')});
 
         try {
-            await this.bot.getChannel('570053930193518594').editMessage(args[0], { embed });
+            await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
             this.sendSuccess(msg.channel, `Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`)
         } catch (err) {
             this.sendError(msg.channel, err)
