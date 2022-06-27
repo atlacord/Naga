@@ -50,7 +50,7 @@ class RespondDeny extends Command {
 
         try {
             await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
-            this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${args[0]}`);
+            this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${args[0]})`);
         } catch (err) {
             this.sendError(err);
         }
