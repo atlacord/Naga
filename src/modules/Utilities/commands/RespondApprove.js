@@ -39,7 +39,9 @@ class RespondApprove extends Command {
      */
 
      async execute({ msg, args }) {
-        let suggestion = await this.bot.getMessage('792616452770627594', args[0]).catch(err, this.sendError(msg.channel, err));
+        let suggestion = await this.bot.getMessage('792616452770627594', args[0]);
+
+        console.log(suggestion.embeds[0].author); // figure out why it's actin' like the author doesn't exist >:(
 
         let embed = {
             author: { name: suggestion.embeds[0].author.name, icon_url: suggestion.embeds[0].author.icon_url },
