@@ -38,31 +38,19 @@ class RespondApprove extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-     async execute({ msg, args }) {
-        let suggestion = await this.bot.getMessage('792616452770627594', args[0]);
+    async execute({ msg, args }) {
+        const suggestionChannel = '792616452770627594';
 
-        console.log(suggestion.embeds[0].author); // figure out why it's actin' like the author doesn't exist >:(
-
-/*         let embed = {
-            author: { name: suggestion.embeds[0].author.name, icon_url: suggestion.embeds[0].author.icon_url },
-            title: suggestion.embeds[0].title,
-            color: this.utils.color.green,
-            description: suggestion.embeds[0].description,
-            fields: [
-                { name: 'Status', value: `Approved by ${msg.author.username}#${msg.author.discriminator}` },
-                { name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')}
-            ],
-            footer: { text: suggestion.embeds[0].footer.text }
-        }; */
+        let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
 
         let embed = suggestion.embeds[0];
         embed.color = this.utils.color.green;
-        embed.fields.push({ name: 'Status', value: `Approved by ${msg.author.username}#${msg.author.discriminator}` });
+        embed.fields[0] = { name: 'Status', value: `Approved by ${msg.author.username}#${msg.author.discriminator}` };
         embed.fields.push({ name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')});
 
         try {
-            await this.bot.getChannel('792616452770627594').editMessage(args[0], { embed });
-            this.sendSuccess(msg.channel, `Successfully approved ${suggestion.embeds[0].author.name}'s suggestion.`)
+            await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
+            this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${args[0]})`)
         } catch (err) {
             this.sendError(msg.channel, err)
         }
