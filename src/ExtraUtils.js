@@ -122,8 +122,8 @@ class ExtraUtils extends Utils {
      * @param {string} user User ID
      * @returns {string} member's display name
      */
-    displayName(user) {
-        return this.bot.getRESTGuildMember(user).nick ?? this.bot.getRESTUser(user).username;
+    displayName(message, user) {
+        return this.bot.getRESTGuildMember((message).channel.guild.id, user).nick ?? this.bot.getRESTUser(user).username;
     }
 
     checkStaff(user) {
@@ -158,6 +158,17 @@ class ExtraUtils extends Utils {
         }
         return staff;
     }
+
+      /**
+   * Creates a Promise that resolves after a specified duration.
+   * @param {number} ms How long to wait before resolving (in milliseconds)
+   * @returns {Promise<void>}
+   */
+    delayFor(ms) {
+        return new Promise(resolve => {
+          setTimeout(resolve, ms);
+        });
+      }
 }
 
 module.exports = ExtraUtils;
