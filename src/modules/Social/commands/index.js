@@ -8,6 +8,7 @@ module.exports = {
     Daily: require('./Daily'),
     Deposit: require('./Deposit'),
     Find: require('./Find'),
+    Profile: require('./Profile'),
     Register: require('./Register'),
     Setbio: require('./Setbio'),
     Withdraw: require('./Withdraw')

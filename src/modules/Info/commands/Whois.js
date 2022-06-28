@@ -16,7 +16,7 @@ class Whois extends Command {
             'w',
             'who',
             'userinfo',
-            'profile',
+ //           'profile',
         ];
 
         this.hasSubcmd = false;

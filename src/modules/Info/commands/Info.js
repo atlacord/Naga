@@ -37,6 +37,14 @@ class Info extends Command {
 
     async execute( { msg } ) {
         const duration = moment.duration(this.bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+
+        let team = [];
+
+        for (let owner = 0; owner < this.axon.staff.owners.length; owner += 1) {
+            let member = await this.bot.getRESTUser(this.axon.staff.owners[owner]);
+            team.push(`${member.username}#${member.discriminator}`)
+            console.log(team)
+        }
     
         try {
 
@@ -53,7 +61,7 @@ class Info extends Command {
                     { name: "Version", value: version, inline: true },
                     { name: "Library", value: `eris`, inline: true },
                     { name: "Created", value: `${moment(this.bot.user.createdAt).tz("America/New_York").format("M/D/YYYY")}`, inline: true },
-                    { name: "Note", value: 'This is the first version of Naga v2. Please report any issues to TwoDog or soda!'}
+                    { name: "Developers", value: team.join('\n')}
                 ],
         
                 footer: { text: `${this.bot.user.username} | PID: ${process.pid} | Uptime: ${duration}` }
