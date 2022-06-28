@@ -3,6 +3,7 @@ module.exports = {
     Balance: require('./Balance'),
     Bank: require('./Bank'),
     Beg: require('./Beg'),
+    Bet: require('./Bet'),
     CreditLeaderboard: require('./CreditLeaderboard'),
     Daily: require('./Daily'),
     Deposit: require('./Deposit'),
