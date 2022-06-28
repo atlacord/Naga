@@ -37,6 +37,7 @@ class CreditLeaderboard extends Command {
     displayName(message, member) {
         return (message).channel.guild.members.get(member).nick ?? (message).channel.guild.members.get(member).username;
     }
+    
     async execute({ msg }) {
         
         try { 
