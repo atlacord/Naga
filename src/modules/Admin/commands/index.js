@@ -5,4 +5,5 @@ module.exports = {
     GetMessage: require('./GetMessage'),
     Restart: require('./Restart'),
     Setgame: require('./Setgame'),
+    Staff: require('./Staff')
 };
