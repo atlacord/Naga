@@ -75,7 +75,7 @@ class ExtraUtils extends Utils {
     }
 
     truncate(...options) {
-        return textTruncate(...options);
+        return this.textTruncate(...options);
     }
 
     /**

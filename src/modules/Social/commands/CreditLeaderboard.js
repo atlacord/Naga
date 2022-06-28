@@ -48,14 +48,13 @@ class CreditLeaderboard extends Command {
             if (!docs.length) {
                 return this.sendError(msg.channel, 'Members have not started earning credits yet.');
             };
-
-            const members = await msg.channel.guild.members.every({ user: docs.slice(0,10).map(x => x.id) }).catch(() => null);
+            const members = await this.bot.getRESTGuildMembers(msg.channel.guild.id, docs.slice(0,10).map(x => x.id));
 
             let embed = {
                 color: this.utils.color.blue,
                 author: { name: 'Credit Leaderboard' },
                 fields: [
-                    { name: `**${members.get(docs[0].id)?.nick || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`},
+                    { name: `**${msg.channel.guild.members.get(docs[0].id)?.nick || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`, value:
                     [
                         '```properties',
                         '╭═══════╤════════╤═════════╤════════════════════════════╮',
@@ -67,7 +66,7 @@ class CreditLeaderboard extends Command {
                             '┃' + ' '.repeat(6-rank.length) + rank,
                             ' '.repeat(6-this.utils.compactNum(u.wallet).length) + this.utils.compactNum(u.wallet),
                             ' '.repeat(7-this.utils.compactNum(u.bank).length) + this.utils.compactNum(u.bank),
-                            members.get(u.id)?.user.username || '<Unknown User>'
+                            msg.channel.guild.members.get(u.id)?.user.username || '<Unknown User>'
                           ].join(' ┃ ')
                         }).join('\n'),
                         '╞═══════╪════════╪═════════╪════════════════════════════╡',
@@ -78,13 +77,13 @@ class CreditLeaderboard extends Command {
                             '┃' + ' '.repeat(6-this.utils.ordinalize(rank).length) + this.utils.ordinalize(rank),
                             ' '.repeat(6-this.utils.compactNum(u.wallet).length) + this.utils.compactNum(u.wallet),
                             ' '.repeat(7-this.utils.compactNum(u.bank).length) + this.utils.compactNum(u.bank),
-                            text.truncate('You (' + message.author.tag + ')', 26) + ' '.repeat(27-this.utils.truncate('You (' + `${msg.author.username}#${msg.author.discriminator}` + ')', 26).length) + '┃'
+                            this.utils.truncate('You (' + msg.author.username + ')', 26) + ' '.repeat(27-this.utils.truncate('You (' + `${msg.author.username}#${msg.author.discriminator}` + ')', 26).length) + '┃'
                           ].join(' ┃ ')
                         }).join(''),
                         '╰═══════╧════════╧═════════╧════════════════════════════╯',
                         '```'
                     ].join('\n')
-                ]
+                }]
             }
             this.sendMessage(msg.channel, { embed });
         })
