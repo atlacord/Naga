@@ -36,7 +36,8 @@ class CreditLeaderboard extends Command {
 
     async execute({ msg }) {
         
-        try { profile.find({ 'data.xp.id': msg.channel.guild.id }, async (err, docs) => {
+        try { 
+            profile.find({ 'data.xp.id': msg.channel.guild.id }, async (err, docs) => {
             if (err) {
                 return this.sendError(msg.channel, `DB Error: ${err}`);
             };
@@ -54,7 +55,7 @@ class CreditLeaderboard extends Command {
                 color: this.utils.color.blue,
                 author: { name: 'Credit Leaderboard' },
                 fields: [
-                    { name: `**${members.get(docs[0].id)?.nickname || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`},
+                    { name: `**${members.get(docs[0].id)?.nick || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`},
                     [
                         '```properties',
                         '╭═══════╤════════╤═════════╤════════════════════════════╮',
@@ -66,7 +67,7 @@ class CreditLeaderboard extends Command {
                             '┃' + ' '.repeat(6-rank.length) + rank,
                             ' '.repeat(6-this.utils.compactNum(u.wallet).length) + this.utils.compactNum(u.wallet),
                             ' '.repeat(7-this.utils.compactNum(u.bank).length) + this.utils.compactNum(u.bank),
-                            members.get(u.id)?.user.tag || '<Unknown User>'
+                            members.get(u.id)?.user.username || '<Unknown User>'
                           ].join(' ┃ ')
                         }).join('\n'),
                         '╞═══════╪════════╪═════════╪════════════════════════════╡',
