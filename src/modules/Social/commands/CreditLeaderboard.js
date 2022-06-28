@@ -34,6 +34,9 @@ class CreditLeaderboard extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
+    displayName(message, member) {
+        return (message).channel.guild.members.get(member).nick ?? (message).channel.guild.members.get(member).username;
+    }
     async execute({ msg }) {
         
         try { 
@@ -48,13 +51,12 @@ class CreditLeaderboard extends Command {
             if (!docs.length) {
                 return this.sendError(msg.channel, 'Members have not started earning credits yet.');
             };
-            const members = await this.bot.getRESTGuildMembers(msg.channel.guild.id, docs.slice(0,10).map(x => x.id));
 
             let embed = {
                 color: this.utils.color.blue,
-                author: { name: 'Credit Leaderboard' },
+                author: { name: '🏆 Credit Leaderboard' },
                 fields: [
-                    { name: `**${msg.channel.guild.members.get(docs[0].id)?.nick || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`, value:
+                    { name: `**${this.displayName(msg, docs[0].id) || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`, value:
                     [
                         '```properties',
                         '╭═══════╤════════╤═════════╤════════════════════════════╮',
@@ -71,7 +73,6 @@ class CreditLeaderboard extends Command {
                         }).join('\n'),
                         '╞═══════╪════════╪═════════╪════════════════════════════╡',
                         docs.filter(x => x.id === msg.author.id).map((u,i,a) => {
-                          const user = a.find(x => x.id === msg.author.id);
                           const rank = docs.findIndex(x => x.id === msg.author.id) + 1;
                           return [
                             '┃' + ' '.repeat(6-this.utils.ordinalize(rank).length) + this.utils.ordinalize(rank),
