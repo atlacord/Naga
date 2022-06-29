@@ -39,7 +39,7 @@ class TeamAvatar extends Listener {
             this.sendMessage(TAChannel, `**A member of TA has left us, thanks to ${oldMember.mention} for their contributions!`)
         }
 
-        return Promise.resolve(); */
+        return Promise.resolve(); 
     } 
 }
 
