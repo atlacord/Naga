@@ -54,7 +54,7 @@ class Suggest extends Command {
         }
 
         try {
-            this.bot.getChannel('570053930193518594').createMessage({embed}).then(() => msg.delete());
+            this.bot.getChannel('792616452770627594').createMessage({embed}).then(() => msg.delete());
         } catch (err) {
             console.log(err)
         }
