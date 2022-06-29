@@ -42,14 +42,19 @@ class Suggest extends Command {
             title: `${displayName} suggests...`,
             color: this.utils.color.yellow,
             description: args.join(' '),
+            image: { url: null },
             fields: [
                 { name: 'Status', value: 'Awaiting staff review' }
             ],
             footer: { text: 'Discuss this suggestion in #suggestions_discussion!' }
         }
 
+        if (msg.attachments.length >= 1) {
+            embed.image.url = msg.attachments[0].url;
+        }
+
         try {
-            this.bot.getChannel('792616452770627594').createMessage({embed}).then(() => msg.delete());
+            this.bot.getChannel('570053930193518594').createMessage({embed}).then(() => msg.delete());
         } catch (err) {
             console.log(err)
         }

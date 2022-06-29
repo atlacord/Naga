@@ -75,7 +75,7 @@ class Staff extends Command {
             author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
             fields: [
                 { name: 'White Lotus', value: wl.join('\n') },
-                { name: 'Honorary White Lotus', value: honorarywl.join('\n')},
+                { name: 'Lotus Emeritus', value: honorarywl.join('\n')},
                 { name: 'Sentries', value: sentries.join('\n') },
                 { name: 'Dai Li', value: daili.join('\n') }
             ]

@@ -1,8 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
-const moment = require('moment');
 const profile = require('../../../Models/Profile');
 
-class Setbio extends Command {
+class SetBio extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
@@ -51,5 +50,5 @@ class Setbio extends Command {
     }
 }
 
-module.exports = Setbio;
+module.exports = SetBio;
 

@@ -21,21 +21,22 @@ class TeamAvatar extends Listener {
     }
 
     /**
+     * @param {import('eris').Guild} guild
      * @param {import('eris').Member} member
      * @param {Object} oldMember
      * @param {import('axoncore').GuildConfig} guildConfig
      */
-    execute(member, oldMember, guild, guildConfig) { // eslint-disable-line
-      /* const TAChannel = this.bot.getChannel('826851222459514923')
-        
 
-        if(!oldMember.roles.find(r => r.name === 'Team Avatar') && member.roles.find(r => r.name === 'Team Avatar')) {
-        TAChannel.createMessage(`**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!**`)
+     async execute(guild, member, oldMember, guildConfig) { // eslint-disable-line
+        const TAChannel = await this.bot.getChannel('826851222459514923');
+
+        if (!oldMember.premiumSince === null && member.premiumSince !== null) {
+            this.sendMessage(TAChannel, `**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!**`)
         }
-        if(oldMember.roles.find(r => r.name === 'Team Avatar') && oldMember.roles.find(r => r.name === 'TA Colour') && !member.roles.find(r => r.name === 'Team Avatar')) {
+        if ((oldMember.premiumSince === Date.now() && oldMember.roles.find(r => r.id === '829542940707127346')) && !member.premiumSince === null) {
             const colourrole = guild.roles.find(r => r.name === 'TA Colour')
             guild.removeMemberRole(member.id, colourrole.id, "User no longer boosting")
-            TAChannel.createMessage(`**A member of TA has left us, thanks to ${member.mention} for their contributions!**`)
+            this.sendMessage(TAChannel, `**A member of TA has left us, thanks to ${oldMember.mention} for their contributions!`)
         }
 
         return Promise.resolve(); */
