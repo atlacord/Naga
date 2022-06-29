@@ -26,7 +26,7 @@ class TeamAvatar extends Listener {
      * @param {import('axoncore').GuildConfig} guildConfig
      */
     execute(member, oldMember, guild, guildConfig) { // eslint-disable-line
-        const TAChannel = this.bot.getChannel('826851222459514923')
+      /* const TAChannel = this.bot.getChannel('826851222459514923')
         
 
         if(!oldMember.roles.find(r => r.name === 'Team Avatar') && member.roles.find(r => r.name === 'Team Avatar')) {
@@ -38,8 +38,8 @@ class TeamAvatar extends Listener {
             TAChannel.createMessage(`**A member of TA has left us, thanks to ${member.mention} for their contributions!**`)
         }
 
-        return Promise.resolve();
-    }
+        return Promise.resolve(); */
+    } 
 }
 
 module.exports = TeamAvatar;
