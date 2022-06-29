@@ -27,7 +27,9 @@ class TeamAvatar extends Listener {
      */
     execute(member, oldMember, guild, guildConfig) { // eslint-disable-line
         const TAChannel = guild.channels.find(c => c.id === '826851222459514923')
-      
+        console.log(guild)
+        console.log(member)
+        console.log(oldMember)
 
         if(!oldMember.roles.find(r => r.name === 'Team Avatar') && member.roles.find(r => r.name === 'Team Avatar')) {
         TAChannel.createMessage(`**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!`)
