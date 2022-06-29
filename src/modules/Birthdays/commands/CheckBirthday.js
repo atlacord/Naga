@@ -30,6 +30,13 @@ class CheckBirthday extends Command {
             cooldown: 10000,
             guildOnly: true,
         } );
+
+        this.permissions = new CommandPermissions(this, {
+            staff: {
+                needed: this.axon.staff.admins,
+                bypass: this.axon.staff.owners,
+            },
+        } );
     }
 
     checkBirthday(msg) {
