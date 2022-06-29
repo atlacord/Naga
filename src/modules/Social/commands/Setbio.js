@@ -7,7 +7,6 @@ class SetBio extends Command {
      */
     constructor(module) {
         super(module);
-
         this.label = 'setbio';
         this.aliases = [
             'bio'
