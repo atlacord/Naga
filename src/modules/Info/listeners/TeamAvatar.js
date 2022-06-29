@@ -30,12 +30,12 @@ class TeamAvatar extends Listener {
         
 
         if(!oldMember.roles.find(r => r.name === 'Team Avatar') && member.roles.find(r => r.name === 'Team Avatar')) {
-        TAChannel.createMessage(`**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!`)
+        TAChannel.createMessage(`**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!**`)
         }
         if(oldMember.roles.find(r => r.name === 'Team Avatar') && oldMember.roles.find(r => r.name === 'TA Colour') && !member.roles.find(r => r.name === 'Team Avatar')) {
             const colourrole = guild.roles.find(r => r.name === 'TA Colour')
             guild.removeMemberRole(member.id, colourrole.id, "User no longer boosting")
-            TAChannel.createMessage(`**A member of TA has left us, thanks to ${member.mention} for their contributions!`)
+            TAChannel.createMessage(`**A member of TA has left us, thanks to ${member.mention} for their contributions!**`)
         }
 
         return Promise.resolve();
