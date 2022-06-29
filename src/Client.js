@@ -50,11 +50,17 @@ class Client extends AxonClient {
         // called after ready event
         // overrides default editStatus
         // used to setup custom status
-        this.botClient.editStatus("online", {
-            name: `${this.info.name} | ${this.settings.prefixes[0]}help`,
+        let status = 'online';
+        let message = `${this.info.name} | ${this.settings.prefixes[0]}help`
+        if (this.settings.debugMode === true) {
+            status = 'dnd';
+            message = 'Naga Dev | Disabled'
+        this.botClient.editStatus(status, {
+            name: message,
             type: 0,
         } );
     }
+}
 
     // disabled
     /**
