@@ -23,6 +23,6 @@ if (config.settings.db === 2) {
 }
 
 Bot.start();
-new EventHandler;
+// new EventHandler;
 
 Bot.logger.notice(`${chalk.green('=== ONLINE ===')}`);
