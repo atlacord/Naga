@@ -10,6 +10,7 @@ module.exports = {
     Find: require('./Find'),
     Profile: require('./Profile'),
     Register: require('./Register'),
-    Setbio: require('./Setbio'),
+    SetBio: require('./SetBio'),
+    SetBirthday: require('./SetBirthday'),
     Withdraw: require('./Withdraw')
 }
