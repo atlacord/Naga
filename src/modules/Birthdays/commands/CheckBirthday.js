@@ -39,7 +39,7 @@ class CheckBirthday extends Command {
         } );
     }
 
-    checkBirthday(msg) {
+    async checkBirthday() {
         let birthdayMentions = [];
         const announcementChannel = '983618760525090869'
         try {
@@ -60,10 +60,10 @@ class CheckBirthday extends Command {
                 image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
             }
 
-            this.sendMessage(announcementChannel, {embed});
+            await this.bot.getChannel(announcementChannel).createMessage({embed});
             })
         } catch (err) {
-            this.utils.logError(msg, err);
+            console.error(err);
         }
     }
 
@@ -72,15 +72,8 @@ class CheckBirthday extends Command {
         this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
     }
 
-    scheduleJob() {
-        cron.schedule('*/1 * * * *', () => {
-            this.execute()
-            console.log('Checking for new birthdays');
-        })
-    };
-
-    async execute({ msg }) {
-        this.checkBirthday(msg)
+    async execute() {
+        this.checkBirthday()
     }
 }
 
