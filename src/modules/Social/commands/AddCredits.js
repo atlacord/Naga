@@ -46,7 +46,7 @@ class AddCredits extends Command {
             let member = msg.channel.guild.members.get(args[0]);
             
             if (err) {
-                return this.sendError(msg.channel, `DB Error: ${err}`);
+                return this.error(msg, err, 'db', 'Something went wrong.');
             }
 
             if (member === undefined) {
@@ -61,7 +61,7 @@ class AddCredits extends Command {
                 doc.data.economy.wallet = doc.data.economy.wallet + Math.floor(amount);
             
                 return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully added **${amount}** to ${member.username}#${member.discriminator}!\nTheir new balance is **${doc.data.economy.wallet}**.`)
-                .catch((err) => this.sendError(msg.channel, `DB Error: Unable to save document - ${err}`)));
+                .catch((err) => this.error(msg, err, 'db', 'Something went wrong.')));
             }
         })
     }

@@ -64,7 +64,7 @@ class Avatar extends Command {
                 }
             })
         } catch (err) {
-            this.sendError(msg.channel, err);
+            this.error(msg, err, 'internal', 'Something went wrong.');
         }
     }
 }

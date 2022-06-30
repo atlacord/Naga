@@ -37,7 +37,7 @@ class Withdraw extends Command {
 
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
-                return this.sendError(msg.channel, `DB Error: ${err}`);
+                return this.error(msg, err, 'db', 'Something went wrong.');
 
             } else if (!doc || doc.data.economy.wallet === null) {
                 return this.sendError(msg.channel, `You don't have a wallet yet! To create one, run \`${this.axon.settings.prefixes}register.`);
@@ -66,7 +66,7 @@ class Withdraw extends Command {
                 doc.data.economy.wallet = doc.data.economy.wallet - Math.round(amount * 1.05);
 
                 return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully withdrew **${this.utils.commatize(amount * 0.95)}** credits from your bank! (+5% fee)`))
-                .catch((err) => this.sendError(msg.channel, `Unable to process transaction: ${err}`));
+                .catch((err) => this.error(msg, err, 'db', 'Something went wrong.'));
             }
         })
     }

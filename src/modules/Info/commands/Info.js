@@ -66,10 +66,9 @@ class Info extends Command {
         
                 footer: { text: `${this.bot.user.username} | PID: ${process.pid} | Uptime: ${duration}` }
                 }
-            })
-        );
-    } catch(err) {
-        this.sendError(msg.channel, err);
+            }));
+        } catch(err) {
+        this.error(msg, err, 'internal', err);
         }
     }
 }

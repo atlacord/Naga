@@ -79,7 +79,7 @@ class Spotify extends Command {
                 msg.channel.createMessage({embed: embed})
             }
         } catch (err) {
-            this.sendError(msg.channel, `An error occurred.`);
+            this.error(msg, err, 'internal', 'Something went wrong.');
         }
     }
 }

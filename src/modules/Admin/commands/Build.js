@@ -79,8 +79,8 @@ class Build extends Command {
                 }
             }
         } catch (err) {
-            this.sendError(msg.channel, `Something went wrong.`
-        )}
+            this.error(msg, err, 'internal', 'Something went wrong.');
+        }
     }
 }
 
