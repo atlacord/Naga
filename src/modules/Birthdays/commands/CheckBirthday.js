@@ -41,7 +41,8 @@ class CheckBirthday extends Command {
 
     async checkBirthday() {
         let birthdayMentions = [];
-        const announcementChannel = '983618760525090869'
+        const announcementChannel = '372087095121936385';
+        
         try {
             db.find({ 'data.profile.birthday': moment().format('Do MMMM') }, async (err, docs) => {
             const members = docs.map(x => x._id);
