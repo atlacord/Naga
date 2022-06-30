@@ -43,7 +43,7 @@ class CreditLeaderboard extends Command {
         try { 
             profile.find({ 'data.xp.id': msg.channel.guild.id }, async (err, docs) => {
             if (err) {
-                return this.error(msg, err, 'db', 'Something went wrong.');
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             };
 
             docs = docs.map(x => { return { id: x._id, wallet: x.data.economy.wallet, bank: x.data.economy.bank}; })
@@ -90,7 +90,7 @@ class CreditLeaderboard extends Command {
             this.sendMessage(msg.channel, { embed });
         })
     } catch (err) {
-        this.error(msg, err, 'internal', 'Something went wrong.');
+        this.utils.logError(msg, err, 'internal', 'Something went wrong.');
     }
 } 
 }

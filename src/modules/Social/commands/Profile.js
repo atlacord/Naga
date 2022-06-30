@@ -49,7 +49,7 @@ class Profile extends Command {
 
         return profile.findOne({ _id: member.id }, async (err, doc) => {
             if (err) {
-                return this.error(msg, err, 'db', 'Something went wrong.');
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
 
             } else if (!doc || doc.data.economy.wallet === null) {
                 return this.sendError(msg.channel, `This user has not started earning XP in this server yet!`);

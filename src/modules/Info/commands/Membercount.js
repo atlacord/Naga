@@ -72,7 +72,7 @@ class Membercount extends Command {
             }
         })
     } catch(err) {
-        this.error(msg, err, 'internal', `An error occurred.`);
+        this.utils.logError(msg, err, 'internal', `An error occurred.`);
     }
 }
 }

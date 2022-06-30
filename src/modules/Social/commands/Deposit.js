@@ -70,7 +70,7 @@ class Deposit extends Command {
                 doc.data.economy.wallet = doc.data.economy.wallet - Math.floor(amount * 1.05);
 
                 return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully deposited **${this.utils.commatize(amount)}** credits to your bank! (+5% fee)`))
-                .catch((err) => this.error(msg, err, 'db', 'Unable to process transaction.'));
+                .catch((err) => this.utils.logError(msg, err, 'db', 'Unable to process transaction.'));
             }
         })
     }

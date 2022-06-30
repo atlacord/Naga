@@ -38,7 +38,7 @@ class Balance extends Command {
     async execute({ msg }) {
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
-                return this.error(msg, err, 'db', 'Something went wrong.');
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             };
 
             if (!doc || doc.data.economy.wallet === null) {

@@ -40,7 +40,7 @@ class Bet extends Command {
             let amount = args[0];
 
             if (err) {
-                return this.error(msg, err, 'db', 'Something went wrong.');
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (!doc || doc.data.economy.wallet === null) {
                 return this.sendError(msg.channel, `You don't have a wallet yet! To create one, run \`${this.axon.settings.prefixes}register.`);
             } else if (isNaN(amount)){
@@ -68,8 +68,8 @@ class Bet extends Command {
                 doc.data.economy.bank = doc.data.economy.bank + prize;
                 return doc.save()
                 .then(() => this.sendSuccess(msg.channel, `You won **${this.utils.commatize(amount)}** coins from your previous bet!\nYour bet **${Math.floor(amount)}** coins have multiplied by **${multiplier}**.\nYou'll receive **${this.utils.commatize(prize)}** coins as the prize. Your winnings has been transferred to your bank!`))
-                .catch(() => this.error(msg, err, 'internal', `The betting machine just broke! You lost **${this.utils.commatize(amount)}** coins from your previous bet.\nThis doesn't usually happen. Please contact TwoDog or soda if you receive this message.`))
-            }).catch((err) => this.error(msg, err, 'db', 'Something went wrong.'));
+                .catch(() => this.utils.logError(msg, err, 'internal', `The betting machine just broke! You lost **${this.utils.commatize(amount)}** coins from your previous bet.\nThis doesn't usually happen. Please contact TwoDog or soda if you receive this message.`))
+            }).catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }
         })
     }

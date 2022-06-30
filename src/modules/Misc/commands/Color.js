@@ -103,7 +103,7 @@ class Color extends Command {
         })
         }
     } catch(err) {
-        this.error(msg, err, 'internal', 'Something went wrong.');
+        this.utils.logError(msg, err, 'internal', 'Something went wrong.');
     }
     }
 }

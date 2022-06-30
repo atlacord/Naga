@@ -68,7 +68,7 @@ class Info extends Command {
                 }
             }));
         } catch(err) {
-        this.error(msg, err, 'internal', err);
+        this.utils.logError(msg, err, 'internal', err);
         }
     }
 }

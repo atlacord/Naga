@@ -61,7 +61,7 @@ class Beg extends Command {
                 doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount;
 
                 return doc.save().then(() => msg.channel.createMessage([`${this.utils.emote.success} You received **${amount}** from me.`, overflow ? `**Overflow warning**! Please deposit some of your account to your bank. You only received ${amount - excess} for this one!` : '',].join('')))
-                .catch((err) => this.error(msg, err, 'db', 'Something went wrong.'));
+                .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }
         })
     }

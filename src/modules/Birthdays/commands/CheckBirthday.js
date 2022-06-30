@@ -63,7 +63,7 @@ class CheckBirthday extends Command {
             this.sendMessage(announcementChannel, {embed});
             })
         } catch (err) {
-            this.error(msg, err);
+            this.utils.logError(msg, err);
         }
     }
 

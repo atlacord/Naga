@@ -38,7 +38,7 @@ class SetBirthday extends Command {
     async execute({ msg,args  }) {
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
-                return this.error(msg, err, 'db', 'Something went wrong.');
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (!doc) {
                 doc = new profile({ _id: msg.author.id });
             };
@@ -53,7 +53,7 @@ class SetBirthday extends Command {
             
             doc.save()
             .then(() => this.sendSuccess(msg.channel, `Your birthday has been updated to ${doc.data.profile.birthday}`))
-            .catch((err) => this.error(msg, err, 'internal', 'Birthday update failed'));
+            .catch((err) => this.utils.logError(msg, err, 'internal', 'Birthday update failed'));
         });
     }
 }

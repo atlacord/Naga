@@ -52,7 +52,7 @@ class RespondApprove extends Command {
             await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
             this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${args[0]})`)
         } catch (err) {
-            this.error(msg, err, 'internal', 'Something went wrong.');
+            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
         }
     }
 }

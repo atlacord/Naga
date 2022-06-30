@@ -40,7 +40,7 @@ class Wiki extends Command {
                 this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \nhttps://avatar-the-last-airbender-discord.fandom.com/wiki/${args.join('_')}`);
             }
         } catch (err) {
-            this.error(msg, err, 'internal', 'Something went wrong.');
+            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
         }
     }
 }

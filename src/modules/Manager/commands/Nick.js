@@ -55,7 +55,7 @@ class Nick extends Command {
             this.sendSuccess(msg.channel, `Successfully changed Naga's nickname!`)
 
         } catch (err) {
-            this.error(msg, err, 'internal', 'Something went wrong.');
+            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
         }
     }
 }
