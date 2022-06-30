@@ -54,7 +54,7 @@ class Dog extends Command {
                 });
             })
         } catch (err) {
-            return this.sendError(msg.channel, `Error 404: Dog not found.`);
+            this.utils.logError(msg, err, 'api', `Error 404: Dog not found.`);
         }
     }
 }

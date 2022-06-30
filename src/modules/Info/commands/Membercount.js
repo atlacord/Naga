@@ -72,7 +72,7 @@ class Membercount extends Command {
             }
         })
     } catch(err) {
-        this.sendError(msg.channel, err);
+        this.utils.logError(msg, err, 'internal', `An error occurred.`);
     }
 }
 }

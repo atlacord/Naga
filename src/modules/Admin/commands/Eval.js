@@ -59,7 +59,6 @@ class Eval extends Command {
         const { msg, args } = env;
         var dynoApi = 'https://dyno.gg/api/status?includeApi=true&shard_status=1';
         var deeno = 'https://dyno.gg/api/status?includeApi=true&shard_status=1'
-        var lyss = 'lyss is bestest'
         let evalString;
         try {
             // eslint-disable-next-line no-eval
@@ -71,8 +70,7 @@ class Eval extends Command {
                 evalString = String(evalString);
             }
         } catch (err) {
-            this.logger.debug(err.stack);
-            return this.sendError(msg.channel, err.message ? err.message : `Error: ${err}`);
+            this.utils.logError(msg, err, 'Internal', `Error: ${err}`);
         }
 
         evalString = this.cleanUpToken(evalString);

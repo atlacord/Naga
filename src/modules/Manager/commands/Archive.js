@@ -97,9 +97,8 @@ class Archive extends Command {
            })
            
         } catch (err) {
-            this.logger.error(err);
-			return this.sendError(msg.channel, `Something went wrong.`,
-        )}
+            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
+        }
     }
 }
 

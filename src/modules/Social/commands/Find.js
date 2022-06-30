@@ -37,7 +37,7 @@ class Find extends Command {
 
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
-                return this.sendError(msg.channel, `DB Error: ${err}`);
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (!doc || doc.data.economy.wallet === null) {
                 return this.sendError(msg.channel, `You don't have a wallet yet! To create one, run \`${this.axon.settings.prefixes}register.`);
             } else {
@@ -61,7 +61,7 @@ class Find extends Command {
                 doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount;
 
                 return doc.save().then(() => msg.channel.createMessage([`${this.utils.emote.success} You found **${amount}**!`, overflow ? `**Overflow warning**! Please deposit some of your account to your bank. You only found ${amount - excess} for this one!` : '',].join('')))
-                .catch((err) => this.sendError(msg.channel, err));
+                .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }
         })
     }

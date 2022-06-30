@@ -38,7 +38,7 @@ class Register extends Command {
 
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
-                return this.sendError(msg.channel, `DB Error: ${err.message}`);
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (doc && doc.data.economy.wallet !== null) {
                 return this.sendError(msg.channel, `You already have a wallet! To check your balance, run \`${this.axon.settings.prefixes}bal\`!`);
             } else if (!doc) {
@@ -47,7 +47,7 @@ class Register extends Command {
 
             doc.data.economy.wallet = Math.floor(Math.random() * 250) + 250;
             return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully created your wallet! You received **${doc.data.economy.wallet}** as a gift!`))
-            .catch((err) => this.sendError(msg.channel, `DB Error: Unable to save you wallet to the database: ${err}`))
+            .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
         })
     }
 }

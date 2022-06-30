@@ -40,7 +40,7 @@ class Daily extends Command {
             let displayName = msg.member.nick ?? msg.author.username;
 
             if (err) {
-                return this.sendError(msg.channel, `Database error: ${err.message}`)
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (!doc || doc.data.economy.wallet === null) {
                 return msg.channel.sendError(msg.channel, `**${displayName}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
             } else {
@@ -86,7 +86,7 @@ class Daily extends Command {
                     overflow ? `\n\\**Overflow Warning**: Your wallet just overflowed! You need to transfer some of your credits to your bank!` : '',
                     streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
                     booster ? `\n\n**Hey!** Thanks for being a booster! You recieved ` + bonus + ` bonus credits!` : `\n\n**Psssst!** Server boosters get extra rewards!`,
-                ].join(''))).catch((err) => this.sendError(msg.channel, `Unable to save the document to the database: ${err}`));
+                ].join(''))).catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }   
         })
     }

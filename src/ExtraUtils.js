@@ -1,4 +1,5 @@
 const { Utils } = require('axoncore');
+const secret = require('../configs/secret.json');
 
 class ExtraUtils extends Utils {
     /**
@@ -168,7 +169,20 @@ class ExtraUtils extends Utils {
         return new Promise(resolve => {
           setTimeout(resolve, ms);
         });
-      }
+    }
+
+    async logError(msg, err, type, message) {
+        await this.bot.getChannel(secret.bot.logChannel).createMessage({
+            embed: {
+                author: { name: 'Error' },
+                color: this.color.red,
+                description: `\`\`\`${err.stack}\`\`\``,
+                timestamp: new Date()
+            }
+        })
+        return this.axon.log('FATAL', `Unexpected error [${msg.channel.guild.name} - ${msg.channel.guild.id}]!\n${err.stack}`), 
+        this.axonUtils.sendError(msg.channel, message);
+    }
 }
 
 module.exports = ExtraUtils;

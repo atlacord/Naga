@@ -8,6 +8,7 @@
         "guildConfigCache": 1000,
         "joinLogs": false
     },
+    
     "prefixes": {
         "general": "n.",
         "admin": "na.",

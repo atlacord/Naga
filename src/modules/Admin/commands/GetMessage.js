@@ -51,17 +51,21 @@ class GetMessage extends Command {
     }
 
     async execute({ msg, args }) {
-        let message = await this.bot.getMessage(args[0], args[1]);
-        msg.channel.createMessage({ embeds: [
-            {
-                author: {
-                    name: 'Message Contents',    
-                },
-            color: this.utils.color.blue,
-            description: `\`\`\`${'js'}\n${JSON.stringify(message.embeds[0])}\`\`\``,
-            footer: { text: `Author: ${message.author.id}`}
+        try {
+            let message = await this.bot.getMessage(args[0], args[1]);
+            msg.channel.createMessage({ embeds: [
+                {
+                    author: {
+                        name: 'Message Contents',    
+                    },
+                color: this.utils.color.blue,
+                description: `\`\`\`${'js'}\n${JSON.stringify(message.embeds[0])}\`\`\``,
+                footer: { text: `Author: ${message.author.id}`}
+            }
+            ]})
+        } catch (err) {
+            this.utils.logError(msg, err, 'internal', 'Something went wrong.')
         }
-        ]})
     }
 }
 

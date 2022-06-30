@@ -59,8 +59,7 @@ async execute({ msg, args }) {
             }
         });
     } catch (err) {
-        this.logger.sendError(err);
-        return this.sendError(msg.channel, err);
+        this.utils.logError(msg, err, 'internal', err);
     }
 }
 }

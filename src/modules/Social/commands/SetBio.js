@@ -37,13 +37,12 @@ class SetBio extends Command {
         profile.findById(msg.author.id, (err, doc) => {
 
             try {
-
                 doc.data.profile.bio = args.join(' ');
                 doc.save();
                 this.sendSuccess(msg.channel, 'Successfully updated your bio! View it with \`n.profile\`!');
 
             } catch (err) {
-                this.sendError(msg.channel, err);
+                this.error(msg, err, 'internal', 'Something went wrong.');
             }
         })
     }

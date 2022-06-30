@@ -103,7 +103,7 @@ class Color extends Command {
         })
         }
     } catch(err) {
-        this.sendError(msg.channel, err);
+        this.utils.logError(msg, err, 'internal', 'Something went wrong.');
     }
     }
 }
