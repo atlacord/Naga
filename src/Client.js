@@ -53,7 +53,6 @@ class Client extends AxonClient {
         let status = 'online';
         if (this.settings.debugMode === true) {
             status = 'dnd';
-            message = 'Naga Dev | Disabled'
         this.botClient.editStatus(status, {
             name: `${this.info.name} | ${this.settings.prefixes[0]}help`,
             type: 0,
