@@ -1,4 +1,4 @@
-const { Command, CommandOptions } = require('axoncore');
+const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const db = require('../../../Models/Profile');
 const cron = require('node-cron');
 const moment = require('moment');
@@ -39,22 +39,66 @@ class CheckBirthday extends Command {
         } );
     }
 
-    checkBirthday(msg) {
-        this.sendMessage(msg.channel, 'fsda')
+/*     checkBirthday(msg) {
+        let birthdayMentions = [];
+        // console.log(birthdayMentions);
+        try {
+            db.find({ 'data.profile.birthday': moment().format('Do MMMM') }), async (err, docs) => {
+            console.log(docs);
+            const members = docs.map(x => x._id);
+            msg.channel.createMessage(members);
+            for (i in members) {
+                birthdayMentions.push(`<@!${members[i]}>`);
+                this.bot.addGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Testing birthday feature');
+            }
+
+            let embed = {
+                color: parseInt('f294f3', 16),
+                description: `Don't worry, the captain cares enough to remember the birthday(s) of ${birthdayMentions.join(', ')}!\nWishing you a very happy birthday! Welcome to the Pink Lotus`,
+                thumbnail: { url: 'https://cdn.discordapp.com/emojis/887756769865109546.png?v=1' },
+                image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
+            }
+
+            this.sendMessage(msg.channel, `${birthdayMentions.join(' ')}`);
+            this.sendMessage(msg.channel, {embed});
+            }
+        } catch (err) {
+            this.sendError(msg.channel, err);
+        }
+    } */
+
+    async scheduleRemoval(member) {
+        await this.utils.delayFor(60000);
+        this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
+    }
+
+    async execute({ msg, args }) {
+        let birthdayMentions = [];
         try {
             db.find({ 'data.profile.birthday': moment().format('Do MMMM') }, async (err, docs) => {
             const members = docs.map(x => x._id);
             console.log(members[0])
-            this.sendMessage(msg.channel, `<@!${members[0]}> Test`);
-            this.bot.addGuildMemberRole('370708369951948800', members[0], '787644908705153024', 'Testing birthday feature')
+            for (let i in members) {
+                birthdayMentions.push(`<@!${members[i]}>`);
+                this.bot.addGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Testing birthday feature');
+                this.scheduleRemoval(members[i]);
+            }
+
+            let embed = {
+                title: 'Happy Birthday!',
+                color: parseInt('f294f3', 16),
+                description: `Don't worry, the captain cares enough to remember the birthday(s) of ${birthdayMentions.join(', ')}!\n\nWishing you a very happy birthday! Welcome to the Pink Lotus!`,
+                thumbnail: { url: 'https://cdn.discordapp.com/emojis/887756769865109546.png?v=1' },
+                image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
+            }
+            
+            console.log(birthdayMentions);
+            // this.sendMessage(msg.channel, `${birthdayMentions.join(' ')}`);
+            this.sendMessage(msg.channel, {embed});
             })
         } catch (err) {
             this.sendError(msg.channel, err);
         }
-    }
-
-    execute({ msg, args }) {
-        this.checkBirthday(msg);
     }
 }
 
