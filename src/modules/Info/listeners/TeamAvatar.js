@@ -30,13 +30,15 @@ class TeamAvatar extends Listener {
      async execute(guild, member, oldMember, guildConfig) { // eslint-disable-line
         const TAChannel = await this.bot.getChannel('826851222459514923');
 
-        if (oldMember.premiumSince === null && member.premiumSince !== null) {
-            this.sendMessage(TAChannel, `**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!**`)
+            if (!oldMember.roles.includes('586128911302131725') && member.roles.includes('586128911302131725')) { // If member did not previously have the TA role but since received it
+            this.sendMessage(TAChannel, `A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA Colour role and more!`)
         }
-        if ((oldMember.premiumSince === Date.now() && oldMember.roles.find(r => r.id === '829542940707127346')) && !member.premiumSince === null) {
-            const colourrole = guild.roles.find(r => r.name === 'TA Colour')
-            guild.removeMemberRole(member.id, colourrole.id, "User no longer boosting")
-            this.sendMessage(TAChannel, `**A member of TA has left us, thanks to ${oldMember.mention} for their contributions!`)
+        if (oldMember.roles.includes('586128911302131725') && !member.roles.includes('586128911302131725')) {
+            if (oldMember.roles.includes('829542940707127346')) { // Checks if member had TA Colour role
+                const colourrole = guild.roles.find(r => r.id === '829542940707127346')
+                guild.removeMemberRole(member.id, colourrole.id, "User no longer boosting")
+            }
+            this.sendMessage(TAChannel, `A member of TA has left us, thanks to ${member.mention} for their contributions!`)
         }
 
         return Promise.resolve(); 
