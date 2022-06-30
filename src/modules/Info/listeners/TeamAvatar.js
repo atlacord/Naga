@@ -30,7 +30,7 @@ class TeamAvatar extends Listener {
      async execute(guild, member, oldMember, guildConfig) { // eslint-disable-line
         const TAChannel = await this.bot.getChannel('826851222459514923');
 
-        if (!oldMember.premiumSince === null && member.premiumSince !== null) {
+        if (oldMember.premiumSince === null && member.premiumSince !== null) {
             this.sendMessage(TAChannel, `**A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA colour role and more!**`)
         }
         if ((oldMember.premiumSince === Date.now() && oldMember.roles.find(r => r.id === '829542940707127346')) && !member.premiumSince === null) {
