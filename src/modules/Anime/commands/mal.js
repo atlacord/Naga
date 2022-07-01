@@ -48,7 +48,7 @@ class Mal extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg }, args ) {
+    async execute( { msg, args } ) {
         
         
         if(!args.length) {
