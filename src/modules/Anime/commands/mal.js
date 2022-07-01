@@ -107,5 +107,5 @@ return message.channel.createEmbed(embed)
     }
 }
 
-module.exports = Dog;
+module.exports = Mal;
 
