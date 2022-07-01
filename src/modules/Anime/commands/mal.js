@@ -1,6 +1,5 @@
 const { Command, CommandOptions } = require('axoncore');
 const axios = require('axios');
-const fetch = require('node-fetch')
 const moment = require('moment')
 const MessageEmbed = require("davie-eris-embed")
 
@@ -60,7 +59,7 @@ class Mal extends Command {
                             )
         }
     const embed = new MessageEmbed()
-    const data = await fetch(`https://api.jikan.moe/v3/user/${args[0]}/profile`).then(res => res.json())
+    const data = await axios.get(`https://api.jikan.moe/v3/user/${args[0]}/profile`).then(res => res.json())
     const { anime_stats, manga_stats } = data
     const { anime, manga, characters, people } = data.favorites
     const total = anime_stats.episodes_watched + manga_stats.volumes_read
