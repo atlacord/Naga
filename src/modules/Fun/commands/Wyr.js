@@ -1,4 +1,4 @@
-const { Command, CommandOptions } = require('axoncore');
+const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const questions = require('../../../assets/wyr.json');
 
 class Wyr extends Command {
@@ -28,6 +28,10 @@ class Wyr extends Command {
             cooldown: 900000,
             guildOnly: true,
         } );
+
+        this.permissions = new CommandPermissions(this, {
+            custom: (msg) => msg.channel.parentID !== '372086709950611456',
+        });
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env

@@ -27,6 +27,12 @@ class ATLA extends Command {
             cooldown: 10000,
             guildOnly: true,
         } );
+
+        this.permissions = new CommandPermissions(this, {
+            channels: {
+                bypass: ['372086844956868618', '721604232532459540']
+            }
+        });
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env

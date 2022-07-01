@@ -30,6 +30,10 @@ class Topic extends Command {
             cooldown: 5000,
             guildOnly: true,
         } );
+
+        this.permissions = new CommandPermissions(this, {
+            custom: (msg) => msg.channel.parentID !== '372086709950611456',
+        });
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env
