@@ -55,7 +55,7 @@ class Mal extends Command {
             return this.sendError(msg.channel, `Please provide a profile for kme to lookup!`);
         }
     const embed = new MessageEmbed()
-    const data = await axios.get(`https://api.jikan.moe/v3/user/${args[0]}/profile`).then(res => res.json())
+    const data = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/full`).then(res => res.json())
     const { anime_stats, manga_stats } = data
     const { anime, manga, characters, people } = data.favorites
     const total = anime_stats.episodes_watched + manga_stats.volumes_read
