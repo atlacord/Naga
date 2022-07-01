@@ -1,5 +1,6 @@
 module.exports = {
     Admin: require('./Admin/index'),
+    Anime: require('./Anime/index'),
     Birthdays: require('./Birthdays/index'),
     Fun: require('./Fun/index'),
     Games: require('./Games/index'),
