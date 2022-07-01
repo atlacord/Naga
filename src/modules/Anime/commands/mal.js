@@ -86,7 +86,7 @@ class Mal extends Command {
             embed.addField("Fav Staff", favpeople ? favpeople : "Not Listed", true)
             
 
-return message.channel.send(embed.create);
+return msg.channel.send(embed.create);
     
 
 
