@@ -60,8 +60,9 @@ class CheckBirthday extends Command {
                 thumbnail: { url: 'https://cdn.discordapp.com/emojis/887756769865109546.png?v=1' },
                 image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
             }
-
-            await this.bot.getChannel(announcementChannel).createMessage({embed});
+            if (birthdayMentions.length >= 1) {
+                await this.bot.getChannel(announcementChannel).createMessage({embed});
+            }
             })
         } catch (err) {
             console.error(err);
