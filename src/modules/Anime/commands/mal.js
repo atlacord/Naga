@@ -52,11 +52,7 @@ class Mal extends Command {
         
         
         if(!args.length) {
-            return  message.channel.createEmbed(
-                                new Chariot.RichEmbed()
-                                    .setColor(colour.failedColour)
-                                    .setTitle("<:no:917982868922335272> Pls gimme a profile to lookup!")
-                            )
+            return this.sendError(msg.channel, `Please provide a profile for kme to lookup!`);
         }
     const embed = new MessageEmbed()
     const data = await axios.get(`https://api.jikan.moe/v3/user/${args[0]}/profile`).then(res => res.json())
@@ -90,7 +86,7 @@ class Mal extends Command {
             embed.addField("Fav Staff", favpeople ? favpeople : "Not Listed", true)
             
 
-return message.channel.createEmbed(embed)
+return message.channel.send(embed.create);
     
 
 
