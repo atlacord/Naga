@@ -1,4 +1,4 @@
-const { Command, CommandOptions } = require('axoncore');
+const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const atlatopics = require('../../../assets/atlatopics.json');
 
 class ATLA extends Command {
