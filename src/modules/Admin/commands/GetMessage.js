@@ -30,7 +30,7 @@ class GetMessage extends Command {
                 needed: this.axon.staff.owners,
                 bypass: this.axon.staff.owners,
             },
-        } );
+        });
     }
 
     /**
