@@ -51,15 +51,18 @@ class Client extends AxonClient {
         // called after ready event
         // overrides default editStatus
         // used to setup custom status
-        let status = 'online';
         if (this.settings.debugMode === true) {
-            status = 'dnd';
-        this.botClient.editStatus(status, {
-            name: `${this.info.name} | ${this.settings.prefixes[0]}help`,
-            type: 0,
-        } );
+            this.botClient.editStatus('dnd', {
+                name: `${this.info.name} | ${this.settings.prefixes[0]}help`,
+                type: 0,
+            });
+        } else {
+            this.botClient.editStatus('online', {
+                name: `${this.info.name} | ${this.settings.prefixes[0]}help`,
+                type: 0,
+            });
+        }
     }
-}
 
     // disabled
     /**
