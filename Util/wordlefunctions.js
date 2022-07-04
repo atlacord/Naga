@@ -1,7 +1,7 @@
 const fs = require('fs');
 var csv = require('jquery-csv');
 const Canvas = require('canvas');
-const answers = require('../src/assets/wordle/answers.json')
+const answers = require('../../src/assets/wordle/answers.json')
 
 function GetAnswer()
 {
@@ -67,17 +67,17 @@ async function LoadGame(msg, guesses, answer)
     const canvas = Canvas.createCanvas(330, 397);
     const context = canvas.getContext('2d');
 
-    const background = await Canvas.loadImage('../src/assets/wordle/images/BlankImage.png');
+    const background = await Canvas.loadImage('../../src/assets/wordle/images/BlankImage.png');
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     context.font = '42px Clear Sans, Helvetica Neue, Arial, sans-serif';
     context.textAlign = 'center'
     context.fillStyle = '#d7dadc';
   
-    const absentSquare = await Canvas.loadImage('../src/assets/wordle/images/ColorAbsent.png')
-    const emptySquare = await Canvas.loadImage('../src/assets/wordle/images/EmptySquare.png');
-    const greenSquare = await Canvas.loadImage('../src/assets/wordle/images/GreenSquare.png');
-    const yellowSquare = await Canvas.loadImage('../src/assets/wordle/images/YellowSquare.png');
+    const absentSquare = await Canvas.loadImage('../../src/assets/wordle/images/ColorAbsent.png')
+    const emptySquare = await Canvas.loadImage('../../src/assets/wordle/images/EmptySquare.png');
+    const greenSquare = await Canvas.loadImage('../../src/assets/wordle/images/GreenSquare.png');
+    const yellowSquare = await Canvas.loadImage('../../src/assets/wordle/images/YellowSquare.png');
     let square = absentSquare;
 
     let squareSize = 62;
@@ -120,7 +120,7 @@ async function Guess(msg,guesses,newGuess, answer)
     const canvas = Canvas.createCanvas(330, 397);
     const context = canvas.getContext('2d');
 
-    const background = await Canvas.loadImage('../src/assets/wordle/images/BlankImage.png');
+    const background = await Canvas.loadImage('../../src/assets/wordle/images/BlankImage.png');
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     context.font = '42px Clear Sans, Helvetica Neue, Arial, sans-serif';
@@ -131,10 +131,10 @@ async function Guess(msg,guesses,newGuess, answer)
     console.log("Answer " + answer);
     console.log("newGuess " + newGuess);
 
-    const absentSquare = await Canvas.loadImage('../src/assets/wordle/images/ColorAbsent.png');
-    const emptySquare = await Canvas.loadImage('../src/assets/wordle/images/EmptySquare.png');
-    const greenSquare = await Canvas.loadImage('../src/assets/wordle/images/GreenSquare.png');
-    const yellowSquare = await Canvas.loadImage('../src/assets/wordle/images/YellowSquare.png');
+    const absentSquare = await Canvas.loadImage('../../src/assets/wordle/images/ColorAbsent.png');
+    const emptySquare = await Canvas.loadImage('../../src/assets/wordle/images/EmptySquare.png');
+    const greenSquare = await Canvas.loadImage('../../src/assets/wordle/images/GreenSquare.png');
+    const yellowSquare = await Canvas.loadImage('../../src/assets/wordle/images/YellowSquare.png');
     let square = absentSquare;
 
     let squareSize = 62;
