@@ -56,8 +56,9 @@ class Mal extends Command {
         }
     const embed = new MessageEmbed()
     const data = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/full`)
+    const animedata = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/favorites`)
     const { anime_stats, manga_stats } = data
-    const { anime, manga, characters, people } = data.favorites
+    const { anime, manga, characters, people } = animedata.favorites
     const total = anime_stats.episodes_watched + manga_stats.volumes_read
     const badge = malBadges.find( b => total > b.min && total < b.max).url
     const favanime = hyperlinkify(anime)
