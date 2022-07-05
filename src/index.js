@@ -23,11 +23,11 @@ if (config.settings.db === 2) {
     }
 }
 
-Bot.start().then(cron.schedule('*/1440 * * * *', () => {
-    Bot.commandRegistry.get('checkbirthday').execute();
-    console.log('Checking for new birthdays');
+Bot.start().then(cron.schedule('0 0 0 * * *', () => {
+     Bot.commandRegistry.get('checkbirthday').execute();
+     console.log('Checking for new birthdays');
 }));
-// new EventHandler;
+
 
 
 Bot.logger.notice(`${chalk.green('=== ONLINE ===')}`);
