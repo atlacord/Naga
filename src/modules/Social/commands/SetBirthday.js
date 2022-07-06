@@ -11,7 +11,8 @@ class SetBirthday extends Command {
 
         this.label = 'setbirthday';
         this.aliases = [
-            'setbday'
+            'setbday',
+            'birthday'
         ];
 
         this.hasSubcmd = false;
@@ -35,7 +36,7 @@ class SetBirthday extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute({ msg,args  }) {
+    async execute({ msg, args }) {
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
@@ -43,7 +44,7 @@ class SetBirthday extends Command {
                 doc = new profile({ _id: msg.author.id });
             };
 
-            let date = moment (args[0], 'DD-MM');
+            let date = moment(args[0], 'DD-MM');
 
             if (!date.isValid()){
                 return this.sendError(msg.channel, 'Please send the date in DD-MM format.');

@@ -53,6 +53,11 @@ class Whois extends Command {
 
             sortedRoles = userRoles.sort((a,b) => b.position - a.position); 
             roles = sortedRoles.map(r => `<@&${r.id}>`).join(", ");
+
+            if (roles.length >= 1024) {
+                roles = 'Too many roles 💀';
+            }
+
             if (sortedRoles[0].color === 0) {
                 roleColor = 9031664;
             } else {
@@ -69,18 +74,21 @@ class Whois extends Command {
         }
 
         if (!args) {
-            profile.findById(msg.author.id, (err, doc) => {
+            let bio = null;
+            await profile.findById(member.id, (err, doc) => {
+                bio = doc.data.profile.bio;
+            });
             let embed = {  
                 author: { name: msg.member.username + '#' + msg.member.discriminator, icon_url: msg.member.avatarURL },
                 thumbnail: { url: msg.member.avatarURL },
                 color: roleColor,
-                description: doc.data.profile.bio,
+                description: bio || null,
 
                 fields: [
                     { name: 'Username', value: `<@!${msg.member.id}>`, inline: true },
                     { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d> <t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
                     { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d> <t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
-                    { name: 'Roles', value: roles, inline: false }
+                    { name: `Roles [${msg.member.roles.length}]`, value: roles, inline: false }
                 ],
 
                 footer: { text: `ID: ${msg.member.id}` },
@@ -91,22 +99,23 @@ class Whois extends Command {
                 embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
             }
 
-            this.sendMessage(msg.channel, { embed })
-        })
-                 
+            this.sendMessage(msg.channel, { embed })     
         } else {
-            profile.findById(member.id, (err, doc) => {
+            let bio = null;
+            await profile.findById(member.id, (err, doc) => {
+                bio = doc.data.profile.bio;
+            });
             let embed = {
                 author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
                 thumbnail: { url: member.avatarURL },
-                description: doc.data.profile.bio,
+                description: bio || null,
                 color: roleColor,
 
                 fields: [
                     { name: 'Username', value: `<@!${member.id}>`, inline: true },
                     { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d> <t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
                     { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d> <t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
-                    { name: 'Roles', value: roles, inline: false }
+                    { name: `Roles [${member.roles.length}]`, value: roles, inline: false }
                 ],
 
                 footer: { text: `ID: ${member.id}` },
@@ -116,10 +125,9 @@ class Whois extends Command {
             if (staff.length > 0) {
                 embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
             }
-            this.sendMessage(msg.channel, { embed })          
-        })
+            this.sendMessage(msg.channel, { embed })
+        }
     }
-}
 }
                         
 module.exports = Whois;

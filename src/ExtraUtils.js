@@ -145,6 +145,10 @@ class ExtraUtils extends Utils {
         if (user.roles.includes('762573162424565780')) {
             staff.push('Dai Li');
         }
+    
+        if (user.roles.includes('871891314982133791')) {
+            staff.push('Lotus Emeritus');
+        }
 
         if (user.roles.includes('871374813288083516')) {
             staff.push('Wiki Writer');
@@ -181,7 +185,7 @@ class ExtraUtils extends Utils {
             }
         })
         return this.axon.log('FATAL', `Unexpected error [${msg.channel.guild.name} - ${msg.channel.guild.id}]!\n${err.stack}`), 
-        this.axonUtils.sendError(msg.channel, message);
+        this.axonUtils.sendError(msg.channel, message)
     }
 }
 
