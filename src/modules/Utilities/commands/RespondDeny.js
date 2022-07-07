@@ -46,7 +46,7 @@ class RespondDeny extends Command {
 
         let embed = suggestion.embeds[0];
         embed.color = this.utils.color.red;
-        embed.fields[0] = { name: 'Status', value: `Denied by ${msg.author.username}#${msg.author.discriminator}` };
+        embed.fields[0] = { name: 'Status', value: `Denied by **${msg.author.username}#${msg.author.discriminator}**` };
         embed.fields.push({ name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')});
 
         try {
