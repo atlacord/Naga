@@ -42,6 +42,7 @@ class RespondDeny extends Command {
         const suggestionChannel = '792616452770627594';
 
         let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
+        let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
 
         let embed = suggestion.embeds[0];
         embed.color = this.utils.color.red;
@@ -50,7 +51,19 @@ class RespondDeny extends Command {
 
         try {
             await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
-            this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${args[0]})`);
+            this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${msg.jumpLink})`);
+            this.sendDM(author, {
+                embed: {
+                    title: 'Your suggestion has been responded to!',
+                    color: this.utils.color.red,
+                    description: embed.description,
+                    fields: [
+                        { name: 'Status', value: `Denied by **${msg.author.username}#${msg.author.discriminator}**`, inline: false },
+                        { name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, ''), inline: false },
+                    ],
+                    timestamp: new Date()
+                }
+            })
         } catch (err) {
             this.sendError(err);
         }

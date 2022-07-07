@@ -46,7 +46,7 @@ class Suggest extends Command {
             fields: [
                 { name: 'Status', value: 'Awaiting staff review' }
             ],
-            footer: { text: 'Discuss this suggestion in #suggestions_discussion!' }
+            footer: { text: `Suggester's ID: ${msg.author.id}` }
         }
 
         if (msg.attachments.length >= 1) {
