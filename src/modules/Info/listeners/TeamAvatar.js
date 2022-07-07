@@ -38,7 +38,7 @@ class TeamAvatar extends Listener {
                 const colourrole = guild.roles.find(r => r.id === '829542940707127346')
                 guild.removeMemberRole(member.id, colourrole.id, "User no longer boosting")
             }
-            this.sendMessage(TAChannel, `A member of TA has left us, thanks to ${member.mention} for their contributions!`)
+            // this.sendMessage(TAChannel, `A member of TA has left us, thanks to ${member.mention} for their contributions!`)
         }
 
         return Promise.resolve(); 
