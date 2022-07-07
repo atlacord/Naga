@@ -46,7 +46,7 @@ class RespondApprove extends Command {
 
         let embed = suggestion.embeds[0];
         embed.color = this.utils.color.green;
-        embed.fields[0] = { name: 'Status', value: `Approved by ${msg.author.username}#${msg.author.discriminator}` };
+        embed.fields[0] = { name: 'Status', value: `Approved by **${msg.author.username}#${msg.author.discriminator}**` };
         embed.fields.push({ name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')});
 
         try {
