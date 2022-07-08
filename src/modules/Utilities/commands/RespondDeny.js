@@ -40,7 +40,7 @@ class RespondDeny extends Command {
      */
 
     async execute({ msg, args }) {
-        const suggestionChannel = '570053930193518594';
+        const suggestionChannel = '792616452770627594';
 
         let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
 
