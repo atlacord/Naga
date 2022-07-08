@@ -1,5 +1,6 @@
 const { Command, CommandOptions } = require('axoncore');
-const quotes = require('../../../assets/irohquotes.json');
+const axios = require('axios');
+// const quotes = require('../../../assets/irohquotes.json');
 
 class Iroh extends Command {
     /**
@@ -34,6 +35,9 @@ class Iroh extends Command {
      */
 
     async execute( { msg } ) {
+
+        let quotes = await axios.get('http://atla.sh/iroh.json')
+        quotes = quotes.data;
 
         const quote = Math.floor(Math.random() * quotes.length);
         return this.sendMessage(msg.channel, {

@@ -1,5 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const topics = require('../../../assets/topics.json');
+const axios = require('axios');
+// const topics = require('../../../assets/topics.json');
 
 const ATLA = require('./ATLA');
 
@@ -44,6 +45,9 @@ class Topic extends Command {
     }
 
     async execute( { msg } ) {
+
+        let topics = await axios.get('http://atla.sh/topics.json');
+        topics = topics.data;
 
         const topic = Math.floor(Math.random() * topics.length);
         return this.sendMessage(msg.channel, {
