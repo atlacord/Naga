@@ -1,4 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
+const dbsuggestion = require('../../../Models/Suggestion');
 
 class RespondApprove extends Command {
     /**
@@ -39,34 +40,49 @@ class RespondApprove extends Command {
      */
 
     async execute({ msg, args }) {
-        const suggestionChannel = '792616452770627594';
+        const suggestionChannel = '570053930193518594';
 
         let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
-        let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
 
-        let embed = suggestion.embeds[0];
-        embed.color = this.utils.color.green;
-        embed.fields[0] = { name: 'Status', value: `Approved by **${msg.author.username}#${msg.author.discriminator}**` };
-        embed.fields.push({ name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, '')});
+        dbsuggestion.findById(args[0], async (err, doc) => {
+            if (err) {
+                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
+            };
 
-        try {
-            await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
-            this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](${msg.jumpLink})`)
-            this.sendDM(author, {
-                embed: {
-                    title: 'Your suggestion has been responded to!',
-                    color: this.utils.color.green,
-                    description: embed.description,
-                    fields: [
-                        { name: 'Status', value: `Approved by **${msg.author.username}#${msg.author.discriminator}**`, inline: false },
-                        { name: 'Reason', value:  args.join(' ').replace(/^([^ ]+ ){1}/, ''), inline: false },
-                    ],
-                    timestamp: new Date()
-                }
-            });
-        } catch (err) {
-            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
-        }
+            // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
+            let author = msg.channel.guild.members.get(doc.data.author);
+
+            let status = `Approved by **${msg.author.username}#${msg.author.discriminator}**`;
+            let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
+
+            let embed = suggestion.embeds[0];
+            embed.color = this.utils.color.green;
+            embed.fields[0] = { name: 'Status', value: status };
+            embed.fields.push({ name: 'Reason', value:  reason });
+
+            try {
+                await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
+                this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](${msg.jumpLink})`)
+                this.sendDM(author, {
+                    embed: {
+                        author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
+                        title: 'Your suggestion has been responded to!',
+                        color: this.utils.color.green,
+                        description: embed.description,
+                        fields: [
+                            { name: 'Status', value: status, inline: false },
+                            { name: 'Reason', value:  reason, inline: false },
+                        ],
+                        timestamp: new Date()
+                    }
+                });
+            } catch (err) {
+                this.utils.logError(msg, err, 'internal', 'Something went wrong.');
+            }
+            doc.data.status = 'Approved';
+            doc.data.reason = reason;
+            doc.save();
+        });
     }
 }
 

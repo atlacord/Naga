@@ -1,4 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
+const suggestion = require('../../../Models/Suggestion');
 
 class Suggest extends Command {
     /**
@@ -33,31 +34,36 @@ class Suggest extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    execute( { msg, args } ) {
+    async execute({ msg, args }) {
+        const suggestionChannel = '792616452770627594';
+        suggestion.findById(msg.id, async (err, doc) => {
+            
+            let displayName = msg.member.nick ?? msg.author.username;
 
-        let displayName = msg.member.nick ?? msg.author.username;
+            let embed = {
+                author: { name: `${msg.author.username}#${msg.author.discriminator}`, icon_url: msg.author.avatarURL },
+                title: `${displayName} suggests...`,
+                color: this.utils.color.yellow,
+                description: args.join(' '),
+                image: { url: null },
+                fields: [
+                    { name: 'Status', value: 'Awaiting staff review' }
+                ],
+                footer: { text: 'Discuss this suggestion in #suggestions_discussion!' }
+            }
 
-        let embed = {
-            author: { name: `${msg.author.username}#${msg.author.discriminator}`, icon_url: msg.author.avatarURL },
-            title: `${displayName} suggests...`,
-            color: this.utils.color.yellow,
-            description: args.join(' '),
-            image: { url: null },
-            fields: [
-                { name: 'Status', value: 'Awaiting staff review' }
-            ],
-            footer: { text: `Suggester's ID: ${msg.author.id}` }
-        }
+            if (msg.attachments.length >= 1) {
+                embed.image.url = msg.attachments[0].url;
+            }
 
-        if (msg.attachments.length >= 1) {
-            embed.image.url = msg.attachments[0].url;
-        }
-
-        try {
-            this.bot.getChannel('792616452770627594').createMessage({embed}).then(() => msg.delete());
-        } catch (err) {
-            console.log(err)
-        }
+            let mess = await this.bot.getChannel(suggestionChannel).createMessage({embed})
+            msg.delete();
+            doc = new suggestion({ _id: mess.id });
+            doc.data.author = msg.author.id;
+            doc.data.content = args.join(' ');
+            doc.data.date = Date.now();
+            doc.save();
+        })
     }
 }
 
