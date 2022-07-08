@@ -48,8 +48,6 @@ class Withdraw extends Command {
             } else {
                 let amount = args[0];
 
-                this.sendMessage(msg.channel, `1: ${doc.data.economy.wallet}\n1.5: ${doc.data.economy.bank}`)
-
                 if (amount?.toLowerCase() === 'all') {
                     amount = Math.floor(doc.data.economy.bank);
                 } else {
@@ -66,8 +64,6 @@ class Withdraw extends Command {
 
                 doc.data.economy.bank = Math.round(doc.data.economy.bank - amount);
                 doc.data.economy.wallet = doc.data.economy.wallet + amount;
-
-                this.sendMessage(msg.channel, `2: ${doc.data.economy.wallet}`);
 
                 return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully withdrew **${this.utils.commatize(amount)}** credits from your bank!`))
                 .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
