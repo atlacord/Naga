@@ -1,7 +1,7 @@
 {
     "settings": {
         "lang": "english",
-        "debugMode": true,
+        "debugMode": false,
         "library": 0,
         "logger": 1,
         "db": 2,
