@@ -46,11 +46,14 @@ class Bet extends Command {
             } else if (isNaN(amount)){
                 return this.sendError(msg.channel, 'Please enter a valid amount.\nBets must be greater than **499** coins but less than **5,001**');
             } else if (amount < 500 || amount > 5000){
+                this.sendMessage(msg.channel, `1: ${amount}`)
+                this.sendMessage(msg.channel, `2: ${doc.data.economy.wallet}`);
                 return this.sendError(msg.channel, 'Amount is out of range. \nBets must be greater than **499** coins but less than **5,001**');
             } else if (amount > doc.data.economy.wallet){
                 return this.sendError(msg.channel, `You don't have enough coins in your wallet to proceed with that bet.\nGet more coins from your bank by typing \`${this.axon.settings.prefixes}withdraw\`.`);
             } else {
                 doc.data.economy.wallet = doc.data.economy.wallet - Math.floor(amount);
+                this.sendMessage(msg.channel, `2: ${doc.data.economy.wallet}`);
                 
                 return doc.save()
                 .then(() => this.sendSuccess(msg.channel, `Your **${Math.floor(amount)}** has been placed in a bet. Please wait 1 minute for the result.\nOdds for winning the bet is 1/3, and amount won are twice as large up to 10x as large as the original bet!`))

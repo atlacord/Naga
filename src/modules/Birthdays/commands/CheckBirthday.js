@@ -1,6 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const db = require('../../../Models/Profile');
-const cron = require('node-cron');
 const moment = require('moment');
 
 class CheckBirthday extends Command {

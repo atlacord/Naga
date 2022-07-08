@@ -53,7 +53,7 @@ class Deposit extends Command {
                 let amount = args[0];
 
                 if (amount?.toLowerCase() === 'all') {
-                    amount = Math.floor(doc.data.economy.wallet * bankTax);
+                    amount = Math.floor(doc.data.economy.wallet);
                 } else {
                     amount = Math.round(amount?.split(',').join(''));
                 };
@@ -62,14 +62,14 @@ class Deposit extends Command {
                     return this.sendError(msg.channel, 'You must deposit at least **100** credits!');
                 } 
 
-                else if (amount * actualTax > doc.data.economy.wallet) {
-                    return this.sendError(msg.channel, `You don't have enough credits to proceed with this transaction! You only have ${this.utils.commatize$amount - doc.data.economy.wallet + Math.ceil(amount * bankTax)})** less than the amount you need to deposit (${Math.ceil(bankTax * 100)}% fee included)\nTo deposit all credits, run \`${this.axon.settings.prefixes}deposit all\`.`)
+                else if (amount > doc.data.economy.wallet) {
+                    return this.sendError(msg.channel, `You don't have enough credits to proceed with this transaction! You only have ${this.utils.commatize$amount - doc.data.economy.wallet + Math.ceil(amount)})** less than the amount you need to deposit.\nTo deposit all credits, run \`${this.axon.settings.prefixes}deposit all\`.`)
                 };
 
                 doc.data.economy.bank = doc.data.economy.bank + amount;
-                doc.data.economy.wallet = doc.data.economy.wallet - Math.floor(amount * 1.05);
+                doc.data.economy.wallet = doc.data.economy.wallet - Math.floor(amount);
 
-                return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully deposited **${this.utils.commatize(amount)}** credits to your bank! (+5% fee)`))
+                return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully deposited **${this.utils.commatize(amount)}** credits to your bank!`))
                 .catch((err) => this.utils.logError(msg, err, 'db', 'Unable to process transaction.'));
             }
         })
