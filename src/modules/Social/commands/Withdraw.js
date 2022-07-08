@@ -48,10 +48,12 @@ class Withdraw extends Command {
             } else {
                 let amount = args[0];
 
+                this.sendMessage(msg.channel, `1: ${doc.data.economy.wallet}\n1.5: ${doc.data.economy.bank}`)
+
                 if (amount?.toLowerCase() === 'all') {
                     amount = Math.floor(doc.data.economy.bank);
                 } else {
-                    amount = Math.round(amount?.split(',').join('')) / 0.95;
+                    amount = Math.round(amount?.split(',').join(''));
                 };
 
                 if (amount < 100) {
@@ -59,13 +61,15 @@ class Withdraw extends Command {
                 } 
 
                 else if (amount > doc.data.economy.bank) {
-                    return this.sendError(msg.channel, `You don't have enough credits to proceed with this transaction! You only have ${this.utils.commatize$amount - doc.data.economy.withdraw + Math.ceil(amount * 0.05)})** less than the amount you need to withdraw (5% fee included)\nTo withdraw all credits, run \`${this.axon.settings.prefixes}withdraw all\`.`)
+                    return this.sendError(msg.channel, `You don't have enough credits to proceed with this transaction! You only have ${this.utils.commatize$amount - doc.data.economy.withdraw + Math.ceil(amount)})** less than the amount you need to withdraw (5% fee included)\nTo withdraw all credits, run \`${this.axon.settings.prefixes}withdraw all\`.`)
                 };
 
                 doc.data.economy.bank = Math.round(doc.data.economy.bank - amount);
-                doc.data.economy.wallet = doc.data.economy.wallet - Math.round(amount * 1.05);
+                doc.data.economy.wallet = doc.data.economy.wallet + amount;
 
-                return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully withdrew **${this.utils.commatize(amount * 0.95)}** credits from your bank! (+5% fee)`))
+                this.sendMessage(msg.channel, `2: ${doc.data.economy.wallet}`);
+
+                return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully withdrew **${this.utils.commatize(amount)}** credits from your bank!`))
                 .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }
         })

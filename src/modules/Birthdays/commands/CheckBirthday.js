@@ -1,6 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const db = require('../../../Models/Profile');
-const cron = require('node-cron');
 const moment = require('moment');
 
 class CheckBirthday extends Command {
@@ -70,7 +69,7 @@ class CheckBirthday extends Command {
     }
 
     async scheduleRemoval(member) {
-        await this.utils.delayFor(86400000 );
+        await this.utils.delayFor(86400000);
         this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
     }
 

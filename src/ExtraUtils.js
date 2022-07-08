@@ -130,6 +130,10 @@ class ExtraUtils extends Utils {
     checkStaff(user) {
         let staff = []
 
+        if (this.axonUtils.isServerOwner(user.id) === true) {
+            staff.push('Server Owner');
+        }
+
         if (this.axon.staff.owners.includes(user.id)) {
             staff.push('Naga Developer');
         }
