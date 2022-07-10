@@ -42,7 +42,7 @@ class SetBio extends Command {
                 this.sendSuccess(msg.channel, 'Successfully updated your bio! View it with \`n.profile\`!');
 
             } catch (err) {
-                this.error(msg, err, 'internal', 'Something went wrong.');
+                this.utils.logError(msg, err, 'internal', 'Something went wrong.');
             }
         })
     }

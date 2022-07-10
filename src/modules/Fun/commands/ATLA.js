@@ -1,5 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const atlatopics = require('../../../assets/atlatopics.json');
+// const atlatopics = require('../../../assets/atlatopics.json');
+const axios = require('axios');
 
 class ATLA extends Command {
     /**
@@ -39,6 +40,9 @@ class ATLA extends Command {
      */
 
     async execute( { msg } ) {
+
+        let atlatopics = await axios.get('http://atla.sh/topics.json');
+        atlatopics = atlatopics.data;
 
         const topic = Math.floor(Math.random() * atlatopics.length);
         return this.sendMessage(msg.channel, {

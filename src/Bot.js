@@ -46,7 +46,7 @@ const client = new Eris.Client(
         defaultImageFormat: 'png',
         defaultImageSize: 4096,
         disableEveryone: true,
-        getAllUsers: false,
+        getAllUsers: true,
         messageLimit: 100,
         restMode: true,
         intents: [ 
