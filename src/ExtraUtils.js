@@ -127,11 +127,19 @@ class ExtraUtils extends Utils {
         return this.bot.getRESTGuildMember((message).channel.guild.id, user).nick ?? this.bot.getRESTUser(user).username;
     }
 
+     /**
+     * 
+     * @param {string} user User ID
+     * @returns {string} Whether the provided user is the server owner or not.
+     */
+    isServerOwner(member) {
+        return member === this.bot.guilds.get('370708369951948800').ownerID;
+    }
+
     checkStaff(user) {
         let staff = []
 
-        if (this.axonUtils.isServerOwner(user.id) === true) {
-            staff.push('Server Owner');
+        if (this.isServerOwner(user.id) === true) {
         }
 
         if (this.axon.staff.owners.includes(user.id)) {
@@ -182,7 +190,8 @@ class ExtraUtils extends Utils {
     async logError(msg, err, type, message) {
         await this.bot.getChannel(secret.bot.logChannel).createMessage({
             embed: {
-                author: { name: 'Error' },
+                author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
+                title: 'Error',
                 color: this.color.red,
                 description: `\`\`\`${err.stack}\`\`\``,
                 timestamp: new Date()
