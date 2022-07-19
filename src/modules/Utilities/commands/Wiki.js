@@ -1,4 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
+const axios = require('axios');
+
+const wikiHost = 'https://wiki.atla.sh';
 
 class Wiki extends Command {
     /**
@@ -16,7 +19,7 @@ class Wiki extends Command {
 
         this.info = {
             name: 'wiki',
-            description: 'Provides a link to the specified page on the ATLA Discord wiki (case-sensitive)',
+            description: 'Provides a link to the specified page on the ATLA Discord wiki',
             usage: 'wiki Beach Party Gaang',
         };
 
@@ -32,12 +35,22 @@ class Wiki extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    execute( { msg, args } ) {
+    async execute( { msg, args } ) {
         try {
             if (!args[0]) {
-                this.sendMessage(msg.channel, `Check out our server wiki! \nhttps://avatar-the-last-airbender-discord.fandom.com`);
+                this.sendMessage(msg.channel, `Check out our server wiki! \n${wikiHost}`);
             } else {
-                this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \nhttps://avatar-the-last-airbender-discord.fandom.com/wiki/${args.join('_')}`);
+                let query = args.join(' ');
+                query = query.replace(/(^\w{1})|(\s+\w{1})/g, firstWord => firstWord.toUpperCase()).split(' ').join('_');
+
+                let res = await axios.get('https://wiki.atla.sh/pages');
+                let pages = res.data;
+
+                if (pages.includes(query)) {
+                    this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \n${wikiHost}/${query}`);
+                } else {
+                    this.sendError(msg.channel, 'Page not found. Make sure you are spelling the title correctly!');
+                }
             }
         } catch (err) {
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');
