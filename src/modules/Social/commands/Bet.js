@@ -61,13 +61,39 @@ class Bet extends Command {
                 const multiplier = Math.floor(Math.random() * 9) + 2;
                 const prize = amount * multiplier;
 
-                if (!won){
-                    return this.sendError(msg.channel, `You lost **${this.utils.commatize(amount)}** coins from your previous bet!\nYou can get more reliable coins without using the bet command!`);
+                if (!won) {
+                    return msg.channel.createMessage({
+                        allowedMentions: {
+                            repliedUser: true
+                        },
+                        embed: {
+                            color: this.utils.color.red,
+                            description: `${this.utils.emote.error} You lost **${this.utils.commatize(amount)}** coins from your previous bet!\nYou can get more reliable coins without using the bet command!`
+                        },
+                        messageReference: {
+                            guildID: msg.channel.guild.id,
+                            channelID: msg.channel.id,
+                            messageID: msg.id
+                        }
+                    })
                 };
 
                 doc.data.economy.bank = doc.data.economy.bank + prize;
                 return doc.save()
-                .then(() => this.sendSuccess(msg.channel, `You won **${this.utils.commatize(amount)}** coins from your previous bet!\nYour bet **${Math.floor(amount)}** coins have multiplied by **${multiplier}**.\nYou'll receive **${this.utils.commatize(prize)}** coins as the prize. Your winnings has been transferred to your bank!`))
+                .then(() => msg.channel.createMessage({
+                    allowedMentions: {
+                        repliedUser: true
+                    }, 
+                    embed: {
+                        color: this.utils.color.green,
+                        description: `${this.utils.emote.success} You won **${this.utils.commatize(amount)}** coins from your previous bet!\nYour bet **${Math.floor(amount)}** coins have multiplied by **${multiplier}**.\nYou'll receive **${this.utils.commatize(prize)}** coins as the prize. Your winnings has been transferred to your bank!`
+                    },
+                    messageReference: {
+                        guildID: msg.channel.guild.id,
+                        channelID: msg.channel.id,
+                        messageID: msg.id
+                    }
+                }))
                 .catch(() => this.utils.logError(msg, err, 'internal', `The betting machine just broke! You lost **${this.utils.commatize(amount)}** coins from your previous bet.\nThis doesn't usually happen. Please contact TwoDog or soda if you receive this message.`))
             }).catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }
