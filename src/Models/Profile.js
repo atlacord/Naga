@@ -35,8 +35,8 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
       received: {type: Number, default: 0},
       timestamp: {type: Number, default: 0}
     },
-    xp: {type: Array, default: []}, 
-  
+    xp: {type: Array, default: []},
+    birthdayTimestamp: {type: Date, default: 0 },
   }
 }, {
     autoIndex: true,

@@ -47,9 +47,18 @@ class CheckBirthday extends Command {
             const members = docs.map(x => x._id);
 
             for (let i in members) {
-                birthdayMentions.push(`<@!${members[i]}>`);
-                this.bot.addGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Testing birthday feature');
-                this.scheduleRemoval(members[i]);
+                db.findById((members[i]), async (doc) => {
+                    if (Date.now() > doc.data.birthdayTimestamp) {
+                        this.bot.removeGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Birthday ended');
+                        doc.data.birthdayTimestamp = null;
+                    }
+                if (this.bot.guilds.get('370708369951948800').members.has(members[i])) {
+                    birthdayMentions.push(`<@!${members[i]}>`);
+                    this.bot.addGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Temporary birthday role');
+                    doc.data.birthdayTimestamp = Date.now();
+                }
+                doc.save().catch((err), this.logger.error(err.stack));
+                })
             }
 
             let embed = {
