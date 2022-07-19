@@ -19,7 +19,7 @@ class Wiki extends Command {
 
         this.info = {
             name: 'wiki',
-            description: 'Provides a link to the specified page on the ATLA Discord wiki',
+            description: 'Provides a link to the specified page on the ATLA Discord wiki (case-sensitive for **some** pages).',
             usage: 'wiki Beach Party Gaang',
         };
 
