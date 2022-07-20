@@ -40,9 +40,9 @@ class anime extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { message } ) {
+    async execute( { msg, args } ) {
         
-        var search = message.content.split(/\s+/g).slice(1).join(" ");
+        var search = args.split(/\s+/g).slice(1).join(" ");
     if (!search) {
         kitsu.searchAnime(aq().quoteanime).then(result => {
             var anime = result[0]
@@ -54,19 +54,19 @@ class anime extends Command {
             .addField('**Information**', `**Japanese Name:** ${anime.titles.romaji} \n **Age Rating:** ${anime.ageRating} \n **NSFW:** ${anime.nsfw ? 'Yes' : 'No'} `, true)
             .addField('**Stats:**', `**Average Rating:** ${anime.averageRating} \n **Rating Rank:** ${anime.ratingRank} \n **Popularity:** ${anime.popularityRank}` , true)
             .addField('**Status:**', `**Average Rating:** ${anime.averageRating} \n **Rating Rank:** ${anime.ratingRank} \n **Popularity:** ${anime.popularityRank}` , true)
-            .setFooter("Requested by: " + message.member.username, message.author.avatarURL)
+            .setFooter("Requested by: " + msg.member.username, msg.author.avatarURL)
             
-            message.channel.createMessage(embed.create)
+            msg.channel.createMessage(embed.create)
 
 
         })
     }
 else {
-    var search = message.content.split(/\s+/g).slice(1).join(" ");
+    var search = args.split(/\s+/g).slice(1).join(" ");
     
     kitsu.searchAnime(search).then(result => {
         if (result.length === 0) {
-            return message.Channel.createMessage(`I looked everywhere, but couldn't find **${search}**!`)
+            return msg.Channel.createMessage(`I looked everywhere, but couldn't find **${search}**!`)
         }
         var anime = result[0]
         const embed = new MessageEmbed()
@@ -78,9 +78,9 @@ else {
             .addField('**Stats:**', `**Average Rating:** ${anime.averageRating} \n **Rating Rank:** ${anime.ratingRank} \n **Popularity:** ${anime.popularityRank}` , true)
             .addField('**Status:**', `**Average Rating:** ${anime.averageRating} \n **Rating Rank:** ${anime.ratingRank} \n **Popularity:** ${anime.popularityRank}` , true)
             
-            .setFooter("Requested by: " + message.member.username, message.author.avatarURL)
+            .setFooter("Requested by: " + msg.member.username, msg.author.avatarURL)
             
-            message.channel.createMessage(embed.create) 
+            msg.channel.createMessage(embed.create) 
 }
     )}
 
