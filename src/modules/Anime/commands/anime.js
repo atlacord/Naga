@@ -41,7 +41,7 @@ class anime extends Command {
      */
 
     async execute( { msg, args } ) {
-        let content = args
+        let content = args.join(' ')
         var search = content.split(/\s+/g).slice(1).join(" ");
     if (!search) {
         kitsu.searchAnime(aq().quoteanime).then(result => {
@@ -62,7 +62,7 @@ class anime extends Command {
         })
     }
 else {
-    let content = args
+    let content = args.join(' ')
     var search = content.split(/\s+/g).slice(1).join(" ");
     
     kitsu.searchAnime(search).then(result => {
