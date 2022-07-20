@@ -14,7 +14,7 @@ class anime extends Command {
     constructor(module) {
         super(module);
 
-        this.label = 'atla';
+        this.label = 'anime';
         this.aliases = [ 'anime' ];
 
         this.hasSubcmd = false;
