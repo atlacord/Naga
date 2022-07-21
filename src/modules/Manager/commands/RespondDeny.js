@@ -43,14 +43,14 @@ class RespondDeny extends Command {
         const suggestionChannel = '792616452770627594';
 
         let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
+        console.log(await this.bot.getMessage(suggestionChannel, '999465701867802654'));
 
         dbsuggestion.findById(args[0], async (err, doc) => {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
-            };
-            
+            };            
             // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
-            let author = msg.channel.guild.members.get(doc.data.author);
+            let author = msg.channel.guild.members.get(doc.data.author) || msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
 
             let status = `Denied by **${msg.author.username}#${msg.author.discriminator}**`;
             let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
@@ -63,19 +63,21 @@ class RespondDeny extends Command {
             try {
                 await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
                 this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${msg.jumpLink})`);
-                this.sendDM(author, {
-                    embed: {
-                        author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
-                        title: 'Your suggestion has been responded to!',
-                        color: this.utils.color.red,
-                        description: embed.description,
-                        fields: [
-                            { name: 'Status', value: status, inline: false },
-                            { name: 'Reason', value:  reason, inline: false },
-                        ],
-                        timestamp: new Date()
-                    }
-                })
+                if (suggestion.createdAt > 1657252800) {
+                    this.sendDM(author, {
+                        embed: {
+                            author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
+                            title: 'Your suggestion has been responded to!',
+                            color: this.utils.color.red,
+                            description: embed.description,
+                            fields: [
+                                { name: 'Status', value: status, inline: false },
+                                { name: 'Reason', value:  reason, inline: false },
+                            ],
+                            timestamp: new Date()
+                        }
+                    })
+                }
             } catch (err) {
                 this.sendError(err);
             }
