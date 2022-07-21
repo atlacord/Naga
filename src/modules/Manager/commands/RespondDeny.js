@@ -62,7 +62,7 @@ class RespondDeny extends Command {
 
 
                 await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
-                this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${msg.jumpLink})`);
+                this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${suggestion.jumpLink})`);
                 if (suggestion.createdAt > 1657252800) {
                     this.sendDM(author, {
                         embed: {

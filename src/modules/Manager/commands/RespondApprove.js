@@ -62,7 +62,7 @@ class RespondApprove extends Command {
                 embed.fields.push({ name: 'Reason', value:  reason });
 
                 await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
-                this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](${msg.jumpLink})`)
+                this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](${suggestion.jumpLink})`)
                 if (suggestion.createdAt > 1657252800) {
                     this.sendDM(author, {
                         embed: {
