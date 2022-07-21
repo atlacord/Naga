@@ -4,8 +4,6 @@ const { AxonOptions } = require('axoncore');
 
 const Client = require('./Client');
 
-const EventHandler = require('./EventHandler');
-
 const botConfig = require('../configs/config.json');
 const secret = require('../configs/secret.json');
 const lang = require('../configs/lang.json');
