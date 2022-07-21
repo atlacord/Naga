@@ -40,7 +40,7 @@ class ViewSuggestion extends Command {
      */
 
     async execute({ msg, args }) {
-        const suggestionChannel = '570053930193518594';
+        const suggestionChannel = '792616452770627594';
         suggestion.findById(args[0], (err, doc) => {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');

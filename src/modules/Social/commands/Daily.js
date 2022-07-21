@@ -54,7 +54,20 @@ class Daily extends Command {
                 let overflow = false, excess = null, streakReset = false;
 
                 if (doc.data.economy.streak.timestamp !== 0 && doc.data.economy.streak.timestamp - now > 0) {
-                    return msg.channel.createMessage(`**${displayName}**, you already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`);
+                    return msg.channel.createMessage(msg.channel.createMessage({
+                        allowedMentions: {
+                            repliedUser: true
+                        }, 
+                        embed: {
+                            color: this.utils.color.red,
+                            description: `${this.utils.emote.error} You already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`
+                        },
+                        messageReference: {
+                            guildID: msg.channel.guild.id,
+                            channelID: msg.channel.id,
+                            messageID: msg.id
+                        }
+                    }))
                 };
 
                 if ((doc.data.economy.streak.timestamp + 86400000) < now) {
@@ -81,12 +94,25 @@ class Daily extends Command {
                 const bonus = booster ? amount * 0.2 : 0;
                 doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount + bonus;
 
-                return doc.save().then(() => msg.channel.createMessage([
-                    `**${displayName}**, you got your **${this.utils.commatize(amount)}** daily reward!`,
-                    overflow ? `\n\\**Overflow Warning**: Your wallet just overflowed! You need to transfer some of your credits to your bank!` : '',
-                    streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
-                    booster ? `\n\n**Hey!** Thanks for being a booster! You recieved ` + bonus + ` bonus credits!` : `\n\n**Psssst!** Server boosters get extra rewards!`,
-                ].join(''))).catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
+                return doc.save().then(() => msg.channel.createMessage({
+                    allowedMentions: {
+                        repliedUser: true
+                    }, 
+                    embed: {
+                        color: this.utils.color.blue,
+                        description: [
+                            `You got your **${this.utils.commatize(amount)}** daily reward!`,
+                            overflow ? `\n\\**Overflow Warning**: Your wallet just overflowed! You need to transfer some of your credits to your bank!` : '',
+                            streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
+                            booster ? `\n\n**Hey!** Thanks for being a booster! You recieved ` + bonus + ` bonus credits!` : `\n\n**Psssst!** Server boosters get extra rewards!`,
+                        ].join('')
+                    },
+                    messageReference: {
+                        guildID: msg.channel.guild.id,
+                        channelID: msg.channel.id,
+                        messageID: msg.id
+                    }
+                })).catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }   
         })
     }

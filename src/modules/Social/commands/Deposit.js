@@ -69,7 +69,20 @@ class Deposit extends Command {
                 doc.data.economy.bank = doc.data.economy.bank + amount;
                 doc.data.economy.wallet = doc.data.economy.wallet - Math.floor(amount);
 
-                return doc.save().then(() => this.sendSuccess(msg.channel, `You successfully deposited **${this.utils.commatize(amount)}** credits to your bank!`))
+                return doc.save().then(() => msg.channel.createMessage({
+                    allowedMentions: {
+                        repliedUser: true
+                    }, 
+                    embed: {
+                        color: this.utils.color.green,
+                        description: `${this.utils.emote.success} You successfully deposited **${this.utils.commatize(amount)}** credits to your bank!`
+                    },
+                    messageReference: {
+                        guildID: msg.channel.guild.id,
+                        channelID: msg.channel.id,
+                        messageID: msg.id
+                    }
+                }))
                 .catch((err) => this.utils.logError(msg, err, 'db', 'Unable to process transaction.'));
             }
         })

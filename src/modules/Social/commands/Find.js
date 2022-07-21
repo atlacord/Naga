@@ -47,7 +47,20 @@ class Find extends Command {
                 let overflow = false, excess = null;
 
                 if (userProfile.date > now) {
-                    return this.sendError(msg.channel, `You tried searching for credits but found... nothing. Perhaps try again later?`);
+                    return msg.channel.createMessage({
+                        allowedMentions: {
+                            repliedUser: true
+                        }, 
+                        embed: {
+                            color: this.utils.color.red,
+                            description: `${this.utils.emote.error} You tried searching for credits but found... nothing. Perhaps try again later?`
+                        },
+                        messageReference: {
+                            guildID: msg.channel.guild.id,
+                            channelID: msg.channel.id,
+                            messageID: msg.id
+                        }
+                    })
                 };
 
                 userProfile.date = Date.now() + duration;
@@ -60,7 +73,20 @@ class Find extends Command {
 
                 doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount;
 
-                return doc.save().then(() => msg.channel.createMessage([`${this.utils.emote.success} You found **${amount}**!`, overflow ? `**Overflow warning**! Please deposit some of your account to your bank. You only found ${amount - excess} for this one!` : '',].join('')))
+                return doc.save().then(() => msg.channel.createMessage({
+                    allowedMentions: {
+                        repliedUser: true
+                    }, 
+                    embed: {
+                        color: this.utils.color.blue,
+                        description: [`${this.utils.emote.success} You found **${amount}**!`, overflow ? `**Overflow warning**! Please deposit some of your account to your bank. You only found ${amount - excess} for this one!` : '',].join('')
+                    },
+                    messageReference: {
+                        guildID: msg.channel.guild.id,
+                        channelID: msg.channel.id,
+                        messageID: msg.id
+                    }
+                }))
                 .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.'));
             }
         })

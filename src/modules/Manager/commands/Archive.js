@@ -54,13 +54,12 @@ class Archive extends Command {
      */
 
     async uploadImage(client, count, msg) {
-        let imgurLink = await client.upload({
+        let imglink = await client.upload({
             image: msg.attachments[count].url,
             title: 'Naga archive upload',
             description: `Channel ID: ${msg.channel.id}, Message ID: ${msg.id}`
-        });
-        let link = imgurLink.data.link;
-        return Promise.resolve(link);
+        })
+        return imglink.data.link;
     }
 
     async execute ( { msg, args } ) {
@@ -102,7 +101,7 @@ class Archive extends Command {
                     `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLink || null}\r\n\r\n`
                    ].join(' ');
                }); 
-               messages.push(`Messages Archived on ![](${msg.channel.guild.dynamicIconURL('png', 32)}) **${msg.channel.guild.name}** - **#${msg.channel.guild.channels.get(channel).name}** --\r\n\r\n`);
+               messages.push(`Messages Archived on ![](${msg.channel.guild.dynamicIconURL('png', 32)}) **${msg.channel.guild.name}** - **<#${channel}>** --\r\n\r\n`);
                messages = messages.reverse().join('');
 
 
