@@ -49,18 +49,18 @@ class RespondApprove extends Command {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             };
 
-            // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
-            let author = msg.channel.guild.members.get(doc.data.author);
-
-            let status = `Approved by **${msg.author.username}#${msg.author.discriminator}**`;
-            let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
-
-            let embed = suggestion.embeds[0];
-            embed.color = this.utils.color.green;
-            embed.fields[0] = { name: 'Status', value: status };
-            embed.fields.push({ name: 'Reason', value:  reason });
-
             try {
+                // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
+                let author = msg.channel.guild.members.get(doc.data.author);
+
+                let status = `Approved by **${msg.author.username}#${msg.author.discriminator}**`;
+                let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
+
+                let embed = suggestion.embeds[0];
+                embed.color = this.utils.color.green;
+                embed.fields[0] = { name: 'Status', value: status };
+                embed.fields.push({ name: 'Reason', value:  reason });
+
                 await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
                 this.sendSuccess(msg.channel, `Suggestion approved.\n[View Suggestion](${msg.jumpLink})`)
                 if (suggestion.createdAt > 1657252800) {

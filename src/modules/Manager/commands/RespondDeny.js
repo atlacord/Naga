@@ -43,24 +43,24 @@ class RespondDeny extends Command {
         const suggestionChannel = '792616452770627594';
 
         let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
-        console.log(await this.bot.getMessage(suggestionChannel, '999465701867802654'));
 
         dbsuggestion.findById(args[0], async (err, doc) => {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
-            };            
-            // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
-            let author = msg.channel.guild.members.get(doc.data.author) || msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
+            };
+            try {   
+                // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
+                let author = msg.channel.guild.members.get(doc.data.author) || msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
 
-            let status = `Denied by **${msg.author.username}#${msg.author.discriminator}**`;
-            let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
+                let status = `Denied by **${msg.author.username}#${msg.author.discriminator}**`;
+                let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
 
-            let embed = suggestion.embeds[0];
-            embed.color = this.utils.color.red;
-            embed.fields[0] = { name: 'Status', value: status };
-            embed.fields.push({ name: 'Reason', value:  reason });
+                let embed = suggestion.embeds[0];
+                embed.color = this.utils.color.red;
+                embed.fields[0] = { name: 'Status', value: status };
+                embed.fields.push({ name: 'Reason', value:  reason });
 
-            try {
+
                 await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
                 this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${msg.jumpLink})`);
                 if (suggestion.createdAt > 1657252800) {
