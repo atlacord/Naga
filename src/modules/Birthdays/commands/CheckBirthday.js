@@ -2,6 +2,9 @@ const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const db = require('../../../Models/Profile');
 const moment = require('moment');
 
+const GUILD_ID = '370708369951948800';
+const BIRTHDAY_ROLE = '787644908705153024'
+
 class CheckBirthday extends Command {
     /**
      * @param {import('axoncore').Module} module
@@ -44,22 +47,14 @@ class CheckBirthday extends Command {
         
         try {
             db.find({ 'data.profile.birthday': moment().format('Do MMMM') }, async (err, docs) => {
+                console.log(moment().format('Do MMMM'));
             const members = docs.map(x => x._id);
+            console.log(docs)
 
             for (let i in members) {
-                db.findById((members[i]), async (doc) => {
-                    if (Date.now() > doc.data.birthdayTimestamp) {
-                        this.bot.removeGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Birthday ended');
-                        doc.data.birthdayTimestamp = null;
-                    }
-                if (this.bot.guilds.get('370708369951948800').members.has(members[i])) {
-                    birthdayMentions.push(`<@!${members[i]}>`);
-                    this.bot.addGuildMemberRole('370708369951948800', members[i], '787644908705153024', 'Temporary birthday role');
-                    doc.data.birthdayTimestamp = Date.now();
-                }
-                doc.save().catch((err), this.logger.error(err.stack));
-                })
+                this.executeBirthday(members[i], birthdayMentions);
             }
+        })
 
             let embed = {
                 title: 'Happy Birthday!',
@@ -71,16 +66,34 @@ class CheckBirthday extends Command {
             if (birthdayMentions.length >= 1) {
                 await this.bot.getChannel(announcementChannel).createMessage({embed});
             }
-            })
         } catch (err) {
             console.error(err);
         }
     }
 
-    async scheduleRemoval(member) {
-        await this.utils.delayFor(86400000);
-        this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
+    // async scheduleRemoval(member) {
+    //     await this.utils.delayFor(86400000);
+    //     this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
+    // }
+
+    async executeBirthday(member, mentions) {
+        db.findById((member), (err, doc) => {
+            if (Date.now() > doc.data.birthdayTimestamp) {
+                this.bot.removeGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Birthday ended');
+                console.log(`[Birthday] Birthday role (should have been) removed from ${doc._id}.`);
+            }
+            if (this.bot.guilds.get(GUILD_ID).members.has(member)) {
+                mentions.push(`<@!${member}>`);
+                this.bot.addGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Temporary birthday role');
+                doc.data.birthdayTimestamp = Date.now();
+                console.log(`[Birthday] Birthday role assigned to ${doc._id} at ${doc.data.birthdayTimestamp}`);
+            }
+        doc.save().catch((err), this.logger.error(err.stack));
+        })
+        console.log(mentions);
+        return mentions;
     }
+
 
     async execute() {
         this.checkBirthday()
