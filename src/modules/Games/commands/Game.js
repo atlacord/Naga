@@ -1,4 +1,5 @@
 const { Command, CommandOptions } = require('axoncore');
+const Captcha = require('./Captcha');
 
 class Game extends Command {
     /**
@@ -11,7 +12,7 @@ class Game extends Command {
         this.aliases = [
         ];
 
-        this.hasSubcmd = false;
+        this.hasSubcmd = true;
 
         this.info = {
             name: 'game',
@@ -32,6 +33,10 @@ class Game extends Command {
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
+
+    init() {
+        return [Captcha];
+    }
     
     async execute({ msg }) {
         this.sendMessage(msg.channel, { embed: {
