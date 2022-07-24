@@ -1,5 +1,6 @@
 const { Command, CommandOptions } = require('axoncore');
 const Captcha = require('./Captcha');
+const TypingQuiz = require('./TypingQuiz');
 
 class Game extends Command {
     /**
@@ -35,7 +36,7 @@ class Game extends Command {
      */
 
     init() {
-        return [Captcha];
+        return [Captcha, TypingQuiz];
     }
     
     async execute({ msg }) {
