@@ -1,26 +1,25 @@
 const { Command, CommandOptions } = require('axoncore');
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas, loadImage } = require('canvas');
 const _ = require('lodash');
-const topic = require('../../../assets/typingtopics.json');
+const logos = require('../../../assets/logoquiz.json');
 const profile = require('../../../Models/Profile');
-registerFont('src/assets/handwriting.ttf', { family: 'Handwriting'});
 
-class TypingQuiz extends Command {
+class LogoQuiz extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'typingquiz';
+        this.label = 'logoquiz';
         this.aliases = [];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'game typingquiz',
-            description: 'Test your typing accuracy!',
-            usage: 'game typingquiz',
+            name: 'game logoquiz',
+            description: 'Test your logo knowledge!',
+            usage: 'game logoquiz',
         };
 
         /**
@@ -39,15 +38,15 @@ class TypingQuiz extends Command {
 
     async execute({ msg }) {
         profile.findById(msg.author.id, async (err, doc) => {
-            let quote = Math.floor(Math.random() * topic.length);
-            quote = topic[quote];
+
+            const meta =  logos[Math.floor(Math.random() * logos.length)];
+
+            const canvas = createCanvas(396, 264);
+            const ctx = canvas.getContext('2d');
+            const logo = await loadImage(meta.url);
+
             let failed = false;
             let reason = null;
-
-            const array = quote.split(/ +/);
-            const description = _.chunk(array, 6);
-            const canvas = createCanvas(300, description.length * 25 + 10);
-            const ctx = canvas.getContext('2d');
 
             ctx.beginPath();
             ctx.moveTo(0,0);
@@ -56,30 +55,28 @@ class TypingQuiz extends Command {
             ctx.lineTo(0, canvas.height);
             ctx.fillStyle = '#27292b';
             ctx.fill();
+          
+            ctx.shadowColor = "rgba(0,0,0,0.5)";
+            ctx.shadowBlur = 20;
+          
+            ctx.drawImage(logo, 0, 0, 396, 264);
 
-            ctx.textAlign = 'center';
-            ctx.font = '20px Handwriting';
-            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            const prompt = `**${msg.author.mention}**, guess the logo under 30 seconds:`;
+            const clue = meta.name.replace(/\w/ig,'_').split('').join(' ');
 
-            description.forEach((item, i) => {
-                ctx.fillText(item.join(' '), canvas.width / 2, 25 * (i + 1), canvas.width - 10);
-            });
-
-            const prompt = `**${msg.author.mention}**, type the following sentence/paragraph in under 45 seconds:`;
-
-            await this.sendMessage(msg.channel, prompt);
-            await this.sendMessage(msg.channel, { file: { file: canvas.toBuffer(), name: 'typequiz.png' }});
+            await this.sendMessage(msg.channel, `${prompt}\n\`${clue}\``);
+            await this.sendMessage(msg.channel, { file: { file: canvas.toBuffer(), name: 'logoquiz.png' }});
 
             const filter = (message => message.author === msg.author);
-            const options = { filter: filter, count: 1, timeout: 45000 };
+            const options = { filter: filter, count: 1, timeout: 30000 };
             await msg.channel.awaitMessages(options).then(collection => {
 
                 const content = collection.collected.random().content.toLowerCase();
-                if (content === quote.toLowerCase()) {
+                if (content === meta.name.toLowerCase()) {
                     return;
                 } else {
                     failed = true;
-                    reason = 'You didn\'t type the sentence/paragraph correctly!';
+                    reason = 'You didn\'t guess the logo correctly!';
                     return;
                 }
             }).catch(() => {
@@ -103,7 +100,7 @@ class TypingQuiz extends Command {
                     return this.sendError(msg.channel, `${reason} you received **${amount}** credits for trying!`, 
                     overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
                 } else {
-                    return this.sendSuccess(msg.channel, `Congratulations! You received **${amount}** credits for typing the sentence/paragraph correctly!`, 
+                    return this.sendSuccess(msg.channel, `Congratulations! You received **${amount}** credits for guessing the logo correctly!`, 
                     overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
                 }
             })
@@ -111,5 +108,5 @@ class TypingQuiz extends Command {
     }
 }
 
-module.exports = TypingQuiz;
+module.exports = LogoQuiz;
 
