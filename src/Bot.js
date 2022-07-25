@@ -1,4 +1,5 @@
 const Eris = require('eris');
+require('pluris')(Eris);
 
 const { AxonOptions } = require('axoncore');
 
