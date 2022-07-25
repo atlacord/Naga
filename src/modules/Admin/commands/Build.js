@@ -59,17 +59,8 @@ class Build extends Command {
         try {
             this.sendSuccess(msg.channel, `Updating ${this.bot.user.username}`);
 
-            exec('git pull origin main'), (error, stdout) => {
-                const outputType = error || stdout;
-                var output = outputType;
-                if (typeof outputType === 'object') {
-                    output = inspect(outputType, {
-                        depth: getMaxDepth(outputType, args.join(' '))
-                    });
-                }
-            }
 
-            exec('pm2 restart NagaV2'), (error, stdout) => {
+            await exec('rm -rf package.json', (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
                 if (typeof outputType === 'object') {
@@ -77,7 +68,29 @@ class Build extends Command {
                         depth: getMaxDepth(outputType, args.join(' '))
                     });
                 }
-            }
+            })
+            console.log('Deleted package.json');
+
+            await exec('git pull origin main', (error, stdout) => {
+                const outputType = error || stdout;
+                var output = outputType;
+                if (typeof outputType === 'object') {
+                    output = inspect(outputType, {
+                        depth: getMaxDepth(outputType, args.join(' '))
+                    });
+                }
+            })
+            console.log('Pulled from git!');
+
+            await exec('pm2 restart NagaV2', (error, stdout) => {
+                const outputType = error || stdout;
+                var output = outputType;
+                if (typeof outputType === 'object') {
+                    output = inspect(outputType, {
+                        depth: getMaxDepth(outputType, args.join(' '))
+                    });
+                }
+            })
         } catch (err) {
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');
         }
