@@ -2,6 +2,7 @@ const fs = require('fs');
 var csv = require('jquery-csv');
 const Canvas = require('canvas');
 const answers = require('../../assets/wordle/answers.json')
+const { Base } = require('axoncore');
 
 function GetAnswer()
 {
@@ -107,12 +108,12 @@ async function LoadGame(msg, guesses, answer)
         rowOffset+=squareSize+5;
     }
 
-    msg.channel.createMessage('hello', {
-        file: [{
+    console.log(canvas.toBuffer());
+    msg.channel.createMessage({}, {
           file: canvas.toBuffer(),
           name: 'wordle.png'
-        }]
-    })
+        }
+    )
 }
 async function Guess(msg,guesses,newGuess, answer)
 {
@@ -174,11 +175,10 @@ async function Guess(msg,guesses,newGuess, answer)
     }
 
     msg.channel.createMessage({
-        file: [{
           file: canvas.toBuffer(),
           name: 'wordle.png'
-        }]
-      })
+        }
+    )
 }
 function LoadNewWordle(msg)
 {
@@ -217,11 +217,9 @@ function LoadNewWordle(msg)
                     'hasCompletedToday'
                   ];
             }
-            console.log(data.length);
 
             for (let i = 1, len = data.length; i < len; i++) 
             {
-                console.log(data[i]);
                 if(data[i][0]==msg.author.id)
                 {
                     if(PlayedToday(data[i][3]))
@@ -336,7 +334,7 @@ function PlayWordle(msg)
                     data[i][6]+=1;
                     data[i][7]+=1;
                     writeToCSVFile(data);
-                    msg.channel.createMessage("Congradulations! You guessed the word "+data[i][1]+" in "+(guesses.length+1)+ " tries!")
+                    msg.channel.createMessage("Congratulations! You guessed the word "+data[i][1]+" in "+(guesses.length+1)+ " tries!")
                 
                     return;
                 }

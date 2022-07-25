@@ -1,6 +1,5 @@
 const { Command, CommandOptions } = require('axoncore');
 const { createCanvas, loadImage } = require('canvas');
-const _ = require('lodash');
 const logos = require('../../../assets/logoquiz.json');
 const profile = require('../../../Models/Profile');
 
