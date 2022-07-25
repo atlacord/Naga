@@ -17,9 +17,9 @@ class Captcha extends Command {
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'captcha',
+            name: 'game captcha',
             description: 'Play captcha',
-            usage: 'captcha',
+            usage: 'game captcha',
         };
 
         /**

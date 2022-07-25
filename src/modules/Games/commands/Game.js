@@ -1,6 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
 const Captcha = require('./Captcha');
 const FlagQuiz = require('./FlagQuiz');
+// const Hangman = require('./Hangman');
 const LogoQuiz = require('./LogoQuiz');
 const TypingQuiz = require('./TypingQuiz');
 

@@ -40,18 +40,13 @@ class Profile extends Command {
 
     async execute({ msg, args }) {
 
-        let member = msg.channel.guild.members.get(args[0]) || msg.member.id
-        member = await msg.channel.guild.members.get(member) || msg.member;
-
-        if (member.user.bot) {
-            return this.sendError(msg.channel, 'Bots can\'t earn levels or XP!');
-        }
+        let member = msg.channel.guild.members.get(args[0]) || msg.member;
 
         return profile.findOne({ _id: member.id }, async (err, doc) => {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
 
-            } else if (!doc || doc.data.economy.wallet === null) {
+            } else if (!doc || doc.data === null) {
                 return this.sendError(msg.channel, `This user has not started earning XP in this server yet!`);
             };
 
@@ -59,11 +54,11 @@ class Profile extends Command {
             .then(docs => Promise.resolve(docs.sort((A,B) => B.data.xp.find(x => x.id === msg.channel.guild.id).xp - A.data.xp.find(x => x.id === msg.channel.guild.id).xp)))
             .then(sorted => sorted.findIndex(x => x._id === doc._id) + 1);
 
-            const serverData = doc.data.xp.find(x => x.id === msg.channel.guild.id);
-            const cap = (50 * Math.pow(serverData.level, 2)) + (250 * serverData.level);
+            const serverData = doc.data.xp.find(x => x.id === msg.channel.guild.id) || 1
+            const cap = (50 * Math.pow(serverData.level, 2)) + (250 * serverData.level) || 1;
             const lowerLim = (50 * Math.pow(serverData.level - 1, 2)) + (250 * (serverData.level - 1));
             const range = cap - lowerLim;
-            const currentXP = serverData.xp - lowerLim;
+            const currentXP = serverData.xp - lowerLim || 1;
             const percentDiff = currentXP / range;
 
             const canvas = createCanvas(800,600);
@@ -75,7 +70,6 @@ class Profile extends Command {
             const wreath = doc.data.profile.wreath ? await loadImage(doc.data.profile.wreath) : null;
             const def = await loadImage(doc.data.profile.background || 'https://i.imgur.com/gcd6h3O.jpg');
             const defpattern = await loadImage(doc.data.profile.pattern || 'https://i.imgur.com/nx5qJUb.png');
-            console.log(member.user);
             const avatar = await loadImage(member.user.avatarURL);
 
             // Add wallpaper

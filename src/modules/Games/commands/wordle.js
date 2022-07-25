@@ -1,4 +1,4 @@
-const { Command, CommandOptions, CommandPermissions } = require('axoncore');
+const { Command, CommandOptions } = require('axoncore');
 
 const wordleguess = require('./wordleguess')
 const wordleplay = require('./wordleplay')
