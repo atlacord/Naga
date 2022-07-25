@@ -7,3 +7,6 @@ src/index.js
 
 .npmrc
 package.json
+
+src/modules/Games/data.csv
+src/assets/wordle/wordledata.csv
