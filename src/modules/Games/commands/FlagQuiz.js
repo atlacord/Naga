@@ -41,11 +41,10 @@ class FlagQuiz extends Command {
 
         const prompt = `**${msg.author.mention}**, guess the country by this flag under 30 seconds:`
         const flag = `https://raw.githubusercontent.com/hampusborgos/country-flags/main/png1000px/${code.toLowerCase()}.png`;
-        console.log(flag);
 
         await this.sendMessage(msg.channel, `${prompt}`);
         await this.sendMessage(msg.channel, flag);
-        console.log(country);
+
         const filter = (message => message.author === msg.author);
         const options = { filter: filter, count: 1, timeout: 30000 };
         await msg.channel.awaitMessages(options).then(collection => {
