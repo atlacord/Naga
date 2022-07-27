@@ -10,7 +10,9 @@ class FlagQuiz extends Command {
         super(module);
 
         this.label = 'flagquiz';
-        this.aliases = [];
+        this.aliases = [
+            'flags'
+        ];
 
         this.hasSubcmd = false;
 

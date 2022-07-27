@@ -11,7 +11,9 @@ class LogoQuiz extends Command {
         super(module);
 
         this.label = 'logoquiz';
-        this.aliases = [];
+        this.aliases = [
+            'logos'
+        ];
 
         this.hasSubcmd = false;
 

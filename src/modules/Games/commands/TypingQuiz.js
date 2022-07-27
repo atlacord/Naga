@@ -13,7 +13,9 @@ class TypingQuiz extends Command {
         super(module);
 
         this.label = 'typingquiz';
-        this.aliases = [];
+        this.aliases = [
+            'typing'
+        ];
 
         this.hasSubcmd = false;
 
