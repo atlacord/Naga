@@ -5,8 +5,10 @@ package-lock.json
 configs/secret.json
 src/index.js
 
-.npmrc
-package.json
-
+# Local directories/files
+Archives
 src/modules/Games/data.csv
 src/assets/wordle/wordledata.csv
+
+.npmrc
+package.json

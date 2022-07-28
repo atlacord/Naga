@@ -11,7 +11,9 @@ class LogoQuiz extends Command {
         super(module);
 
         this.label = 'logoquiz';
-        this.aliases = [];
+        this.aliases = [
+            'logos'
+        ];
 
         this.hasSubcmd = false;
 
@@ -75,7 +77,7 @@ class LogoQuiz extends Command {
                     return;
                 } else {
                     failed = true;
-                    reason = 'You didn\'t guess the logo correctly!';
+                    reason = `You didn\'t guess the logo correctly! The correct answer was **${meta.name}**`;
                     return;
                 }
             }).catch(() => {
