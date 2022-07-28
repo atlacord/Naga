@@ -1,6 +1,6 @@
 const { Command, CommandOptions } = require('axoncore');
 
-const DISCORD_EPOCH = 1420070400000
+const DISCORD_EPOCH = 1420070400000;
 
 class Snowflake extends Command {
     /**
