@@ -51,7 +51,7 @@ class Daily extends Command {
                 const now = Date.now();
                 const baseAmount = 500;
 
-                let overflow = false, excess = null, streakReset = false;
+                let streakReset = false;
 
                 if (doc.data.economy.streak.timestamp !== 0 && doc.data.economy.streak.timestamp - now > 0) {
                     return msg.channel.createMessage(msg.channel.createMessage({
@@ -86,13 +86,8 @@ class Daily extends Command {
                 doc.data.economy.streak.timestamp = now + 72000000;
                 const amount = baseAmount + 20 * (doc.data.economy.streak.current < 25 ? doc.data.economy.streak.current : 25);
 
-                if (doc.data.economy.wallet + amount > 50000) {
-                    overflow = true;
-                    excess = doc.data.economy.wallet + amount - 50000;
-                };
-
                 const bonus = booster ? amount * 0.2 : 0;
-                doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount + bonus;
+                doc.data.economy.wallet = doc.data.economy.wallet + amount + bonus;
 
                 return doc.save().then(() => msg.channel.createMessage({
                     allowedMentions: {
@@ -102,7 +97,6 @@ class Daily extends Command {
                         color: this.utils.color.blue,
                         description: [
                             `You got your **${this.utils.commatize(amount)}** daily reward!`,
-                            overflow ? `\n\\**Overflow Warning**: Your wallet just overflowed! You need to transfer some of your credits to your bank!` : '',
                             streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,
                             booster ? `\n\n**Hey!** Thanks for being a booster! You recieved ` + bonus + ` bonus credits!` : `\n\n**Psssst!** Server boosters get extra rewards!`,
                         ].join('')

@@ -36,8 +36,8 @@ class Deposit extends Command {
 
     async execute({ msg, args }) {
 
-        let bankTax = 0.95;
-        let actualTax = 0.05;
+        // let bankTax = 0.95;
+        // let actualTax = 0.05;
 
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
