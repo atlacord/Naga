@@ -44,7 +44,7 @@ class Find extends Command {
                 const now = Date.now();
                 const duration = 3.6e+6;
                 const userProfile = doc.data.economy.beg;
-                let overflow = false, excess = null;
+                let excess = null;
 
                 if (userProfile.date > now) {
                     return msg.channel.createMessage({
@@ -66,12 +66,7 @@ class Find extends Command {
                 userProfile.date = Date.now() + duration;
                 const amount = Math.floor(Math.random() * 200) + 100;
 
-                if (doc.data.economy.wallet + amount > 50000) {
-                    overflow = true;
-                    excess = doc.data.economy.wallet + amount - 50000
-                };
-
-                doc.data.economy.wallet = overflow ? 50000 : doc.data.economy.wallet + amount;
+                doc.data.economy.wallet = doc.data.economy.wallet + amount;
 
                 return doc.save().then(() => msg.channel.createMessage({
                     allowedMentions: {
@@ -79,7 +74,7 @@ class Find extends Command {
                     }, 
                     embed: {
                         color: this.utils.color.blue,
-                        description: [`${this.utils.emote.success} You found **${amount}**!`, overflow ? `**Overflow warning**! Please deposit some of your account to your bank. You only found ${amount - excess} for this one!` : '',].join('')
+                        description: `${this.utils.emote.success} You found **${amount}**!`
                     },
                     messageReference: {
                         guildID: msg.channel.guild.id,

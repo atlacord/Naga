@@ -28,7 +28,7 @@ class LogoQuiz extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 60000,
+            cooldown: 900000,
             guildOnly: true,
         } );
     }
@@ -98,7 +98,7 @@ class LogoQuiz extends Command {
 
             return doc.save().then(() => {
                 if (!win) {
-                    return this.sendError(msg.channel, `${reason} you received **${amount}** credits for trying!`, 
+                    return this.sendError(msg.channel, `${reason} - you received **${amount}** credits for trying!`, 
                     overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
                 } else {
                     return this.sendSuccess(msg.channel, `Congratulations! You received **${amount}** credits for guessing the logo correctly!`, 

@@ -27,7 +27,7 @@ class Captcha extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 10000,
+            cooldown: 90000,
             guildOnly: true,
         } );
     }
@@ -74,8 +74,8 @@ class Captcha extends Command {
                 const content = collection.collected.random().content;
 
                 if (content === codeText) {
-                    this.sendSuccess(msg.channel, 'You answered the captcha correctly! Added 100 credits!');
                     captchaCount += 1;
+                    this.sendSuccess(msg.channel, `You answered the captcha correctly! Added **100 credits!** (Current streak: ${captchaCount}`);
                     baseCredits += 100;
                     length += 1;
                     return;

@@ -46,6 +46,18 @@ class CheckBirthday extends Command {
         const announcementChannel = '372087095121936385';
         
         try {
+
+            let inRoles, outRoles = ['787644908705153024'];
+
+		    let members = guild.members.filter(m =>
+            inRoles.filter(r => m.roles.includes(r.id)).length === inRoles.length);
+            members = members.filter(m => outRoles.filter(r => m.roles.includes(r.id)).length === 0);
+
+            for (let x in members) {
+                this.bot.removeGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Birthday ended');
+                console.log(`[Birthday] Birthday role (should have been) removed from ${doc._id}.`);
+            }
+
             db.find({ 'data.profile.birthday': moment().format('Do MMMM') }, async (err, docs) => {
                 console.log(moment().format('Do MMMM'));
             const members = docs.map(x => x._id);
@@ -78,10 +90,6 @@ class CheckBirthday extends Command {
 
     async executeBirthday(member, mentions) {
         db.findById((member), (err, doc) => {
-            if (Date.now() > doc.data.birthdayTimestamp) {
-                this.bot.removeGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Birthday ended');
-                console.log(`[Birthday] Birthday role (should have been) removed from ${doc._id}.`);
-            }
             if (this.bot.guilds.get(GUILD_ID).members.has(member)) {
                 mentions.push(`<@!${member}>`);
                 this.bot.addGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Temporary birthday role');
