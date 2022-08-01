@@ -4,6 +4,7 @@ node_modules
 package-lock.json
 configs/secret.json
 src/index.js
+src/modules/Info/listeners/index.js
 
 # Local directories/files
 Archives
