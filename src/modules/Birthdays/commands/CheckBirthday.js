@@ -54,10 +54,8 @@ class CheckBirthday extends Command {
             members = members.filter(m => outRoles.filter(r => m.roles.includes(r.id)).length === 0);
 
             for (let x in members) {
-                db.findById((x), (err, doc) => {
-                    this.bot.removeGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Birthday ended');
-                    console.log(`[Birthday] Birthday role (should have been) removed from ${doc._id}.`);
-                })
+                this.bot.removeGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Birthday ended');
+                console.log(`[Birthday] Birthday role (should have been) removed from ${doc._id}.`);
             }
 
             db.find({ 'data.profile.birthday': moment().format('Do MMMM') }, async (err, docs) => {
