@@ -28,7 +28,7 @@ class LogoQuiz extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 60000,
+            cooldown: 900000,
             guildOnly: true,
         } );
     }

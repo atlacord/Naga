@@ -24,7 +24,7 @@ class PlayLogo extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 60000,
+            cooldown: 90000,
             guildOnly: true,
         } );
     }
