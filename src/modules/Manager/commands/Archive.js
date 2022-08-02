@@ -132,7 +132,7 @@ class Archive extends Command {
 
                 const data = Buffer.from(messages, 'utf8');
                 fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
-                    // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
+                    if (err) return this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                 });
             })
                 this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`);
