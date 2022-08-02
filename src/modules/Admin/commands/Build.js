@@ -60,7 +60,7 @@ class Build extends Command {
             this.sendSuccess(msg.channel, `Updating ${this.bot.user.username}`);
 
 
-            await exec('rm -rf package.json', (error, stdout) => {
+           /*  await exec('rm -rf package.json', (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
                 if (typeof outputType === 'object') {
@@ -70,7 +70,7 @@ class Build extends Command {
                 }
             })
             console.log('Deleted package.json');
-
+*/ 
             await exec('git pull origin main', (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
