@@ -2,7 +2,7 @@ const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const fetch = require("node-fetch")
 // const axios = require('axios');
 
-class hug extends Command {
+class Hug extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
@@ -56,4 +56,4 @@ class hug extends Command {
 }
 
 
-module.exports = hug;
+module.exports = Hug;
