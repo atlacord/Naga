@@ -1,5 +1,5 @@
 module.exports = {
-    Archive: require('./Archive'),
+    // Archive: require('./Archive'),
     LoadSuggestion: require('./LoadSuggestion'),
     Nick: require('./Nick'),
 //    Prefix: require('./Prefix'),

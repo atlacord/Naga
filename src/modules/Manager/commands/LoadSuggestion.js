@@ -54,7 +54,7 @@ class LoadSuggestion extends Command {
             let status = embed.fields[0].value.split(' ')[0];
 
             doc = new dbsuggestion({ _id: args[0]});
-            doc.data.author = null;
+            doc.data.author = args[1];
             doc.data.content = content;
             doc.data.status = status;
             doc.data.date = suggestion.createdAt;
