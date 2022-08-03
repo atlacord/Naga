@@ -1,6 +1,8 @@
 const { Utils } = require('axoncore');
 const secret = require('../configs/secret.json');
 
+const DISCORD_EPOCH = 1420070400000;
+
 class ExtraUtils extends Utils {
     /**
      * @param {import('axoncore').AxonClient} client
@@ -200,6 +202,29 @@ class ExtraUtils extends Utils {
         })
         return this.axon.log('FATAL', `Unexpected error [${msg.channel.guild.name} - ${msg.channel.guild.id}]!\n${err.stack}`), 
         this.axonUtils.sendError(msg.channel, message)
+    }
+
+    convertSnowflakeToDate(snowflake, epoch = DISCORD_EPOCH) {
+        const milliseconds = BigInt(snowflake) >> 22n
+        return new Date(Number(milliseconds) + epoch)
+    }
+
+    validateSnowflake(snowflake, epoch) {
+        if (!Number.isInteger(+snowflake)) {
+            this.sendError(msg.channel, 'That doesn\'t look like a snowflake. Snowflakes contain only numbers.')
+        }
+    
+        if (snowflake < 4194304) {
+            this.sendError(msg.channel, 'That doesn\'t look like a snowflake. Snowflakes are much larger numbers.')
+        }
+    
+        const timestamp = this.convertSnowflakeToDate(snowflake, epoch)
+    
+        if (Number.isNaN(timestamp.getTime())) {
+            this.sendError(msg.channel, 'That doesn\'t look like a snowflake. Snowflakes have fewer digits.')
+        }
+    
+        return timestamp;
     }
 }
 
