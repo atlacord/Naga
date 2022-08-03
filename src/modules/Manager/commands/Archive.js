@@ -35,7 +35,7 @@ class Archive extends Command {
         this.info = {
             name: 'archive',
             description: 'Archives a channels messages into a document (work-in-progress)',
-            usage: 'archive [channel]',
+            usage: 'archive',
         };
 
         /**
@@ -44,14 +44,14 @@ class Archive extends Command {
          */
 
         this.options = new CommandOptions(this, {
-            argsMin: 1,
+            argsMin: 0,
             guildOnly: true,
         } );
 
         this.permissions = new CommandPermissions(this, {
             staff: {
                 needed: this.axon.staff.admins,
-                bypass: this.axon.staff.owners,
+                bypass: this.axon.staff.admins,
             },
         } );
     }
@@ -83,7 +83,7 @@ class Archive extends Command {
         return imglink.data.link;
     }
 
-    async execute ({ msg, args }) {
+    async execute ( { msg, args } ) {
 
         const client = new ImgurClient({
             clientId: clientId,
@@ -91,9 +91,10 @@ class Archive extends Command {
             refreshToken: refreshToken,
         });
 
-        let channel = (args[0].match('<#([0-9]+)'))[1];
-        channel = await this.bot.getChannel(channel);
-        const quantity = Math.round(args[1]) || MESSAGE_QUANTITY;
+        let channel = args[0].replace('<#','');
+        channel = channel.replace('>', '').toString();
+        channel = this.bot.getChannel(channel);
+        const quantity = Math.round(MESSAGE_QUANTITY);
 
         try {
             if (!quantity || quantity < 2) {
@@ -127,15 +128,15 @@ class Archive extends Command {
                     ].join(' ');
                 }); 
 
-                messages.push(`Message Archive: **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
+                messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
                 messages = messages.reverse().join('');
 
                 const data = Buffer.from(messages, 'utf8');
-                fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
+                fs.writeFile(`Archives/${channel.name}.txt`, data, (err) => {
                     // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                 });
             })
-                this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`);
+                this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i + 1}/${channels.length}\`)`)
                 console.info(`Finished archiving ${channel.name}.`)
         } catch (err) {
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');

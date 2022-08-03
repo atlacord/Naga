@@ -22,7 +22,7 @@ class ArchiveAll extends Command {
     constructor(module) {
         super(module);
 
-        this.label = 'all';
+        this.label = 'archive all';
         this.aliases = [];
 
         this.hasSubcmd = false;
@@ -46,7 +46,7 @@ class ArchiveAll extends Command {
         this.permissions = new CommandPermissions(this, {
             staff: {
                 needed: this.axon.staff.admins,
-                bypass: this.axon.staff.owners,
+                bypass: this.axon.staff.admins,
             },
         } );
     }
@@ -151,11 +151,11 @@ class ArchiveAll extends Command {
                     ].join(' ');
                 }); 
 
-                messages.push(`Message Archive: **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
+                messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
                 messages = messages.reverse().join('');
 
                 const data = Buffer.from(messages, 'utf8');
-                fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
+                fs.writeFile(`Archives/${channel.name}.txt`, data, (err) => {
                     // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                 });
             })
