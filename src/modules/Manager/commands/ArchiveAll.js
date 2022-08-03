@@ -88,6 +88,20 @@ class ArchiveAll extends Command {
           let channels = [];
           let channelNames = [];
 
+          if (!args || args[0] !== 'start') {
+            this.sendMessage(msg.channel, {
+                embed: {
+                    color: this.utils.color.blue,
+                    description: [`Welcome to the experimental Naga archive feature! This is still a work-in-progress.`,
+                    `Currently, Naga is capable of archiving all text messages sent in the Closed Channels and Events categories (I will add support for individual channels beyond that once image archiving is finished.)\n`,
+                    `This process will take roughly 2 hours, depending on ratelimits and the size of each channel. All files will be sent in the "Archives" directory, where they can then be shared however you wish.\n`,
+                    `You may start the process by running \`n.archive start\`. Let me know if anything breaks!\n`,
+                    `-soda`].join('\n')
+                }
+            })
+          }
+
+          else {
           let c = await this.bot.guilds.get('370708369951948800').channels.filter(i => categories.includes(i.parentID))
           c.forEach(i => channels.push(i.id));
 
@@ -158,8 +172,8 @@ class ArchiveAll extends Command {
 		for (let m of msgArray) {
 			this.sendMessage(msg.channel, m);
 		} */
+      }
     }
 }
-
 
 module.exports = ArchiveAll; 
