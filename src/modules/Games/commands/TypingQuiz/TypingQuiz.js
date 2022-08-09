@@ -73,7 +73,7 @@ class TypingQuiz extends Command {
             await this.sendMessage(msg.channel, { file: { file: canvas.toBuffer(), name: 'typequiz.png' }});
 
             const filter = (message => message.author === msg.author);
-            const options = { filter: filter, count: 1, timeout: 45000 };
+            const options = { filter: filter, count: 1, timeout: 50000 };
             await msg.channel.awaitMessages(options).then(collection => {
 
                 const content = collection.collected.random().content.toLowerCase();
