@@ -28,12 +28,12 @@ class Topic extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 5000,
+            cooldown: 600000,
             guildOnly: true,
         } );
 
         this.permissions = new CommandPermissions(this, {
-            custom: (msg) => msg.channel.parentID !== '372086709950611456',
+            custom: (msg) => (msg.channel.parentID !== '372086709950611456' || '765832566875095040' || '765832566875095040'),
         });
     }
     /**
@@ -50,6 +50,7 @@ class Topic extends Command {
         // topics = topics.data;
 
         const topic = Math.floor(Math.random() * topics.length);
+        
         return this.sendMessage(msg.channel, {
             embed: {
                 color: this.utils.color.blue,
