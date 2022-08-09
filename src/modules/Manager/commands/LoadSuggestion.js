@@ -16,7 +16,7 @@ class LoadSuggestion extends Command {
         this.info = {
             name: 'loadsuggestion',
             description: 'Load a suggestion into the db (only suggestions made before July 2022)',
-            usage: 'loadsuggestion [message id]',
+            usage: 'loadsuggestion [message id] [author id]',
         };
 
         /**
@@ -44,22 +44,28 @@ class LoadSuggestion extends Command {
 
         let suggestion = await this.bot.getMessage(suggestionChannel, args[0]);
 
-        dbsuggestion.findById(args[0], async (err, doc) => {
-            if (err) {
-                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
-            };
+        if (suggestion.createdAt > 1657252800) {
+            return this.sendError(msg.channel, 'No need to load this suggestion into the database. It was already done automatically!')
+        }
 
-            let embed = suggestion.embeds[0];
-            let content = embed.description;
-            let status = embed.fields[0].value.split(' ')[0];
+        else {
+            dbsuggestion.findById(args[0], async (err, doc) => {
+                if (err) {
+                    return this.utils.logError(msg, err, 'db', 'Something went wrong.');
+                };
 
-            doc = new dbsuggestion({ _id: args[0]});
-            doc.data.author = args[1];
-            doc.data.content = content;
-            doc.data.status = status;
-            doc.data.date = suggestion.createdAt;
-            doc.save().then(this.sendSuccess(msg.channel, 'Successfully loaded suggestion.')).catch((err), this.sendError(msg.channel, err.stack));
-        });
+                let embed = suggestion.embeds[0];
+                let content = embed.description;
+                let status = embed.fields[0].value.split(' ')[0];
+
+                doc = new dbsuggestion({ _id: args[0]});
+                doc.data.author = args[1];
+                doc.data.content = content;
+                doc.data.status = status;
+                doc.data.date = suggestion.createdAt;
+                doc.save().then(this.sendSuccess(msg.channel, 'Successfully loaded suggestion.')).catch((err), this.sendError(msg.channel, err.stack));
+            });
+        }
     }
 }
 

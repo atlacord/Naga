@@ -41,37 +41,40 @@ class ViewSuggestion extends Command {
 
     async execute({ msg, args }) {
         const suggestionChannel = '792616452770627594';
-        suggestion.findById(args[0], (err, doc) => {
-            if (err) {
-                return this.utils.logError(msg, err, 'db', 'Something went wrong.');
-            };
+        try {
+            suggestion.findById(args[0], async (err, doc) => {
+                if (err) {
+                    return this.utils.logError(msg, err, 'db', 'Something went wrong.');
+                };
 
-            let author = msg.channel.guild.members.get(doc.data.author).user;
+                let author = await this.bot.guilds.get('370708369951948800').members.get(doc.data.author) || this.bot.getRESTUser(doc.data.author);
+                let suggestionColor = this.utils.color.blue;
 
-            let suggestionColor = this.utils.color.blue;
-
-            if (doc.data.status === 'Approved') {
-                suggestionColor = this.utils.color.green;
-            }
-
-            if (doc.data.status === 'Denied') {
-                suggestionColor = this.utils.color.red;
-            }
-
-            return this.sendMessage(msg.channel, { 
-                embed: {
-                    author: { name: `${author.username}#${author.discriminator}`, icon_url: author.avatarURL },
-                    color: suggestionColor,
-                    description: `${doc.data.content}\n\n[Jump to Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${doc._id})`,
-                    fields: [
-                        { name: 'Status', value: doc.data.status, inline: false },
-                        { name: 'Reason', value: doc.data.reason || 'N/A', inline: false },
-                    ],
-                    footer: { text: `Member ID: ${author.id}` },
-                    timestamp: doc.data.date
+                if (doc.data.status === 'Approved') {
+                    suggestionColor = this.utils.color.green;
                 }
+
+                if (doc.data.status === 'Denied') {
+                    suggestionColor = this.utils.color.red;
+                }
+
+                return this.sendMessage(msg.channel, { 
+                    embed: {
+                        author: { name: `${author.username}#${author.discriminator}`, icon_url: author.avatarURL },
+                        color: suggestionColor,
+                        description: `${doc.data.content}\n\n[Jump to Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${doc._id})`,
+                        fields: [
+                            { name: 'Status', value: doc.data.status, inline: false },
+                            { name: 'Reason', value: doc.data.reason || 'N/A', inline: false },
+                        ],
+                        footer: { text: `Member ID: ${author.id}` },
+                        timestamp: doc.data.date
+                    }
+                })
             })
-        })
+        } catch (err) {
+            this.utils.logError(msg, )
+        }
     }
 }
 
