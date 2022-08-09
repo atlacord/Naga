@@ -1,6 +1,6 @@
 const { Command, CommandOptions } = require('axoncore');
-const flags = Object.entries(require('../../../assets/flags.json'));
-const profile = require('../../../Models/Profile');
+const flags = Object.entries(require('../../../../assets/flags.json'));
+const profile = require('../../../../Models/Profile');
 
 class FlagQuiz extends Command {
     /**

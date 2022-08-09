@@ -1,8 +1,8 @@
 const { Command, CommandOptions } = require('axoncore');
 
-const wordleguess = require('./wordleguess')
-const wordleplay = require('./wordleplay')
-const wordlestats = require('./wordlestats')
+const wordleguess = require('./WordleGuess')
+const wordleplay = require('./WordlePlay')
+const wordlestats = require('./WordleStats')
 
 class Wordle extends Command {
     /**

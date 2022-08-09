@@ -1,9 +1,9 @@
 const { Command, CommandOptions } = require('axoncore');
-const Captcha = require('./Captcha');
-const FlagQuiz = require('./FlagQuiz');
+const Captcha = require('./Captcha/Captcha');
+const FlagQuiz = require('./FlagQuiz/FlagQuiz');
 // const Hangman = require('./Hangman');
-const LogoQuiz = require('./LogoQuiz');
-const TypingQuiz = require('./TypingQuiz');
+const LogoQuiz = require('./LogoQuiz/LogoQuiz');
+const TypingQuiz = require('./TypingQuiz/TypingQuiz');
 
 class Game extends Command {
     /**

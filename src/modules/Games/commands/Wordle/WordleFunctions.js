@@ -1,7 +1,7 @@
 const fs = require('fs');
 var csv = require('jquery-csv');
 const Canvas = require('canvas');
-const answers = require('../../assets/wordle/answers.json')
+const answers = require('../../../../assets/wordle/answers.json')
 const { Base } = require('axoncore');
 
 function GetAnswer()

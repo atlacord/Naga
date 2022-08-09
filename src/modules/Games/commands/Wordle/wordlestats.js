@@ -1,5 +1,6 @@
 const { Command, CommandOptions } = require('axoncore');
-const WordleFunc = require(`../wordlefunctions`)
+const WordleFunc = require(`./WordleFunctions`);
+
 class WordleStats extends Command {
     /**
      * @param {import('axoncore').Module} module

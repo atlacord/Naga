@@ -1,7 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
-const profile = require('../../../Models/Profile');
+const profile = require('../../../../Models/Profile');
 const attachment = `${process.cwd()}/assets/images/30-sec-timer.gif`;
-const gameword = require('../../../assets/hangman.json');
+const gameword = require('../../../../assets/hangman.json');
 const hangs = [
    '/---|\n|\n|\n|\n|',
    '/---|\n|   o\n|\n|\n|',

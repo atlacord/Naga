@@ -1,7 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
 const { createCanvas, loadImage } = require('canvas');
-const logos = require('../../../assets/logoquiz.json');
-const profile = require('../../../Models/Profile');
+const logos = require('../../../../assets/logoquiz.json');
+const profile = require('../../../../Models/Profile');
 
 class LogoQuiz extends Command {
     /**

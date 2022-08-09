@@ -1,8 +1,8 @@
 const { Command, CommandOptions } = require('axoncore');
 const { createCanvas, registerFont } = require('canvas');
 const _ = require('lodash');
-const topic = require('../../../assets/typingtopics.json');
-const profile = require('../../../Models/Profile');
+const topic = require('../../../../assets/typingtopics.json');
+const profile = require('../../../../Models/Profile');
 registerFont('src/assets/handwriting.ttf', { family: 'Handwriting'});
 
 class TypingQuiz extends Command {
