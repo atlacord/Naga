@@ -1,5 +1,5 @@
 {
-  "name": "umi",
+  "name": "Naga",
   "version": "2.0.0",
   "description": "Discord bot",
   "main": "index.js",
@@ -32,6 +32,6 @@
     "type": "git",
     "url": "git://github.com/TwoDoggo/umi"
   },
-  "author": "TwoDog#0002",
+  "author": "TwoDog#0002, Kyle#0103",
   "license": "ISC"
 }

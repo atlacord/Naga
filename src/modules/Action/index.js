@@ -1,7 +1,6 @@
-const { Module, CommandPermissions } = require('axoncore');
+const { Module } = require('axoncore');
 
 const commands = require('./commands/index');
-// const listeners = require('./commands/index');
 
 class Action extends Module {
     /**
@@ -18,13 +17,8 @@ class Action extends Module {
 
         this.info = {
             name: 'Action',
-            description: 'Just lots of weeb gifs really',
+            description: 'Images for the weebs',
         };
-
-        /**
-         * @type {CommandPermissions}
-         */
-        this.permissions = new CommandPermissions(this, {}, true);
     }
 
     init() {
