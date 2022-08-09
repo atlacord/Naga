@@ -12,4 +12,3 @@ src/modules/Games/data.csv
 src/assets/wordle/wordledata.csv
 
 .npmrc
-package.json
