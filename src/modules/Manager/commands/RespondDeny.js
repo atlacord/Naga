@@ -62,24 +62,29 @@ class RespondDeny extends Command {
 
 
                 await this.bot.getChannel(suggestionChannel).editMessage(args[0], { embed });
-                this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${suggestion.jumpLink})`);
-                if (suggestion.createdAt > 1657252800) {
-                    this.sendDM(author, {
-                        embed: {
-                            author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
-                            title: 'Your suggestion has been responded to!',
-                            color: this.utils.color.red,
-                            description: embed.description,
-                            fields: [
-                                { name: 'Status', value: status, inline: false },
-                                { name: 'Reason', value:  reason, inline: false },
-                            ],
-                            timestamp: new Date()
-                        }
-                    })
+
+                if ((suggestion.createdAt > 1657252800) && (author !== null)) {
+                    try {
+                        this.sendDM(author, {
+                            embed: {
+                                author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
+                                title: 'Your suggestion has been responded to!',
+                                color: this.utils.color.red,
+                                description: embed.description,
+                                fields: [
+                                    { name: 'Status', value: status, inline: false },
+                                    { name: 'Reason', value:  reason, inline: false },
+                                ],
+                                timestamp: new Date()
+                            }
+                        })
+                    } catch(err) {
+                        this.sendError(msg.channel, err);
+                    }
                 }
+                this.sendSuccess(msg.channel, `Suggestion denied.\n[View Suggestion](${suggestion.jumpLink})`);
             } catch (err) {
-                this.sendError(err);
+                this.sendError(msg.channel, err);
             }
             doc.data.status = 'Denied';
             doc.data.reason = reason;
