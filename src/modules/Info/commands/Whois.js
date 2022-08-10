@@ -66,7 +66,7 @@ class Whois extends Command {
 
         } else {
             roles = 'No Roles';
-            roleColor = this.utils.color.blue;
+            roleColor = this.utils.getColor('blue');
         }
 
         for (let i = 0; i < this.utils.checkStaff(member).length; i += 1) {

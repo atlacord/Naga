@@ -54,7 +54,7 @@ class CreditLeaderboard extends Command {
             };
 
             let embed = {
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
                 author: { name: '🏆 Credit Leaderboard' },
                 fields: [
                     { name: `**${this.displayName(msg, docs[0].id) || 'Unknown Member'}** ranked the highest with **${this.utils.commatize(docs[0].wallet + docs[0].bank)}** credits!`, value:

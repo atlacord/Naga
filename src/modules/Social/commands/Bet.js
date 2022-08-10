@@ -67,7 +67,7 @@ class Bet extends Command {
                             repliedUser: true
                         },
                         embed: {
-                            color: this.utils.color.red,
+                            color: this.utils.getColor('blue'),
                             description: `${this.utils.emote.error} You lost **${this.utils.commatize(amount)}** coins from your previous bet!\nYou can get more reliable coins without using the bet command!`
                         },
                         messageReference: {
@@ -85,7 +85,7 @@ class Bet extends Command {
                         repliedUser: true
                     }, 
                     embed: {
-                        color: this.utils.color.green,
+                        color: this.utils.getColor('green'),
                         description: `${this.utils.emote.success} You won **${this.utils.commatize(amount)}** coins from your previous bet!\nYour bet **${Math.floor(amount)}** coins have multiplied by **${multiplier}**.\nYou'll receive **${this.utils.commatize(prize)}** coins as the prize. Your winnings has been transferred to your bank!`
                     },
                     messageReference: {

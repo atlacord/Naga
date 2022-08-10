@@ -52,7 +52,7 @@ class Find extends Command {
                             repliedUser: true
                         }, 
                         embed: {
-                            color: this.utils.color.red,
+                            color: this.utils.getColor('red'),
                             description: `${this.utils.emote.error} You tried searching for credits but found... nothing. Perhaps try again later?`
                         },
                         messageReference: {
@@ -73,7 +73,7 @@ class Find extends Command {
                         repliedUser: true
                     }, 
                     embed: {
-                        color: this.utils.color.blue,
+                        color: this.utils.getColor('green'),
                         description: `${this.utils.emote.success} You found **${amount}**!`
                     },
                     messageReference: {

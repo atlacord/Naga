@@ -48,7 +48,7 @@ class Balance extends Command {
             return this.sendMessage(msg.channel, { 
                 embed: {
                     author: { name: `${msg.author.username}\'s wallet` },
-                    color: this.utils.color.blue,
+                    color: this.utils.getColor('blue'),
                     thumbnail: { url: msg.author.avatarURL },
                     description: `💰 **${this.utils.commatize(doc.data.economy.wallet)}** credits in posession.\n
                     ${doc.data.economy.bank !== null ? `💰 **${this.utils.commatize(doc.data.economy.bank)}** credits in bank!`

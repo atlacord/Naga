@@ -1,21 +1,21 @@
 const { Command, CommandOptions } = require('axoncore');
 
-class AvatarEnd extends Command {
+class Start extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'end';
-        this.aliases = [ 'end' ];
+        this.label = 'start';
+        this.aliases = [ 'start' ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'agames end',
-            description: 'Locks the Avatar Games channel!',
-            usage: 'agames end',
+            name: 'agames start',
+            description: 'Unlocks the Avatar Games channel!',
+            usage: 'agames start',
         };
 
         /**
@@ -31,13 +31,13 @@ class AvatarEnd extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-     async execute( { msg } ) {
+    async execute( { msg } ) {
 
-        await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 0n, 1024n, 0)
-        this.sendMessage(msg.channel, 'Ending Avatar Games!');
+        await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 1024n, 0n, 0)
+        this.sendMessage(msg.channel, 'Starting Avatar Games!');
     }
 }
 
 
-module.exports = AvatarEnd;
+module.exports = Start;
 

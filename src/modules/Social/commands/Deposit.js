@@ -74,7 +74,7 @@ class Deposit extends Command {
                         repliedUser: true
                     }, 
                     embed: {
-                        color: this.utils.color.green,
+                        color: this.utils.getColor('green'),
                         description: `${this.utils.emote.success} You successfully deposited **${this.utils.commatize(amount)}** credits to your bank!`
                     },
                     messageReference: {

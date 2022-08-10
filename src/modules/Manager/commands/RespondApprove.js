@@ -57,7 +57,7 @@ class RespondApprove extends Command {
                 let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
 
                 let embed = suggestion.embeds[0];
-                embed.color = this.utils.color.green;
+                embed.color = this.utils.getColor('green');
                 embed.fields[0] = { name: 'Status', value: status };
                 embed.fields.push({ name: 'Reason', value:  reason });
 
@@ -69,7 +69,7 @@ class RespondApprove extends Command {
                         embed: {
                             author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
                             title: 'Your suggestion has been responded to!',
-                            color: this.utils.color.green,
+                            color: this.utils.getColor('green'),
                             description: embed.description,
                             fields: [
                                 { name: 'Status', value: status, inline: false },

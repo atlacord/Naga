@@ -30,7 +30,7 @@ class Archive extends Command {
             'arc'
         ];
 
-        this.hasSubcmd = true;
+        this.hasSubcmd = false;
 
         this.info = {
             name: 'archive',
@@ -51,13 +51,9 @@ class Archive extends Command {
         this.permissions = new CommandPermissions(this, {
             staff: {
                 needed: this.axon.staff.admins,
-                bypass: this.axon.staff.admins,
+                bypass: this.axon.staff.owners,
             },
         } );
-    }
-
-    init() {
-        return [ArchiveAll];
     }
 
     exec(command) {
@@ -106,7 +102,7 @@ class Archive extends Command {
             this.sendSuccess(msg.channel, `Archiving ${channel.name}`);
             console.info(`Now archiving ${channel.name}.`)
 
-            await this.bot.getMessages(channel.id, { limit: MESSAGE_QUANTITY, before: lastMsg })
+            await this.bot.getMessages(channel.id, { limit: 1000, before: lastMsg })
             .then(async messages => {
                 const count = messages.size; 
                 const _id = Math.random().toString(36).slice(-7); 
@@ -128,11 +124,11 @@ class Archive extends Command {
                     ].join(' ');
                 }); 
 
-                messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
+                messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id})** --\r\n\r\n`);
                 messages = messages.reverse().join('');
 
                 const data = Buffer.from(messages, 'utf8');
-                fs.writeFile(`Archives/${channel.name}.txt`, data, (err) => {
+                fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
                     // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                 });
             })

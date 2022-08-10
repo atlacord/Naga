@@ -51,7 +51,7 @@ class Info extends Command {
             this.sendMessage(msg.channel, ({
                 embed: {
                 title: 'Naga',
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
 
                 thumbnail: { 
                     url: this.bot.user.avatarURL 

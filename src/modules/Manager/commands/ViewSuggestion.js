@@ -48,14 +48,14 @@ class ViewSuggestion extends Command {
                 };
 
                 let author = await this.bot.guilds.get('370708369951948800').members.get(doc.data.author) || this.bot.getRESTUser(doc.data.author);
-                let suggestionColor = this.utils.color.blue;
+                let suggestionColor = this.utils.getColor('blue');
 
                 if (doc.data.status === 'Approved') {
-                    suggestionColor = this.utils.color.green;
+                    suggestionColor = this.utils.getColor('green');
                 }
 
                 if (doc.data.status === 'Denied') {
-                    suggestionColor = this.utils.color.red;
+                    suggestionColor = this.utils.getColor('red');
                 }
 
                 return this.sendMessage(msg.channel, { 

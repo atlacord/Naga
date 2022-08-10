@@ -42,7 +42,7 @@ class Jumbo extends Command {
 
         this.sendMessage(msg.channel, {
              embed: {
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
                 title: `${result[2]}`,
                 image: {
                     url: url

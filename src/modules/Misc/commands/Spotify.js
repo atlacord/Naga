@@ -36,13 +36,6 @@ class Spotify extends Command {
 
     execute( { msg, args } ) {
 
-    //    this.sendMessage(msg.channel, {
-    //        embed: {
-    //            color: this.utils.color.blue,
-    //            description: 'This command is temporarily disabled until I am granted the necessary API intent by Discord. I\'m sorry for any inconvenience.'
-    //        }
-    //    })
-
     var user = msg.channel.guild.members.get(args[0]) || msg.member;
     var arr = JSON.stringify(user.activities);
     var obj = JSON.parse(arr);
@@ -50,9 +43,9 @@ class Spotify extends Command {
         for (let i = 0; i < 5; i += 1) {
             let spotify = obj[i]
 
-            if (spotify.type !== '2' && spotify.name !== 'Spotify') {
-            this.sendError(msg.channel, `You are not listening to Spotify.`);
-        }
+            // if (spotify.type !== '2' && spotify.name !== 'Spotify') {
+            //     this.sendError(msg.channel, `You are not listening to Spotify.`);
+            // }
         try {
             if(spotify.name === 'Spotify') {
             if (!spotify.assets.large_image) {
@@ -65,7 +58,7 @@ class Spotify extends Command {
                         icon_url: 'https://cdn.discordapp.com/emojis/663452041992994846.png?v=1' 
                     },
                     thumbnail: { url: thumburl },
-                    color: this.utils.color.spotify,        
+                    color: this.utils.getColor('spotify'),        
                     fields: [
                         { name: '**Title**', value: `[${spotify.details}](https://open.spotify.com/track/${spotify.sync_id})`, inline: false },
                         { name: '**Artist**', value: spotify.state, inline: false },

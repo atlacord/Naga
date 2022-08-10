@@ -42,7 +42,7 @@ class Iroh extends Command {
         const quote = Math.floor(Math.random() * quotes.length);
         return this.sendMessage(msg.channel, {
             embed: {
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
                 thumbnail: { url: 'https://i.pinimg.com/originals/4d/8c/d0/4d8cd09d595ab1cefb8098d4ec13ec0b.png' },
                 description: quotes[quote]
             }

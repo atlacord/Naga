@@ -65,7 +65,7 @@ class Beg extends Command {
                         messageID: msg.id
                     },
                     embed: {
-                        color: this.utils.color.blue,
+                        color: this.utils.getColor('blue'),
                         description: `${this.utils.emote.success} You received **${amount}** from me.`
                     }
                 }))

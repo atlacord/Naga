@@ -53,7 +53,7 @@ class Topic extends Command {
         
         return this.sendMessage(msg.channel, {
             embed: {
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
                 description: topics[topic]
             }
         });

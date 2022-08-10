@@ -59,7 +59,7 @@ class Daily extends Command {
                             repliedUser: true
                         }, 
                         embed: {
-                            color: this.utils.color.red,
+                            color: this.utils.getColor('red'),
                             description: `${this.utils.emote.error} You already got your daily reward!\nYou can get your next reward in ${moment.duration(doc.data.economy.streak.timestamp - now, 'milliseconds').format('H [hours,] m [minutes, and] s [seconds]')}`
                         },
                         messageReference: {
@@ -94,7 +94,7 @@ class Daily extends Command {
                         repliedUser: true
                     }, 
                     embed: {
-                        color: this.utils.color.blue,
+                        color: this.utils.getColor('blue'),
                         description: [
                             `You got your **${this.utils.commatize(amount)}** daily reward!`,
                             streakReset ? `\n**Streak Lost**: You haven't got your succeeding daily reward. Your streak is reset (x1).` : `\n**Streak x${doc.data.economy.streak.current}**`,

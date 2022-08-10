@@ -44,7 +44,7 @@ class Game extends Command {
     
     async execute({ msg }) {
         this.sendMessage(msg.channel, { embed: {
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             description: `Run \`${this.axon.settings.prefixes}game [game]\` to play a game!`
         }})
     }

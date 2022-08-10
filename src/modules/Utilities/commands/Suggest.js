@@ -43,7 +43,7 @@ class Suggest extends Command {
             let embed = {
                 author: { name: `${msg.author.username}#${msg.author.discriminator}`, icon_url: msg.author.avatarURL },
                 title: `${displayName} suggests...`,
-                color: this.utils.color.yellow,
+                color: this.utils.getColor('yellow'),
                 description: args.join(' '),
                 image: { url: null },
                 fields: [

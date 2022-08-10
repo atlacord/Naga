@@ -54,7 +54,7 @@ class Hangman extends Command {
         let word = phrase.replace(/\w/ig,'_')
 
         const embed = {
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             author: { name: 'Hangman' },
             description: 'Guess the word! (Avatar universe)',
             fields: [

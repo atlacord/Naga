@@ -42,7 +42,7 @@ class Avatar extends Command {
                 roleColor = roles[0].color
             }
 
-            if (user !== msg.author) roleColor = this.utils.color.blue;
+            if (user !== msg.author) roleColor = this.utils.getColor('blue');
 
         try {
             this.sendMessage(msg.channel, {
