@@ -1,4 +1,5 @@
 const { Utils } = require('axoncore');
+const { Message } = require('eris');
 const secret = require('../configs/secret.json');
 
 const DISCORD_EPOCH = 1420070400000;
@@ -27,14 +28,18 @@ class ExtraUtils extends Utils {
         ];
     }
 
-    color = {
-        red: "15747399",
-        yellow: "16439902",
-        green: "4437377",
-        blue: "9031664",
-        dblue: "26544",
-        spotify: "1947988"
-    };
+    getColor(color) {
+        let colors = {
+        red: 15747399,
+        yellow: 16439902,
+        green: 4437377,
+        blue: 9031664,
+        darkblue: 26544,
+        spotify: 1947988
+        }
+
+        return colors[color];
+    }
     
     emote = {
         "error": "<:no:917982868922335272>",
@@ -190,12 +195,20 @@ class ExtraUtils extends Utils {
         });
     }
 
+    /**
+   * Creates a Promise that resolves after a specified duration.
+   * @param {Message} msg Message object
+   * @param {Error} err Error object
+   * @param {string} type Type of error
+   * @param {string} message Message to send to the command channel
+   * @returns {Promise<void>}
+   */
     async logError(msg, err, type, message) {
         await this.bot.getChannel(secret.bot.logChannel).createMessage({
             embed: {
                 author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
                 title: 'Error',
-                color: this.color.red,
+                color: this.getColor('red'),
                 description: `\`\`\`${err.stack}\`\`\``,
                 timestamp: new Date()
             }
