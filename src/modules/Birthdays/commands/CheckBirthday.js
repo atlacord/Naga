@@ -43,7 +43,7 @@ class CheckBirthday extends Command {
 
     async checkBirthday() {
         let birthdayMentions = [];
-        const announcementChannel = '372087095121936385';
+        const announcementChannel = '1007044599287656559';
         
         try {
 
@@ -59,8 +59,10 @@ class CheckBirthday extends Command {
                 const members = docs.map(x => x._id);
     
                 for (let i in members) {
-                    birthdayMentions.push(`<@!${members[i]}>`);
-                    this.bot.addGuildMemberRole(GUILD_ID, members[i], BIRTHDAY_ROLE, 'It\'s their birthday!');
+                    if (this.bot.guilds.get(GUILD_ID).members.has(members[i])) {
+                        birthdayMentions.push(`<@!${members[i]}>`);
+                        this.bot.addGuildMemberRole(GUILD_ID, members[i], BIRTHDAY_ROLE, 'It\'s their birthday!');
+                    }
                 }
     
                 let embed = {
@@ -83,11 +85,6 @@ class CheckBirthday extends Command {
     //     await this.utils.delayFor(86400000);
     //     this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
     // }
-
-    async executeBirthday(member) {
-        return birthdayMentions;
-    }
-
 
     async execute() {
         this.checkBirthday()
