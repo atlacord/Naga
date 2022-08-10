@@ -4,5 +4,5 @@ module.exports = {
     PlayFlag: require('./FlagQuiz/PlayFlag'),
     PlayLogo: require('./LogoQuiz/PlayLogo'),
     PlayTyping: require('./TypingQuiz/PlayTyping'),
-    Wordle: require('./Wordle/Wordle')
+    // Wordle: require('./Wordle/Wordle')
 };
