@@ -1,8 +1,8 @@
 const { Command, CommandOptions } = require('axoncore');
 const { createCanvas, registerFont } = require('canvas');
 const _ = require('lodash');
-const topic = require('../../../assets/typingtopics.json');
-const profile = require('../../../Models/Profile');
+const topic = require('../../../../assets/typingtopics.json');
+const profile = require('../../../../Models/Profile');
 registerFont('src/assets/handwriting.ttf', { family: 'Handwriting'});
 
 class TypingQuiz extends Command {
@@ -73,7 +73,7 @@ class TypingQuiz extends Command {
             await this.sendMessage(msg.channel, { file: { file: canvas.toBuffer(), name: 'typequiz.png' }});
 
             const filter = (message => message.author === msg.author);
-            const options = { filter: filter, count: 1, timeout: 45000 };
+            const options = { filter: filter, count: 1, timeout: 50000 };
             await msg.channel.awaitMessages(options).then(collection => {
 
                 const content = collection.collected.random().content.toLowerCase();

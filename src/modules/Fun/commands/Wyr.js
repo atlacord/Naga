@@ -45,7 +45,7 @@ class Wyr extends Command {
         
         let embed = {
             title: 'Let\'s play Would You Rather!',
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             description: `Would you rather: \n 🅰️ ${Option1} \n or \n :regional_indicator_b: ${Option2}`
         }
 

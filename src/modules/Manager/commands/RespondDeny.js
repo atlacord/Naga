@@ -56,7 +56,7 @@ class RespondDeny extends Command {
                 let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
 
                 let embed = suggestion.embeds[0];
-                embed.color = this.utils.color.red;
+                embed.color = this.utils.getColor('red');
                 embed.fields[0] = { name: 'Status', value: status };
                 embed.fields.push({ name: 'Reason', value:  reason });
 
@@ -69,7 +69,7 @@ class RespondDeny extends Command {
                             embed: {
                                 author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
                                 title: 'Your suggestion has been responded to!',
-                                color: this.utils.color.red,
+                                color: this.utils.getColor('red'),
                                 description: embed.description,
                                 fields: [
                                     { name: 'Status', value: status, inline: false },

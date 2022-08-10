@@ -24,7 +24,7 @@ class Ready extends Listener {
         let embed = {
             title: 'Online',
             description: `${this.bot.user.username} is wide awake!`,
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             footer: { text: this.bot.user.username },
             timestamp: new Date()
         }

@@ -30,7 +30,7 @@ class DMLogs extends Listener {
 
         let embed = {
             author: { name: `${msg.author.username}#${msg.author.discriminator}`, icon_url: msg.author.avatarURL },
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             title: 'New Message',
             footer: { text: `User ID: ${msg.author.id}` },
             timestamp: new Date()

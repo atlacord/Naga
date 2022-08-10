@@ -47,7 +47,7 @@ class ATLA extends Command {
         const topic = Math.floor(Math.random() * atlatopics.length);
         return this.sendMessage(msg.channel, {
             embed: {
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
                 description: atlatopics[topic]
             }
         });

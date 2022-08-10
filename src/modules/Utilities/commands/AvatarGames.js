@@ -1,6 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const AvatarStart = require('./AvatarStart');
-const AvatarEnd = require('./AvatarEnd');
+const AvatarStart = require('./AvatarGames/Start');
+const AvatarEnd = require('./AvatarGames/End');
 
 class AvatarGames extends Command {
     /**

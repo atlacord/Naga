@@ -46,7 +46,7 @@ class ArchiveAll extends Command {
         this.permissions = new CommandPermissions(this, {
             staff: {
                 needed: this.axon.staff.admins,
-                bypass: this.axon.staff.admins,
+                bypass: this.axon.staff.owners,
             },
         } );
     }
@@ -91,7 +91,7 @@ class ArchiveAll extends Command {
           if (!args || args[0] !== 'start') {
             this.sendMessage(msg.channel, {
                 embed: {
-                    color: this.utils.color.blue,
+                    color: this.utils.getColor('blue'),
                     description: [`Welcome to the experimental Naga archive feature! This is still a work-in-progress.`,
                     `Currently, Naga is capable of archiving all text messages sent in the Closed Channels and Events categories (I will add support for individual channels beyond that once image archiving is finished.)\n`,
                     `This process will take roughly 2 hours, depending on ratelimits and the size of each channel. All files will be sent in the "Archives" directory, where they can then be shared however you wish.\n`,
@@ -107,7 +107,7 @@ class ArchiveAll extends Command {
 
           this.sendMessage(msg.channel, { 
             embed: {
-                color: this.utils.color.blue,
+                color: this.utils.getColor('green'),
                 description: `Now archiving **${channels.length}** channels. Depending on ratelimits and channel size, this can take anywhere from 10 minutes to 4 hours.`
             }
           })

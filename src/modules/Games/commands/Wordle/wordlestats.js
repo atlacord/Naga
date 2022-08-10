@@ -1,21 +1,22 @@
 const { Command, CommandOptions } = require('axoncore');
+const WordleFunc = require(`./WordleFunctions`);
 
-class AvatarStart extends Command {
+class WordleStats extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'start';
-        this.aliases = [ 'start' ];
+        this.label = 'stats';
+        this.aliases = [ 'stats' ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'agames start',
-            description: 'Unlocks the Avatar Games channel!',
-            usage: 'agames start',
+            name: 'wordle stats',
+            description: 'Get your wordle stats!',
+            usage: 'wordle stats',
         };
 
         /**
@@ -31,13 +32,11 @@ class AvatarStart extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg } ) {
-
-        await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 1024n, 0n, 0)
-        this.sendMessage(msg.channel, 'Starting Avatar Games!');
+     async execute( { msg } ) {
+        WordleFunc.ShowWordleStats(msg)
     }
 }
 
 
-module.exports = AvatarStart;
+module.exports = WordleStats;
 

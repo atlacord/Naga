@@ -45,7 +45,7 @@ class Dog extends Command {
 
                 this.sendMessage(msg.channel, {
                     embed: {
-                        color: this.utils.color.dblue,
+                        color: this.utils.getColor('darkblue'),
                         description: `**Found an adorable doggo!**`,
                         image: { 
                             url: curl 

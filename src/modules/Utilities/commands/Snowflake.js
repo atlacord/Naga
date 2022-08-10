@@ -62,7 +62,7 @@ class Snowflake extends Command {
             let timestamp = this.validateSnowflake(args[0], DISCORD_EPOCH);
             let embed = {
                 title: 'Valid snowflake!',
-                color: this.utils.color.blue,
+                color: this.utils.getColor('blue'),
                 description: `This snowflake was created at **<t:${Math.floor(timestamp / 1000)}>**`,
             //  timestamp: new Date()
             }

@@ -1,9 +1,9 @@
 const { Command, CommandOptions } = require('axoncore');
-const Captcha = require('./Captcha');
-const FlagQuiz = require('./FlagQuiz');
+const Captcha = require('./Captcha/Captcha');
+const FlagQuiz = require('./FlagQuiz/FlagQuiz');
 // const Hangman = require('./Hangman');
-const LogoQuiz = require('./LogoQuiz');
-const TypingQuiz = require('./TypingQuiz');
+const LogoQuiz = require('./LogoQuiz/LogoQuiz');
+const TypingQuiz = require('./TypingQuiz/TypingQuiz');
 
 class Game extends Command {
     /**
@@ -44,7 +44,7 @@ class Game extends Command {
     
     async execute({ msg }) {
         this.sendMessage(msg.channel, { embed: {
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             description: `Run \`${this.axon.settings.prefixes}game [game]\` to play a game!`
         }})
     }

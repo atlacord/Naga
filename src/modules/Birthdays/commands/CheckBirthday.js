@@ -47,40 +47,36 @@ class CheckBirthday extends Command {
         
         try {
 
-            let inRoles, outRoles = ['787644908705153024'];
+		    let existingBirthdays = this.bot.guilds.get(GUILD_ID).members.filter(m =>
+            m.roles.includes(BIRTHDAY_ROLE));
 
-		    let members = guild.members.filter(m =>
-            inRoles.filter(r => m.roles.includes(r.id)).length === inRoles.length);
-            members = members.filter(m => outRoles.filter(r => m.roles.includes(r.id)).length === 0);
-
-            for (let x in members) {
-                this.bot.removeGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Birthday ended');
-                console.log(`[Birthday] Birthday role (should have been) removed from ${doc._id}.`);
+            for (let i in existingBirthdays) {
+                this.bot.removeGuildMemberRole(GUILD_ID, existingBirthdays[i].id, BIRTHDAY_ROLE, 'Birthday ended');
+                console.log(`[Birthday] Birthday role (should have been) removed from ${existingBirthdays[i].id}.`);
             }
 
             db.find({ 'data.profile.birthday': moment().format('Do MMMM') }, async (err, docs) => {
-                console.log(moment().format('Do MMMM'));
-            const members = docs.map(x => x._id);
-            console.log(docs)
-
-            for (let i in members) {
-                this.executeBirthday(members[i], birthdayMentions);
+                const members = docs.map(x => x._id);
+    
+                for (let i in members) {
+                    birthdayMentions.push(`<@!${members[i]}>`);
+                    this.bot.addGuildMemberRole(GUILD_ID, members[i], BIRTHDAY_ROLE, 'It\'s their birthday!');
+                }
+    
+                let embed = {
+                    title: 'Happy Birthday!',
+                    color: parseInt('f294f3', 16),
+                    description: `Don't worry, the captain cares enough to remember the birthday(s) of ${birthdayMentions.join(', ')}!\n\nWishing you a very happy birthday! Welcome to the Pink Lotus!`,
+                    thumbnail: { url: 'https://cdn.discordapp.com/emojis/887756769865109546.png?v=1' },
+                    image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
+                }
+                if (birthdayMentions.length >= 1) {
+                    await this.bot.getChannel(announcementChannel).createMessage({embed});
+                }
+                })
+            } catch (err) {
+                console.error(err);
             }
-        })
-
-            let embed = {
-                title: 'Happy Birthday!',
-                color: parseInt('f294f3', 16),
-                description: `Don't worry, the captain cares enough to remember the birthday(s) of ${birthdayMentions.join(', ')}!\n\nWishing you a very happy birthday! Welcome to the Pink Lotus!`,
-                thumbnail: { url: 'https://cdn.discordapp.com/emojis/887756769865109546.png?v=1' },
-                image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
-            }
-            if (birthdayMentions.length >= 1) {
-                await this.bot.getChannel(announcementChannel).createMessage({embed});
-            }
-        } catch (err) {
-            console.error(err);
-        }
     }
 
     // async scheduleRemoval(member) {
@@ -88,18 +84,8 @@ class CheckBirthday extends Command {
     //     this.bot.removeGuildMemberRole('370708369951948800', member, '787644908705153024', 'Birthday ended');
     // }
 
-    async executeBirthday(member, mentions) {
-        db.findById((member), (err, doc) => {
-            if (this.bot.guilds.get(GUILD_ID).members.has(member)) {
-                mentions.push(`<@!${member}>`);
-                this.bot.addGuildMemberRole(GUILD_ID, member, BIRTHDAY_ROLE, 'Temporary birthday role');
-                doc.data.birthdayTimestamp = Date.now();
-                console.log(`[Birthday] Birthday role assigned to ${doc._id} at ${doc.data.birthdayTimestamp}`);
-            }
-        doc.save().catch((err), this.logger.error(err.stack));
-        })
-        console.log(mentions);
-        return mentions;
+    async executeBirthday(member) {
+        return birthdayMentions;
     }
 
 

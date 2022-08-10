@@ -111,7 +111,7 @@ class Eval extends Command {
     sendCode(channel, content, lang = 'js') {
         return this.sendMessage(channel, {
             embed: {
-                color: this.utils.color.green,
+                color: this.utils.getColor('green'),
                 author: {
                     name: 'Eval Result',
                     // icon_url: msg.author.avatarURL

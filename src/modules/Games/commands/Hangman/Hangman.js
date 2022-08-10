@@ -1,7 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
-const profile = require('../../../Models/Profile');
+const profile = require('../../../../Models/Profile');
 const attachment = `${process.cwd()}/assets/images/30-sec-timer.gif`;
-const gameword = require('../../../assets/hangman.json');
+const gameword = require('../../../../assets/hangman.json');
 const hangs = [
    '/---|\n|\n|\n|\n|',
    '/---|\n|   o\n|\n|\n|',
@@ -54,7 +54,7 @@ class Hangman extends Command {
         let word = phrase.replace(/\w/ig,'_')
 
         const embed = {
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             author: { name: 'Hangman' },
             description: 'Guess the word! (Avatar universe)',
             fields: [

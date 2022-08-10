@@ -1,6 +1,6 @@
 const { Command, CommandPermissions, CommandOptions } = require('axoncore');
 
-class Setgame extends Command {
+class SetGame extends Command {
     constructor(module) {
         super(module);
 
@@ -55,4 +55,4 @@ class Setgame extends Command {
     }
 }
 
-module.exports = Setgame;
+module.exports = SetGame;

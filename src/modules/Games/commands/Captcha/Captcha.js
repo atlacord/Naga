@@ -1,7 +1,7 @@
 const { Command, CommandOptions } = require('axoncore');
 const { createCanvas, registerFont } = require('canvas');
 const _ = require('lodash');
-const profile = require('../../../Models/Profile');
+const profile = require('../../../../Models/Profile');
 registerFont('src/assets/captcha.ttf', { family: 'Captcha'});
 
 class Captcha extends Command {
@@ -75,7 +75,7 @@ class Captcha extends Command {
 
                 if (content === codeText) {
                     captchaCount += 1;
-                    this.sendSuccess(msg.channel, `You answered the captcha correctly! Added **100 credits!** (Current streak: ${captchaCount}`);
+                    this.sendSuccess(msg.channel, `You answered the captcha correctly! Added **100 credits!** (Current streak: ${captchaCount})`);
                     baseCredits += 100;
                     length += 1;
                     return;
@@ -125,7 +125,7 @@ class Captcha extends Command {
 
             return doc.save().then(() => {
                 if (!win) {
-                    return this.sendError(msg.channel, 'You lost on your first attempt. You received 200 credits for trying!');
+                    return this.sendError(msg.channel, 'You lost on your first attempt. You received **200 credits** for trying!');
                 } else {
                     return this.sendSuccess(msg.channel, `Congratulations! You received **${baseCredits}** credits for solving **${captchaCount}** captchas!`)
                 }

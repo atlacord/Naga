@@ -1,21 +1,22 @@
 const { Command, CommandOptions } = require('axoncore');
-const WordleFunc = require(`../wordlefunctions`)
-class WordleStats extends Command {
+const WordleFunc = require(`./WordleFunctions`);
+
+class WordleGuess extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'stats';
-        this.aliases = [ 'stats' ];
+        this.label = 'guess';
+        this.aliases = [ 'guess' ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'wordle stats',
-            description: 'Get your wordle stats!',
-            usage: 'wordle stats',
+            name: 'wordle guess',
+            description: 'Guess a word!',
+            usage: 'wordle guess',
         };
 
         /**
@@ -32,10 +33,10 @@ class WordleStats extends Command {
      */
 
      async execute( { msg } ) {
-        WordleFunc.ShowWordleStats(msg)
+        WordleFunc.PlayWordle(msg)
     }
 }
 
 
-module.exports = WordleStats;
+module.exports = WordleGuess;
 

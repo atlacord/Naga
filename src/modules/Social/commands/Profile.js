@@ -47,7 +47,7 @@ class Profile extends Command {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
 
             } else if (!doc || doc.data === null) {
-                return this.sendError(msg.channel, `This user has not started earning XP in this server yet!`);
+                return this.sendError(msg.channel, `This user does not have a profile yet.`);
             };
 
             const serverRank = await profile.find({ 'data.xp.id': msg.channel.guild.id })

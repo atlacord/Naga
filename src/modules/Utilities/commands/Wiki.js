@@ -43,13 +43,13 @@ class Wiki extends Command {
                 let query = args.join(' ');
                 query = query.replace(/(^\w{1})|(\s+\w{1})/g, firstWord => firstWord.toUpperCase()).split(' ').join('_');
 
-                let res = await axios.get('https://wiki.atla.sh/pages');
+                let res = await axios.get(`${wikiHost}/pages`);
                 let pages = res.data;
-
+                
                 if (pages.includes(query)) {
-                    this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \n${wikiHost}/${query}`);
+                        this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \n${wikiHost}/${query}`);
                 } else {
-                    this.sendError(msg.channel, 'Page not found. Make sure you are spelling the title correctly!');
+                    return this.sendError(msg.channel, 'Page not found. Make sure you are spelling the title correctly!');
                 }
             }
         } catch (err) {

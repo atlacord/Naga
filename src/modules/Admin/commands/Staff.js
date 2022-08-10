@@ -6,7 +6,8 @@ class Staff extends Command {
 
         this.label = 'staff';
         this.aliases = [
-            'liststaff'
+            'liststaff',
+            'nagaperms'
         ];
 
         this.info = {
@@ -71,7 +72,7 @@ class Staff extends Command {
         }
 
         let embed = {
-            color: this.utils.color.blue,
+            color: this.utils.getColor('blue'),
             author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
             fields: [
                 { name: 'White Lotus', value: wl.join('\n') },
