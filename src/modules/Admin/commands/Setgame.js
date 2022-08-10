@@ -14,7 +14,7 @@ class SetGame extends Command {
             description: 'Changes status',
             usage: 'setgame [type] [status]',
         };
-
+// If you're reading this you are a nerd lol
       /**
          * @type {CommandOptions}
          */
