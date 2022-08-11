@@ -22,15 +22,15 @@ class ArchiveAll extends Command {
     constructor(module) {
         super(module);
 
-        this.label = 'archive all';
+        this.label = 'archiveall';
         this.aliases = [];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'archive all',
+            name: 'archiveall',
             description: 'Archives all channels from the Closed Channel & Events categories',
-            usage: 'archive all',
+            usage: 'archiveall',
         };
 
         /**
@@ -85,24 +85,12 @@ class ArchiveAll extends Command {
           let channel = null;
 
           let categories = [ '562452488301838346', '896411136407240704', '758001268051673139' ];
+          let trialChannels = ['431892824149983253', '755185750970204311', '726479365441060904'];
+
           let channels = [];
           let channelNames = [];
 
-          if (!args || args[0] !== 'start') {
-            this.sendMessage(msg.channel, {
-                embed: {
-                    color: this.utils.getColor('blue'),
-                    description: [`Welcome to the experimental Naga archive feature! This is still a work-in-progress.`,
-                    `Currently, Naga is capable of archiving all text messages sent in the Closed Channels and Events categories (I will add support for individual channels beyond that once image archiving is finished.)\n`,
-                    `This process will take roughly 2 hours, depending on ratelimits and the size of each channel. All files will be sent in the "Archives" directory, where they can then be shared however you wish.\n`,
-                    `You may start the process by running \`n.archive start\`. Let me know if anything breaks!\n`,
-                    `-soda`].join('\n')
-                }
-            })
-          }
-
-          else {
-          let c = await this.bot.guilds.get('370708369951948800').channels.filter(i => categories.includes(i.parentID))
+          let c = await this.bot.guilds.get('370708369951948800').channels.filter(i => (categories.includes(i.parentID)) && (!trialChannels.includes(i.id)))
           c.forEach(i => channels.push(i.id));
 
           this.sendMessage(msg.channel, { 
@@ -116,50 +104,44 @@ class ArchiveAll extends Command {
             channelNames.push(channel.name);
 
             try {
-                // let channel = args[0].replace('<#','');
-                // channel = channel.replace('>', '').toString();
-                // const quantity = Math.round(MESSAGE_QUANTITY);
 
-            // if (!quantity || quantity < 2) {
-            //     return this.sendError(msg.channel, `Please provide the quantity of messages you want to archive!`);
-            // }
+                let lastMsg = channel.lastMessageID;
 
-            let lastMsg = channel.lastMessageID;
+                this.sendSuccess(msg.channel, `Archiving ${channel.name} (\`${i + 1}/${channels.length}\`)`);
+                console.info(`Now archiving ${channel.name}.`)
 
-            this.sendSuccess(msg.channel, `Archiving ${channel.name} (\`${i}/${channels.length}\`)`);
-            console.info(`Now archiving ${channel.name}.`)
+                await this.bot.getMessages(channel.id, { limit: MESSAGE_QUANTITY, before: lastMsg })
+                .then(async messages => {
+                    const count = messages.size; 
+                    const _id = Math.random().toString(36).slice(-7); 
 
-            await this.bot.getMessages(channel.id, { limit: MESSAGE_QUANTITY, before: lastMsg })
-            .then(async messages => {
-                const count = messages.size; 
-                const _id = Math.random().toString(36).slice(-7); 
-                // let upch = '570053930193518594'
-                // let senduploadchannel = await this.bot.getChannel(upch)
-
-                messages = messages.filter(Boolean).map(msg => {
-                    let link = null;
-                    let imgurLinks = [];
-                    if (msg.attachments.length > 0) {
-                        for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
-                            // link = await this.uploadImage(client, i, msg);
-                            imgurLinks.push(msg.attachments[i].url)
+                    messages = messages.filter(Boolean).map(msg => {
+                        let link = null;
+                        let imgurLinks = [];
+                        if (msg.attachments.length > 0) {
+                            for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
+                                // link = await this.uploadImage(client, i, msg);
+                                if (!((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
+                                    this.sendError(msg.channel, 'A message in this channel contained a video. It was not archived.');
+                                    imgurLinks.push(msg.attachments[i].url);
+                                }
+                            }
                         }
-                    }
-                    return [
-                        `[${moment(msg.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
-                        `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
-                    ].join(' ');
-                }); 
+                        return [
+                            `[${moment(msg.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
+                            `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
+                        ].join(' ');
+                    }); 
 
-                messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
-                messages = messages.reverse().join('');
+                    messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
+                    messages = messages.reverse().join('');
 
-                const data = Buffer.from(messages, 'utf8');
-                fs.writeFile(`Archives/${channel.name}.txt`, data, (err) => {
-                    // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
-                });
-            })
-                this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i + 1}/${channels.length}\`)`)
+                    const data = Buffer.from(messages, 'utf8');
+                    fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
+                        // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
+                    });
+                })
+                this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i}/${channels.length}\`)`)
                 console.info(`Finished archiving ${channel.name}.`)
             } catch (err) {
                 this.utils.logError(msg, err, 'internal', 'Something went wrong.');
@@ -172,8 +154,8 @@ class ArchiveAll extends Command {
 		for (let m of msgArray) {
 			this.sendMessage(msg.channel, m);
 		} */
-      }
     }
 }
+
 
 module.exports = ArchiveAll; 

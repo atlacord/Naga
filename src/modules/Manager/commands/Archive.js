@@ -5,7 +5,8 @@ const hastebin = require('hastebin')
 const { exec } = require('child_process');
 const fs = require('fs');
 
-const ArchiveAll = require('./ArchiveAll');
+// const ArchiveAll = require('./ArchiveAll');
+// const ArchiveImages = require('./ArchiveImages');
 
 // Probably should've put these in an env variable file but whatever
 const clientId = '52b527e0d60b7b0';
@@ -44,7 +45,7 @@ class Archive extends Command {
          */
 
         this.options = new CommandOptions(this, {
-            argsMin: 0,
+            argsMin: 1,
             guildOnly: true,
         } );
 
@@ -93,16 +94,13 @@ class Archive extends Command {
         const quantity = Math.round(MESSAGE_QUANTITY);
 
         try {
-            if (!quantity || quantity < 2) {
-                return this.sendError(msg.channel, `Please provide the quantity of messages you want to archive!`);
-            }
 
             let lastMsg = channel.lastMessageID;
 
             this.sendSuccess(msg.channel, `Archiving ${channel.name}`);
             console.info(`Now archiving ${channel.name}.`)
 
-            await this.bot.getMessages(channel.id, { limit: 1000, before: lastMsg })
+            await this.bot.getMessages(channel.id, { limit: quantity, before: lastMsg })
             .then(async messages => {
                 const count = messages.size; 
                 const _id = Math.random().toString(36).slice(-7); 
@@ -110,12 +108,13 @@ class Archive extends Command {
                 // let senduploadchannel = await this.bot.getChannel(upch)
 
                 messages = messages.filter(Boolean).map(msg => {
-                    let link = null;
                     let imgurLinks = [];
                     if (msg.attachments.length > 0) {
                         for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
-                            // link = await this.uploadImage(client, i, msg);
-                            imgurLinks.push(msg.attachments[i].url)
+                            if (!((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
+                                this.sendError(msg.channel, 'A message in this channel contained a video. It was not archived.');
+                                imgurLinks.push(msg.attachments[i].url);
+                            }
                         }
                     }
                     return [
@@ -132,7 +131,7 @@ class Archive extends Command {
                     // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                 });
             })
-                this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i + 1}/${channels.length}\`)`)
+                this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`)
                 console.info(`Finished archiving ${channel.name}.`)
         } catch (err) {
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');
