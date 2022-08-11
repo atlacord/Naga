@@ -1,3 +1,4 @@
 module.exports = {
-    CheckBirthday: require('./CheckBirthday')
+    CheckBirthday: require('./CheckBirthday'),
+    ListBirthday: require('./ListBirthday')
 }

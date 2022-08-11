@@ -45,8 +45,7 @@ class Say extends Command {
         try {
             let channel = args[0].replace('<#','');
             channel = channel.replace('>', '').toString();
-            console.log(channel)
-            this.bot.getChannel(channel).createMessage(args[1]);
+            this.bot.getChannel(channel).createMessage(args.slice(1).join(' '));
         } catch (err) {
             console.log(err)
         }
