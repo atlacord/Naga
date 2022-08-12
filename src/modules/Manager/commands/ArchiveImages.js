@@ -13,7 +13,7 @@ const MESSAGE_QUANTITY = 400000;
 const finished = promisify(stream.finished);
 
 const archives = readdirSync('Archives');
-const IMAGE_CHANNEL = '1007299370804322354'
+const IMAGE_CHANNEL = '1004202430776479824'
 
 class ArchiveImages extends Command {
 
@@ -105,28 +105,29 @@ class ArchiveImages extends Command {
                     let attachment = line.split(' ')
                     let path = null;
                     let lastMsg = await this.bot.getChannel(IMAGE_CHANNEL).lastMessageID;
-
-                    await this.downloadFile(channelName, attachment[1], `Archives/${channelName}/Images/${ins}.${attachment[1].slice(-3)}`, ins, attachment[1].slice(-3));
-                    await this.bot.getMessages(IMAGE_CHANNEL, { limit: MESSAGE_QUANTITY, before: lastMsg })
-                    .then(async messages => {
-                        messages.filter(Boolean).map(async msg => {
-                            if (msg.content === `${channelName}-${ins}`) {
-                                path = msg.attachments[0].url;
-                                let options = {
-                                    files: `Archives/${channelName}.md`,
-                                    from: attachment[1],
-                                    to: path,
-                                    countMatches: true,
+                    if (channelName !== 'feedback_hawk_archived') {
+                        await this.downloadFile(channelName, attachment[1], `Archives/${channelName}/Images/${ins}.${attachment[1].slice(-3)}`, ins, attachment[1].slice(-3));
+                        await this.bot.getMessages(IMAGE_CHANNEL, { limit: MESSAGE_QUANTITY, before: lastMsg })
+                        .then(async messages => {
+                            messages.filter(Boolean).map(async msg => {
+                                if (msg.content === `${channelName}-${ins}`) {
+                                    path = msg.attachments[0].url;
+                                    let options = {
+                                        files: `Archives/${channelName}.md`,
+                                        from: attachment[1],
+                                        to: path,
+                                        countMatches: true,
+                                    }
+                                    try {
+                                        const res = await replace(options);
+                                        console.log(res);
+                                    } catch (error) {
+                                        console.error(error);
+                                    }
                                 }
-                                try {
-                                    const res = await replace(options);
-                                    console.log(res);
-                                } catch (error) {
-                                    console.error(error);
-                                }
-                            }
+                            })
                         })
-                    })
+                    }
                 }
             };
             await rl.on('close', function() {
@@ -142,8 +143,9 @@ class ArchiveImages extends Command {
      */
 
     async execute({msg, args}) {
+        this.sendSuccess(msg.channel, 'Starting export.\n\nPlease note that the success message sent below this may be misleading, especially for bigger channels, as the attachments may not be finished downloading.')
         let channels = [];
-        archives.forEach(channel => {
+        archives.forEach((channel) => {
             console.log(channel)
             let channelName = channel.slice(0, -3);
             if (path.extname(channel) === ('.md')) {
@@ -162,7 +164,7 @@ class ArchiveImages extends Command {
             this.sendSuccess(msg.channel, `Exporting images from ${channelName} (\`${i + 1}/${channels.length}\`)`);
 
             if (i === (channels.length - 1)) {
-                this.sendSuccess(msg.channel, 'Successfully exported images! Run \`n.getarchive\` to upload the channel archives to Discord.\n\nNote: This message may be misleading, wait a few minutes (or up to an hour) depending on how big the channel is.')
+                this.sendSuccess(msg.channel, 'Successfully exported images! Run \`n.getarchive\` to upload the channel archives to Discord.')
             }
 
             await this.processLineByLine(channelName);

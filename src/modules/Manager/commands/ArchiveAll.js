@@ -1,14 +1,13 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const moment = require('moment');
 const { ImgurClient } = require('imgur');
-const hastebin = require('hastebin')
 const { exec } = require('child_process');
 const fs = require('fs');
 
 // Probably should've put these in an env variable file but whatever
-const clientId = '52b527e0d60b7b0';
-const clientSecret = 'b433ad10a9334a0ac51f4953f3b8e46a53ff4880';
-const refreshToken = '41839a7d6ff2db6ef2caf6f4ae4005ce29302eac';
+// const clientId = '52b527e0d60b7b0';
+// const clientSecret = 'b433ad10a9334a0ac51f4953f3b8e46a53ff4880';
+// const refreshToken = '41839a7d6ff2db6ef2caf6f4ae4005ce29302eac';
 
 const MESSAGE_QUANTITY = 400000;
 
@@ -76,11 +75,11 @@ class ArchiveAll extends Command {
 
     async execute ( { msg, args } ) {
 
-        const client = new ImgurClient({
-            clientId: clientId,
-            clientSecret: clientSecret,
-            refreshToken: refreshToken,
-          });
+        // const client = new ImgurClient({
+        //     clientId: clientId,
+        //     clientSecret: clientSecret,
+        //     refreshToken: refreshToken,
+        //   });
 
           let channel = null;
 
@@ -99,7 +98,7 @@ class ArchiveAll extends Command {
                 description: `Now archiving **${channels.length}** channels. Depending on ratelimits and channel size, this can take anywhere from 10 minutes to 4 hours.`
             }
           })
-          for (let i = 0; i <= 112; i += 1) {
+          for (let i = 0; i <= channels.length; i += 1) {
             channel = await this.bot.getChannel(channels[i]);
             channelNames.push(channel.name);
 
@@ -112,15 +111,10 @@ class ArchiveAll extends Command {
 
                 await this.bot.getMessages(channel.id, { limit: MESSAGE_QUANTITY, before: lastMsg })
                 .then(async messages => {
-                    const count = messages.size; 
-                    const _id = Math.random().toString(36).slice(-7); 
-
                     messages = messages.filter(Boolean).map(msg => {
-                        let link = null;
                         let imgurLinks = [];
                         if (msg.attachments.length > 0) {
                             for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
-                                // link = await this.uploadImage(client, i, msg);
                                 if (!((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
                                     imgurLinks.push(msg.attachments[i].url);
                                 }

@@ -9,9 +9,9 @@ const fs = require('fs');
 // const ArchiveImages = require('./ArchiveImages');
 
 // Probably should've put these in an env variable file but whatever
-const clientId = '52b527e0d60b7b0';
-const clientSecret = 'b433ad10a9334a0ac51f4953f3b8e46a53ff4880';
-const refreshToken = '41839a7d6ff2db6ef2caf6f4ae4005ce29302eac';
+// const clientId = '52b527e0d60b7b0';
+// const clientSecret = 'b433ad10a9334a0ac51f4953f3b8e46a53ff4880';
+// const refreshToken = '41839a7d6ff2db6ef2caf6f4ae4005ce29302eac';
 
 const MESSAGE_QUANTITY = 400000;
 
@@ -82,11 +82,11 @@ class Archive extends Command {
 
     async execute ( { msg, args } ) {
 
-        const client = new ImgurClient({
-            clientId: clientId,
-            clientSecret: clientSecret,
-            refreshToken: refreshToken,
-        });
+        // const client = new ImgurClient({
+        //     clientId: clientId,
+        //     clientSecret: clientSecret,
+        //     refreshToken: refreshToken,
+        // });
 
         let channel = args[0].replace('<#','');
         channel = channel.replace('>', '').toString();
@@ -102,11 +102,6 @@ class Archive extends Command {
 
             await this.bot.getMessages(channel.id, { limit: quantity, before: lastMsg })
             .then(async messages => {
-                const count = messages.size; 
-                const _id = Math.random().toString(36).slice(-7); 
-                // let upch = '570053930193518594'
-                // let senduploadchannel = await this.bot.getChannel(upch)
-
                 messages = messages.filter(Boolean).map(msg => {
                     let imgurLinks = [];
                     if (msg.attachments.length > 0) {
