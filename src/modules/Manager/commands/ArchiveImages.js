@@ -13,7 +13,7 @@ const MESSAGE_QUANTITY = 400000;
 const finished = promisify(stream.finished);
 
 const archives = readdirSync('Archives');
-const IMAGE_CHANNEL = '1004202430776479824'
+const IMAGE_CHANNEL = '1007299370804322354'
 
 class ArchiveImages extends Command {
 
@@ -144,6 +144,7 @@ class ArchiveImages extends Command {
     async execute({msg, args}) {
         let channels = [];
         archives.forEach(channel => {
+            console.log(channel)
             let channelName = channel.slice(0, -3);
             if (path.extname(channel) === ('.md')) {
                 channels.push(channelName)
@@ -158,12 +159,12 @@ class ArchiveImages extends Command {
             }
 
             let channelName = channels[i];
-            this.sendSuccess(msg.channel, `Exporting images from ${channelName} (${i + 1}/${channels.length})`);
+            this.sendSuccess(msg.channel, `Exporting images from ${channelName} (\`${i + 1}/${channels.length}\`)`);
 
             if (i === (channels.length - 1)) {
-                this.sendSuccess(msg.channel, 'Successfully exported images! Run \`n.getarchive\` to upload the channel archives to Discord.')
+                this.sendSuccess(msg.channel, 'Successfully exported images! Run \`n.getarchive\` to upload the channel archives to Discord.\n\nNote: This message may be misleading, wait a few minutes (or up to an hour) depending on how big the channel is.')
             }
-            
+
             await this.processLineByLine(channelName);
         }
     }
