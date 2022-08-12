@@ -111,14 +111,15 @@ class Archive extends Command {
                     let imgurLinks = [];
                     if (msg.attachments.length > 0) {
                         for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
-                            if (!((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
-                                this.sendError(msg.channel, 'A message in this channel contained a video. It was not archived.');
+                            if (((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
+                                return this.sendError(msg.channel, 'A message in this channel contained a video. It was not archived.');
+                            } else {
                                 imgurLinks.push(msg.attachments[i].url);
                             }
                         }
                     }
                     return [
-                        `[${moment(msg.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
+                        `[${moment(msg.createdAt).format('MMMM do YYYY hh:mm a')}]`,
                         `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
                     ].join(' ');
                 }); 
