@@ -111,9 +111,7 @@ class Archive extends Command {
                     let imgurLinks = [];
                     if (msg.attachments.length > 0) {
                         for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
-                            if (((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
-                                return this.sendError(msg.channel, 'A message in this channel contained a video. It was not archived.');
-                            } else {
+                            if (!((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
                                 imgurLinks.push(msg.attachments[i].url);
                             }
                         }

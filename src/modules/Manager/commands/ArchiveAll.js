@@ -85,12 +85,12 @@ class ArchiveAll extends Command {
           let channel = null;
 
           let categories = [ '562452488301838346', '896411136407240704', '758001268051673139' ];
-          let trialChannels = ['431892824149983253', '755185750970204311', '726479365441060904'];
+          let dontArchive = ['431892824149983253', '755185750970204311', '726479365441060904', '372087508579778570'];
 
           let channels = [];
           let channelNames = [];
 
-          let c = await this.bot.guilds.get('370708369951948800').channels.filter(i => (categories.includes(i.parentID)) && (!trialChannels.includes(i.id)))
+          let c = await this.bot.guilds.get('370708369951948800').channels.filter(i => (categories.includes(i.parentID)) && (!dontArchive.includes(i.id)))
           c.forEach(i => channels.push(i.id));
 
           this.sendMessage(msg.channel, { 
@@ -122,7 +122,6 @@ class ArchiveAll extends Command {
                             for (let i = 0; i <= msg.attachments.length - 1; i += 1) {
                                 // link = await this.uploadImage(client, i, msg);
                                 if (!((msg.attachments[i].url).slice(-3) === ('mov' || 'mp4'))) {
-                                    this.sendError(msg.channel, 'A message in this channel contained a video. It was not archived.');
                                     imgurLinks.push(msg.attachments[i].url);
                                 }
                             }
@@ -141,7 +140,7 @@ class ArchiveAll extends Command {
                         // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                     });
                 })
-                this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i}/${channels.length}\`)`)
+                this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i + 1}/${channels.length}\`)`)
                 console.info(`Finished archiving ${channel.name}.`)
             } catch (err) {
                 this.utils.logError(msg, err, 'internal', 'Something went wrong.');
