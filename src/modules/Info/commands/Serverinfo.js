@@ -51,15 +51,13 @@ class Serverinfo extends Command {
 
         let formattedFeatures = {
             'AUTO_MODERATION': 'Automod',
-            'COMMUNITY': 'Community Server',
             'DISCOVERABLE': 'Server Discovery',
             'FEATURABLE': 'Featured Server',
-            'GUILD_HOME_TEST': 'Home Page Beta',
+            'GUILD_HOME_TEST': 'Home Beta',
             'MEMBER_VERIFICATION_GATE_ENABLED': 'Member Screening',
             'MONETIZATION_ENABLED': 'Server Monetization Program',
             'NEWS': 'News Channels',
             'PARTNERED': '<a:discordPartner:1006803535238811658> **Discord Partner**',
-            'PREVIEW_ENABLED': 'Previewable Server',
             'PRIVATE_THREADS': 'Private Threads',
             'ROLE_ICONS': 'Role Icons',
             'TEXT_IN_VOICE_ENABLED': 'Text in Voice',
@@ -74,9 +72,9 @@ class Serverinfo extends Command {
 		const textChannels = guild.channels.filter(c => c.type === 0).length;
 		const voiceChannels = guild.channels.filter(c => c.type === 2).length;
 
-        let roles = guild.members.get(msg.member.id).roles.map(r => guild.roles.get(r)).filter(r => r.color);
-        roles.sort((a,b) => b.position - a.position);
-        let roleColor = roles[0].color;
+        // let roles = guild.members.get(msg.member.id).roles.map(r => guild.roles.get(r)).filter(r => r.color);
+        // roles.sort((a,b) => b.position - a.position);
+        // let roleColor = roles[0].color;
 
         let features = [];
 
@@ -94,7 +92,7 @@ class Serverinfo extends Command {
                 name: guild.name, 
                 icon_url: guild.iconURL
             },
-            color: roleColor,
+            color: this.utils.getColor('blue'),
             thumbnail: { 
                 url: guild.iconURL 
             },

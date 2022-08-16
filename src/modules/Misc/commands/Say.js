@@ -46,6 +46,7 @@ class Say extends Command {
             let channel = args[0].replace('<#','');
             channel = channel.replace('>', '').toString();
             this.bot.getChannel(channel).createMessage(args.slice(1).join(' '));
+            msg.addReaction('✅');
         } catch (err) {
             console.log(err)
         }
