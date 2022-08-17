@@ -1,5 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
+const MessageEmbed = require("davie-eris-embed")
 // const axios = require('axios');
 
 class Hug extends Command {
@@ -29,13 +30,20 @@ class Hug extends Command {
             guildOnly: true,
         } );
     }
+
+    displayName(message, member) {
+        return (message).channel.guild.members.get(member).nick ?? (message).channel.guild.members.get(member).username;
+    }
+
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg } ) {
+    async execute( { msg, args } ) {
 
-    const member = msg.channel.guild.members.get(args[0]) || msg.member;
+        let member = args[0].replace('<@','');
+        member = member.replace('>', '').toString();
+        member = await this.bot.getRESTGuildMember(msg.guildID, member) || msg.member;
 
     if(member.id === msg.author.id) return this.sendError(msg.channel, `Nah mate can't hug urself innit`)
     const { url } = await fetch("https://nekos.life/api/v2/img/hug")
@@ -43,14 +51,12 @@ class Hug extends Command {
 
     const embed = new MessageEmbed()
     .setTitle("<:twoaww:307378440653373441>")
-    .setDescription(`**${member.displayName}**, you just got hugged by **${msg.member.displayName}**`)
+    .setColor(this.utils.getColor('blue').toString(16))
+    .setDescription(`**${this.displayName(msg, member.id)}**, you just got hugged by **${this.displayName(msg, msg.author.id)}**`)
     .setImage(url)
-    .setFooter(`Requested by: ${msg.author.tag}`, msg.author.displayAvatarURL({ size: 32 }));
+    .setFooter(`Requested by: ${msg.author.username}#${msg.author.discriminator}`, msg.author.avatarURL);
 
-    return msg.channel.createMessage(embed.create) 
-
-
-
+    return msg.channel.createMessage(embed.create);
 
     }
 }

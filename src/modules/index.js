@@ -1,4 +1,5 @@
 module.exports = {
+    Action: require('./Action/index'),
     Admin: require('./Admin/index'),
     Anime: require('./Anime/index'),
     Birthdays: require('./Birthdays/index'),
