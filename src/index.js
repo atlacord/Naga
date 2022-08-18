@@ -2,6 +2,7 @@ const Bot = require('./Bot');
 const chalk = require('chalk');
 const cron = require('node-cron');
 const config = require('../configs/config.json');
+const EventHandler = require('./EventHandler');
 
 if (config.settings.db === 2) {
     try {
@@ -22,11 +23,12 @@ if (config.settings.db === 2) {
     }
 }
 
-Bot.start().then(cron.schedule('0 0 0 * * *', () => {
+Bot.start()
+.then(cron.schedule('0 0 0 * * *', () => {
      Bot.commandRegistry.get('checkbirthday').execute();
      console.log('Checking for new birthdays');
-}));
-
-
+}),
+new EventHandler()
+);
 
 Bot.logger.notice(`${chalk.green('=== ONLINE ===')}`);
