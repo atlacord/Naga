@@ -55,17 +55,16 @@ class Mal extends Command {
             return this.sendError(msg.channel, `Please provide a profile for kme to lookup!`);
         }
     const embed = new MessageEmbed()
-    const data = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/full`)
-    const animedata = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/favorites`)
-    const { anime_stats, manga_stats } = data
-    const { anime, manga, characters, people } = animedata.favorites
-    const total = anime_stats.episodes_watched + manga_stats.volumes_read
-    const badge = malBadges.find( b => total > b.min && total < b.max).url
-    const favanime = hyperlinkify(anime)
-    const favmanga = hyperlinkify(manga)
-    const favchar = hyperlinkify(characters)
-    const favpeople = hyperlinkify(people)
-    let aboutme = `${data.about ? textTruncate(data.about,350,`...[Read More](${data.url})\n\n`) : ``}`
+    const res = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/full`);
+    const animedata = await axios.get(`https://api.jikan.moe/v4/users/${args[0]}/favorites`);
+    const favorites = animedata.data.data || 'No favorites found!';
+    const total = res.data.data.statistics.anime.episodes_watched + res.data.data.statistics.manga.volumes_read;
+    const badge = malBadges.find( b => total > b.min && total < b.max).url;
+    let favanime = favorites.anime[0]; if (favanime === undefined) { favanime = 'Not Listed'; } else favanime = favanime.title;
+    let favmanga = favorites.manga[0]; if (favmanga === undefined) { favmanga = 'Not Listed'; } else favmanga = favmanga.title;
+    let favchar = favorites.characters[0]; if (favchar === undefined) { favchar = 'Not Listed'; }else favchar = favchar.name;
+    let favpeople = favorites.people[0]; if (favpeople === undefined) { favpeople = 'Not Listed' } else favpeople = favpeople.name;
+    let aboutme = `${res.data.data.about ? this.utils.textTruncate(res.data.data.about,350,`...[Read More](${res.data.data.url})\n\n`) : ``}`
    if (aboutme.includes('<img class')) {
         var urlRegex = /src="([^"]+)/
         var input = aboutme 
@@ -75,19 +74,19 @@ class Mal extends Command {
 }
   
   
-            embed.setAuthor("MAL profile search | " + data.username, badge, data.url)
-            embed.setThumbnail(data.image_url)
-            embed.setDescription(aboutme + `\n • **Gender:** ${data.gender}\n• **From:** ${data.location}\n• **Joined MAL:** ${moment(data.joined).format("dddd, MMMM Do YYYY, h:mm:ss a")}*\n• **Last Seen:** ${moment(data.last_online).format("dddd, MMMM Do YYYY, h:mm:ss a")}*`)
-            embed.setColor(colour.animeColour)
-            embed.addField("Time Binging Anime:", `\u200B\u2000\u2000• **Days watched**: ${anime_stats.days_watched}\n\u2000\u2000• **Mean Score**: ${anime_stats.mean_score}\n\u2000\u2000• **Watching**: ${anime_stats.watching}\n\u2000\u2000• **Completed**: ${anime_stats.completed}\n\u2000\u2000• **On Hold**: ${anime_stats.on_hold}\n\u2000\u2000• **Dropped**: ${anime_stats.dropped}\n\u2000\u2000• **Plan to Watch**: ${anime_stats.plan_to_watch}\n\u2000\u2000• **Rewatched**: ${anime_stats.rewatched}\n\u2000\u2000• **Total Entries:** ${anime_stats.total_entries}\n\u2000\u2000• **Episodes Watched**: ${anime_stats.episodes_watched}`, true)
-            embed.addField("Manga Stats:" ,`\u200B\u2000\u2000• **Days read**: ${manga_stats.days_read}\n\u2000\u2000• **Mean Score**: ${manga_stats.mean_score}\n\u2000\u2000• **Reading**: ${manga_stats.reading}\n\u2000\u2000• **Completed**: ${manga_stats.completed}\n\u2000\u2000• **On Hold**: ${manga_stats.on_hold}\n\u2000\u2000• **Dropped**: ${manga_stats.dropped}\n\u2000\u2000• **Plan to Read**: ${manga_stats.plan_to_read}\n\u2000\u2000• **Reread**: ${manga_stats.reread}\n\u2000\u2000• **Total Entries:** ${manga_stats.total_entries}\n\u2000\u2000• **Volumes read**: ${manga_stats.volumes_read}` , true)
-            embed.addField("Fav Anime:", favanime ? favanime : 'Not Listed')
-            embed.addField("Fav Manga", favmanga ? favmanga : 'Not Listed', true)
-            embed.addField("Wafiu/Husbando (Fav Character)", favchar ? favchar : 'Not listed')
-            embed.addField("Fav Staff", favpeople ? favpeople : "Not Listed", true)
+            embed.setAuthor("MAL profile search | " + res.data.data.username, badge, res.data.data.url)
+            embed.setThumbnail(res.data.data.images.webp.image_url)
+            embed.setDescription(aboutme + `\n • **Gender:** ${res.data.data.gender}\n• **From:** ${res.data.data.location}\n• **Joined MAL:** ${moment(res.data.data.joined).format("dddd, MMMM Do YYYY, h:mm:ss a")}*\n• **Last Seen:** ${moment(res.data.data.last_online).format("dddd, MMMM Do YYYY, h:mm:ss a")}*`)
+            embed.setColor(this.utils.getColor('blue').toString(16))
+            embed.addField("Time Binging Anime:", `\u200B\u2000\u2000• **Days watched**: ${res.data.data.statistics.anime.days_watched}\n\u2000\u2000• **Mean Score**: ${res.data.data.statistics.anime.mean_score}\n\u2000\u2000• **Watching**: ${res.data.data.statistics.anime.watching}\n\u2000\u2000• **Completed**: ${res.data.data.statistics.anime.completed}\n\u2000\u2000• **On Hold**: ${res.data.data.statistics.anime.on_hold}\n\u2000\u2000• **Dropped**: ${res.data.data.statistics.anime.dropped}\n\u2000\u2000• **Plan to Watch**: ${res.data.data.statistics.anime.plan_to_watch}\n\u2000\u2000• **Rewatched**: ${res.data.data.statistics.anime.rewatched}\n\u2000\u2000• **Total Entries:** ${res.data.data.statistics.anime.total_entries}\n\u2000\u2000• **Episodes Watched**: ${res.data.data.statistics.anime.episodes_watched}`, true)
+            embed.addField("Manga Stats:" ,`\u200B\u2000\u2000• **Days read**: ${res.data.data.statistics.manga.days_read}\n\u2000\u2000• **Mean Score**: ${res.data.data.statistics.manga.mean_score}\n\u2000\u2000• **Reading**: ${res.data.data.statistics.manga.reading}\n\u2000\u2000• **Completed**: ${res.data.data.statistics.manga.completed}\n\u2000\u2000• **On Hold**: ${res.data.data.statistics.manga.on_hold}\n\u2000\u2000• **Dropped**: ${res.data.data.statistics.manga.dropped}\n\u2000\u2000• **Plan to Read**: ${res.data.data.statistics.manga.plan_to_read}\n\u2000\u2000• **Reread**: ${res.data.data.statistics.manga.reread}\n\u2000\u2000• **Total Entries:** ${res.data.data.statistics.manga.total_entries}\n\u2000\u2000• **Volumes read**: ${res.data.data.statistics.manga.volumes_read}` , true)
+            embed.addField("Fav Anime:", favanime)
+            embed.addField("Fav Manga", favmanga, true)
+            embed.addField("Wafiu/Husbando (Fav Character)", favchar)
+            embed.addField("Fav Staff", favpeople, true)
             
 
-return msg.channel.send(embed.create);
+return msg.channel.createMessage(embed.create);
     
 
 
