@@ -62,8 +62,10 @@ class Staff extends Command {
         honorarywl.push(`${bushy.username}#${bushy.discriminator}`, `${bo.username}#${bo.discriminator}`)
 
         for (let sentry = 0; sentry < this.axon.staff.sentries.length; sentry += 1) {
-            let member = await this.bot.getRESTUser(this.axon.staff.sentries[sentry]);
-            sentries.push(`${member.username}#${member.discriminator}`)
+            if (!this.axon.staff.admins.includes(this.axon.staff.sentries[sentry])) {
+                let member = await this.bot.getRESTUser(this.axon.staff.sentries[sentry]);
+                sentries.push(`${member.username}#${member.discriminator}`)
+            }
         }
 
         for (let mod = 0; mod < this.axon.staff.dailis.length; mod += 1) {
