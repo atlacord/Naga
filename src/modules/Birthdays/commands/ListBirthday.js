@@ -34,7 +34,7 @@ class ListBirthday extends Command {
 
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: [ this.axon.staff.sentries, this.axon.staff.admins ],
+                needed: this.axon.staff.sentries,
                 bypass: this.axon.staff.owners,
             },
         } );
