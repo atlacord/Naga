@@ -49,6 +49,7 @@ class FlagQuiz extends Command {
 
         const filter = (message => message.author === msg.author);
         const options = { filter: filter, count: 1, timeout: 30000 };
+
         await msg.channel.awaitMessages(options).then(collection => {
 
             const content = collection.collected.random().content.toLowerCase();
@@ -94,24 +95,14 @@ class FlagQuiz extends Command {
                 reason = func[3];
             }
 
-            let win = reason === null, overflow = false, excess = null;
-            const amount = win ? 500 : 100;
-
-            if (doc.data.economy.wallet + amount > 50000) {
-                overflow = true;
-                excess = doc.data.economy.wallet + amount - 50000;
-                doc.data.economy.wallet = 50000;
-            } else {
-                doc.data.economy.wallet += amount;
-            };
+            let win = reason === null;
+            doc.data.economy.wallet += baseCredits;
 
             return doc.save().then(() => {
                 if (!win) {
-                    return this.sendError(msg.channel, `${reason}. You received **${amount}** credits for trying!`, 
-                    overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
+                    return this.sendError(msg.channel, `${reason}. You received **${baseCredits}** credits for trying!`);
                 } else {
-                    return this.sendSuccess(msg.channel, `Congratulations! You received **${amount}** credits for guessing the country correctly!`, 
-                    overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
+                    return this.sendSuccess(msg.channel, `Congratulations! You received **${baseCredits}** credits for guessing the country correctly!`);
                 }
             })
         })

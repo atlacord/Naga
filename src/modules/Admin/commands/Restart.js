@@ -1,4 +1,4 @@
-const nodeUtil = require('util');
+const { inspect } = require('util');
 
 const {
     Command,
@@ -45,23 +45,23 @@ class Restart extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-async execute({ msg, args }) {
-    try {
-        this.sendSuccess(msg.channel, `Restarting ${this.bot.user.username}`);
+    async execute({ msg, args }) {
+        try {
+            this.sendSuccess(msg.channel, `Restarting ${this.bot.user.username}`);
 
-        process.exec(`pm2 restart NagaV2`, (error, stdout) => {
-            const outputType = error || stdout;
-            let output = outputType;
-            if (typeof outputType === 'object') {
-                output = inspect(outputType, {
-                    depth: getMaxDepth(outputType, args.join(' '))
-                });
-            }
-        });
-    } catch (err) {
-        this.utils.logError(msg, err, 'internal', err);
+            process.exec(`pm2 restart NagaV2`, (error, stdout) => {
+                const outputType = error || stdout;
+                let output = outputType;
+                if (typeof outputType === 'object') {
+                    output = inspect(outputType, {
+                        depth: Infinity
+                    });
+                }
+            });
+        } catch (err) {
+            this.utils.logError(msg, err, 'internal', err);
+        }
     }
-}
 }
 
 module.exports = Restart;

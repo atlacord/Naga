@@ -71,7 +71,7 @@ class Deposit extends Command {
 
                 return doc.save().then(() => msg.channel.createMessage({
                     allowedMentions: {
-                        repliedUser: true
+                        repliedUser: false
                     }, 
                     embed: {
                         color: this.utils.getColor('green'),

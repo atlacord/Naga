@@ -126,24 +126,16 @@ class Hangman extends Command {
                 hasEnded = func[3];
             }
 
-            let win = reason === null, overflow = false, excess = null;
+            let win = reason === null;
             const amount = win ? 500 : 100;
 
-            if (doc.data.economy.wallet + amount > 50000) {
-                overflow = true;
-                excess = doc.data.economy.wallet + amount - 50000;
-                doc.data.economy.wallet = 50000;
-            } else {
-                doc.data.economy.wallet += amount;
-            };
+            doc.data.economy.wallet += amount;
 
             return doc.save().then(() => {
                 if (!win) {
-                    return this.sendError(msg.channel, `${reason}. You received **${amount}** credits for trying!`, 
-                    overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
+                    return this.sendError(msg.channel, `${reason}. You received **${amount}** credits for trying!`);
                 } else {
-                    return this.sendSuccess(msg.channel, `Congratulations! You received **${amount}** credits for guessing the word correctly!`, 
-                    overflow ? `Overflow warning! Please deposit some of your wallet to your bank. You only received ${amount - excess} for this one!` : '');
+                    return this.sendSuccess(msg.channel, `Congratulations! You received **${amount}** credits for guessing the word correctly!`);
                 }
             })
         })

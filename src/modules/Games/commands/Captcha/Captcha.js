@@ -114,14 +114,9 @@ class Captcha extends Command {
                 length = func[3];
             }
 
-            let win = baseCredits > 200, overflow = false, excess = null;
+            let win = baseCredits > 200;
 
-            if (doc.data.economy.wallet + baseCredits > 50000) {
-                overflow = true;
-                excess = doc.data.economy.wallet + baseCredits - 50000
-            } else {
-                doc.data.economy.wallet += baseCredits;
-            };
+            doc.data.economy.wallet += baseCredits;
 
             return doc.save().then(() => {
                 if (!win) {

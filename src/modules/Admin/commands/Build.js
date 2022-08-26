@@ -1,20 +1,6 @@
-const {
-    Command,
-    CommandPermissions,
-    CommandOptions,
-    CommandResponse,
-    AxonEnums,
-    Collection,
-    Embed,
-    Prompt,
-    MessageCollector,
-    Stack,
-    Queue,
-    FunctionQueue,
-    AutoQueue,
-    AsyncQueue,
-} = require('axoncore');
+const { Command, CommandPermissions, CommandOptions } = require('axoncore');
 
+const { inspect } = require('util');
 const { exec } = require('child_process');
 
 class Build extends Command {
@@ -59,24 +45,23 @@ class Build extends Command {
         try {
             this.sendSuccess(msg.channel, `Updating ${this.bot.user.username}`);
 
-
-           /*  await exec('rm -rf package.json', (error, stdout) => {
+            await exec('rm -rf ../../../../package.json', (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
                 if (typeof outputType === 'object') {
                     output = inspect(outputType, {
-                        depth: getMaxDepth(outputType, args.join(' '))
+                        depth: Infinity
                     });
                 }
             })
             console.log('Deleted package.json');
-*/ 
+ 
             await exec('git pull origin main', (error, stdout) => {
                 const outputType = error || stdout;
                 var output = outputType;
                 if (typeof outputType === 'object') {
                     output = inspect(outputType, {
-                        depth: getMaxDepth(outputType, args.join(' '))
+                        depth: Infinity
                     });
                 }
             })
@@ -87,7 +72,7 @@ class Build extends Command {
                 var output = outputType;
                 if (typeof outputType === 'object') {
                     output = inspect(outputType, {
-                        depth: getMaxDepth(outputType, args.join(' '))
+                        depth: Infinity
                     });
                 }
             })

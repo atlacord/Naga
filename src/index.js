@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const cron = require('node-cron');
 const config = require('../configs/config.json');
 const EventHandler = require('./EventHandler');
+const secret = require('../configs/secret.json');
 
 if (config.settings.db === 2) {
     try {
@@ -28,6 +29,9 @@ Bot.start()
      Bot.commandRegistry.get('checkbirthday').execute();
      console.log('Checking for new birthdays');
 }),
+// cron.schedule('* * 1 * *'), () => {
+//     Bot.commandRegistry.get('autobanner').execute();
+// },
 new EventHandler()
 );
 
