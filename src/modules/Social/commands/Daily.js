@@ -56,7 +56,7 @@ class Daily extends Command {
                 if (doc.data.economy.streak.timestamp !== 0 && doc.data.economy.streak.timestamp - now > 0) {
                     return msg.channel.createMessage(msg.channel.createMessage({
                         allowedMentions: {
-                            repliedUser: true
+                            repliedUser: false
                         }, 
                         embed: {
                             color: this.utils.getColor('red'),
@@ -91,7 +91,7 @@ class Daily extends Command {
 
                 return doc.save().then(() => msg.channel.createMessage({
                     allowedMentions: {
-                        repliedUser: true
+                        repliedUser: false
                     }, 
                     embed: {
                         color: this.utils.getColor('blue'),

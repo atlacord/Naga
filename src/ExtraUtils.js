@@ -126,12 +126,12 @@ class ExtraUtils extends Utils {
     }
 
     /**
-     * 
-     * @param {string} user User ID
+     * @param {string} guildID guild ID
+     * @param {string} userID User ID
      * @returns {string} member's display name
      */
-    displayName(message, user) {
-        return this.bot.getRESTGuildMember((message).channel.guild.id, user).nick ?? this.bot.getRESTUser(user).username;
+    displayName(guildID, userID) {
+        return this.bot.getRESTGuildMember(guildID, userID).nick ?? this.bot.getRESTUser(userID).username;
     }
 
      /**

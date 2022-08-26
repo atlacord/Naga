@@ -57,7 +57,7 @@ class Beg extends Command {
                 return doc.save().then(() => msg.channel.createMessage(
                 {
                     allowedMentions: {
-                        repliedUser: true
+                        repliedUser: false
                     },
                     messageReference: {
                         guildID: msg.channel.guild.id,

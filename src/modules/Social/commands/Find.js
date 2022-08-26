@@ -49,7 +49,7 @@ class Find extends Command {
                 if (userProfile.date > now) {
                     return msg.channel.createMessage({
                         allowedMentions: {
-                            repliedUser: true
+                            repliedUser: false
                         }, 
                         embed: {
                             color: this.utils.getColor('red'),
@@ -70,7 +70,7 @@ class Find extends Command {
 
                 return doc.save().then(() => msg.channel.createMessage({
                     allowedMentions: {
-                        repliedUser: true
+                        repliedUser: false
                     }, 
                     embed: {
                         color: this.utils.getColor('green'),

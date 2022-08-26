@@ -64,7 +64,7 @@ class Bet extends Command {
                 if (!won) {
                     return msg.channel.createMessage({
                         allowedMentions: {
-                            repliedUser: true
+                            repliedUser: false
                         },
                         embed: {
                             color: this.utils.getColor('blue'),
@@ -82,7 +82,7 @@ class Bet extends Command {
                 return doc.save()
                 .then(() => msg.channel.createMessage({
                     allowedMentions: {
-                        repliedUser: true
+                        repliedUser: false
                     }, 
                     embed: {
                         color: this.utils.getColor('green'),
