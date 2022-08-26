@@ -1,4 +1,5 @@
 module.exports = {
+    AutoBanner: require('./AutoBanner'),
     Build: require('./Build'),
     Eval: require('./Eval'),
     Exec: require('./Exec'),
