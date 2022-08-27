@@ -39,24 +39,23 @@ class ChangeBanner extends Command {
     }
 
     async convertImage(image) {
-		try {
-			var res = await axios.get(image, {
-				headers: [{ Accept: 'image/*' }],
-				responseType: 'arraybuffer',
-			}).then(response => `data:${response.headers['content-type']};base64,${response.data.toString('base64')}`);
-		} catch (err) {
-			return this.sendError(msg.channel, 'Failed to get a valid image.');
-		}
+		var res = await axios.get(image, {
+			headers: { Accept: 'image/*' },
+			responseType: 'arraybuffer',
+		}).then(response => `data:${response.headers['content-type']};base64,${response.data.toString('base64')}`);
         return res;
     }
 
     async execute() {
         let banner = Math.floor(Math.random() * banners.length);
+        banner = banners[banner];
         let res = await this.convertImage(banner);
 
-        return this.bot.guilds.get('370708369951948800').edit({ banner: res })
-            .then(() => console.log('Changed banner'))
-            .catch(() => console.error('Failed to change the banner.'));
+        try {
+            await this.bot.guilds.get('370708369951948800').edit({ banner: res }, 'Monthly autochange');
+        } catch (err) {
+            console.error(`Failed to change the banner: ${err}`)
+        };
     }
 }
 
