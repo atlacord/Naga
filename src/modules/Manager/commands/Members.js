@@ -60,7 +60,7 @@ class Members extends Command {
             }
 
         let embed = {
-            color: role.color,
+            color: role.color || this.utils.getColor('blue'),
             author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
             fields: [],
             footer: { text: `Total members: ${members.length}` }
