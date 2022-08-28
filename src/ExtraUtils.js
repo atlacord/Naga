@@ -63,6 +63,14 @@ class ExtraUtils extends Utils {
     }
 
     /**
+	 * Escape special characters in regex
+	 */
+	regEscape(str) {
+		return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+	}
+
+
+    /**
     * Joins array via oxford comma and append 'and' on last 2 items
     * @param {array} array the array to join
     * @returns {string} the joined array
@@ -239,6 +247,34 @@ class ExtraUtils extends Utils {
     
         return timestamp;
     }
+
+    resolveRole(guild, role) {
+		const mention = new RegExp('<@&([0-9]+)>', 'g').exec(role);
+		if (mention && mention.length > 1) {
+			return guild.roles.get(mention[1]);
+		}
+
+		if (role.match(/^([0-9]+)$/)) {
+			const roleIdSearch = guild.roles.get(role);
+			if (roleIdSearch) {
+				return roleIdSearch;
+			}
+		}
+
+		const exactNameSearch = guild.roles.find((r) => r.name.toLowerCase() === role.toLowerCase());
+		if (exactNameSearch) {
+			return exactNameSearch;
+		}
+
+		const escapedRole = this.regEscape(role);
+
+		const roleNameSearch = guild.roles.find((r) => r.name.match(new RegExp(`^${escapedRole}.*`, 'i')) != undefined);
+		if (roleNameSearch) {
+			return roleNameSearch;
+		}
+
+		return null;
+	}
 }
 
 module.exports = ExtraUtils;
