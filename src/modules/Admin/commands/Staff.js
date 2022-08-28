@@ -47,31 +47,54 @@ class Staff extends Command {
         let daili = [];
         let honorarywl = [];
 
-        for (let admin = 0; admin < this.axon.staff.admins.length; admin += 1) {
-            let member = await this.bot.getRESTUser(this.axon.staff.admins[admin]);
-            wl.push(`${member.username}#${member.discriminator}`);
-        }
+        // for (let admin = 0; admin < this.axon.staff.admins.length; admin += 1) {
+        //     let member = await this.bot.getRESTUser(this.axon.staff.admins[admin]);
+        //     wl.push(`${member.username}#${member.discriminator}`);
+        // }
 
-        let index = wl.indexOf('283451169152696320');
-        wl.splice(index, 1)
-        index = wl.indexOf('260600155630338048')
-        wl.splice(index, 1)
+        // let index = wl.indexOf('283451169152696320');
+        // wl.splice(index, 1)
+        // index = wl.indexOf('260600155630338048')
+        // wl.splice(index, 1)
 
         let bushy = await this.bot.getRESTUser('283451169152696320');
         let bo = await this.bot.getRESTUser('260600155630338048')
         honorarywl.push(`${bushy.username}#${bushy.discriminator}`, `${bo.username}#${bo.discriminator}`)
 
-        for (let sentry = 0; sentry < this.axon.staff.sentries.length; sentry += 1) {
-            if (!this.axon.staff.admins.includes(this.axon.staff.sentries[sentry])) {
-                let member = await this.bot.getRESTUser(this.axon.staff.sentries[sentry]);
-                sentries.push(`${member.username}#${member.discriminator}`)
-            }
-        }
+        // for (let sentry = 0; sentry < this.axon.staff.sentries.length; sentry += 1) {
+        //     if (!this.axon.staff.admins.includes(this.axon.staff.sentries[sentry])) {
+        //         let member = await this.bot.getRESTUser(this.axon.staff.sentries[sentry]);
+        //         sentries.push(`${member.username}#${member.discriminator}`)
+        //     }
+        // }
 
-        for (let mod = 0; mod < this.axon.staff.dailis.length; mod += 1) {
-            let member = await this.bot.getRESTUser(this.axon.staff.dailis[mod]);
-            daili.push(`${member.username}#${member.discriminator}`)
-        }
+        // for (let mod = 0; mod < this.axon.staff.dailis.length; mod += 1) {
+        //     let member = await this.bot.getRESTUser(this.axon.staff.dailis[mod]);
+        //     daili.push(`${member.username}#${member.discriminator}`)
+        // }
+
+        let admins = this.bot.guilds.get('370708369951948800').members.filter(m =>
+            (m.roles.includes('372084219423490049')));
+            for (let i in admins) {
+                let member = await this.bot.getRESTUser(admins[i].id);
+                wl.push(`${member.username}#${member.discriminator}`);
+            }
+
+        let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
+            (m.roles.includes('456925799786872868')));
+            for (let i in srmods) {
+                let member = await this.bot.getRESTUser(srmods[i].id);
+                sentries.push(`${member.username}#${member.discriminator}`);
+            }
+
+        let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
+            (m.roles.includes('762573162424565780')));
+            for (let i in mods) {
+                let member = await this.bot.getRESTUser(mods[i].id);
+                daili.push(`${member.username}#${member.discriminator}`);
+            }
+
+        this.bot.guilds.get('370708369951948800').roles.get('')
 
         let embed = {
             color: this.utils.getColor('blue'),

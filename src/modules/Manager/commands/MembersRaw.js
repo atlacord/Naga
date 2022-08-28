@@ -5,7 +5,9 @@ class MembersRaw extends Command {
         super(module);
 
         this.label = 'raw';
-        this.aliases = [];
+        this.aliases = [
+            'r'
+        ];
 
         this.info = {
             name: 'members raw',
