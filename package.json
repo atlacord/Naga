@@ -11,6 +11,7 @@
     "davie-eris-embed": "^1.0.3",
     "eris": "^0.17.0",
     "esm": "^3.2.25",
+    "hastebin": "^0.2.1",
     "imgur": "^2.2.0",
     "jquery-csv": "^1.0.21",
     "kitsu.js": "^2.0.0",
@@ -21,7 +22,9 @@
     "mongoose": "^5.10.7",
     "node-cron": "^3.0.1",
     "pluris": "^0.3.7",
+    "replace-in-file": "^6.3.5",
     "semver": "^7.3.2",
+    "tatsu": "^1.1.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {},
