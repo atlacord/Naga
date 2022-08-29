@@ -57,6 +57,7 @@ class ScrapeLeaderboard extends Command {
                 message = message.embeds[0].description;
                 message = message.split('\n')
                 let newmessage;
+                msg.channel.createMessage(`Page ${parseInt(a) + 1}`)
                 for (let i in message) {
                     newmessage = message[i].split(' ');
                     newmessage.pop();
@@ -68,7 +69,7 @@ class ScrapeLeaderboard extends Command {
 
                     // client.addGuildMemberScore(msg.guildID, newmessage[0]. parseInt(newmessage[1])); // Adds score to Tatsu
                     
-                    // msg.channel.createMessage(`\`${newmessage.toString()}\``);
+                    msg.channel.createMessage(`\`${newmessage.toString()}\``);
                 }
             }
         } catch (err) {
