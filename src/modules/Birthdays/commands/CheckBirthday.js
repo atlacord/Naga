@@ -44,6 +44,7 @@ class CheckBirthday extends Command {
     async checkBirthday() {
         let birthdayMentions = [];
         const announcementChannel = '1007044599287656559';
+        let lastMsg = await this.bot.getChannel(announcementChannel).lastMessageID;
         
         try {
 
@@ -73,6 +74,7 @@ class CheckBirthday extends Command {
                     image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
                 }
                 if (birthdayMentions.length >= 1) {
+                    await this.bot.getChannel(announcementChannel).getMessage(lastMsg).delete();
                     await this.bot.getChannel(announcementChannel).createMessage({ content: birthdayMentions.join(', '), embed: embed });
                 }
                 })
