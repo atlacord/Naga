@@ -7,6 +7,7 @@ src/index.js
 src/modules/Info/listeners/index.js
 
 # Local directories/files
+Archives
 src/modules/Games/data.csv
 src/assets/wordle/wordledata.csv
 
