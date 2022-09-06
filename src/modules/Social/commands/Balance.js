@@ -35,21 +35,22 @@ class Balance extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute({ msg }) {
-        profile.findById(msg.author.id, (err, doc) => {
+    async execute({ msg, args }) {
+        profile.findById(args[0], (err, doc) => {
+            let member = msg.channel.guild.members.get(args[0]);
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             };
 
             if (!doc || doc.data.economy.wallet === null) {
-                return this.sendError(msg.channel, `You don't have a wallet! To create one, run \`${this.axon.settings.prefixes}register\`.`);
+                return this.sendError(msg.channel, `This user doesn't have a wallet! To create one, run \`${this.axon.settings.prefixes}register\`.`);
             };
 
             return this.sendMessage(msg.channel, { 
                 embed: {
-                    author: { name: `${msg.author.username}\'s wallet` },
+                    author: { name: `${member.username}\'s wallet` },
                     color: this.utils.getColor('blue'),
-                    thumbnail: { url: msg.author.avatarURL },
+                    thumbnail: { url: member.avatarURL },
                     description: `💰 **${this.utils.commatize(doc.data.economy.wallet)}** credits in posession.\n
                     ${doc.data.economy.bank !== null ? `💰 **${this.utils.commatize(doc.data.economy.bank)}** credits in bank!`
                     : `Seems like you don't have a bank yet. Create one now by typing \`${this.axon.settings.prefixes}bank\``

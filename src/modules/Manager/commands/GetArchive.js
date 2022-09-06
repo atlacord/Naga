@@ -64,17 +64,15 @@ class GetArchive extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute({msg, args}) {
+    async execute({msg}) {
         let files = readdirSync('Archives');
         files.forEach(channel => {
             let channelName = channel.slice(0, -3);
             if (path.extname(channel) === ('.md')) {
-                console.log(channel);
                 let file = readFileSync(`Archives/${channel}`);
                 msg.channel.createMessage({}, {
                     name: `${channelName}.md`,
-                    file: file
-                    
+                    file: file      
                 })
             }
         })

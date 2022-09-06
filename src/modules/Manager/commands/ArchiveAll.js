@@ -83,8 +83,18 @@ class ArchiveAll extends Command {
 
           let channel = null;
 
-          let categories = [ '562452488301838346', '896411136407240704', '758001268051673139' ];
-          let dontArchive = ['431892824149983253', '755185750970204311', '726479365441060904', '372087508579778570'];
+          let categories = [ 
+            '562452488301838346', // Closed Channels
+            // '758001268051673139', // Closed Events 1
+            // '896411136407240704' // Closed Events 2 
+        ];
+
+          let dontArchive = [
+            '431892824149983253', // gaming_and_tech
+            '755185750970204311', // nerdatorium
+            // '726479365441060904', // jasmine dragon 
+            '372087508579778570' // dyno_action_log
+        ];
 
           let channels = [];
           let channelNames = [];
@@ -121,7 +131,7 @@ class ArchiveAll extends Command {
                             }
                         }
                         return [
-                            `[${moment(msg.createdAt).format('dddd, do MMMM YYYY hh:mm:ss')}]`,
+                            `[${moment(msg.createdAt).format('dddd, Do MMMM YYYY hh:mm:ss')}]`,
                             `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
                         ].join(' ');
                     }); 

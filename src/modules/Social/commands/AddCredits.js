@@ -54,7 +54,9 @@ class AddCredits extends Command {
             }
 
             else if (!doc || doc.data.economy.wallet === null) {
-                return this.sendError(msg.channel, `Specified user does not have a wallet`);
+                doc = new profile({ _id: member.id });
+                doc.data.economy.wallet = doc.data.economy.wallet + Math.floor(amount);
+                return this.sendError(msg.channel, `Specified user does not have a wallet. Creating one now.`), doc.save();
             }
             
             else {
