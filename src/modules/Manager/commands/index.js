@@ -1,8 +1,8 @@
 module.exports = {
     // Archive: require('./Archive'),
-    ArchiveAll: require('./ArchiveAll'),
+  //  ArchiveAll: require('./ArchiveAll'),
     // ArchiveImages: require('./ArchiveImages'),
-    GetArchive: require('./GetArchive'),
+   // GetArchive: require('./GetArchive'),
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
     Nick: require('./Nick'),
