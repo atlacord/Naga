@@ -1,7 +1,7 @@
 module.exports = {
-    // Archive: require('./Archive'),
+    Archive: require('./Archive'),
     ArchiveAll: require('./ArchiveAll'),
-    // ArchiveImages: require('./ArchiveImages'),
+    ArchiveImages: require('./ArchiveImages'),
     GetArchive: require('./GetArchive'),
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
