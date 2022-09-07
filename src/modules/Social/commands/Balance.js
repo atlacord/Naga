@@ -36,8 +36,8 @@ class Balance extends Command {
      */
 
     async execute({ msg, args }) {
-        profile.findById(args[0], (err, doc) => {
-            let member = msg.channel.guild.members.get(args[0]);
+        profile.findById(args[0] || msg.author.id, (err, doc) => {
+            let member = msg.channel.guild.members.get(args[0] || msg.author.id);
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             };
