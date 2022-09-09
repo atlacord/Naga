@@ -74,8 +74,12 @@ class CheckBirthday extends Command {
                     image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
                 }
                 if (birthdayMentions.length >= 1) {
-                    // msg.channel.guild.channels.get(announcementChannel).messages.get(lastMsg).delete();
-                    msg.channel.guild.channels.get(announcementChannel).createMessage({ content: birthdayMentions.join(', '), embed: embed });
+                    try {
+                        await this.bot.getChannel(announcementChannel).messages.get(lastMsg).delete();
+                        await this.bot.getChannel(announcementChannel).createMessage({ content: birthdayMentions.join(', '), embed: embed });
+                    } catch(err) {
+                        this.sendError('1008421501487304844', err)
+                    }
                 }
                 })
             } catch (err) {
