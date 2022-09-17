@@ -85,8 +85,8 @@ class ArchiveAll extends Command {
 
           let categories = [ 
             '562452488301838346', // Closed Channels
-            // '758001268051673139', // Closed Events 1
-            // '896411136407240704' // Closed Events 2 
+            '758001268051673139', // Closed Events 1
+            '896411136407240704' // Closed Events 2 
         ];
 
           let dontArchive = [
