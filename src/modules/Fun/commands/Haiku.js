@@ -31,7 +31,7 @@ class Haiku extends Command {
 
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.owners,
+                needed: this.axon.staff.dailis,
                 bypass: this.axon.staff.owners,
             },
             // custom: (msg) => (!msg.member.roles.includes('724751859356794880'))
