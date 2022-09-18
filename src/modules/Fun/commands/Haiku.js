@@ -1,5 +1,7 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const syllable = require('syllabificate');
+// const haikus = require('../../../assets/haikus.json');
+const { readFileSync, writeFileSync } = require('fs');
 
 class Haiku extends Command {
     /**
@@ -14,7 +16,7 @@ class Haiku extends Command {
 
         this.info = {
             name: 'haiku',
-            description: 'Provides a random topic about ATLA!',
+            description: 'Can you hack it in the Five-Seven-Five society?',
             usage: 'haiku',
         };
 
@@ -32,6 +34,7 @@ class Haiku extends Command {
                 needed: this.axon.staff.owners,
                 bypass: this.axon.staff.owners,
             },
+            // custom: (msg) => (!msg.member.roles.includes('724751859356794880'))
         });
     }
     /**
@@ -66,9 +69,17 @@ class Haiku extends Command {
     }
 
     async execute({ msg, args }) {
+        let data = readFileSync('src/assets/haikus.json');
+        let haikus = JSON.parse(data);
+        if (haikus.includes(args.join(' '))) {
+            return msg.channel.createMessage('Give me something more original!');
+        }
         let res = this.haiku(args.join(' '));
         if (res === true) {
-            msg.channel.createMessage('That was a haiku!')
+            msg.channel.createMessage('What a Remarkable Oaf!');
+            msg.member.addRole('724751859356794880', 'Sent a valid haiku');
+            haikus.push(args.join(' '));
+            writeFileSync('src/assets/haikus.json', JSON.stringify(haikus));
         } else {
             msg.channel.createMessage('That was not a haiku :(');
         }
