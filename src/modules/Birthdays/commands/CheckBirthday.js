@@ -75,7 +75,7 @@ class CheckBirthday extends Command {
                 }
                 if (birthdayMentions.length >= 1) {
                     try {
-                        await this.bot.getChannel(announcementChannel).messages.get(lastMsg).delete();
+                        // await this.bot.getChannel(announcementChannel).messages.get(lastMsg).delete();
                         await this.bot.getChannel(announcementChannel).createMessage({ content: birthdayMentions.join(', '), embed: embed });
                     } catch(err) {
                         this.sendError('1008421501487304844', err)

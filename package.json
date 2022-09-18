@@ -9,7 +9,7 @@
     "axoncore": "git+https://github.com/sodacova/AxonCore.git",
     "canvas": "^2.9.3",
     "davie-eris-embed": "^1.0.3",
-    "eris": "^0.17.0",
+    "eris": "^0.17.1",
     "esm": "^3.2.25",
     "hastebin": "^0.2.1",
     "imgur": "^2.2.0",
@@ -24,6 +24,7 @@
     "pluris": "^0.3.7",
     "replace-in-file": "^6.3.5",
     "semver": "^7.3.2",
+    "syllabificate": "^2.0.3",
     "tatsu": "^1.1.0",
     "uuid": "^8.3.2"
   },
