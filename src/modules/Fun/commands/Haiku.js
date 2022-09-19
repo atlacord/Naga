@@ -77,7 +77,7 @@ class Haiku extends Command {
         let res = this.haiku(args.join(' '));
         if (res === true) {
             msg.channel.createMessage('What a Remarkable Oaf!');
-            // msg.member.addRole('724751859356794880', 'Sent a valid haiku');
+            msg.member.addRole('724751859356794880', 'Sent a valid haiku');
             haikus.push(args.join(' '));
             writeFileSync('src/assets/haikus.json', JSON.stringify(haikus));
         } else {
