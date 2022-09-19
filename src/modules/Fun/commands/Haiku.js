@@ -57,7 +57,6 @@ class Haiku extends Command {
     lookupSyllables (lines) {
         return lines.map(function (line) {
             let syllables = syllable(line);
-            console.log(syllables);
             return syllables;
         });
     }
