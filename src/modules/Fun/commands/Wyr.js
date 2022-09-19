@@ -1,5 +1,8 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const questions = require('../../../assets/wyr.json');
+const { readFileSync, writeFileSync } = require('fs');
+
+const COMMAND_COOLDOWN = 600000;
 
 class Wyr extends Command {
     /**
@@ -25,7 +28,7 @@ class Wyr extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 900000,
+            cooldown: null,
             guildOnly: true,
         } );
 
@@ -33,11 +36,25 @@ class Wyr extends Command {
             custom: (msg) => msg.channel.parentID !== '372086709950611456',
         });
     }
+
+    handleCooldown() {
+        let data = readFileSync('src/assets/cooldown.json');
+        let lastUsed = JSON.parse(data);
+
+        const timeLeft = Date.now() - lastUsed;
+        if (timeLeft <= COMMAND_COOLDOWN) {
+            return Math.ceil((COMMAND_COOLDOWN - timeLeft) / 100) / 10; 
+        } else return false;
+    }
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
 
     async execute( { msg } ) {
+        let timeRemaining = this.handleCooldown();
+        if (timeRemaining !== false) {
+            return this.sendError(msg.channel, `This command has already been used recently! Try again in **${timeRemaining} seconds**!`);
+        }
         let messagetext =  questions[Math.floor(Math.random() * questions.length)]
         let question = messagetext.split("Would you rather ")[1]
         let Option1 = question.split(" or ")[0]
@@ -52,7 +69,7 @@ class Wyr extends Command {
         this.sendMessage(msg.channel, {embed}).then(msg => {
             msg.addReaction('🅰️');
             msg.addReaction('🇧');
-        })
+        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
     }
 }
 
