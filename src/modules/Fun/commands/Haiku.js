@@ -1,5 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const syllable = require('syllabificate');
+const syllable = require('syllable');
 // const haikus = require('../../../assets/haikus.json');
 const { readFileSync, writeFileSync } = require('fs');
 
@@ -56,7 +56,8 @@ class Haiku extends Command {
 
     lookupSyllables (lines) {
         return lines.map(function (line) {
-            let syllables = syllable.countSyllables(line);
+            let syllables = syllable(line);
+            console.log(syllables);
             return syllables;
         });
     }
@@ -77,7 +78,7 @@ class Haiku extends Command {
         let res = this.haiku(args.join(' '));
         if (res === true) {
             msg.channel.createMessage('What a Remarkable Oaf!');
-            msg.member.addRole('724751859356794880', 'Sent a valid haiku');
+            // msg.member.addRole('724751859356794880', 'Sent a valid haiku');
             haikus.push(args.join(' '));
             writeFileSync('src/assets/haikus.json', JSON.stringify(haikus));
         } else {
