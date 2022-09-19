@@ -24,7 +24,7 @@
     "pluris": "^0.3.7",
     "replace-in-file": "^6.3.5",
     "semver": "^7.3.2",
-    "syllabificate": "^2.0.3",
+    "syllable": "^4.1.0",
     "tatsu": "^1.1.0",
     "uuid": "^8.3.2"
   },

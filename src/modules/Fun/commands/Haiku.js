@@ -1,5 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const syllable = require('syllabificate');
+const syllable = require('syllable');
 // const haikus = require('../../../assets/haikus.json');
 const { readFileSync, writeFileSync } = require('fs');
 
@@ -56,7 +56,7 @@ class Haiku extends Command {
 
     lookupSyllables (lines) {
         return lines.map(function (line) {
-            let syllables = syllable.countSyllables(line);
+            let syllables = syllable(line);
             return syllables;
         });
     }
