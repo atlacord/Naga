@@ -71,7 +71,7 @@ class Haiku extends Command {
     async execute({ msg, args }) {
         let data = readFileSync('src/assets/haikus.json');
         let haikus = JSON.parse(data);
-        if (haikus.includes(args.join(' '))) {
+        if ((haikus.includes(args.join(' '))) || args.join(' ').includes('haiku')) {
             return msg.channel.createMessage('Give me something more original!');
         }
         let res = this.haiku(args.join(' '));
