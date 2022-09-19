@@ -17,7 +17,7 @@ class Haiku extends Command {
         this.info = {
             name: 'haiku',
             description: 'Can you hack it in the Five-Seven-Five society?',
-            usage: 'haiku',
+            usage: 'haiku [your haiku here]',
         };
 
         /**
