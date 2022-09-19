@@ -17,25 +17,25 @@ class Haiku extends Command {
         this.info = {
             name: 'haiku',
             description: 'Can you hack it in the Five-Seven-Five society?',
-            usage: 'haiku',
+            usage: 'haiku [your haiku here]',
         };
 
         /**
          * @type {CommandOptions}
          */
         this.options = new CommandOptions(this, {
-            argsMin: 0,
+            argsMin: 1,
             cooldown: 10000,
             guildOnly: true,
         });
 
-        this.permissions = new CommandPermissions(this, {
-            staff: {
-                needed: this.axon.staff.dailis,
-                bypass: this.axon.staff.owners,
-            },
-            // custom: (msg) => (!msg.member.roles.includes('724751859356794880'))
-        });
+        // this.permissions = new CommandPermissions(this, {
+        //     staff: {
+        //         needed: this.axon.staff.dailis,
+        //         bypass: this.axon.staff.owners,
+        //     },
+        //     custom: (msg) => (!msg.member.roles.includes('724751859356794880'))
+        // });
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env
