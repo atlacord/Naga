@@ -45,14 +45,13 @@ class ScrapeLeaderboard extends Command {
         } );
     }
 
-    async execute({msg, args }) {
+    async execute({msg }) {
 
         // let messages = [ '1013630746809880678', '1013630758465831075', '1013630770352488488', '1013630781597438053', '1013630792481656862', 
         // '1013630802506043402', '1013630815869087844', '1013630824702292008', '1013630859657625601', '1013630872890650674' ]; // I have no idea how we're going to do the whole thing lmao
 
         try {
-
-            let messages = await this.bot.getChannel('1013630721774059550').getMessages();
+            let messages = await this.bot.getChannel('1022268518646939708').getMessages();
             this.sendSuccess(msg.channel, `Exporting the Carl leaderboard to Tatsu.\nEstimated time: **${~~(20 * messages.length * (2000 / 1000))} seconds**`)
 
             messages = messages.reverse(); // Reverse the message array, transfer the top of the leaderboard first
