@@ -2,7 +2,7 @@ const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const { Tatsu } = require('tatsu');
 const { readFileSync, writeFileSync } = require('fs');
 
-const tatsu = new Tatsu('Q6EWLNtiZI-lBbxLXQLoiD1myInRiqJT5');
+const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
 // const userRegex = /<@([^}]+)>/g;
 
@@ -46,7 +46,7 @@ class TatsuTest extends Command {
         try {
             await tatsu.addGuildMemberScore(msg.guildID, msg.author.id, 5); // Adds score to Tatsu
         } catch (err) {
-            console.error(err);
+            this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
         }
     }
 }
