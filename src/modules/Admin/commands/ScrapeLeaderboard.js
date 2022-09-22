@@ -93,7 +93,7 @@ class ScrapeLeaderboard extends Command {
                         try {
                             await tatsu.addGuildMemberScore(msg.guildID, newmessage[0], parseInt(newmessage[1])); // Adds score to Tatsu
                         } catch (err) {
-                            this.sendError(msg.channel, err);
+                            this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
                         }
                         
                         // msg.channel.createMessage(`\`${newmessage.toString()}\``);

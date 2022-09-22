@@ -46,7 +46,7 @@ class TatsuTest extends Command {
         try {
             await tatsu.addGuildMemberScore(msg.guildID, msg.author.id, 5); // Adds score to Tatsu
         } catch (err) {
-            console.error(err);
+            this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
         }
     }
 }
