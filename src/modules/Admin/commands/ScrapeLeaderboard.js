@@ -89,7 +89,12 @@ class ScrapeLeaderboard extends Command {
                         msg.channel.createMessage({embed});
                         leaderboard.push(`${member.username}#${member.discriminator} (${member.id}) - ${newmessage[1]}`)
 
-                        tatsu.addGuildMemberScore(msg.guildID, newmessage[0], parseInt(newmessage[1])); // Adds score to Tatsu
+                        console.log(`Adding ${newmessage[1]} XP to ${newmessage[0]}`);
+                        try {
+                            await tatsu.addGuildMemberScore(msg.guildID, newmessage[0], parseInt(newmessage[1])); // Adds score to Tatsu
+                        } catch (err) {
+                            this.sendError(msg.channel, err);
+                        }
                         
                         // msg.channel.createMessage(`\`${newmessage.toString()}\``);
                         await this.utils.delayFor(2000); // Delays function to avoid getting ratelimited by Tatsu
