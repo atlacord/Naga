@@ -1,5 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const { Tatsu } = require('tatsu');
+const { readFileSync, writeFileSync } = require('fs');
 
 const tatsu = new Tatsu('Q6EWLNtiZI-lBbxLXQLoiD1myInRiqJT5');
 
@@ -50,8 +51,10 @@ class ScrapeLeaderboard extends Command {
         // let messages = [ '1013630746809880678', '1013630758465831075', '1013630770352488488', '1013630781597438053', '1013630792481656862', 
         // '1013630802506043402', '1013630815869087844', '1013630824702292008', '1013630859657625601', '1013630872890650674' ]; // I have no idea how we're going to do the whole thing lmao
 
+        let leaderboard = [];
+
         try {
-            let messages = await this.bot.getChannel('1022268518646939708').getMessages();
+            let messages = await this.bot.getChannel('1022268518646939708').getMessages({ limit: 407 });
             this.sendSuccess(msg.channel, `Exporting the Carl leaderboard to Tatsu.\nEstimated time: **${~~(20 * messages.length * (2000 / 1000))} seconds**`)
 
             messages = messages.reverse(); // Reverse the message array, transfer the top of the leaderboard first
@@ -83,15 +86,24 @@ class ScrapeLeaderboard extends Command {
                             timestamp: new Date()
                         }
                         
-                        msg.channel.createMessage({embed})
+                        msg.channel.createMessage({embed});
+                        leaderboard.push(`${member.username}#${member.discriminator} (${member.id}) - ${newmessage[1]}`)
 
-                        tatsu.addGuildMemberScore(msg.guildID, newmessage[0]. parseInt(newmessage[1])); // Adds score to Tatsu
-                            
+                        // tatsu.addGuildMemberScore(msg.guildID, newmessage[0]. parseInt(newmessage[1])); // Adds score to Tatsu
+                        
                         // msg.channel.createMessage(`\`${newmessage.toString()}\``);
-                        await this.utils.delayFor(2000); // Delays function to avoid getting ratelimited by Tatsu
+                        // await this.utils.delayFor(2000); // Delays function to avoid getting ratelimited by Tatsu
                     }
                 }
             }
+            writeFileSync('carl-leaderboard-data.txt', leaderboard.join('\n'), (err) => {
+                    // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
+            });
+            let file = readFileSync('carl-leaderboard-data.txt');
+            msg.channel.createMessage({}, {
+                name: 'carl-leaderboard-data.txt',
+                file: file      
+            })
         } catch (err) {
             this.sendError(msg.channel, err);
         };
