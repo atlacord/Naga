@@ -6,5 +6,6 @@ module.exports = {
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),
     SetGame: require('./SetGame'),
-    Staff: require('./Staff')
+    Staff: require('./Staff'),
+    TatsuTest: require('./Tatsu')
 };
