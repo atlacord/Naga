@@ -4,6 +4,7 @@ const { readFileSync, writeFileSync, cp } = require('fs');
 const topics = require('../../../assets/topics.json');
 
 const ATLA = require('./ATLA');
+const Korra = require('./Korra');
 
 const COMMAND_COOLDOWN = 600000;
 
@@ -44,7 +45,7 @@ class Topic extends Command {
      */
 
     init() {
-        return [ATLA]
+        return [ATLA, Korra]
     }
 
     handleCooldown() {
