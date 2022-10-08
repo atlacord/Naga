@@ -28,7 +28,7 @@ class Wiki extends Command {
          * @type {CommandOptions}
          */
         this.options = new CommandOptions(this, {
-            argsMin: 0,
+            argsMin: 1,
             cooldown: 10000,
             guildOnly: true,
         } );
@@ -55,7 +55,7 @@ class Wiki extends Command {
             // page_list.forEach(p => pages.push(p.title));
             // msg.channel.createMessage(`Category: ${args[1]}, Depth: 1, Results: ${pages.length}`);
             // msg.channel.createMessage(pages.join('\n'));
-            const page_data = await wiki.page(args[1]);
+            const page_data = await wiki.page(args[0]);
             let parsed = page_data.parse();
             let text = page_data.wikitext;
             let id = text.match(ID_REGEX)[0];
