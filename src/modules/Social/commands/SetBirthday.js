@@ -44,7 +44,7 @@ class SetBirthday extends Command {
                 doc = new profile({ _id: msg.author.id });
             };
 
-            let date = moment(args[0], 'DD-MM');
+            let date = moment(args.join('-'), 'DD-MM');
 
             if (!date.isValid()){
                 return this.sendError(msg.channel, 'Please send the date in DD-MM format.');

@@ -43,9 +43,17 @@ class Wyr extends Command {
 
         const timeLeft = Date.now() - lastUsed;
         if (timeLeft <= COMMAND_COOLDOWN) {
-            return Math.ceil((COMMAND_COOLDOWN - timeLeft) / 100) / 10; 
+            let time = Math.ceil((600000 - timeLeft) / 100) / 10
+            let minutes = Math.floor(time / 60);
+            let seconds = Math.ceil(time - minutes * 60);
+            if (minutes === 0) {
+                return `${seconds} sec`;
+            } else {
+                return `${minutes} minutes ${seconds} seconds`;
+            }
         } else return false;
     }
+
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
@@ -53,7 +61,7 @@ class Wyr extends Command {
     async execute( { msg } ) {
         let timeRemaining = this.handleCooldown();
         if (timeRemaining !== false) {
-            return this.sendError(msg.channel, `This command has already been used recently! Try again in **${timeRemaining} seconds**!`);
+            return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
         }
         let messagetext =  questions[Math.floor(Math.random() * questions.length)]
         let question = messagetext.split("Would you rather ")[1]
