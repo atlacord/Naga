@@ -4,7 +4,7 @@ const Wikiapi = require('wikiapi')
 const wiki = new Wikiapi('https://avatar-the-last-airbender-discord.fandom.com/api.php');
 // const userRegex = /<@([^}]+)>/g;
 
-const ID_REGEX = /\d{5,}/gm
+const ID_REGEX = /\d{7,}/gm
 
 class Wiki extends Command {
     /**
@@ -14,7 +14,7 @@ class Wiki extends Command {
         super(module);
 
         this.label = 'editwiki';
-        this.aliases = [];
+        this.aliases = [ 'edw' ];
 
         this.hasSubcmd = false;
 
@@ -50,6 +50,9 @@ class Wiki extends Command {
     }
 
     async execute({msg, args}) {
+        try {
+
+            await wiki.login('Sodacova', 'Naga@l59m43h6kbrag5k5k3hpa6unutoe076e');
             // let pages = []
             // const page_list = await wiki.category_tree(args[1], 1);
             // page_list.forEach(p => pages.push(p.title));
@@ -58,7 +61,9 @@ class Wiki extends Command {
             const page_data = await wiki.page(args[0]);
             let parsed = page_data.parse();
             let text = page_data.wikitext;
+            // console.log(text);
             let id = text.match(ID_REGEX)[0];
+            console.log(id);
             let member = await this.bot.getRESTGuildMember('370708369951948800', id);
             // console.log(member.nick);
             // console.log(id);
@@ -74,10 +79,13 @@ class Wiki extends Command {
             });
 
             msg.channel.createMessage(this.split(parsed.toString()));
+            await wiki.edit(parsed.toString(), { bot: 1, minor: 1, nocreate: 1, summary: 'Editing member info' });
         
             // print json of the infobox
             // msg.channel.createMessage(JSON.stringify(infobox));
-
+        } catch (err) {
+            this.sendError(msg.channel, err);
+        }
     }
 }
 
