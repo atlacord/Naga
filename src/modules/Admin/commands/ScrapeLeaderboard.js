@@ -90,10 +90,16 @@ class ScrapeLeaderboard extends Command {
                         leaderboard.push(`${member.username}#${member.discriminator} (${member.id}) - ${newmessage[1]}`)
 
                         console.log(`Adding ${newmessage[1]} XP to ${newmessage[0]}`);
+                        let xp = parseInt(newmessage[1]);
                         try {
-                            await tatsu.addGuildMemberScore(msg.guildID, newmessage[0], parseInt(newmessage[1])); // Adds score to Tatsu
+                            if (xp >= 100000) {
+                                await tatsu.addGuildMemberScore(msg.guildID, member.id, 100000); // Adds score to Tatsu
+                                msg.channel.createMessage(`${member.id} still needs ${xp - 100000} xp added!`)
+                            } else {
+                                await tatsu.addGuildMemberScore(msg.guildID, member.id, xp); // Adds score to Tatsu
+                            }
                         } catch (err) {
-                            this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
+                            console.error(`Error ${err.statusCode}: ${err.message}`);
                         }
                         
                         // msg.channel.createMessage(`\`${newmessage.toString()}\``);

@@ -44,10 +44,11 @@ class TatsuTest extends Command {
     async execute({msg }) {
         msg.channel.createMessage('yuh')
         try {
-            await tatsu.addGuildMemberScore(msg.guildID, msg.author.id, 5); // Adds score to Tatsu
+            console.log(await tatsu.addGuildMemberScore(msg.guildID, msg.author.id, 5)); // Adds score to Tatsu
         } catch (err) {
             this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
         }
+        msg.channel.createMessage('aye');
     }
 }
 

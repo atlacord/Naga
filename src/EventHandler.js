@@ -65,9 +65,9 @@ class EventHandler {
                 try {
                     let joinmsg = Math.floor(Math.random() * messages.length);
                     let msg = messages[joinmsg]
-                    msg = msg.replace(/['"]+/g, '`')
-                    msg = msg.replace(/[{'{USER}]+/g, `${member.mention}`);
-                    client.getChannel('1008421501487304844').createMessage(msg)
+                    msg = msg.replace(/['"]+/g, "'")
+                    msg = msg.replace(/{\w[{USER}]+/g, `${member.mention}`);
+                    client.getChannel('761932923217379338').createMessage(msg)
                 } catch (err) {
                 console.error(err)
                 }
