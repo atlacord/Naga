@@ -1,5 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const { readFileSync, writeFileSync, cp } = require('fs');
+const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 const topics = require('../../../assets/topics.json');
 
@@ -79,7 +79,8 @@ class Topic extends Command {
         return this.sendMessage(msg.channel, {
             embed: {
                 color: this.utils.getColor('blue'),
-                description: topics[topic]
+                description: topics[topic],
+                footer: { text: 'Check out our new Legend of Korra topics - n.topic korra'}
             }
         }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
     }
