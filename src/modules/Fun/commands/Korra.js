@@ -28,7 +28,7 @@ class Korra extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 10000,
+            cooldown: null,
             guildOnly: true,
         } );
 
@@ -71,7 +71,7 @@ class Korra extends Command {
                 color: this.utils.getColor('blue'),
                 description: korratopics[topic]
             }
-        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
+        }).then(writeFileSync('src/assets/atlacooldown.json', JSON.stringify(msg.createdAt)));
     }
 }
 
