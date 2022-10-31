@@ -1,9 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const { Tatsu } = require('tatsu');
 const messages = require('../../../assets/joinmessages.json');
-const { readFileSync, writeFileSync } = require('fs');
-
-const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
 // const userRegex = /<@([^}]+)>/g;
 
