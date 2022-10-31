@@ -1,27 +1,28 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const { Tatsu } = require('tatsu');
+const messages = require('../../../assets/joinmessages.json');
 const { readFileSync, writeFileSync } = require('fs');
 
 const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
 // const userRegex = /<@([^}]+)>/g;
 
-class TatsuTest extends Command {
+class TestJoinMessages extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'tatsu';
-        this.aliases = ['tt'];
+        this.label = 'joinmessages';
+        this.aliases = ['joinmsg'];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'scrapelb',
-            description: 'Scrapes xp data from a Carl leaderboard embed',
-            usage: 'scrapelb [message id]',
+            name: 'joinmessages',
+            description: 'Tests Naga\'s experimental join message feature.',
+            usage: 'joinmsg',
         };
 
         /**
@@ -29,7 +30,7 @@ class TatsuTest extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 0,
-            cooldown: 10000,
+            cooldown: 1000,
             guildOnly: true,
         } );
 
@@ -41,15 +42,17 @@ class TatsuTest extends Command {
         } );
     }
 
-    async execute({msg }) {
-        msg.channel.createMessage('yuh')
+    async execute({ msg, args }) {
         try {
-            console.log(await tatsu.addGuildMemberScore(msg.guildID, msg.author.id, 5)); // Adds score to Tatsu
+            let joinmsg = args[0] || Math.floor(Math.random() * messages.length);
+            let message = messages[joinmsg]
+            message = message.replace(/['"]+/g, "'")
+            message = message.replace(/{\w[{USER}]+/g, `<@!${msg.author.id}>`);
+            msg.channel.createMessage(message)
         } catch (err) {
-            this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
+        this.sendError(msg.channel, err)
         }
-        msg.channel.createMessage('aye');
     }
 }
 
-module.exports = TatsuTest;
+module.exports = TestJoinMessages;
