@@ -1,6 +1,9 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const atlatopics = require('../../../assets/atlatopics.json');
+const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
+
+const COMMAND_COOLDOWN = 600000;
 
 class ATLA extends Command {
     /**
@@ -35,14 +38,37 @@ class ATLA extends Command {
             }
         });
     }
+
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
+
+    handleCooldown() {
+        let data = readFileSync('src/assets/atlacooldown.json');
+        let lastUsed = JSON.parse(data);
+
+        const timeLeft = Date.now() - lastUsed;
+        if (timeLeft <= COMMAND_COOLDOWN) {
+            let time = Math.ceil((600000 - timeLeft) / 100) / 10
+            let minutes = Math.floor(time / 60);
+            let seconds = Math.ceil(time - minutes * 60);
+            if (minutes === 0) {
+                return `${seconds} sec`;
+            } else {
+                return `${minutes} minutes ${seconds} seconds`;
+            }
+        } else return false;
+    }
 
     async execute( { msg } ) {
 
         // let atlatopics = await axios.get('http://atla.sh/topics.json');
         // atlatopics = atlatopics.data;
+
+        let timeRemaining = this.handleCooldown();
+        if (timeRemaining !== false) {
+            return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+        }
 
         const topic = Math.floor(Math.random() * atlatopics.length);
         return this.sendMessage(msg.channel, {
@@ -50,7 +76,7 @@ class ATLA extends Command {
                 color: this.utils.getColor('blue'),
                 description: atlatopics[topic]
             }
-        });
+        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
     }
 }
 

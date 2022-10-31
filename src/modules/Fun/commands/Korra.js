@@ -1,6 +1,9 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const korratopics = require('../../../assets/korratopics.json');
+const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
+
+const COMMAND_COOLDOWN = 600000;
 
 class Korra extends Command {
     /**
@@ -35,9 +38,27 @@ class Korra extends Command {
             }
         });
     }
+
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
+
+     andleCooldown() {
+        let data = readFileSync('src/assets/atlacooldown.json');
+        let lastUsed = JSON.parse(data);
+
+        const timeLeft = Date.now() - lastUsed;
+        if (timeLeft <= COMMAND_COOLDOWN) {
+            let time = Math.ceil((600000 - timeLeft) / 100) / 10
+            let minutes = Math.floor(time / 60);
+            let seconds = Math.ceil(time - minutes * 60);
+            if (minutes === 0) {
+                return `${seconds} sec`;
+            } else {
+                return `${minutes} minutes ${seconds} seconds`;
+            }
+        } else return false;
+    }
 
     async execute( { msg } ) {
 
@@ -50,7 +71,7 @@ class Korra extends Command {
                 color: this.utils.getColor('blue'),
                 description: korratopics[topic]
             }
-        });
+        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
     }
 }
 
