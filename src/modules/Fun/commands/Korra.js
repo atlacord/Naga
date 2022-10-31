@@ -43,7 +43,7 @@ class Korra extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-     andleCooldown() {
+    handleCooldown() {
         let data = readFileSync('src/assets/atlacooldown.json');
         let lastUsed = JSON.parse(data);
 
