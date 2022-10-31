@@ -65,6 +65,11 @@ class Korra extends Command {
         // let atlatopics = await axios.get('http://atla.sh/topics.json');
         // atlatopics = atlatopics.data;
 
+        let timeRemaining = this.handleCooldown();
+        if (timeRemaining !== false) {
+            return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+        }
+
         const topic = Math.floor(Math.random() * korratopics.length);
         return this.sendMessage(msg.channel, {
             embed: {
