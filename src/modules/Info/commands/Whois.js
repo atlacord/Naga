@@ -44,7 +44,29 @@ class Whois extends Command {
 
         let staff = [];
 
-        const member = msg.channel.guild.members.get(args[0]) || msg.member;
+        const member = args.length ? this.utils.resolveUser(msg.channel.guild, args.join(' ')) : msg.member;
+
+        if (!member) {
+            this.sendError(msg.channel, `Couldn't find member ${args.join(' ')}`);
+        }
+
+
+		const perms = {
+			administrator: 'Administrator',
+			manageGuild: 'Manage Server',
+			manageRoles: 'Manage Roles',
+			manageChannels: 'Manage Channels',
+			manageMessages: 'Manage Messages',
+			manageWebhooks: 'Manage Webhooks',
+			manageNicknames: 'Manage Nicknames',
+			manageEmojis: 'Manage Emojis',
+            manageThreads: 'Manage Threads',
+            viewGuildInsights: 'View Server Insights',
+			kickMembers: 'Kick Members',
+			banMembers: 'Ban Members',
+			mentionEveryone: 'Mention Everyone',
+		};
+
 
         let userRoles, sortedRoles, roles, roleColor;
 
@@ -73,60 +95,55 @@ class Whois extends Command {
             staff.push(this.utils.checkStaff(member)[i]);
         }
 
-        if (!args) {
-            let bio = null;
-            await profile.findById(member.id, (err, doc) => {
-                bio = doc.data.profile.bio;
-            });
-            let embed = {  
-                author: { name: msg.member.username + '#' + msg.member.discriminator, icon_url: msg.member.avatarURL },
-                thumbnail: { url: msg.member.avatarURL },
-                color: roleColor,
-                description: bio || null,
+        const joinPos = [...msg.channel.guild.members.values()]
+        .sort((a, b) => (a.joinedAt < b.joinedAt) ? -1 : ((a.joinedAt > b.joinedAt) ? 1 : 0))
+        .filter(m => !m.bot)
+        .findIndex(m => m.id === member.id) + 1;
 
-                fields: [
-                    { name: 'Username', value: `<@!${msg.member.id}>`, inline: true },
-                    { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:F>`, inline: false },
-                    { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:F>`, inline: false },
-                    { name: `Roles [${msg.member.roles.length}]`, value: roles, inline: false }
-                ],
+        let bio = null;
+        await profile.findById(member.id, (err, doc) => {
+            bio = doc.data.profile.bio;
+        });
 
-                footer: { text: `ID: ${msg.member.id}` },
-                timestamp: new Date(),
-            }
+        let embed = {  
+            author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
+            thumbnail: { url: member.avatarURL },
+            color: roleColor,
+            description: bio || null,
 
-            if (staff.length > 0) {
-                embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
-            }
+            fields: [
+                { name: 'Username', value: `<@!${member.id}>`, inline: true },
+                { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:F>`, inline: false },
+                { name: 'Join Position', value: joinPos || 'None', inline: false },
+                { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:F>`, inline: false },
+                { name: `Roles [${member.roles.length}]`, value: roles, inline: false }
+            ],
 
-            this.sendMessage(msg.channel, { embed })     
-        } else {
-            let bio = null;
-            await profile.findById(member.id, (err, doc) => {
-                bio = doc.data.profile.bio;
-            });
-            let embed = {
-                author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
-                thumbnail: { url: member.avatarURL },
-                description: bio || null,
-                color: roleColor,
-
-                fields: [
-                    { name: 'Username', value: `<@!${member.id}>`, inline: true },
-                    { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:d> <t:${Math.floor(member.joinedAt / 1000)}:T>`, inline: false },
-                    { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:d> <t:${Math.floor(member.createdAt / 1000)}:T>`, inline: false },
-                    { name: `Roles [${member.roles.length}]`, value: roles, inline: false }
-                ],
-
-                footer: { text: `ID: ${member.id}` },
-                timestamp: new Date(),
-            }
-
-            if (staff.length > 0) {
-                embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
-            }
-            this.sendMessage(msg.channel, { embed })
+            footer: { text: `ID: ${member.id}` },
+            timestamp: new Date(),
         }
+
+        if (member.permissions) {
+            const memberPerms = member.permissions.json;
+            const infoPerms = [];
+            for (let key in memberPerms) {
+                if (!perms[key] || memberPerms[key] !== true) continue;
+                if (memberPerms[key]) {
+                    infoPerms.push(perms[key]);
+                }
+                infoPerms.sort();
+            }
+    
+            if (infoPerms.length) {
+                embed.fields.push({ name: 'Server Permissions', value: infoPerms.join(', '), inline: false });
+            }
+        }
+    
+        if (staff.length > 0) {
+            embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
+        }
+
+        this.sendMessage(msg.channel, { embed })  
     }
 }
                         

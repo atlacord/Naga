@@ -5,6 +5,9 @@ const secret = require('../configs/secret.json');
 const DISCORD_EPOCH = 1420070400000;
 
 class ExtraUtils extends Utils {
+
+    cleanRegex = new RegExp('([_\*`])', 'g');
+
     /**
      * @param {import('axoncore').AxonClient} client
      */
@@ -67,6 +70,10 @@ class ExtraUtils extends Utils {
 	 */
 	regEscape(str) {
 		return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+	}
+
+    clean(str) {
+		return str.replace(this.cleanRegex, '\\$&');
 	}
 
 
@@ -248,6 +255,67 @@ class ExtraUtils extends Utils {
         return timestamp;
     }
 
+    /**
+	 * Resolve username/id/mention
+	 */
+    resolveUser(guild, user, context, exact) {
+		if (!user) {
+			return null;
+		}
+
+		let users = [];
+
+		if (context) {
+			users = context;
+		} else {
+			users = guild ? [...guild.members.values()] : [];
+		}
+
+		if (!users || !users.length) {
+			return null;
+		}
+
+		// check if it's a mention
+		const regex = exact ? '<@!?([0-9]+)>$' : '<@!?([0-9]+)>';
+		const mentionId = new RegExp(regex, 'g').exec(user);
+		if (mentionId && mentionId.length > 1) {
+			return users.find(u => u.id === mentionId[1]);
+		}
+
+		// check if it's username#1337
+		if (user.indexOf('#') > -1) {
+			const [name, discrim] = user.split('#');
+			const nameDiscrimSearch = users.find(u => u.username === name && u.discriminator === discrim);
+			if (nameDiscrimSearch) {
+				return nameDiscrimSearch;
+			}
+		}
+
+		// check if it's an id
+		if (user.match(/^([0-9]+)$/)) {
+			const userIdSearch = users.find(u => u.id === user);
+			if (userIdSearch) {
+				return userIdSearch;
+			}
+		}
+
+		const exactNameSearch = users.find(u => u.username === user);
+		if (exactNameSearch) {
+			return exactNameSearch;
+		}
+
+		if (!exact) {
+			const escapedUser = this.regEscape(user);
+			// username match
+			const userNameSearch = users.find(u => u.username.match(new RegExp(`^${escapedUser}.*`, 'i')) != undefined);
+			if (userNameSearch) {
+				return userNameSearch;
+			}
+		}
+
+		return null;
+	}
+
     resolveRole(guild, role) {
 		const mention = new RegExp('<@&([0-9]+)>', 'g').exec(role);
 		if (mention && mention.length > 1) {
@@ -275,6 +343,29 @@ class ExtraUtils extends Utils {
 
 		return null;
 	}
+
+	/**
+	 * Get the full username and discriminator for a user or member
+	 */
+    fullName(user, escape = true) {
+		user = user.user || user;
+
+		const discrim = user.discriminator || user.discrim;
+		let username = user.username || user.name;
+
+		if (!username) {
+			return user.id;
+		}
+
+		username = this.clean(username);
+
+		if (escape) {
+			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
+		}
+
+		return `${username}#${discrim}`;
+	}
+
 }
 
 module.exports = ExtraUtils;
