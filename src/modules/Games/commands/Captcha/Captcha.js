@@ -37,10 +37,10 @@ class Captcha extends Command {
      */
 
     async executeCaptcha(msg, captchaCount, length, baseCredits, hasNotEnded) {
-        const char = String.fromCharCode(...Array(123).keys()).replace(/\W/g, '');
+        const char = String.fromCharCode(...Array(123).keys()).replace(/\W|_/g, '');
         const code = (length) => _.sampleSize(char, length).join('');
 
-            const canvas = createCanvas(150,50);
+            const canvas = createCanvas(200,50);
             const ctx = canvas.getContext('2d');
             const codeText = code(length);
 
@@ -55,7 +55,7 @@ class Captcha extends Command {
             ctx.textAlign = 'center';
             ctx.font = 'bold 20px Captcha';
             ctx.fillStyle = 'rgba(255,255,255,0.4)';
-            ctx.fillText(codeText, 75, 35, 140);
+            ctx.fillText(codeText, 100, 35, 190);
         
             const prompt = `**${msg.author.mention}**, Solve the following captcha under 30 seconds:`
 
