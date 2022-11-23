@@ -2,6 +2,9 @@ const { Command, CommandOptions } = require('axoncore');
 const axios = require('axios');
 const moment = require('moment')
 const MessageEmbed = require("davie-eris-embed")
+const TwoColor = '9037972';
+
+
 
 const malBadges = [
     { url: 'https://i.imgur.com/YGLefI9.png', max: 499, min: -1, title: 'unranked'},
@@ -14,6 +17,26 @@ const malBadges = [
 
 ]
 
+function hyperlinkify(arr){
+    if (!arr.length) return null
+  
+    let res = ''
+    let lastindex = null
+  
+    for (let i = 0; res.length < 950 && lastindex === null; i++) {
+      let toAdd = ` • [${arr[i].name}](${arr[i].url})`
+  
+      if (toAdd.length + res.length > 950) {
+        lastindex = i
+        return
+      }
+  
+      return res += toAdd
+    }
+  
+    return `${res}${lastindex && lastindex < arr.length - 1 ? ` and ${arr.length - lastindex - 1} more!`:`.`}`
+  }
+  
 class Mal extends Command {
     /**
      * @param {import('axoncore').Module} module
@@ -49,8 +72,95 @@ class Mal extends Command {
      */
 
     async execute( { msg, args } ) {
-        
-        
+        const textTrunctuate = function(str, length, ending) {
+            if (length == null) {
+              length = 100;
+            }
+            if (ending == null) {
+              ending = '...';
+            }
+            if (str.length > length) {
+              return str.substring(0, length - ending.length) + ending;
+            } else {
+              return str;
+            }
+          };
+      
+          
+          if (args.length === 0) {return msg.channel.createMessage('Please provide a profile for me to lookup!') };
+      
+          const data = await fetch(`https://api.jikan.moe/v3/user/${args[0]}/profile`).then(res => res.json())
+      
+          const { anime_stats, manga_stats } = data
+          const { anime, manga, characters, people } = data.favorites
+          const total = anime_stats.episodes_watched + manga_stats.volumes_read
+          const badge = malBadges.find( b => total > b.min && total < b.max).url
+          const favanime = hyperlinkify(anime)
+          const favmanga = hyperlinkify(manga)
+          const favchar = hyperlinkify(characters)
+          const favpeople = hyperlinkify(people)
+      
+          const embed = {
+            "embed": {
+              "author": {
+                name: "MAL profile search | " + data.username,
+                icon_url: badge,
+                url: data.url,
+              },
+              "thumbnail": {
+                "url": data.image_url,
+              },
+              "description": `${data.about ? textTrunctuate(data.about,350,`...[Read More](${data.url})\n\n`) : ``}• **Gender:** ${data.gender}\n• **From:** ${data.location}\n• **Joined MAL:** ${moment(data.joined).format("dddd, MMMM Do YYYY, h:mm:ss a")}*\n• **Last Seen:** ${moment(data.last_online).format("dddd, MMMM Do YYYY, h:mm:ss a")}*`,
+              "color": 16610652,
+              "fields": [
+            
+                {
+                  "name": "Time binging Anime:",
+                  "value": `\u200B\u2000\u2000• **Days watched**: ${anime_stats.days_watched}\n\u2000\u2000• **Mean Score**: ${anime_stats.mean_score}\n\u2000\u2000• **Watching**: ${anime_stats.watching}\n\u2000\u2000• **Completed**: ${anime_stats.completed}\n\u2000\u2000• **On Hold**: ${anime_stats.on_hold}\n\u2000\u2000• **Dropped**: ${anime_stats.dropped}\n\u2000\u2000• **Plan to Watch**: ${anime_stats.plan_to_watch}\n\u2000\u2000• **Rewatched**: ${anime_stats.rewatched}\n\u2000\u2000• **Total Entries:** ${anime_stats.total_entries}\n\u2000\u2000• **Episodes Watched**: ${anime_stats.episodes_watched}`,
+                   inline: true,
+                },
+                {
+                  "name": "Manga Statistics",
+                  "value": `\u200B\u2000\u2000• **Days read**: ${manga_stats.days_read}\n\u2000\u2000• **Mean Score**: ${manga_stats.mean_score}\n\u2000\u2000• **Reading**: ${manga_stats.reading}\n\u2000\u2000• **Completed**: ${manga_stats.completed}\n\u2000\u2000• **On Hold**: ${manga_stats.on_hold}\n\u2000\u2000• **Dropped**: ${manga_stats.dropped}\n\u2000\u2000• **Plan to Read**: ${manga_stats.plan_to_read}\n\u2000\u2000• **Reread**: ${manga_stats.reread}\n\u2000\u2000• **Total Entries:** ${manga_stats.total_entries}\n\u2000\u2000• **Volumes read**: ${manga_stats.volumes_read}`,
+                  inline: true
+                },
+                {
+                  "name": "Fav anime",
+                  "value": favanime ? favanime : 'Not Listed',
+                 
+                },
+                {
+                    "name": "Fav Manga",
+                    "value": favmanga ? favmaga : 'Not Listed',
+                   
+                  },
+                  {
+                    "name": "Waifu/Husbando (Fav Character)",
+                    "value": favchar ? favchar : 'Not Listed',
+                   
+                  },
+                  {
+                    "name": "Fav person/Staff",
+                    "value": favpeople ? favpeople : 'Not Listed',
+                    
+                  },
+               
+              ]
+              
+      
+      
+      
+            }
+      
+          }
+          return msg.channel.createMessage(embed);
+          
+      
+      
+      
+      
+      
+  /*      
         if(!args.length) {
             return this.sendError(msg.channel, `Please provide a profile for kme to lookup!`);
         }
@@ -87,17 +197,7 @@ class Mal extends Command {
             
 
 return msg.channel.createMessage(embed.create);
-    
-
-
-
-
-
-
-
-
-
-
+ */   
 
     }
 }
