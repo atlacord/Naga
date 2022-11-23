@@ -3,6 +3,7 @@ const axios = require('axios');
 const moment = require('moment')
 const MessageEmbed = require("davie-eris-embed")
 const TwoColor = '9037972';
+const fetch = require('node-fetch');
 
 
 
