@@ -43,7 +43,7 @@ class Configure extends Command {
             msg.channel.createMessage({}, { embed: {
                 title: 'Configuration Settings',
                 color: this.utils.getColor('blue'),
-                description: 'joinMessages\ndebugMode (disables Naga for normal users)'
+                description: 'joinLogs\ndebugMode (disables Naga for normal users)'
             }})
         } else {
             config.settings[args[0]] = args[1];
