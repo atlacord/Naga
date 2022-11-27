@@ -46,6 +46,7 @@ class Staff extends Command {
         let sentries = [];
         let daili = [];
         let honorarywl = [];
+        let loa = [];
 
         // for (let admin = 0; admin < this.axon.staff.admins.length; admin += 1) {
         //     let member = await this.bot.getRESTUser(this.axon.staff.admins[admin]);
@@ -93,6 +94,13 @@ class Staff extends Command {
                 let member = await this.bot.getRESTUser(mods[i].id);
                 daili.push(`${member.username}#${member.discriminator}`);
             }
+        
+        let loastaff = this.bot.guilds.get('370708369951948800').members.filter(m =>
+            (m.roles.includes('1014357399206899732')));
+            for (let i in loastaff) {
+                let member = await this.bot.getRESTUser(loastaff[i].id);
+                loa.push(this.utils.fullName(member));
+            }
 
         this.bot.guilds.get('370708369951948800').roles.get('')
 
@@ -100,11 +108,13 @@ class Staff extends Command {
             color: this.utils.getColor('blue'),
             author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
             fields: [
-                { name: 'White Lotus', value: wl.join('\n') },
-                { name: 'Lotus Emeritus', value: honorarywl.join('\n')},
-                { name: 'Sentries', value: sentries.join('\n') },
-                { name: 'Dai Li', value: daili.join('\n') }
-            ]
+                { name: `White Lotus [${wl.length}]`, value: wl.join('\n') },
+                { name: `Lotus Emeritus [${honorarywl.length}]`, value: honorarywl.join('\n')},
+                { name: `Sentries [${sentries.length}]`, value: sentries.join('\n') },
+                { name: `Dai Li [${daili.length}]`, value: daili.join('\n') },
+                { name: `Vacation Tenzin - LOA [${loa.length}]`, value: loa.join('\n') }
+            ],
+            footer: { text: `Team size: ${Math.floor(wl.length + honorarywl.length + sentries.length + daili.length)}` }
         }
 
         this.sendMessage(msg.channel, {embed});

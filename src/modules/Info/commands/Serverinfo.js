@@ -83,8 +83,6 @@ class Serverinfo extends Command {
                 features.push(formattedFeatures[guild.features[i]]);
             }
         }
-
-        console.log(features);
     
         this.sendMessage(msg.channel, {
             embed: {
