@@ -113,8 +113,8 @@ class Whois extends Command {
 
             fields: [
                 { name: 'Username', value: `<@!${member.id}>`, inline: true },
-                { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:F>`, inline: false },
                 { name: 'Join Position', value: joinPos || 'None', inline: false },
+                { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:F>`, inline: false },
                 { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:F>`, inline: false },
                 { name: `Roles [${member.roles.length}]`, value: roles, inline: false }
             ],
