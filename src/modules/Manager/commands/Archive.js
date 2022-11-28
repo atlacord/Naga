@@ -97,7 +97,7 @@ class Archive extends Command {
 
             let lastMsg = channel.lastMessageID;
 
-            this.sendSuccess(msg.channel, `Archiving ${channel.name}`);
+            this.sendSuccess(msg.channel, `Archiving ${channel.name}. Quantity: ${quantity}`);
             console.info(`Now archiving ${channel.name}. Quantity: ${quantity}`)
 
             await this.bot.getMessages(channel.id, { limit: quantity, before: lastMsg })
