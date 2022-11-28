@@ -13,7 +13,7 @@ const fs = require('fs');
 // const clientSecret = 'b433ad10a9334a0ac51f4953f3b8e46a53ff4880';
 // const refreshToken = '41839a7d6ff2db6ef2caf6f4ae4005ce29302eac';
 
-const MESSAGE_QUANTITY = 400000;
+const MESSAGE_QUANTITY = Infinity;
 
 
 class Archive extends Command {
@@ -80,7 +80,7 @@ class Archive extends Command {
         return imglink.data.link;
     }
 
-    async execute ( { msg, args } ) {
+    async execute ({ msg, args }) {
 
         // const client = new ImgurClient({
         //     clientId: clientId,
@@ -91,14 +91,14 @@ class Archive extends Command {
         let channel = args[0].replace('<#','');
         channel = channel.replace('>', '').toString();
         channel = this.bot.getChannel(channel);
-        const quantity = Math.round(MESSAGE_QUANTITY);
+        const quantity = Math.round(args[1] || MESSAGE_QUANTITY);
 
         try {
 
             let lastMsg = channel.lastMessageID;
 
             this.sendSuccess(msg.channel, `Archiving ${channel.name}`);
-            console.info(`Now archiving ${channel.name}.`)
+            console.info(`Now archiving ${channel.name}. Quantity: ${quantity}`)
 
             await this.bot.getMessages(channel.id, { limit: quantity, before: lastMsg })
             .then(async messages => {
@@ -112,7 +112,7 @@ class Archive extends Command {
                         }
                     }
                     return [
-                        `[${moment(msg.createdAt).format('MMMM do YYYY hh:mm a')}]`,
+                        `[${moment(this.utils.convertSnowflake(msg.id)).format('MMMM Do YYYY hh:mm a')}]`,
                         `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
                     ].join(' ');
                 }); 
@@ -122,7 +122,7 @@ class Archive extends Command {
 
                 const data = Buffer.from(messages, 'utf8');
                 fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
-                    this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
+                    if (err !== null) { this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`) };
                 });
             })
                 this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`)
