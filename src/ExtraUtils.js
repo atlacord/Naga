@@ -366,6 +366,42 @@ class ExtraUtils extends Utils {
 		return `${username}#${discrim}`;
 	}
 
+    convertSnowflake(snowflake, epoch = DISCORD_EPOCH) {
+        const milliseconds = BigInt(snowflake) >> 22n
+        return new Date(Number(milliseconds) + epoch)
+    }
+
+    async getOrCreateWebhook(channel) {
+		const id = (typeof channel === 'string') ? channel : channel.id || null;
+		if (!id) {
+			return Promise.reject(`Invalid channel or id.`);
+		}
+
+		try {
+			const webhooks = await this.bot.getChannelWebhooks(channel.id);
+
+			if (!webhooks || !webhooks.length) {
+
+				const wh = await this.bot.createChannelWebhook(channel.id, {
+					name: 'Naga Archive',
+				});
+
+				return Promise.resolve(wh);
+			}
+
+			const webhook = webhooks.find((hook) => hook.name === 'Naga Archive');
+			if (webhook) {
+				return Promise.resolve(webhook);
+			}
+
+			return Promise.resolve(webhooks[0]);
+		} catch (err) {
+			return Promise.reject(err);
+		}
+	}
+
+
+
 }
 
 module.exports = ExtraUtils;
