@@ -1,6 +1,4 @@
 const { Command, CommandOptions, CommandPermissions, Message } = require('axoncore');
-const MessageEmbed = require("davie-eris-embed")
-require('moment-duration-format')
 const { NextAirDate_Query: withQuery , NextAirDate_NoQuery: withoutQuery } = require('../../../../Util/gqlHelper');
 const moment  = require('moment');
 const AniColour = '9037972'
@@ -96,6 +94,11 @@ class nextup extends Command {
     
     
     if (query) {
+        var t = new Date()
+        t.setSeconds(t.getSeconds() + now.nextAiringEpisode.timeUntilAiring);
+        const NATime = Math.floor(t.getTime() / 1000);
+
+
       return msg.channel.createMessage({
         embed: {
     color: AniColour,
@@ -126,9 +129,7 @@ class nextup extends Command {
             : now.title.native
         }](${
           now.siteUrl
-        }) will air in approximately **${
-          moment(now.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
-        }**`
+        }) will air on <t:${NATime}:F> (<t:${NATime}:R>)`
         : `Next episode airdate for [${
           now.title.english
           ? now.title.english
@@ -148,7 +149,8 @@ class nextup extends Command {
     })
     // End of no query 
     } else {
-        return msg.channel.createMessage({
+        return msg.channel.createMessage("Please give me an anime to search!")
+            /*{
             embed: { 
                 "color": AniColour, 
                 "thumbnail": {
@@ -186,7 +188,8 @@ class nextup extends Command {
                       ? `${now.nextAiringEpisode.episode} (Final Episode)`
                       : `${now.nextAiringEpisode.episode}`
                     }** airs in **${
-                      moment(now.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
+                    // moment(now.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
+                      moment().startOf('day').seconds(now.nextAiringEpisode.timeUntilAiring).format(`D [days] H [hours] m [minutes]`)
                     }**`
                     : 'Next Episode is currently **Unknown**'
                   }`,
@@ -211,7 +214,8 @@ class nextup extends Command {
                                 ? `${next.nextAiringEpisode.episode} (Final Episode)`
                                 : `${next.nextAiringEpisode.episode}`
                               }** airs in **${
-                                moment(next.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
+                              //  moment(next.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
+                                moment().startOf('day').seconds(next.nextAiringEpisode.timeUntilAiring).format(`D [days] H [hours] m [minutes]`)
                                 }**`
                               : 'Next Episode is currently Unknown'
                             }`
@@ -237,7 +241,8 @@ class nextup extends Command {
                                 ? `${later.nextAiringEpisode.episode} (Final Episode)`
                                 : `${later.nextAiringEpisode.episode}`
                               }** airs in **${
-                                moment(later.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
+                             // moment(later.nextAiringEpisode.timeUntilAiring).format('D [days] H [hours] m [minutes]')
+                                moment().startOf('day').seconds(later.nextAiringEpisode.timeUntilAiring).format(`D [days] H [hours] m [minutes]`)
                               }**`
                               : 'Next Episode is currently Unknown'
                             }`
@@ -253,7 +258,7 @@ class nextup extends Command {
     
     
     
-            }})
+        }})*/
     }
     
     
@@ -262,12 +267,6 @@ class nextup extends Command {
     
     
         // Command End
-
-     
-    
-
-
-        // EOC
     }
 }
 
