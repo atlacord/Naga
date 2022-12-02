@@ -90,16 +90,20 @@ class Mal extends Command {
           
           if (args.length === 0) {return msg.channel.createMessage('Please provide a profile for me to lookup!') };
       
-          const data = await fetch(`https://api.jikan.moe/v3/user/${args[0]}/profile`).then(res => res.json())
-      
-          const { anime_stats, manga_stats } = data
-          const { anime, manga, characters, people } = data.favorites
+          const fullProfile = await fetch(`https://api.jikan.moe/v4/users/${args[0]}`).then(res => res.json())
+          const data = fullProfile.data
+          const consumptionData = await fetch(`https://api.jikan.moe/v4/users/${args[0]}/statistics`).then(res => res.json())
+          const favouritesData = await fetch(`https://api.jikan.moe/v4/users/${args[0]}/favorites`).then(res => res.json())
+
+          const anime_stats = consumptionData.data.anime
+          const manga_stats = consumptionData.data.manga
+          const { anime, manga, characters, people } = favouritesData.data
           const total = anime_stats.episodes_watched + manga_stats.volumes_read
           const badge = malBadges.find( b => total > b.min && total < b.max).url
-          const favanime = hyperlinkify(anime)
-          const favmanga = hyperlinkify(manga)
-          const favchar = hyperlinkify(characters)
-          const favpeople = hyperlinkify(people)
+          const favanime = this.utils.hyperlinkify(anime)
+          const favmanga = this.utils.hyperlinkify(manga)
+          const favchar = this.utils.hyperlinkify(characters)
+          const favpeople = this.utils.hyperlinkify(people)
       
           const embed = {
             "embed": {
@@ -109,7 +113,7 @@ class Mal extends Command {
                 url: data.url,
               },
               "thumbnail": {
-                "url": data.image_url,
+                "url": data.images.jpg.image_url,
               },
               "description": `${data.about ? textTrunctuate(data.about,350,`...[Read More](${data.url})\n\n`) : ``}• **Gender:** ${data.gender}\n• **From:** ${data.location}\n• **Joined MAL:** ${moment(data.joined).format("dddd, MMMM Do YYYY, h:mm:ss a")}*\n• **Last Seen:** ${moment(data.last_online).format("dddd, MMMM Do YYYY, h:mm:ss a")}*`,
               "color": 16610652,

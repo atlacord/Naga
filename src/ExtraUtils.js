@@ -1,6 +1,7 @@
 const { Utils } = require('axoncore');
 const { Message } = require('eris');
 const secret = require('../configs/secret.json');
+const fetch = require('node-fetch')
 
 const DISCORD_EPOCH = 1420070400000;
 
@@ -399,9 +400,46 @@ class ExtraUtils extends Utils {
 			return Promise.reject(err);
 		}
 	}
+/*
+    Query from anilist's graphql 
+*/ 
+    AniListQuery(query, variables) {
+
+        return fetch('https://graphql.anilist.co', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            query,
+            variables
+          })
+        }).then(res => res.json())
+            .catch(err => err);
+      }
 
 
+
+hyperlinkify(arr) {
+    if (!arr.length) return null
+  
+    let res = ''
+    let lastindex = null
+  
+    for (let i = 0; res.length < 950 && lastindex === null; i++) {
+      let toAdd = ` • [${arr[i].name}](${arr[i].url})`
+  
+      if (toAdd.length + res.length > 950) {
+        lastindex = i
+        return
+      }
+  
+      return res += toAdd
+    }
+  
+    return `${res}${lastindex && lastindex < arr.length - 1 ? ` and ${arr.length - lastindex - 1} more!`:`.`}`
+  }
 
 }
-
 module.exports = ExtraUtils;
