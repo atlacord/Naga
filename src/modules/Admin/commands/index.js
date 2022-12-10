@@ -8,6 +8,7 @@ module.exports = {
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),
     SetGame: require('./SetGame'),
+    Speedtest: require('./Speedtest'),
     Staff: require('./Staff'),
     TatsuTest: require('./Tatsu'),
     TestJoinMessages: require('./TestJoinMessages')
