@@ -9,5 +9,6 @@ module.exports = {
     // Prefix: require('./Prefix'),
     // Setnick: require('./Setnick'),
     Respond: require('./Respond'),
-    ViewSuggestion: require('./ViewSuggestion')
+    ViewSuggestion: require('./ViewSuggestion'),
+    WeBo: require('./WelcomeButtons')
 };

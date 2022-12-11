@@ -39,7 +39,8 @@ class ExtraUtils extends Utils {
         green: 4437377,
         blue: 9031664,
         darkblue: 26544,
-        spotify: 1947988
+        spotify: 1947988,
+        discordgrey: 2632496
         }
 
         return colors[color];
