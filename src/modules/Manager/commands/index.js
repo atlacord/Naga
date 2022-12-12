@@ -6,6 +6,7 @@ module.exports = {
     GetMessage:require('./GetMessage'),
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
+    MessageContext: require('./MessageContext'),
     Nick: require('./Nick'),
     // Prefix: require('./Prefix'),
     // Setnick: require('./Setnick'),
