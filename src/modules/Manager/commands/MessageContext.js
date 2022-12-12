@@ -19,7 +19,7 @@ class MessageContext extends Command {
         this.info = {
             name: 'context',
             description: 'Views context around a message link',
-            usage: 'context [message link]',
+            usage: 'context [message link] [optional quantity]',
         };
 
         /**
@@ -50,8 +50,10 @@ class MessageContext extends Command {
         channelID = msgLink.match(ID_REGEX)[1];
         messageID = msgLink.match(ID_REGEX)[2];
 
+        let quantity = args[1] || 5;
+
         let oldMessages;
-        await this.bot.getMessages(channelID, { before: messageID, limit: 5 })
+        await this.bot.getMessages(channelID, { before: messageID, limit: quantity })
         .then(async messages => {
             messages = messages.filter(Boolean).map(msg => {
                 return `${this.utils.fullName(msg.author)} (<t:${Math.floor(msg.createdAt / 1000)}:R>)  –  ${msg.content}`;
@@ -74,7 +76,7 @@ class MessageContext extends Command {
         if (message.attachments.length > 0) {
             embed.image.url = message.attachments[0].url;
         }
-        
+
         msg.channel.createMessage({embed});
     }
 }

@@ -28,6 +28,7 @@ if (config.settings.db === 2) {
 Bot.start()
 .then(cron.schedule('0 0 0 * * *', () => {
     Bot.commandRegistry.get('checkbirthday').execute();
+    Bot.commandRegistry.get('loadpermissions').execute();
   console.log('Checking for new birthdays');
 }),
 new EventHandler(),
