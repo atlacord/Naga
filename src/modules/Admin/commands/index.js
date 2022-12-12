@@ -5,6 +5,7 @@ module.exports = {
     EditWiki: require('./EditWiki'),
     Eval: require('./Eval'),
     Exec: require('./Exec'),
+    LoadPermissions: require('./LoadPermissions'),
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),
     SetGame: require('./SetGame'),
