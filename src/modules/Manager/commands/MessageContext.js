@@ -56,18 +56,18 @@ class MessageContext extends Command {
         await this.bot.getMessages(channelID, { before: messageID, limit: quantity })
         .then(async messages => {
             messages = messages.filter(Boolean).map(msg => {
-                return `${this.utils.fullName(msg.author)} (<t:${Math.floor(msg.createdAt / 1000)}:R>)  –  ${msg.content}`;
+                return `**${this.utils.fullName(msg.author)}** (<t:${Math.floor(msg.createdAt / 1000)}:R>)  –  ${msg.content}\n`;
             })
             oldMessages = messages.reverse();
         })
         let message = await this.bot.getMessage(channelID, messageID);
-        oldMessages.push(`**${this.utils.fullName(message.author)} (<t:${Math.floor(message.createdAt / 1000)}:R>)  –  ${message.content}**`)
+        oldMessages.push(`__**${this.utils.fullName(message.author)} (<t:${Math.floor(message.createdAt / 1000)}:R>)  –  ${message.content}**__`)
         let msgContent = oldMessages.join('\n');
         let embed = {
             color: this.utils.getColor('blue'),
             author: { 
-                name: this.utils.fullName(message.author),
-                icon_url: message.author.avatarURL
+                name: `Messages sent in #${message.channel.name}`,
+                icon_url: message.channel.guild.iconURL
             },
             description: `${msgContent}`,
             footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` }
