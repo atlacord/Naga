@@ -8,6 +8,7 @@ module.exports = {
     LoadPermissions: require('./LoadPermissions'),
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),
+    SetAvatar: require('./SetAvatar'),
     SetGame: require('./SetGame'),
     Speedtest: require('./Speedtest'),
     Staff: require('./Staff'),

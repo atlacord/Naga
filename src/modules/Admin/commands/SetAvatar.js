@@ -1,38 +1,36 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const banners = require('../../../assets/banners.json');
 const axios = require('axios');
 
-class ChangeBanner extends Command {
+class SetAvatar extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'changebanner';
-        this.aliases = [
-        ];
+        this.label = 'setavatar';
+        this.aliases = ['setav', 'changeav'];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'changebanner',
-            description: 'Change banner',
-            usage: 'changebanner',
+            name: 'setavatar',
+            description: 'Change Naga\'s avatar.',
+            usage: 'setav [image link]',
         };
 
         /**
          * @type {CommandOptions}
          */
         this.options = new CommandOptions(this, {
-            argsMin: 0,
-            cooldown: 10000,
+            argsMin: 1,
+            cooldown: 60000,
             guildOnly: true,
         } );
 
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.admins,
+                needed: this.axon.staff.owners,
                 bypass: this.axon.staff.owners,
             },
         } );
@@ -46,17 +44,15 @@ class ChangeBanner extends Command {
         return res;
     }
 
-    async execute() {
-        let banner = Math.floor(Math.random() * banners.length);
-        banner = banners[banner];
-        let res = await this.convertImage(banner);
+    async execute({msg, args}) {
+        let res = await this.convertImage(args[0]);
 
         try {
-            await this.bot.guilds.get('370708369951948800').edit({ banner: res }, 'Monthly autochange');
+            await this.bot.editSelf({ avatar: res }).then(this.sendSuccess(msg.channel, 'Avatar changed.'))
         } catch (err) {
-            console.error(`Failed to change the banner: ${err}`)
+            this.sendError(msg.channel, `Failed to change the avatar: ${err}`);
         };
     }
 }
 
-module.exports = ChangeBanner;
+module.exports = SetAvatar;
