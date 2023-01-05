@@ -19,7 +19,7 @@ class Wyr extends Command {
 
         this.info = {
             name: 'wyr',
-            description: 'Gives a would your rather question!',
+            description: 'Gives a would you rather question!',
             usage: 'wyr',
         };
 
