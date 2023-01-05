@@ -71,6 +71,9 @@ class Serverinfo extends Command {
 		const categories = guild.channels.filter(c => c.type === 4).length;
 		const textChannels = guild.channels.filter(c => c.type === 0).length;
 		const voiceChannels = guild.channels.filter(c => c.type === 2).length;
+        
+        const roles = guild.roles.size;
+        const emojis = guild.emojis.length;
 
         // let roles = guild.members.get(msg.member.id).roles.map(r => guild.roles.get(r)).filter(r => r.color);
         // roles.sort((a,b) => b.position - a.position);
@@ -100,15 +103,15 @@ class Serverinfo extends Command {
             { name: 'Total Members', value: guild.memberCount.toLocaleString(), inline: true },
             { name: 'Boost Level', value: bTier[guild.premiumTier], inline: true },
             { name: 'Boosters', value: guild.premiumSubscriptionCount, inline: true },
-            { name: 'Categories', value: categories, inline: true },
-            { name: 'Text Channels', value: textChannels, inline: true },
-            { name: 'Voice Channels', value: voiceChannels, inline: true },
+            { name: 'Categories', value: categories.toLocaleString(), inline: true },
+            { name: 'Text Channels', value: textChannels.toLocaleString(), inline: true },
+            { name: 'Voice Channels', value: voiceChannels.toLocaleString(), inline: true },
             { name: 'Rules Channel', value: `<#${guild.rulesChannelID}>`, inline: true },
-            { name: `Roles`, value: guild.roles.size, inline: true },
-            { name: `Emojis`, value: guild.emojis.length, inline: true },
+            { name: 'Roles', value: roles.toLocaleString(), inline: true },
+            { name: 'Emojis', value: roles.toLocaleString(), inline: true },
             { name: 'Owner', value: `<@${guild.ownerID}>`, inline: true },
             // { name: `Created`, value: `${moment(guild.createdAt).tz("America/New_York").format("dddd, MMMM D, YYYY h:mm A")}`, inline: false }
-            { name: `Created`, value: `<t:${Math.floor(guild.createdAt / 1000)}:f>`, inline: true }, // This one uses Discord's timestamp formatting
+            { name: 'Created', value: `<t:${Math.floor(guild.createdAt / 1000)}:f>`, inline: true }, // This one uses Discord's timestamp formatting
             { name: 'Server Features', value: features.sort().join(', '), inline: false },
             ],
     
