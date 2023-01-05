@@ -109,6 +109,7 @@ class ArchiveAll extends Command {
             }
           })
           for (let i = 0; i <= channels.length; i += 1) {
+            console.log(channels[i])
             channel = await this.bot.getChannel(channels[i]);
             channelNames.push(channel.name);
 
@@ -117,7 +118,10 @@ class ArchiveAll extends Command {
                 let lastMsg = channel.lastMessageID;
 
                 this.sendSuccess(msg.channel, `Archiving ${channel.name} (\`${i + 1}/${channels.length}\`)`);
-                console.info(`Now archiving ${channel.name}.`)
+                console.info(`Now archiving ${channel.name}.`);
+
+                let newChannel = this.bot.guilds.get('1045099308065763379').createChannel(channel.name, 0);
+                let webhook = this.utils.getOrCreateWebhook(newChannel);
 
                 await this.bot.getMessages(channel.id, { limit: MESSAGE_QUANTITY, before: lastMsg })
                 .then(async messages => {
@@ -130,18 +134,36 @@ class ArchiveAll extends Command {
                                 }
                             }
                         }
+                        let embed = {
+                            author: { name: `${this.utils.fullName(msg.author)}`, icon_url: msg.author.avatarURL },
+                            color: this.utils.getColor('blue'),
+                            fields: [
+                                { name: 'Content', value: null, inline: false },
+                                { name: 'Author', value: `${this.utils.fullName(msg.author)}\n(${msg.author.id})`, inline: false },
+                                { name: 'Channel', value: `${channel.name}\n(${channel.id})`, inline: false },
+                                { name: 'Jump Link', value: `[Click Here](${msg.jumpLink})`, inline: true },
+                            ],
+                            footer: { text: `Message ID: ${msg.id}` },
+                            timestamp: moment(msg.createdAt).format('dddd, Do MMMM YYYY hh:mm:ss')
+                        }
                         return [
                             `[${moment(msg.createdAt).format('dddd, Do MMMM YYYY hh:mm:ss')}]`,
                             `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
                         ].join(' ');
                     }); 
 
-                    messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
+                    // messages.push(`Messages Archived on ![](${channel.guild.dynamicIconURL('png', 32)}) **${channel.guild.name}** - **${channel.name} (${channel.id}** --\r\n\r\n`);
                     messages = messages.reverse().join('');
+                    for (let i in messages) {
+                        this.bot.executeWebhook(webhook.id, webhook.token, { 
+                            embed: {}
+                        })
+                    }
+                    console.log(messages);
 
                     const data = Buffer.from(messages, 'utf8');
                     fs.writeFile(`Archives/${channel.id}.md`, data, (err) => {
-                        // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
+                        if (err !== null) { this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`) };
                     });
                 })
                 this.sendSuccess(msg.channel, `Successfully archived ${channel.name} (\`${i + 1}/${channels.length}\`)`)

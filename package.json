@@ -7,7 +7,7 @@
     "animequote": "^1.1.1",
     "axios": "^0.27.2",
     "axoncore": "git+https://github.com/sodacova/AxonCore.git",
-    "canvas": "^2.9.3",
+    "canvas": "^2.11.0",
     "davie-eris-embed": "^1.0.3",
     "eris": "^0.17.1",
     "esm": "^3.2.25",
@@ -23,12 +23,13 @@
     "node-cron": "^3.0.1",
     "pluris": "^0.3.7",
     "replace-in-file": "^6.3.5",
+    "require-text": "0.0.1",
     "semver": "^7.3.2",
     "syllable": "^4.1.0",
     "tatsu": "^1.1.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "wikiapi": "^1.19.4"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "n!ping"
   },

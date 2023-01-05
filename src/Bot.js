@@ -46,7 +46,7 @@ const client = new Eris.Client(
         defaultImageSize: 4096,
         disableEveryone: true,
         getAllUsers: true,
-        messageLimit: 100,
+        messageLimit: Infinity,
         restMode: true,
         intents: [ 
             'guilds',  
@@ -63,7 +63,8 @@ const client = new Eris.Client(
             'directMessageReactions',
             'directMessageTyping',
             'guildPresences',
-            'guildMembers'
+            'guildMembers',
+            'messageContent'
         ]
     },
 )

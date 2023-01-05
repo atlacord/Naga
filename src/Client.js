@@ -43,7 +43,7 @@ class Client extends AxonClient {
     /**
      * @returns {Promise<true>}
      */
-    onReady() {
+    async onReady() {
         return Promise.resolve(true);
     }
 
