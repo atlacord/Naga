@@ -29,7 +29,7 @@ class DMLogs extends Listener {
      async execute(msg) { // eslint-disable-line
 
         let embed = {
-            author: { name: this.utils.fullName(member), icon_url: msg.author.avatarURL },
+            author: { name: `${msg.author.username}#${msg.author.discriminator}`, icon_url: msg.author.avatarURL },
             color: this.utils.getColor('blue'),
             title: 'New Message',
             footer: { text: `User ID: ${msg.author.id}` },
