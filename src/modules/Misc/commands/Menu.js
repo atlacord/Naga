@@ -10,7 +10,6 @@ class Menu extends Command {
         super(module);
 
         this.label = 'menu';
-        this.aliases = [ '' ];
 
         this.hasSubcmd = false;
 
