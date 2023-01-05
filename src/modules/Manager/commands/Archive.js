@@ -45,7 +45,7 @@ class Archive extends Command {
          */
 
         this.options = new CommandOptions(this, {
-            argsMin: 0,
+            argsMin: 1,
             guildOnly: true,
         } );
 
@@ -87,12 +87,10 @@ class Archive extends Command {
         //     clientSecret: clientSecret,
         //     refreshToken: refreshToken,
         // });
-        let channel = msg.channel;
-        if (args.length > 0) {
-            channel = args[0].replace('<#','');
-            channel = channel.replace('>', '').toString();
-            channel = this.bot.getChannel(channel);
-        }
+
+        let channel = args[0].replace('<#','');
+        channel = channel.replace('>', '').toString();
+        channel = this.bot.getChannel(channel);
         const quantity = Math.round(args[1] || MESSAGE_QUANTITY);
 
         try {
@@ -123,14 +121,13 @@ class Archive extends Command {
                 messages = messages.reverse().join('');
 
                 const data = Buffer.from(messages, 'utf8');
-                fs.writeFile(`Archives/${channel.id}.md`, data, (err) => {
+                fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
                     if (err !== null) { this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`) };
                 });
             })
-                /this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`)
+                this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`)
                 console.info(`Finished archiving ${channel.name}.`)
         } catch (err) {
-            this.sendError(msg.channel, err);
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');
         }
     }

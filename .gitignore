@@ -2,15 +2,13 @@
 node_modules
 *.code-workspace
 package-lock.json
-configs
+configs/secret.json
 src/index.js
 src/modules/Info/listeners/index.js
-src/modules/Info/listeners/DMLogs.js
 
 # Local directories/files
 Archives
 src/modules/Games/data.csv
-src/assets/wordle
-src/assets/cooldown.json
+src/assets/wordle/wordledata.csv
 
 .npmrc

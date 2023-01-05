@@ -140,7 +140,7 @@ class ArchiveAll extends Command {
                     messages = messages.reverse().join('');
 
                     const data = Buffer.from(messages, 'utf8');
-                    fs.writeFile(`Archives/${channel.id}.md`, data, (err) => {
+                    fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
                         // this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`);
                     });
                 })

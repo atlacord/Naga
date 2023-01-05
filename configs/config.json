@@ -1,0 +1,48 @@
+{
+    "settings": {
+        "lang": "english",
+        "debugMode": false,
+        "library": 0,
+        "logger": 1,
+        "db": 2,
+        "guildConfigCache": 1000,
+        "joinLogs": false
+    },
+    
+    "prefixes": {
+        "general": "n.",
+        "admin": "na.",
+        "owner": "$"
+    },
+    "emotes": {
+        "error": "<:no:917982868922335272>",
+        "success": "<:yes:917982955362734100>"
+    },
+    "info": {
+        "name": "Naga",
+        "description": "naga v2",
+        "version": "2.0.0"
+    },
+    "staff": {
+        "owners": [
+            { "name": "TwoDog", "id": "123261299864895489" },
+            { "name": "soda", "id": "254814547326533632" },
+            { "name": "Avatar Bolin", "id": "260600155630338048" }
+        ],
+        "admins": [],
+        "sentries": [],
+        "dailis": []
+    },
+    "template": {
+        "embeds": {
+            "help": 9031664,
+            "global": 9031664,
+            "error": 15844367
+        },
+
+        "emotes": {
+            "error": "<:no:917982868922335272>",
+            "success": "<:yes:917982955362734100>"
+        }
+    }
+}
