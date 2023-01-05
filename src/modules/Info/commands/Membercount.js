@@ -60,9 +60,9 @@ class Membercount extends Command {
                 },
 
                 fields: [
-                { name: 'Members', value: allMembers, inline: true },
-                { name: 'Humans', value: humanMembers, inline: true },
-                { name: 'Bots', value: botMembers, inline: true }
+                { name: 'Members', value: allMembers.toLocaleString(), inline: true },
+                { name: 'Humans', value: humanMembers.toLocaleString(), inline: true },
+                { name: 'Bots', value: botMembers.toLocaleString(), inline: true }
                 ],
             
                 footer: { 
