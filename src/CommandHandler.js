@@ -98,7 +98,6 @@ class CommandHandler {
                             embed: {
                                 color: getColor('blue'),
                                 description: topics[topic],
-                                footer: { text: 'Check out our new Legend of Korra topics - n.topic korra'}
                             }
                         }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
                     default: {
@@ -127,8 +126,7 @@ class CommandHandler {
                                     max_length: 4000, 
                                     placeholder: "TwoDog", 
                                     required: true
-                                }
-            
+                                  }           
                                 ]
                             }
                         ]
@@ -160,7 +158,6 @@ class CommandHandler {
                             },
                         ],
                         flags: 64
-
                     })
                 }
 
@@ -219,9 +216,7 @@ class CommandHandler {
                                    
                                    \n\n<@&717748188630482946> – A role used to revoke access to <#812409753602883626> and <#388122648854528001> for server members who misuse those channels. This role also prevents users from re-assigning themselves the <@&991902499516731494> and <@&388121551779921930> roles (see “Channel Access Roles” below).`
                                 }
-                            ]
-                
-        
+                            ]        
                         })
                     }
 
@@ -285,8 +280,7 @@ class CommandHandler {
                                        <:whitelotus:381027716897439744> <#709827097559826553> - Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                                        <:whitelotus:381027716897439744> <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                                     }
-                                ]})
-                                
+                                ]})                                
                             }
             if(interaction.data.component_type ===2 &&
                 interaction.data.custom_id === "ChannelInfoButton2") {
@@ -341,13 +335,8 @@ class CommandHandler {
                                <:whitelotus:381027716897439744> <#456158655650201611> - Channel for talking about an ongoing stream happening in the Movers Club Voice chat.
                                <:whitelotus:381027716897439744> <#836266701489831967> - For chatting when using the Ember Island Theatre Stage channel.
                                `
-                            }
-
-                            
+                            }                 
                         ]
-            
-    
-
                     })
                 }                               
 
@@ -411,8 +400,7 @@ class CommandHandler {
                                    <:whitelotus:381027716897439744> <#709827097559826553> - Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                                    <:whitelotus:381027716897439744> <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                                 }
-                            ]})
-                            
+                            ]})    
                         }
             if(interaction.data.component_type === 2 &&
                             interaction.data.custom_id === "TeamButton") {
@@ -437,10 +425,10 @@ class CommandHandler {
                                             },
                                             title: `White Lotus - Admin`,
                                             description: `TwoDog#0002 (<@123261299864895489>) | [Server Owner]
+                                            \njules_zules#8329 (<@737542058138533950>)
                                             \nKratΩs#7871 (<@222634331384840193>)
                                             \nphantom#1843 (<@532290521058508821>)
-                                            \nLion#0002 (<@239446756599922688>)
-                                            \njules_zules#8329 (<@737542058138533950>)`
+                                            \nLion#0002 (<@239446756599922688>)`
                                         },
                                         {
                                             color: sentrycolour,
@@ -449,12 +437,11 @@ class CommandHandler {
                                             },
                                             title: `Sentry - Sr Mod`,
                                             description: `abendstern#3100 (<@681334177928577066>)
-                                            \nBun :rabbit:#3892 (<@510193587430883328>)
-                                            \nAuren#4048 (<@331152259109093377>)
-                                            \nKide:snowflake:#3355 (<@231342149847744512>)
                                             \nsoda#0001 (<@254814547326533632>)
-                                            \nthunder#0099 (<@380223584578306049>)
-                                            \nemmaaa#7581 (<@432156129603354624>)`
+                                            \nemmaaa#7581 (<@432156129603354624>)
+                                            \nBun :rabbit:#3892 (<@510193587430883328>)
+                                            \nKide:snowflake:#3355 (<@231342149847744512>)
+                                            \nthunder#0099 (<@380223584578306049>)`
                                         },
                                         {
                                             color: dailicolour, 
@@ -463,31 +450,14 @@ class CommandHandler {
                                             },
                                             title: `Dai Li - Mod`, 
                                             description: `Σuhi#1107 (<@416630867209748483>)
-                                            \nsoren#3546 (<@492301935500591124>)
                                             \nghost or something#0066 (<@995668136672116746>)
+                                            \nsoren#3546 (<@492301935500591124>)
                                             \npwr_mtlbndr#4552 (<@449227153905680386>)`
                                         }
                                     ],
-                        
-                
                                 })
                             }
-    
-
-
-
-
-
-
-
-
-               // End of interaction 
         });
-        
-
-       
-    
-
         bot.connect(); // Get the bot to connect to Discord
     }
 }
