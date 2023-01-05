@@ -35,10 +35,10 @@ class Membercount extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    execute ({ msg }) {
+    execute ({ msg, args }) {
 
         try {
-        const guild = msg.channel.guild;
+        const guild = this.bot.guilds.get(args[0]) || msg.channel.guild;
         let allMembers = guild.members.size;
         let humanMembers = guild.members.filter(member => !member.user.bot).length;
         let botMembers = guild.members.filter(member => member.user.bot).length;

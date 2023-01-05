@@ -43,6 +43,7 @@ class RoleRemove extends Command {
      */
 
       async execute({ msg, args }) {
+        const guild = msg.channel.guild;
         const invalidRoles = [];
         const roleChanges = [];
 
@@ -54,7 +55,7 @@ class RoleRemove extends Command {
         .split(',');
 
         for (const search of roleArgs) {
-            const role = this.utils.resolveRole(msg.guildID, search);
+            const role = this.utils.resolveRole(guild, search);
 
             if (!role) {
                 invalidRoles.push(search);
@@ -84,8 +85,8 @@ class RoleRemove extends Command {
             return this.sendError(msg.channel, 'No changes were made.');
         }
 
-        return (await member).edit({ roles }, encodeURIComponent(`Responsible User: ${msg.author.username}#${msg.author.discriminator}`))
-            .then(() => this.sendSuccess(msg.channel, `Changed roles for ${member.username}#${member.id}, ${changes.join(', ')}`))
+        return (await member).edit({ roles }, encodeURIComponent(`Responsible User: ${this.utils.fullName(msg.author)}`))
+            .then(() => this.sendSuccess(msg.channel, `Changed roles for ${this.utils.fullName(member)}, ${changes.join(', ')}`))
             .catch(err => this.sendError(msg.channel, `I couldn't change the roles for that user. Please check my permissions and role position.\n ${err}`));
     }   
 }

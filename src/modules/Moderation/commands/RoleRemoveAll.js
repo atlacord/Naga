@@ -54,9 +54,9 @@ class RoleRemoveAll extends Command {
 		const rolenames = roles.filter(r => !r.managed).map(r => r.name);
 
 		return member.edit({ roles: roles.filter(r => r.managed).map(r => r.id) },
-				encodeURIComponent(`Responsible User: ${msg.author.username}#${msg.author.discriminator}`))
+				encodeURIComponent(`Responsible User: ${this.utils.fullName(msg.author)}`))
 			.then(() => this.sendSuccess(msg.channel,
-				`Removed the following roles from ${member.username}#${member.discriminator}, ${rolenames.join(', ')}`))
+				`Removed the following roles from ${this.utils.fullName(member)}, ${rolenames.join(', ')}`))
 			.catch(err => this.sendError(msg.channel,
 				`I couldn't change the roles for that user. Please check my permissions and role position.`, err));
     }
