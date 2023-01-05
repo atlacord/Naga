@@ -80,7 +80,6 @@ class Topic extends Command {
             embed: {
                 color: this.utils.getColor('blue'),
                 description: topics[topic],
-                footer: { text: 'Check out our new Legend of Korra topics - n.topic korra'}
             }
         }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
     }
