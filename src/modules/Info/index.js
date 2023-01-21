@@ -1,7 +1,6 @@
 const { Module } = require('axoncore');
 
 const commands = require('./commands/index');
-const listeners = require('./listeners/index');
 
 class Info extends Module {
     /**
@@ -23,7 +22,7 @@ class Info extends Module {
     }
 
     init() {
-        return { commands, listeners };
+        return { commands };
     }
 }
 
