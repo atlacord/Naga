@@ -1,8 +1,8 @@
 const { Module } = require('axoncore');
 
-const commands = require('./commands/index');
+const listeners = require('./listeners/index');
 
-class Info extends Module {
+class Events extends Module {
     /**
      * @param {import('axoncore').AxonClient} client
      * @param {import('axoncore').ModuleData} data
@@ -10,20 +10,20 @@ class Info extends Module {
     constructor(client, data = {} ) {
         super(client, data);
 
-        this.label = 'Info';
+        this.label = 'Events';
 
         this.enabled = true;
         this.serverBypass = true;
 
         this.info = {
-            name: 'Info',
-            description: 'The main module with most basic commands.',
+            name: 'Events',
+            description: 'Naga\'s event handler',
         };
     }
 
     init() {
-        return { commands };
+        return { listeners };
     }
 }
 
-module.exports = Info;
+module.exports = Events;
