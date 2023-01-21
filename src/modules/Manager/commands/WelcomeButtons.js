@@ -60,20 +60,12 @@ class WelcomeButtons extends Command {
                    \n[Wiki](https://avatar-the-last-airbender-discord.fandom.com/wiki/Home) - Run by our community, the wiki contains server lore and pages on our active users, events and groups! Wiki writers, denoted by their role, are users who have applied via Hawky with a min requirement ofthe Adept role (42,000 XP) and as such are the only ones allowed to make edits on the wiki.
                    \n[Twitter](https://twitter.com/atlacord) 
                    \n[Instagram](https://instagram.com/atlacord)`,
-
-
                 },
             ],
             components: [
                 {
                     type: 1, 
                     components: [
-                    {
-                        type: 2,
-                        label: "Rules", 
-                        style: 1, 
-                        custom_id: "RulesButton"
-                    },
                     {
                         type: 2,
                         label: "Role Info", 
