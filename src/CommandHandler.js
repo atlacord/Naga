@@ -192,8 +192,8 @@ class CommandHandler {
                                     {
                                         color: discordgrey,
                                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                                        <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                                         <:whitelotus:381027716897439744> <#728364994005303307> - Our server rules. Be sure to read them before participating in the server!
+                                        <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                                         <:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
                                         <:whitelotus:381027716897439744> <#728296501046149137> - Our partnered Discord servers which you can also join and enjoy!
                                         <:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
@@ -312,8 +312,8 @@ class CommandHandler {
                                 {
                                     color: discordgrey,
                                     description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                                    <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                                     <:whitelotus:381027716897439744> <#728364994005303307> - Our server rules. Be sure to read them before participating in the server!
+                                    <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                                     <:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
                                     <:whitelotus:381027716897439744> <#728296501046149137> - Our partnered Discord servers which you can also join and enjoy!
                                     <:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
