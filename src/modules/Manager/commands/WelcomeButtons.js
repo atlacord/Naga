@@ -51,10 +51,8 @@ class WelcomeButtons extends Command {
                 {
                     color: this.utils.getColor('discordgrey'),
                     description: `**Welcome to the Avatar: The Last Airbender Discord server!**
-
-                    This is a Discord community for fans of the Avatar Legends universe (ATLA, Legend of Korra, and all other related media). This is a volunteer-run community to make a space for all fans of the show to come together. We are not associated with Nickelodeon or Avatar Studios.
-                   
-                    For any questions, feedback, concerns or reports, you can contact the server staff by messaging <@718577208687460482>, our modmail bot. A staff member will reply to you as soon as possible after you have sent a message. To handle the situation quickly and efficiently, please provide the staff with all relevant information.
+                    \n\nThis is a Discord community for fans of the Avatar Legends universe (ATLA, Legend of Korra, and all other related media). This is a volunteer-run community to make a space for all fans of the show to come together. We are not associated with Nickelodeon or Avatar Studios.
+                    \n\nFor any questions, feedback, concerns or reports, you can contact the server staff by messaging <@718577208687460482>, our modmail bot. A staff member will reply to you as soon as possible after you have sent a message. To handle the situation quickly and efficiently, please provide the staff with all relevant information.
 
                     \nWant to connect with us more? Check our socials below!
                     \n[Wiki](https://avatar-the-last-airbender-discord.fandom.com/wiki/Home) - Run by our community, the wiki contains server lore and pages on our active users, events and groups! Wiki writers, denoted by their role, are users who have applied via Hawky with a min requirement ofthe <@&372179082634330112> role (42,000 XP) and as such are the only ones allowed to make edits on the wiki.
