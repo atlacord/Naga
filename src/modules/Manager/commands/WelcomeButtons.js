@@ -40,7 +40,7 @@ class WelcomeButtons extends Command {
      */
 
     async execute( { msg } ) {
-        msg.channel.guild.channels.get('1053064927935467530').createMessage({
+        msg.channel.guild.channels.get('1053064927935467530').editMessage('1066847898748338226', {
             embeds: [
                 {
                     color: this.utils.getColor('discordgrey'),
@@ -64,30 +64,36 @@ class WelcomeButtons extends Command {
                 {
                     type: 1, 
                     components: [
-                    {
-                        type: 2,
-                        label: "Role Info", 
-                        style: 1, 
-                        custom_id: "RoleInfoButton"
-                    },
-                    {
-                        type: 2,
-                        label: "Channel Info", 
-                        style: 1, 
-                        custom_id: "ChannelInfoButton"
-                    }, 
-                    {
-                        type: 2,
-                        label: "Our Team", 
-                        style: 1, 
-                        custom_id: "TeamButton"
-                    }, 
-                    {
-                        type: 2,
-                        label: "Contact Staff", 
-                        style: 5, 
-                        url: `https://discord.com/users/718577208687460482`,
-                    }, 
+                        {
+                            type: 2,
+                            label: "FAQ",
+                            style: 1,
+                            custom_id: "FAQ"
+                        },
+                        {
+                            type: 2,
+                            label: "Role Info", 
+                            style: 1, 
+                            custom_id: "RoleInfoButton"
+                        },
+                        {
+                            type: 2,
+                            label: "Channel Info", 
+                            style: 1, 
+                            custom_id: "ChannelInfoButton"
+                        }, 
+                        {
+                            type: 2,
+                            label: "Our Team", 
+                            style: 1, 
+                            custom_id: "TeamButton"
+                        }, 
+                        {
+                            type: 2,
+                            label: "Contact Staff", 
+                            style: 5, 
+                            url: `https://discord.com/users/718577208687460482`,
+                        }, 
                     ]
                 }
             ]
