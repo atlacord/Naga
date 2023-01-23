@@ -1,6 +1,6 @@
 const { Module } = require('axoncore');
 
-const listeners = require('./listeners/index');
+const listeners = require('./Events.js');
 
 class Events extends Module {
     /**
