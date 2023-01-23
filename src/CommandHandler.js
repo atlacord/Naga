@@ -405,6 +405,35 @@ class CommandHandler {
                                     ],
                                 })
                             }
+
+                            if (interaction.data.component_type === 2 &&
+                                interaction.data.custom_id === "FAQ") {
+                                    return interaction.createMessage({
+                                        flags: 64,
+                                        embeds: [
+                                            {
+                                                color: discordgrey,
+                                                image: {
+                                                    url: `https://cdn.discordapp.com/attachments/411903716996677639/1040142190409678848/faq.png`
+                                                } 
+                                            },
+                                            {
+                                                color: discordgrey,
+                                                description: `**Q: Where's the general chat?**
+                                                \nA: <#372087095121936385> and <#1033182943746723910> are the general off-topic chats, while <#372086844956868618> and <#721604232532459540> are for ATLA and Legend of Korra discussions. Be sure to read the channel topics and channels_info for more information.
+                                                \n\n**Q: How do I level up?**
+                                                \nA: You level up by being active in the server. Posting messages can get you between 15 and 25 XP. However, spamming doesn't help, because you can only gain XP once per minute, regardless of the number of messages. If you want to know your individual rank, type \`!rank\` in <#372087473892884502>. If you want to see the leaderboard, use \`!top\` in the same bot channel.
+                                                \n\n**Q: Why can't I post images/videos or links?
+                                                \nA: Image/file posting permissions are available to users that have the <@&720343753805660183> role. This role is automatically assigned after reaching **1,150 XP**. This is to prevent potential raids and spams by users who join the server for the first time.
+                                                \n\n**Q: How can I choose a sub-bending role?**
+                                                \nA: Members with the <@&372163599130558466> role are granted access to our sub-bending roles located in <#1065945888507310191>. This role is automatically assigned after reaching **11,825 XP**.
+                                                \n\n**Q: Why can't I control the music bot?**
+                                                \nA: This server has 2 music bots: Hydra (<@!547905866255433758>) and Aiode (<@!483377420494176258>). Use of both is available for all members, but certain commands are limited to those who have the <@&413564353829404672> role. To obtain this role, you must be at least at the rank of <@&720343753805660183> (**1,150 XP**, more info in roles). You may ask for the role by messaging <@!718577208687460482>, our modmail bot. The staff team will grant you the role after checking your recent behavior and past infractions. Abuse of the role will result in its removal from you.`
+                                            },
+                                            
+                                        ]
+                                    })
+                                }
         });
         bot.connect(); // Get the bot to connect to Discord
     }
