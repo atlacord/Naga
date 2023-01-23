@@ -11,6 +11,7 @@ const discordgrey = 2632496;
 const wlcolour = 16777215;
 const sentrycolour = 9725695; 
 const dailicolour = 5628531;
+const lotus = 15913095;
 
 class CommandHandler {
     constructor() {
@@ -73,12 +74,12 @@ class CommandHandler {
 
         function getColor(color) {
             let colors = {
-            red: 15747399,
-            yellow: 16439902,
-            green: 4437377,
-            blue: 9031664,
-            darkblue: 26544,
-            spotify: 1947988
+                red: 15747399,
+                yellow: 16439902,
+                green: 4437377,
+                blue: 9031664,
+                darkblue: 26544,
+                spotify: 1947988
             }
     
             return colors[color];
@@ -112,13 +113,13 @@ class CommandHandler {
                             flags: 64,
                             embeds: [
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                     image: {
                                         url: `https://media.discordapp.net/attachments/831909387307319336/1051326858580467792/serverroles.png`
                                     } 
                                 },
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                    description: `**__Ranks__**
                                   \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                                   
@@ -134,7 +135,7 @@ class CommandHandler {
                                   \n__1,192,550 XP__ • <@&811411413573697556>`
                                 },
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                    description: `**__Requestable Roles__**
                                    \nThe following roles cannot be self-assigned, but eligible users *who are in good standing with the staff team* may request them by DMing <@718577208687460482> Mod Mail:
 
@@ -147,7 +148,7 @@ class CommandHandler {
                                    \n\n<@&413564353829404672> – Anyone can use our music bots (<@547905866255433758> and <@483377420494176258>) in the general voice channels (<#372383669727526912> and <#719924386228076576>), but higher control is reserved for users with this role. You must have the <@&720343753805660183> role (1,150 XP) to be eligible for the role.`
                                 },
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                    description: `**__Honorary Roles, Prize Roles, and Other Non-Assignable Roles__**
                                    \n The following roles are not regularly available and can only be obtained under special circumstances:
                                    
@@ -184,13 +185,13 @@ class CommandHandler {
                                    ] }],
                                 embeds: [
                                     {
-                                        color: discordgrey,
+                                        color: lotus,
                                         image: {
                                             url: `https://cdn.discordapp.com/attachments/411903716996677639/1051303245957570581/channels2.png`
                                         } 
                                     },
                                     {
-                                        color: discordgrey,
+                                        color: lotus,
                                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                                         <:whitelotus:381027716897439744> <#728364994005303307> - Our server rules. Be sure to read them before participating in the server!
                                         <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
@@ -199,7 +200,7 @@ class CommandHandler {
                                         <:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
                                     },
                                     { 
-                                        color: discordgrey,
+                                        color: lotus,
                                         description:`<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **BULLETIN** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                                         <:whitelotus:381027716897439744> <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
                                         <:whitelotus:381027716897439744> <#372088315467399170> – For announcing news, updates and special occasions.
@@ -210,7 +211,7 @@ class CommandHandler {
                                         Be sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
                                     },
                                    {
-                                        color: discordgrey,
+                                        color: lotus,
                                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **GENERAL** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                                        <:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
                                        <:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
@@ -219,7 +220,7 @@ class CommandHandler {
                                        <:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                                     },
                                     {
-                                        color: discordgrey,
+                                        color: lotus,
                                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                                        <:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
                                        <:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
@@ -248,7 +249,7 @@ class CommandHandler {
 
                             embeds: [
                             {
-                                color: discordgrey,
+                                color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **META** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                                <:whitelotus:381027716897439744> <#792616452770627594> – Suggestions which you can post in <#372087473892884502> are sent here for us to review.
                                <:whitelotus:381027716897439744> <#824762715952119818> – Channel for potential discussion of suggestions posted in <#792616452770627594> 
@@ -256,7 +257,7 @@ class CommandHandler {
                                <:whitelotus:381027716897439744> <#972950132242939964> – Forum channel for our ongoing gaming events, such as <#972950661186617375>, <#1004666132910841939>, <#1016619223830773771>, and <#972950772545384519>!`
                             },
                             {
-                                color: discordgrey,
+                                color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **MISCELLANEOUS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                                <:whitelotus:381027716897439744> <#726405096132575322> – For pictures of your pets, food, or any other amazing things you'd like to share.
                                <:whitelotus:381027716897439744> <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 7 in <#728364994005303307>.
@@ -267,7 +268,7 @@ class CommandHandler {
                                <:whitelotus:381027716897439744> <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
                             },
                             {
-                                color: discordgrey,
+                                color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **SATO'S WORKSHOP** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                                <:whitelotus:381027716897439744> <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
                                <:whitelotus:381027716897439744> <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
@@ -275,7 +276,7 @@ class CommandHandler {
                                <:whitelotus:381027716897439744> <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
                             },
                             {
-                                color: discordgrey,
+                                color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **VOICE CHANNELS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                                <:whitelotus:381027716897439744> <#372383669727526912> – The channel when using the Beach Cave VC for typing music commands or just for texting.
                                <:whitelotus:381027716897439744> <#719924386228076576>  – The channel when using the Black Cliffs VC for typing music commands or just for texting.
@@ -304,13 +305,13 @@ class CommandHandler {
                                ] }],
                             embeds: [
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                     image: {
                                         url: `https://cdn.discordapp.com/attachments/411903716996677639/1051303245957570581/channels2.png`
                                     } 
                                 },
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                     description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                                     <:whitelotus:381027716897439744> <#728364994005303307> - Our server rules. Be sure to read them before participating in the server!
                                     <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
@@ -319,7 +320,7 @@ class CommandHandler {
                                     <:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
                                 },
                                 { 
-                                    color: discordgrey,
+                                    color: lotus,
                                     description:`<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **BULLETIN** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                                     <:whitelotus:381027716897439744> <#782411596679872542> - Channel for all minor server changes and updates for channels and features.
                                     <:whitelotus:381027716897439744> <#372088315467399170> - For announcing news, updates and special occasions.
@@ -330,7 +331,7 @@ class CommandHandler {
                                     Be sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
                                 },
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                    description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **GENERAL** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                                    <:whitelotus:381027716897439744> <#761932923217379338> - Channel for the arrival of new members and for us to greet them!
                                    <:whitelotus:381027716897439744> <#826851222459514923> - A private channel for server boosters.
@@ -339,7 +340,7 @@ class CommandHandler {
                                    <:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                                 },
                                 {
-                                    color: discordgrey,
+                                    color: lotus,
                                    description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                                    <:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
                                    <:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
@@ -356,13 +357,13 @@ class CommandHandler {
                                     flags: 64,
                                     embeds: [
                                         {
-                                            color: discordgrey,
+                                            color: lotus,
                                             image: {
                                                 url: `https://cdn.discordapp.com/attachments/411903716996677639/1051295564601491556/staff2.png`
                                             } 
                                         },
                                         {
-                                            color: discordgrey,
+                                            color: lotus,
                                             description: `The staff members are here to make sure that everyone has a great time, to answer questions related to the server, or if you have trouble figuring out the server and might have questions or suggestions! You can also DM us through our ModMail, <@718577208687460482>, and a staff member will respond to you as soon as possible!`,
                                             
                                         },
@@ -412,13 +413,13 @@ class CommandHandler {
                                         flags: 64,
                                         embeds: [
                                             {
-                                                color: discordgrey,
+                                                color: lotus,
                                                 image: {
                                                     url: `https://cdn.discordapp.com/attachments/411903716996677639/1040142190409678848/faq.png`
                                                 } 
                                             },
                                             {
-                                                color: discordgrey,
+                                                color: lotus,
                                                 description: `**Q: Where's the general chat?**
                                                 \nA: <#372087095121936385> and <#1033182943746723910> are the general off-topic chats, while <#372086844956868618> and <#721604232532459540> are for ATLA and Legend of Korra discussions. Be sure to read the channel topics and channels_info for more information.
                                                 \n\n**Q: How do I level up?**
