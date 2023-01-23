@@ -120,7 +120,7 @@ class CommandHandler {
                                 {
                                     color: discordgrey,
                                    description: `**__Ranks__**
-                                  \nAs you gain XP in the server (see our FAQ in <#921075369409384448> for more information about XP), you will automatically receive special rank roles:
+                                  \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                                   
                                   \n\n __1,150 XP__    • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details). Also grants access to the <@&388121551779921930> role.
                                   \n__4,675 XP__  • <@&372178560254869504>

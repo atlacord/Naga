@@ -68,31 +68,86 @@ class EnforceBending extends Listener {
             yuyanarcher: '894475920780460045'
         };
 
-        let rolediff = member.roles.filter(x => !oldMember.roles.includes(x));
+        function checkRoles(array, values) {
+            console.log(values);
+            let res;
+            for (let i in values) {
+                if (array.includes(values[i]) === true) {
+                    res = true;
+                    break;
+                } else {
+                    res = false;
+                }
+            }
+            return res;
+        };
 
-        if (oldMember.roles.includes(basebending.water) && member.roles.some(r => (Object.values(earth).includes(r) || Object.values(air).includes(r)) || Object.values(fire).includes(r) || Object.values(non).includes(r))) {
-            if (rolediff[0] !== undefined) {
-                guild.removeMemberRole(member.id, rolediff[0], 'Enforcing sub-bending')
+        // let rolediff = member.roles.filter(x => !oldMember.roles.includes(x));
+
+        // if (oldMember.roles.includes(basebending.water) && member.roles.some(r => (
+        //     Object.values(earth).includes(r) || Object.values(air).includes(r) || Object.values(fire).includes(r) || Object.values(non).includes(r)
+        // ))) {
+        //     if (rolediff[0] !== undefined) {
+        //         guild.removeMemberRole(member.id, rolediff[0], 'Enforcing bending');
+        //     }
+        // }
+        // if (oldMember.roles.includes(basebending.earth) && member.roles.some(r => (
+        //     Object.values(water).includes(r) || Object.values(air).includes(r)|| Object.values(fire).includes(r) || Object.values(non).includes(r)
+        // ))) {
+        //     if (rolediff[0] !== undefined) {
+        //         guild.removeMemberRole(member.id, rolediff[0], 'Enforcing bending');
+        //     }
+        // }
+        // if (oldMember.roles.includes(basebending.air) && member.roles.some(r => (
+        //     Object.values(water).includes(r) || Object.values(earth).includes(r) || Object.values(fire).includes(r) || Object.values(non).includes(r)
+        // ))) {
+        //     if (rolediff[0] !== undefined) {
+        //         guild.removeMemberRole(member.id, rolediff[0], 'Enforcing bending');
+        //     }
+        // }
+        // if (oldMember.roles.includes(basebending.fire) && member.roles.some(r => (
+        //     Object.values(water).includes(r) || Object.values(earth).includes(r) || Object.values(air).includes(r) || Object.values(non).includes(r) 
+        // ))) {
+        //     if (rolediff[0] !== undefined) {
+        //         guild.removeMemberRole(member.id, rolediff[0], 'Enforcing bending');
+        //     }
+        // }
+        // if (oldMember.roles.includes(basebending.non) && member.roles.some(r => (
+        //     Object.values(water).includes(r) || Object.values(earth).includes(r) || Object.values(air).includes(r) || Object.values(fire).includes(r)
+        // ))) {
+        //     if (rolediff[0] !== undefined) {
+        //         guild.removeMemberRole(member.id, rolediff[0], 'Enforcing bending');
+        //     }
+        // }
+
+        if (oldMember.roles.includes(basebending.water) && checkRoles(member.roles, [ basebending.earth, basebending.fire, basebending.air, basebending.non ])) {
+            for (let i in Object.values(water)) {
+                guild.removeMemberRole(member.id, Object.values(water)[i], 'Updated bending');
             }
         }
-        if (oldMember.roles.includes(basebending.earth) && member.roles.some(r => (Object.values(water).includes(r) || Object.values(air).includes(r)) || Object.values(fire).includes(r) || Object.values(non).includes(r))) {
-            if (rolediff[0] !== undefined) {
-                guild.removeMemberRole(member.id, rolediff[0], 'Enforcing sub-bending')
+
+        if (oldMember.roles.includes(basebending.earth) && checkRoles(member.roles, [ basebending.water, basebending.fire, basebending.air, basebending.non ])) {
+            for (let i in Object.values(earth)) {
+                guild.removeMemberRole(member.id, Object.values(earth)[i], 'Updated bending');
             }
         }
-        if (oldMember.roles.includes(basebending.air) && member.roles.some(r => (Object.values(water).includes(r) || Object.values(earth).includes(r)) || Object.values(fire).includes(r) || Object.values(non).includes(r))) {
-            if (rolediff[0] !== undefined) {
-                guild.removeMemberRole(member.id, rolediff[0], 'Enforcing sub-bending')
+
+        if (oldMember.roles.includes(basebending.fire) && checkRoles(member.roles, [ basebending.water, basebending.earth, basebending.air, basebending.non ])) {
+            for (let i in Object.values(fire)) {
+                guild.removeMemberRole(member.id, Object.values(fire)[i], 'Updated bending');
             }
         }
-        if (oldMember.roles.includes(basebending.fire) && member.roles.some(r => (Object.values(water).includes(r) || Object.values(earth).includes(r)) || Object.values(air).includes(r) || Object.values(non).includes(r))) {
-            if (rolediff[0] !== undefined) {
-                guild.removeMemberRole(member.id, rolediff[0], 'Enforcing sub-bending')
+
+        if (oldMember.roles.includes(basebending.air) && checkRoles(member.roles, [ basebending.water, basebending.earth, basebending.fire, basebending.non ])) {
+            for (let i in Object.values(air)) {
+                guild.removeMemberRole(member.id, Object.values(air)[i], 'Updated bending');
             }
         }
-        if (oldMember.roles.includes(basebending.non) && member.roles.some(r => (Object.values(water).includes(r) || Object.values(earth).includes(r)) || Object.values(air).includes(r) || Object.values(fire).includes(r))) {
-            if (rolediff[0] !== undefined) {
-                guild.removeMemberRole(member.id, rolediff[0], 'Enforcing sub-bending')
+
+        if (oldMember.roles.includes(basebending.non) && checkRoles(member.roles, [ basebending.water, basebending.earth, basebending.fire, basebending.air ])) {
+            for (let i in Object.values(non)) {
+                console.log(Object.values(non)[i]);
+                guild.removeMemberRole(member.id, Object.values(non)[i], 'Updated bending');
             }
         }
      Promise.resolve();
