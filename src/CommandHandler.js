@@ -107,7 +107,7 @@ class CommandHandler {
                 }
             }
 
-            if(interaction.data.component_type === 2 &&
+            if (interaction.data.component_type === 2 &&
                     interaction.data.custom_id === "RoleInfoButton") {
                         return interaction.createMessage({
                             flags: 64,
@@ -193,41 +193,41 @@ class CommandHandler {
                                     {
                                         color: lotus,
                                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                                        <:whitelotus:381027716897439744> <#728364994005303307> - Our server rules. Be sure to read them before participating in the server!
-                                        <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
-                                        <:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
-                                        <:whitelotus:381027716897439744> <#728296501046149137> - Our partnered Discord servers which you can also join and enjoy!
-                                        <:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
+                                        \n<:whitelotus:381027716897439744> <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
+                                        \n<:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
+                                        \n<:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
+                                        \n<:whitelotus:381027716897439744> <#1066599364967006228> - Our partnered Discord servers which you can also join and enjoy!
+                                        \n<:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
                                     },
                                     { 
                                         color: lotus,
                                         description:`<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **BULLETIN** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                                        <:whitelotus:381027716897439744> <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                                        <:whitelotus:381027716897439744> <#372088315467399170> – For announcing news, updates and special occasions.
-                                        <:whitelotus:381027716897439744> <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
-                                        <:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
-                                        <:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
-                                        <:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
+                                        \n<:whitelotus:381027716897439744> <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
+                                        \n<:whitelotus:381027716897439744> <#372088315467399170> – For announcing news, updates and special occasions.
+                                        \n<:whitelotus:381027716897439744> <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
+                                        \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
+                                        \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
+                                        \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                                         Be sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
                                     },
                                    {
                                         color: lotus,
                                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **GENERAL** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                                       <:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
-                                       <:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
-                                       <:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                                       <:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
-                                       <:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
+                                       \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
+                                       \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
+                                       \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+                                       \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
+                                       \n<:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                                     },
                                     {
                                         color: lotus,
                                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                                       <:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
-                                       <:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
-                                       <:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
-                                       <:whitelotus:381027716897439744> <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                                       <:whitelotus:381027716897439744> <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
-                                       <:whitelotus:381027716897439744> <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
+                                       \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
+                                       \n<:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
+                                       \n<:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
+                                       \n<:whitelotus:381027716897439744> <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
+                                       \n<:whitelotus:381027716897439744> <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+                                       \n<:whitelotus:381027716897439744> <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                                     }
                                 ]})                                
                             }
@@ -251,37 +251,37 @@ class CommandHandler {
                             {
                                 color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **META** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                               <:whitelotus:381027716897439744> <#792616452770627594> – Suggestions which you can post in <#372087473892884502> are sent here for us to review.
-                               <:whitelotus:381027716897439744> <#824762715952119818> – Channel for potential discussion of suggestions posted in <#792616452770627594> 
-                               <:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                               <:whitelotus:381027716897439744> <#972950132242939964> – Forum channel for our ongoing gaming events, such as <#972950661186617375>, <#1004666132910841939>, <#1016619223830773771>, and <#972950772545384519>!`
+                               \n<:whitelotus:381027716897439744> <#792616452770627594> – Suggestions which you can post in <#372087473892884502> are sent here for us to review.
+                               \n<:whitelotus:381027716897439744> <#824762715952119818> – Channel for potential discussion of suggestions posted in <#792616452770627594> 
+                               \n<:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!
+                               \n<:whitelotus:381027716897439744> <#972950132242939964> – Forum channel for our ongoing gaming events, such as <#972950661186617375>, <#1004666132910841939>, <#1016619223830773771>, and <#972950772545384519>!`
                             },
                             {
                                 color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **MISCELLANEOUS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                               <:whitelotus:381027716897439744> <#726405096132575322> – For pictures of your pets, food, or any other amazing things you'd like to share.
-                               <:whitelotus:381027716897439744> <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 7 in <#728364994005303307>.
-                               <:whitelotus:381027716897439744> <#884990489756045332> – For discussing art or other creative works posted in <#372087240270151680>!
-                               <:whitelotus:381027716897439744> <#487958065690312724> – For discussing sports, music, movies, TV shows, games or books! Be sure to use spoiler tags if something recently released is being discussed! Any announcements regarding gaming offers will be posted and pinned in this channel too! 
-                               <:whitelotus:381027716897439744> <#388122648854528001> – Discuss serious/controversial topics, including but not limited to politics and moral issues. To reference an article or similar, post a link for others to read it themselves.
-                               <:whitelotus:381027716897439744> <#812409753602883626> – Your personal safe space where you can vent out and/or seek guidance, advice or comfort from others. The community is here to help.
-                               <:whitelotus:381027716897439744> <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
+                               \n<:whitelotus:381027716897439744> <#726405096132575322> – For pictures of your pets, food, or any other amazing things you'd like to share.
+                               \n<:whitelotus:381027716897439744> <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 7 in <#728364994005303307>.
+                               \n<:whitelotus:381027716897439744> <#884990489756045332> – For discussing art or other creative works posted in <#372087240270151680>!
+                               \n<:whitelotus:381027716897439744> <#487958065690312724> – For discussing sports, music, movies, TV shows, games or books! Be sure to use spoiler tags if something recently released is being discussed! Any announcements regarding gaming offers will be posted and pinned in this channel too! 
+                               \n<:whitelotus:381027716897439744> <#388122648854528001> – Discuss serious/controversial topics, including but not limited to politics and moral issues. To reference an article or similar, post a link for others to read it themselves.
+                               \n<:whitelotus:381027716897439744> <#812409753602883626> – Your personal safe space where you can vent out and/or seek guidance, advice or comfort from others. The community is here to help.
+                               \n<:whitelotus:381027716897439744> <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
                             },
                             {
                                 color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **SATO'S WORKSHOP** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                               <:whitelotus:381027716897439744> <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
-                               <:whitelotus:381027716897439744> <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
-                               <:whitelotus:381027716897439744> <#372087473892884502> – The standard channel for sending bot commands, including suggestions for the <#792616452770627594> channel.
-                               <:whitelotus:381027716897439744> <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
+                               \n<:whitelotus:381027716897439744> <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
+                               \n<:whitelotus:381027716897439744> <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
+                               \n<:whitelotus:381027716897439744> <#372087473892884502> – The standard channel for sending bot commands, including suggestions for the <#792616452770627594> channel.
+                               \n<:whitelotus:381027716897439744> <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
                             },
                             {
                                 color: lotus,
                                description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **VOICE CHANNELS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                               <:whitelotus:381027716897439744> <#372383669727526912> – The channel when using the Beach Cave VC for typing music commands or just for texting.
-                               <:whitelotus:381027716897439744> <#719924386228076576>  – The channel when using the Black Cliffs VC for typing music commands or just for texting.
-                               <:whitelotus:381027716897439744> <#456158655650201611> – Channel for talking about an ongoing stream happening in the Movers Club Voice chat.
-                               <:whitelotus:381027716897439744> <#836266701489831967> – For chatting when using the Ember Island Theatre Stage channel.
+                               \n<:whitelotus:381027716897439744> <#372383669727526912> – The channel when using the Beach Cave VC for typing music commands or just for texting.
+                               \n<:whitelotus:381027716897439744> <#719924386228076576>  – The channel when using the Black Cliffs VC for typing music commands or just for texting.
+                               \n<:whitelotus:381027716897439744> <#456158655650201611> – Channel for talking about an ongoing stream happening in the Movers Club Voice chat.
+                               \n<:whitelotus:381027716897439744> <#836266701489831967> – For chatting when using the Ember Island Theatre Stage channel.
                                `
                             }                 
                         ]
@@ -313,41 +313,41 @@ class CommandHandler {
                                 {
                                     color: lotus,
                                     description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                                    <:whitelotus:381027716897439744> <#728364994005303307> - Our server rules. Be sure to read them before participating in the server!
-                                    <:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
-                                    <:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
-                                    <:whitelotus:381027716897439744> <#728296501046149137> - Our partnered Discord servers which you can also join and enjoy!
-                                    <:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
+                                    \n<:whitelotus:381027716897439744> <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
+                                    \n<:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
+                                    \n<:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
+                                    \n<:whitelotus:381027716897439744> <#1066599364967006228> - Our partnered Discord servers which you can also join and enjoy!
+                                    \n<:whitelotus:381027716897439744> <#529791576545951744> - Our hall of fame for past contest winners!`
                                 },
                                 { 
                                     color: lotus,
                                     description:`<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **BULLETIN** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                                    <:whitelotus:381027716897439744> <#782411596679872542> - Channel for all minor server changes and updates for channels and features.
-                                    <:whitelotus:381027716897439744> <#372088315467399170> - For announcing news, updates and special occasions.
-                                    <:whitelotus:381027716897439744> <#831063798873587743> - For announcing community events such as streams, gaming/book/music nights and much more!
-                                    <:whitelotus:381027716897439744> <#835240650051944469> - For announcing news related to the Avatar Universe.
-                                    <:whitelotus:381027716897439744> <#773478447242674207> - For announcing all server giveaways! Entry requirements will still be limited to certain level roles by @Dyno.
-                                    <:whitelotus:381027716897439744> <#1007044599287656559> - For announcing Birthdays of our server members! Info on how to sign up in this channel. 
+                                    \n<:whitelotus:381027716897439744> <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
+                                    \n<:whitelotus:381027716897439744> <#372088315467399170> – For announcing news, updates and special occasions.
+                                    \n<:whitelotus:381027716897439744> <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
+                                    \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
+                                    \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
+                                    \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                                     Be sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
                                 },
-                                {
+                               {
                                     color: lotus,
                                    description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **GENERAL** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                                   <:whitelotus:381027716897439744> <#761932923217379338> - Channel for the arrival of new members and for us to greet them!
-                                   <:whitelotus:381027716897439744> <#826851222459514923> - A private channel for server boosters.
-                                   <:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                                   <:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
-                                   <:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
+                                   \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
+                                   \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
+                                   \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+                                   \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
+                                   \n<:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                                 },
                                 {
                                     color: lotus,
                                    description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                                   <:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
-                                   <:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
-                                   <:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
-                                   <:whitelotus:381027716897439744> <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                                   <:whitelotus:381027716897439744> <#709827097559826553> - Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
-                                   <:whitelotus:381027716897439744> <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
+                                   \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
+                                   \n<:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
+                                   \n<:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
+                                   \n<:whitelotus:381027716897439744> <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
+                                   \n<:whitelotus:381027716897439744> <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+                                   \n<:whitelotus:381027716897439744> <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                                 }
                             ]})    
                         }
