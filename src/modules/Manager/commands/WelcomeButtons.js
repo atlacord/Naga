@@ -43,7 +43,7 @@ class WelcomeButtons extends Command {
         msg.channel.guild.channels.get('1053064927935467530').editMessage('1066847898748338226', {
             embeds: [
                 {
-                    color: this.utils.getColor('discordgrey'),
+                    color: 15913095,
                     image: {
                         url: `https://cdn.discordapp.com/attachments/411903716996677639/1051271170382635139/welcome.png`
                     } 
