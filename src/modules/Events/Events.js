@@ -2,8 +2,8 @@ module.exports = {
     CheckServer: require('./Misc/CheckServer'),
     ContestWinner: require('./RoleHandling/ContestWinner.js'),
     EnforceBending: require('./RoleHandling/EnforceBending.js'),
-    ExistingTeamAvatar: require('./ExistingTeamAvatar.js'),
-    // Ready: require('./Ready'),
+    ExistingTeamAvatar: require('./Misc/ExistingTeamAvatar.js'),
+    // Ready: require('.Misc/Ready'),
     RuleScreening: require('./RoleHandling/RuleScreening.js'),
-    TeamAvatar: require('./TeamAvatar.js')
+    TeamAvatar: require('./Misc/TeamAvatar.js')
 };
