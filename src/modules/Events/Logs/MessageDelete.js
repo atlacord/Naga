@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-class MsgDelete extends Listener {
+class MessageDelete extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -16,30 +16,28 @@ class MsgDelete extends Listener {
         this.enabled = true;
 
         this.info = {
-            description: 'Logs DMs sent to Naga. Experimental feature, might break',
+            description: 'Logs deleted messages',
         };
-    }
-
-    displayName(message) {
-        return (message).member.nick ?? (message).member.username;
-    }
-
-    async executeHook(channel, options) {
-        console.log(channel.name);
-        if (channel.id in webhooks)    {
-            let hook = webhooks[channel.id];
-            // console.log(hook);
-            await this.bot.executeWebhook(hook.id, hook.token, options);
-        }
     }
 
     /**
      * @param {import('eris').Message} msg
      */
 
-     async execute(msg) { // eslint-disable-line
-        console.log(msg)
-     }
+    async execute(msg) { // eslint-disable-line
+        if (msg.author.bot) return;
+        let embed = {
+            author: { name: this.utils.fullName(msg.author), icon_url: msg.author.avatarURL },
+            color: this.utils.getColor('red'),
+            description: `**Message sent by ${msg.author.mention} deleted in ${msg.channel.mention}**\n\n${msg.content}`,
+            footer: { text: `Author: ${msg.author.id} | Message ID: ${msg.id}` },
+            timestamp: new Date()
+        };
+
+        if (msg.guildID === '370708369951948800' && msg.content !== null) {
+            await this.bot.getChannel('1008421501487304844').createMessage({embed})
+        }
+    }
 }
 
-module.exports = MsgDelete;
+module.exports = MessageDelete;
