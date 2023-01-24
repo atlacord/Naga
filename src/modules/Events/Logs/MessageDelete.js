@@ -30,7 +30,7 @@ class MessageDelete extends Listener {
             author: { name: this.utils.fullName(msg.author), icon_url: msg.author.avatarURL },
             color: this.utils.getColor('red'),
             description: `**Message sent by ${msg.author.mention} deleted in ${msg.channel.mention}**\n\n${msg.content}`,
-            footer: { text: `Author: ${msg.author.id} | Message ID: ${msg.id}` },
+            footer: { text: `Author ID: ${msg.author.id} | Message ID: ${msg.id}` },
             timestamp: new Date()
         };
 
