@@ -34,14 +34,18 @@ class ExtraUtils extends Utils {
 
     getColor(color) {
         let colors = {
-        red: 15747399,
-        yellow: 16439902,
-        green: 4437377,
-        blue: 9031664,
-        darkblue: 26544,
-        spotify: 1947988,
-        discordgrey: 2632496
-        }
+            red: 15747399,
+            yellow: 16439902,
+            green: 4437377,
+            blue: 9031664,
+            darkblue: 26544,
+            spotify: 1947988,
+            discordgrey: 2632496,
+            lotus: 15913095,
+            whitelotus: 16777215,
+            sentry: 9725695,
+            daili: 5628531
+        };
 
         return colors[color];
     }
