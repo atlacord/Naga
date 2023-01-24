@@ -40,7 +40,7 @@ class WelcomeButtons extends Command {
      */
 
     async execute( { msg } ) {
-        msg.channel.guild.channels.get('1053064927935467530').editMessage('1066847898748338226', {
+        await this.bot.getChannel('1053064927935467530').editMessage('1066847898748338226', {
             embeds: [
                 {
                     color: 15913095,

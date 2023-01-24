@@ -40,15 +40,15 @@ class WelcomeMessage extends Listener {
                         description: `**__Ranks__**
                         \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                         
-                        \n\n __1,150 XP__    • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details). Also grants access to the <@&388121551779921930> role.
-                        \n__4,675 XP__  • <@&372178560254869504>
-                        \n__11,825 XP__   • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below)
-                        \n__42,000 XP__ • <@&372179082634330112> – Grants permission to request the <@&871374813288083516> role (see “Requestable Roles” below)
-                        \n__101,675 XP__ • <@&372179236842242048> 
-                        \n__200,850 XP__ • <@&423269295930343424> 
-                        \n__349,525 XP__ • <@&434950614997401600> 
-                        \n__557,700 XP__ • <@&811411225639518209> 
-                        \n__835,375 XP__ • <@&811411331621191721> 
+                        \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details). Also grants access to the <@&388121551779921930> role.
+                        \n__4,675 XP__     • <@&372178560254869504>
+                        \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below)
+                        \n__42,000 XP__    • <@&372179082634330112> – Grants permission to request the <@&871374813288083516> role (see “Requestable Roles” below)
+                        \n__101,675 XP__   • <@&372179236842242048> 
+                        \n__200,850 XP__   • <@&423269295930343424> 
+                        \n__349,525 XP__   • <@&434950614997401600> 
+                        \n__557,700 XP__   • <@&811411225639518209> 
+                        \n__835,375 XP__   • <@&811411331621191721> 
                         \n__1,192,550 XP__ • <@&811411413573697556>`
                     },
                     {
@@ -124,7 +124,7 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
-                        Be sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
+                        \nBe sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -239,7 +239,7 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
-                        Be sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
+                        \nBe sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -265,6 +265,34 @@ class WelcomeMessage extends Listener {
         }
 
         if (interaction.data.component_type === 2 && interaction.data.custom_id === "TeamButton") {
+            let wl = [];
+            let sentries = [];
+            let daili = [];
+
+            let admins = this.bot.guilds.get('370708369951948800').members.filter(m =>
+                (m.roles.includes('372084219423490049')));
+                for (let i in admins) {
+                    let member = await this.bot.getRESTUser(admins[i].id);
+                    wl.push(`${member.username}#${member.discriminator}`);
+                }
+                let ind = wl.indexOf('TwoDog#0002');
+                wl.splice(ind, 1)[0];
+                wl.unshift('TwoDog#0002 |  Server Owner');
+    
+            let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
+                (m.roles.includes('456925799786872868')));
+                for (let i in srmods) {
+                    let member = await this.bot.getRESTUser(srmods[i].id);
+                    sentries.push(`${member.username}#${member.discriminator}`);
+                }
+    
+            let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
+                (m.roles.includes('762573162424565780')));
+                for (let i in mods) {
+                    let member = await this.bot.getRESTUser(mods[i].id);
+                    daili.push(`${member.username}#${member.discriminator}`);
+                }
+
             return interaction.createMessage({
                 flags: 64,
                 embeds: [
@@ -277,43 +305,31 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('lotus'),
                         description: `The staff members are here to make sure that everyone has a great time, to answer questions related to the server, or if you have trouble figuring out the server and might have questions or suggestions! 
-                        You can also DM us through our ModMail, <@718577208687460482>, and a staff member will respond to you as soon as possible!`,                   
+                        \nYou can also DM us through our modmail, <@718577208687460482>, and a staff member will respond to you as soon as possible!`,                   
                     },
                     {
                         color: this.utils.getColor('whitelotus'),
                         thumbnail: {
                             url: `https://cdn.discordapp.com/emojis/889079239146627122.webp?size=160&quality=lossless`
                         },
-                        title: `White Lotus - Admin`,
-                        description: `TwoDog#0002 (<@123261299864895489>) | [Server Owner]
-                        \njules_zules#8329 (<@737542058138533950>)
-                        \nKratΩs#7871 (<@222634331384840193>)
-                        \nphantom#1843 (<@532290521058508821>)
-                        \nLion#0002 (<@239446756599922688>)`
+                        title: `White Lotus - Admins`,
+                        description: `The server admins. They handle operations regarding server management.\n\n${wl.join('\n')}`
                     },
                     {
                         color: this.utils.getColor('sentry'),
                         thumbnail: {
                             url: `https://cdn.discordapp.com/emojis/771008569431949312.webp?size=80&quality=lossless`
                         },
-                        title: `Sentry - Senior Mod`,
-                        description: `abendstern#3100 (<@681334177928577066>)
-                        \nsoda#0001 (<@254814547326533632>)
-                        \nemmaaa#7581 (<@432156129603354624>)
-                        \nBun :rabbit:#3892 (<@510193587430883328>)
-                        \nKide:snowflake:#3355 (<@231342149847744512>)
-                        \nthunder#0099 (<@380223584578306049>)`
+                        title: `Sentry - Senior Mods`,
+                        description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.join('\n')}`
                     },
                     {
                         color: this.utils.getColor('daili'), 
                         thumbnail: {
                             url: `https://cdn.discordapp.com/attachments/761932330028892194/1051301088386633788/dai_li_tile.png`
                         },
-                        title: `Dai Li - Mod`, 
-                        description: `Σuhi#1107 (<@416630867209748483>)
-                        \nghost or something#0066 (<@995668136672116746>)
-                        \nsoren#3546 (<@492301935500591124>)
-                        \npwr_mtlbndr#4552 (<@449227153905680386>)`
+                        title: `Dai Li - Mods`,
+                        description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.join('\n')}`
                     }
                 ],
             })

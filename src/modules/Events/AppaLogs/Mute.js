@@ -2,7 +2,7 @@ const { Listener } = require('axoncore');
 
 const ID_REGEX = new RegExp(/\d{7,}/, 'gm');
 
-class NoteAdd extends Listener {
+class Mute extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -13,12 +13,12 @@ class NoteAdd extends Listener {
         /** Event Name (Discord name) */
         this.eventName = 'messageCreate';
         /** Event name (Function name) */
-        this.label = 'appaNoteAdd';
+        this.label = 'appaMute';
 
         this.enabled = true;
 
         this.info = {
-            description: 'Logs Appa notes',
+            description: 'Logs Appa bans',
         };
     }
 
@@ -47,21 +47,36 @@ class NoteAdd extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—addnote' || '--addnote')) {
+        if (msg.content.startsWith('%m')) { // '—mute' || '--unmute')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
             }
 
             let content = msg.content.split(' ');
-            let reason = content[2]
+            let length;
+            let reason;
+    
+            if (content[2].length <= 3) {
+                length = content[2];
+                length.split('');
+                switch (length[length.length - 1]) {
+                    case 'h':
+                        length[length.length - 1] = 'hours';
+                    case 'd':
+                        length[length.length - 1] = 'days';
+                }
+                length.join(' ')
+            } else length = 'Indefinite';
+            reason = content[3]
 
             let embed = {
-                color: this.utils.getColor('yellow'),
-                title: 'New Note',
+                color: this.utils.getColor('red'),
+                title: 'Mute',
                 fields: [
                     { name: 'Member', value: `${await this.fullName(id)} (<@${id}>)` },
                     { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Length', value: length },
                     { name: 'Reason', value: reason }
                 ],
                 footer: { text: `Member ID: ${id}` },
@@ -75,4 +90,4 @@ class NoteAdd extends Listener {
     }
 }
 
-module.exports = NoteAdd;
+module.exports = Mute;
