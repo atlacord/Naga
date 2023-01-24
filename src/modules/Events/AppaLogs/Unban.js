@@ -2,7 +2,7 @@ const { Listener } = require('axoncore');
 
 const ID_REGEX = new RegExp(/\d{7,}/, 'gm');
 
-class NoteAdd extends Listener {
+class Unban extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -13,12 +13,12 @@ class NoteAdd extends Listener {
         /** Event Name (Discord name) */
         this.eventName = 'messageCreate';
         /** Event name (Function name) */
-        this.label = 'appaNoteAdd';
+        this.label = 'appaUnban';
 
         this.enabled = true;
 
         this.info = {
-            description: 'Logs Appa notes',
+            description: 'Logs Appa bans',
         };
     }
 
@@ -47,7 +47,7 @@ class NoteAdd extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—addnote' || '--addnote')) {
+        if (msg.content.startsWith('%ub')) {//'—unban' || '--unban')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
@@ -57,8 +57,8 @@ class NoteAdd extends Listener {
             let reason = content[2]
 
             let embed = {
-                color: this.utils.getColor('yellow'),
-                title: 'New Note',
+                color: this.utils.getColor('green'),
+                title: 'Unban',
                 fields: [
                     { name: 'Member', value: `${await this.fullName(id)} (<@${id}>)` },
                     { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
@@ -75,4 +75,4 @@ class NoteAdd extends Listener {
     }
 }
 
-module.exports = NoteAdd;
+module.exports = Unban;

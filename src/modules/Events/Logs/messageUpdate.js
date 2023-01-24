@@ -25,7 +25,7 @@ class MessageUpdate extends Listener {
      */
 
     async execute(message, oldMessage) { // eslint-disable-line
-        if (msg.author.bot) return;
+        if (message.author.bot) return;
         if (oldMessage !== null) {
             let embed = {
                 author: { name: this.utils.fullName(message.author), icon_url: message.author.avatarURL },
