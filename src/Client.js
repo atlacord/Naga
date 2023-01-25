@@ -2,7 +2,7 @@ const { AxonClient } = require('axoncore');
 const cron = require('node-cron');
 const Bot = require('./Bot');
 const secret = require('../configs/secret.json');
-
+const AniSchedule = require('../Util/Anischedule')
 const modules = require('./modules/index');
 
 /**
@@ -62,7 +62,15 @@ class Client extends AxonClient {
                 type: 0,
             });
         }
+        /**
+         * Initialise Anime notification schedule for Naga 
+         * @type {?Anischedule}
+         */
+        this.anischedule = new Anischedule(this)
+
     }
+
+  
 
     // disabled
     /**

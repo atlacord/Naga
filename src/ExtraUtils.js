@@ -3,6 +3,7 @@ const { Message } = require('eris');
 const secret = require('../configs/secret.json');
 const fetch = require('node-fetch')
 
+
 const DISCORD_EPOCH = 1420070400000;
 
 class ExtraUtils extends Utils {
@@ -403,6 +404,12 @@ class ExtraUtils extends Utils {
 /*
     Query from anilist's graphql 
 */ 
+/**
+ * Fetch data from Anilist
+ * @param {String} query graphql query to search with
+ * @param {Object} variables variables to include in the search
+ * @returns {Promise<data>} fetch result
+ */
     AniListQuery(query, variables) {
 
         return fetch('https://graphql.anilist.co', {

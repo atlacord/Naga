@@ -149,8 +149,8 @@ class nextup extends Command {
     })
     // End of no query 
     } else {
-        return msg.channel.createMessage("Please give me an anime to search!")
-            /*{
+        return msg.channel.createMessage( /*"Please give me an anime to search!") */
+            {
             embed: { 
                 "color": AniColour, 
                 "thumbnail": {
@@ -258,7 +258,7 @@ class nextup extends Command {
     
     
     
-        }})*/
+        }})
     }
     
     
