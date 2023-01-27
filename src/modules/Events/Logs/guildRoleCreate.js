@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-class voiceChannelJoin extends Listener {
+class guildRoleCreate extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -9,14 +9,14 @@ class voiceChannelJoin extends Listener {
         super(module, data);
 
         /** Event Name (Discord name) */
-        this.eventName = 'voiceChannelJoin';
+        this.eventName = 'guildRoleCreate';
         /** Event name (Function name) */
-        this.label = 'voiceChannelJoin';
+        this.label = 'guildRoleCreate';
 
         this.enabled = true;
 
         this.info = {
-            description: 'Logs vc joins',
+            description: 'Logs role creations',
         };
     }
 
@@ -24,12 +24,10 @@ class voiceChannelJoin extends Listener {
      * @param {import('eris').Message} msg
      */
 
-    async execute(member, channel) { // eslint-disable-line
+    async execute(guild, role) { // eslint-disable-line
         let embed = {
-            author: { name: this.utils.fullName(member.user), icon_url: member.user.avatarURL },
             color: this.utils.getColor('green'),
-            description: `**${member.mention} joined voice channel ${channel.mention}**`,
-            footer: { text: `Member ID: ${member.id}` },
+            description: `**Role created - <@&${role.id}>**`,
             timestamp: new Date()
         };
         
@@ -37,4 +35,4 @@ class voiceChannelJoin extends Listener {
     }
 }
 
-module.exports = voiceChannelJoin;
+module.exports = guildRoleCreate;

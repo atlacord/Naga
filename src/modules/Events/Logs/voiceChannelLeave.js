@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-class VoiceLeave extends Listener {
+class voiceChannelLeave extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -37,4 +37,4 @@ class VoiceLeave extends Listener {
     }
 }
 
-module.exports = VoiceLeave;
+module.exports = voiceChannelLeave;

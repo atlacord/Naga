@@ -276,7 +276,9 @@ class WelcomeMessage extends Listener {
                     wl.push(`${member.username}#${member.discriminator}`);
                 }
                 let ind = wl.indexOf('TwoDog#0002');
+                console.log(ind);
                 wl.splice(ind, 1)[0];
+                console.log(wl);
                 wl.unshift('TwoDog#0002 |  Server Owner');
     
             let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>

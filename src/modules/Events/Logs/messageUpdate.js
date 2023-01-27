@@ -1,6 +1,8 @@
 const { Listener } = require('axoncore');
 
-class MessageUpdate extends Listener {
+const ignoredCategories = ['372085914765099008', '828540781291241492'];
+
+class messageUpdate extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -29,7 +31,7 @@ class MessageUpdate extends Listener {
         if (oldMessage !== null) {
             let embed = {
                 author: { name: this.utils.fullName(message.author), icon_url: message.author.avatarURL },
-                color: this.utils.getColor('green'),
+                color: this.utils.getColor('blue'),
                 description: `**Message sent by ${message.author.mention} edited in ${message.channel.mention}**`,
                 fields: [
                     { name: 'From', value: oldMessage.content },
@@ -40,10 +42,12 @@ class MessageUpdate extends Listener {
             };
 
             if (message.guildID === '370708369951948800') {
-                await this.bot.getChannel('1008421501487304844').createMessage({embed})
+                if (!ignoredCategories.includes(message.channel.parentID)) {
+                    await this.bot.getChannel('1008421501487304844').createMessage({embed})
+                }
             }
         }
     }
 }
 
-module.exports = MessageUpdate;
+module.exports = messageUpdate;

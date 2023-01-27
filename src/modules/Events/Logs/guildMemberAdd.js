@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-class MemberJoin extends Listener {
+class guildMemberAdd extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -32,6 +32,7 @@ class MemberJoin extends Listener {
             fields: [
                 { name: 'Member Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:f> (<t:${Math.floor(member.joinedAt / 1000)}:R>)`},
                 { name: 'Account Created', value: `<t:${Math.floor(member.user.createdAt / 1000)}:f> (<t:${Math.floor(member.user.createdAt / 1000)}:R>)` },
+                { name: 'Total Members', value: guild.memberCount.toLocaleString() }
             ],
             footer: { text: `Member ID: ${member.id}` },
             timestamp: new Date()
@@ -41,4 +42,4 @@ class MemberJoin extends Listener {
     }
 }
 
-module.exports = MemberJoin;
+module.exports = guildMemberAdd;
