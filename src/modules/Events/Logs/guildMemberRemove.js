@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-class MemberLeave extends Listener {
+class guildMemberRemove extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -41,4 +41,4 @@ class MemberLeave extends Listener {
     }
 }
 
-module.exports = MemberLeave;
+module.exports = guildMemberRemove;

@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-class voiceChannelJoin extends Listener {
+class guildRoleDelete extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -9,14 +9,14 @@ class voiceChannelJoin extends Listener {
         super(module, data);
 
         /** Event Name (Discord name) */
-        this.eventName = 'voiceChannelJoin';
+        this.eventName = 'guildRoleDelete';
         /** Event name (Function name) */
-        this.label = 'voiceChannelJoin';
+        this.label = 'guildRoleDelete';
 
         this.enabled = true;
 
         this.info = {
-            description: 'Logs vc joins',
+            description: 'Logs role deletions',
         };
     }
 
@@ -24,12 +24,10 @@ class voiceChannelJoin extends Listener {
      * @param {import('eris').Message} msg
      */
 
-    async execute(member, channel) { // eslint-disable-line
+    async execute(guild, role) { // eslint-disable-line
         let embed = {
-            author: { name: this.utils.fullName(member.user), icon_url: member.user.avatarURL },
-            color: this.utils.getColor('green'),
-            description: `**${member.mention} joined voice channel ${channel.mention}**`,
-            footer: { text: `Member ID: ${member.id}` },
+            color: this.utils.getColor('red'),
+            description: `**Role deleted - ${role.name}**`,
             timestamp: new Date()
         };
         
@@ -37,4 +35,4 @@ class voiceChannelJoin extends Listener {
     }
 }
 
-module.exports = voiceChannelJoin;
+module.exports = guildRoleDelete;

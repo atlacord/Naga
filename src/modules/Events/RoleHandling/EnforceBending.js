@@ -69,7 +69,6 @@ class EnforceBending extends Listener {
         };
 
         function checkRoles(array, values) {
-            console.log(values);
             let res;
             for (let i in values) {
                 if (array.includes(values[i]) === true) {
@@ -146,7 +145,6 @@ class EnforceBending extends Listener {
 
         if (oldMember.roles.includes(basebending.non) && checkRoles(member.roles, [ basebending.water, basebending.earth, basebending.fire, basebending.air ])) {
             for (let i in Object.values(non)) {
-                console.log(Object.values(non)[i]);
                 guild.removeMemberRole(member.id, Object.values(non)[i], 'Updated bending');
             }
         }
