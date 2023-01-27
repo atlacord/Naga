@@ -273,24 +273,26 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('372084219423490049')));
                 for (let i in admins) {
                     let member = await this.bot.getRESTUser(admins[i].id);
-                    wl.push(`${member.mention} - ${member.username}#${member.discriminator}`);
+                    wl.push(`${member.username}#${member.discriminator}`);
                 }
                 let ind = wl.indexOf('TwoDog#0002');
+                console.log(ind);
                 wl.splice(ind, 1)[0];
-                wl.unshift('<@123261299864895489> - TwoDog#0002 |  Server Owner');
+                console.log(wl);
+                wl.unshift('TwoDog#0002 |  Server Owner');
     
             let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('456925799786872868')));
                 for (let i in srmods) {
                     let member = await this.bot.getRESTUser(srmods[i].id);
-                    sentries.push(`${member.mention} - ${member.username}#${member.discriminator}`);
+                    sentries.push(`${member.username}#${member.discriminator}`);
                 }
     
             let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('762573162424565780')));
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
-                    daili.push(`${member.mention} - ${member.username}#${member.discriminator}`);
+                    daili.push(`${member.username}#${member.discriminator}`);
                 }
 
             return interaction.createMessage({
