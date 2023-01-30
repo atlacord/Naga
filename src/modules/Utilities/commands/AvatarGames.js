@@ -32,12 +32,9 @@ class AvatarGames extends Command {
         } );
 
         this.permissions = new CommandPermissions(this, {
-            staff: {
-                needed: this.axon.staff.sentries,
-                bypass: this.axon.staff.owners,
-            },
-        } );
-    }
+            custom: (msg) => msg.member.roles.includes('830138455337730049') // Event Masters
+        });
+    };
 
     /**
      * @param {import('axoncore').CommandEnvironment} env
@@ -47,7 +44,7 @@ class AvatarGames extends Command {
         return [AvatarStart, AvatarEnd]
     }
 
-    execute( { msg } ) {
+    execute({ msg }) {
         try {
             this.sendMessage(msg.channel, `Run \`${this.axon.settings.prefixes}agames start\` or \`${this.axon.settings.prefixes}agames end\`!`);
         } catch (err) {
