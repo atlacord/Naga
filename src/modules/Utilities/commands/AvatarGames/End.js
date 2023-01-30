@@ -25,13 +25,17 @@ class End extends Command {
             argsMin: 0,
             cooldown: 10000,
             guildOnly: true,
-        } );
+        });
+
+        this.permissions = new CommandPermissions(this, {
+            custom: (msg) => msg.member.roles.includes('830138455337730049') // Event Masters
+        });
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-     async execute( { msg } ) {
+    async execute({ msg }) {
 
         await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 0n, 1024n, 0)
         this.sendSuccess(msg.channel, 'Ending Avatar Games!');
