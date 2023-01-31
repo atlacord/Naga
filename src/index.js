@@ -3,8 +3,6 @@ const chalk = require('chalk');
 const cron = require('node-cron');
 const config = require('../configs/config.json');
 const CommandHandler = require('./CommandHandler');
-const EventHandler = require('./EventHandler');
-const secret = require('../configs/secret.json');
 
 if (config.settings.db === 2) {
     try {
@@ -31,7 +29,7 @@ Bot.start()
     Bot.commandRegistry.get('loadpermissions').execute();
   console.log('Checking for new birthdays');
 }),
-new EventHandler(),
+// new EventHandler(),
 new CommandHandler(),
 );
 

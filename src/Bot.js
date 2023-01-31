@@ -64,7 +64,12 @@ const client = new Eris.Client(
             'directMessageTyping',
             'guildPresences',
             'guildMembers'
-        ]
+        ],
+        allowedMentions: {
+            everyone: false,
+            roles: false,
+            users: true
+        },
     },
 )
 
