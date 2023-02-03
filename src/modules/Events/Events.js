@@ -3,7 +3,7 @@ module.exports = {
 
     ExistingTeamAvatar: require('./Misc/ExistingTeamAvatar'),
     Ready: require('./Misc/Ready'),
-    RuleScreening: require('./RoleHandling/RuleScreening'),
+    // RuleScreening: require('./RoleHandling/RuleScreening'),
     TeamAvatar: require('./Misc/TeamAvatar'),
 
     // === Appa Logs ===
