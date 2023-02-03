@@ -1,4 +1,4 @@
-const { Command, CommandOptions } = require('axoncore');
+const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 
 class Start extends Command {
     /**
@@ -28,6 +28,10 @@ class Start extends Command {
         });
 
         this.permissions = new CommandPermissions(this, {
+            // staff: {
+            //     needed: this.axon.staff.sentries,
+            //     bypass: this.axon.staff.owners,
+            // },
             custom: (msg) => msg.member.roles.includes('830138455337730049') // Event Masters
         });
     }
@@ -36,9 +40,8 @@ class Start extends Command {
      */
 
     async execute({ msg }) {
-
-        await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 1024n, 0n, 0)
-        this.sendSuccess(msg.channel, 'Starting Avatar Games!');
+            await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 1024n, 0n, 0)
+            this.sendSuccess(msg.channel, 'Starting Avatar Games!');
     }
 }
 
