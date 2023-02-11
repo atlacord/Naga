@@ -1,22 +1,22 @@
 const { Command, CommandOptions } = require('axoncore');
-const fetch = require("node-fetch");
+const images = require('../../../assets/images.json');
 
-class Hug extends Command {
+class Pat extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'hug';
-        this.aliases = [ 'hug' ];
+        this.label = 'pat';
+        this.aliases = [ 'pat' ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'hug',
-            description: 'Hug someone!',
-            usage: 'hug [user]',
+            name: 'pat',
+            description: 'Pat someone!',
+            usage: 'pat [user]',
         };
 
         /**
@@ -37,25 +37,23 @@ class Hug extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg, args } ) {
+    async execute({ msg, args }) {
 
         let member = this.utils.resolveUser(msg.channel.guild, args[0]);
 
-        if (member.id === msg.author.id) return this.sendError(msg.channel, `Nah mate can't hug urself innit`)
-        const { url } = await fetch("https://nekos.life/api/v2/img/hug")
-        .then((res) => res.json());
-
         let embed = {
             color: this.utils.getColor('blue'),
-            description: `**${this.displayName(msg, member.id)}**, you just got hugged by **${this.displayName(msg, msg.author.id)}**`,
-            image: { url: url },
+            description: `**${this.displayName(msg, msg.author.id)}** faces a good 'ol slap from **${this.displayName(msg, member.id)}**! I wonder what they did to deserve that...`,
+            image: { url: `https://i.imgur.com/${images.slap[Math.floor(Math.random() * images.slap.length)]}.gif` },
             footer: { text: `Requested by: ${msg.author.username}#${msg.author.discriminator}` }
         };
+
+        if (member.id === msg.author.id) embed.description = `I can give you le pats, here u are!`;
+        if (member.id === this.bot.user.id) embed.description = `Woooooooooooof!!`;
 
         return msg.channel.createMessage({embed});
 
     }
 }
 
-
-module.exports = Hug;
+module.exports = Pat;
