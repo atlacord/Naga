@@ -1,22 +1,22 @@
 const { Command, CommandOptions } = require('axoncore');
-const fetch = require("node-fetch");
+const images = require('../../../assets/images.json');
 
-class Hug extends Command {
+class Kiss extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'hug';
-        this.aliases = [ 'hug' ];
+        this.label = 'kiss';
+        this.aliases = [ 'kiss' ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'hug',
-            description: 'Hug someone!',
-            usage: 'hug [user]',
+            name: 'kiss',
+            description: 'Kiss someone!',
+            usage: 'kiss [user]',
         };
 
         /**
@@ -37,20 +37,19 @@ class Hug extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg, args } ) {
+    async execute({ msg, args }) {
 
         let member = this.utils.resolveUser(msg.channel.guild, args[0]);
 
-        if (member.id === msg.author.id) return this.sendError(msg.channel, `Nah mate can't hug urself innit`)
-        const { url } = await fetch("https://nekos.life/api/v2/img/hug")
-        .then((res) => res.json());
+        if (!args) return this.sendError(msg.channel, `I sowwy u can't kiss air!`);
 
         let embed = {
             color: this.utils.getColor('blue'),
-            description: `**${this.displayName(msg, member.id)}**, you just got hugged by **${this.displayName(msg, msg.author.id)}**`,
-            image: { url: url },
-            footer: { text: `Requested by: ${msg.author.username}#${msg.author.discriminator}` }
+            description: `**${this.displayName(msg, msg.author.id)}** just kissed **${this.displayName(msg, member.id)}**!`,
+            image: { url: `https://i.imgur.com/${images.kiss[Math.floor(Math.random() * images.kiss.length)]}.gif` },
         };
+
+        if (member.id === this.bot.user.id) embed.description = `0.o`;
 
         return msg.channel.createMessage({embed});
 
@@ -58,4 +57,4 @@ class Hug extends Command {
 }
 
 
-module.exports = Hug;
+module.exports = Kiss;

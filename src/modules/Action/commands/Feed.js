@@ -1,22 +1,22 @@
 const { Command, CommandOptions } = require('axoncore');
 const fetch = require("node-fetch");
 
-class Hug extends Command {
+class Feed extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'hug';
-        this.aliases = [ 'hug' ];
+        this.label = 'feed';
+        this.aliases = [ 'feed' ];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'hug',
-            description: 'Hug someone!',
-            usage: 'hug [user]',
+            name: 'feed',
+            description: 'Feed someone!',
+            usage: 'feed [user]',
         };
 
         /**
@@ -37,20 +37,18 @@ class Hug extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg, args } ) {
+    async execute({ msg, args }) {
 
         let member = this.utils.resolveUser(msg.channel.guild, args[0]);
 
-        if (member.id === msg.author.id) return this.sendError(msg.channel, `Nah mate can't hug urself innit`)
-        const { url } = await fetch("https://nekos.life/api/v2/img/hug")
-        .then((res) => res.json());
-
         let embed = {
             color: this.utils.getColor('blue'),
-            description: `**${this.displayName(msg, member.id)}**, you just got hugged by **${this.displayName(msg, msg.author.id)}**`,
-            image: { url: url },
-            footer: { text: `Requested by: ${msg.author.username}#${msg.author.discriminator}` }
+            description: `**${this.displayName(msg, msg.author.id)}** feeds **${this.displayName(msg, member.id)}**!`,
+            image: { url: `https://i.imgur.com/${images.feed[Math.floor(Math.random() * images.feed.length)]}.gif` },
         };
+
+        if( member.id === msg.author.id) embed.description = `**${this.displayName(msg, msg.author.id)}** ate something delicious!`;
+        if (member.id === this.bot.user.id) embed.description = 'Yummmmmmmmmy!!';
 
         return msg.channel.createMessage({embed});
 
@@ -58,4 +56,4 @@ class Hug extends Command {
 }
 
 
-module.exports = Hug;
+module.exports = Feed;
