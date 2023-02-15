@@ -36,7 +36,7 @@ module.exports = {
     // voiceChannelLeave: require('./Logs/voiceChannelLeave'),
 
     // === Misc ===
-   LevelUp: require('./Misc/LevelUp'),
+   // LevelUp: require('./Misc/LevelUp'),
    WelcomeMessage: require('./Interactions/WelcomeMessage'),
 
     // === Role Handling ===
