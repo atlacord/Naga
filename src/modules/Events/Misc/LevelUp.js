@@ -50,13 +50,12 @@ class LevelUp extends Listener {
                 if (Object.values(this.levels).includes(calcXp)) {
                     let level = this.getKeyByValue(this.levels, calcXp);
                     console.log(doc.data.level);
-                    if (doc.data.level !== level) {
-                    // msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`);
-                        let c = await this.bot.getChannel('570053930193518594');
+                    if (doc.data.level === level) { return; }
+                    else {
                         doc.data.level = level;
-                        doc.save().then(() => c.createMessage(`Flameo **${this.displayName(msg.member)}**, you just reached **level ${level}**!`), console.log(msg.author.id, doc.data.level));
+                        doc.save().then(() => msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`));
                         continue;
-                    };
+                    }
                 }
             }
         })
