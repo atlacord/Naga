@@ -45,7 +45,7 @@ class LevelUp extends Listener {
             }
             // let level = tatsuProfile.score;
             let calcXp;
-            for (let i = 0; i <= 20; i += 1) {
+            for (let i = 0; i <= 30; i += 1) {
                 calcXp = tatsuProfile.score + i
                 if (Object.values(this.levels).includes(calcXp)) {
                     let level = this.getKeyByValue(this.levels, calcXp);
