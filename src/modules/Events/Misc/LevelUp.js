@@ -33,7 +33,7 @@ class LevelUp extends Listener {
     }
 
     displayName(member) {
-        return member.nick ?? member.username;
+        return member.nick ?? member.user.username;
     }
 
     async execute(msg) {
@@ -49,11 +49,12 @@ class LevelUp extends Listener {
                 calcXp = tatsuProfile.score + i
                 if (Object.values(this.levels).includes(calcXp)) {
                     let level = this.getKeyByValue(this.levels, calcXp);
-                    console.log(doc.data.level);
-                    if (doc.data.level === level) { return; }
+                    doc.data.level = level;
+                    if (doc.data.level === level) { continue; }
                     else {
-                        doc.data.level = level;
-                        doc.save().then(() => msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`));
+                        // msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`);
+                        let c = await this.bot.getChannel('918700274632245288');
+                        doc.save().then(() => c.createMessage(`Flameo **${this.displayName(msg.member)}**, you just advanced to **level ${level}**!`), console.log(msg.author.id, doc.data.level));
                         continue;
                     }
                 }
