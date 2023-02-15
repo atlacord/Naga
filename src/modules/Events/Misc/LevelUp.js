@@ -1,5 +1,6 @@
 const { Listener } = require('axoncore');
 const { Tatsu } = require('tatsu');
+const profile = require('../../../Models/Profile');
 
 const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
@@ -31,22 +32,34 @@ class LevelUp extends Listener {
         return Object.keys(object).find(key => object[key] === value);
     }
 
-    displayName(message, member) {
-        return (message).channel.guild.members.get(member).nick ?? (message).channel.guild.members.get(member).username;
+    displayName(member) {
+        return member.nick ?? member.username;
     }
 
     async execute(msg) {
-        let profile = await tatsu.getMemberRanking('370708369951948800', msg.author.id);
-        // let level = profile.score;
-        let calcXp;
-        for (let i = 0; calcXp = profile.score + i; i += 1) {
-            if (Object.values(this.levels).includes(calcXp)) {
-                let level = this.getKeyByValue(this.levels, calcXp);
-                // msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`);
-                console.log(`${this.displayName(msg, msg.member)} just reached level ${level}!`);
-                break;
+        let tatsuProfile = await tatsu.getMemberRanking('370708369951948800', msg.author.id);
+        profile.findById(msg.author.id, async (err, doc) => {
+
+            if (!doc) {
+                doc = new profile({ _id: msg.author.id })
             }
-        }
+            // let level = tatsuProfile.score;
+            let calcXp;
+            for (let i = 0; i <= 20; i += 1) {
+                calcXp = tatsuProfile.score + i
+                if (Object.values(this.levels).includes(calcXp)) {
+                    let level = this.getKeyByValue(this.levels, calcXp);
+                    console.log(doc.data.level);
+                    if (doc.data.level !== level) {
+                    // msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`);
+                        let c = await this.bot.getChannel('570053930193518594');
+                        doc.data.level = level;
+                        doc.save().then(() => c.createMessage(`Flameo **${this.displayName(msg.member)}**, you just reached **level ${level}**!`), console.log(msg.author.id, doc.data.level));
+                        continue;
+                    };
+                }
+            }
+        })
         // let arr = Array.from(new Array(100), (x, i) => i + -100);
     }
 }
