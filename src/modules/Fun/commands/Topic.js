@@ -3,6 +3,8 @@ const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 const topics = require('../../../assets/topics.json');
 
+let ignoredTopics = require('../../../assets/IgnoredTopics.json');
+
 const ATLA = require('./ATLA');
 const Korra = require('./Korra');
 
@@ -74,14 +76,18 @@ class Topic extends Command {
         if (timeRemaining !== false) {
             return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
         }
-        const topic = Math.floor(Math.random() * topics.length);
+        let topic = Math.floor(Math.random() * topics.length);
+
+        while (ignoredTopics.includes(topic)) {
+            topic = Math.floor(Math.random() * topics.length);
+        }
         
         return this.sendMessage(msg.channel, {
             embed: {
                 color: this.utils.getColor('blue'),
                 description: topics[topic],
             }
-        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
+        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));
     }
 }
 
