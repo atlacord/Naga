@@ -27,7 +27,8 @@ Bot.start()
 .then(cron.schedule('0 0 0 * * *', () => {
     Bot.commandRegistry.get('checkbirthday').execute();
     Bot.commandRegistry.get('loadpermissions').execute();
-  console.log('Checking for new birthdays');
+    Bot.commandRegistry.get('cit').execute();
+  console.log('Checking for new birthdays, clearing ignored topics...');
 }),
 // new EventHandler(),
 new CommandHandler(),

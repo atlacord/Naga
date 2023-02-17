@@ -3,6 +3,8 @@ const atlatopics = require('../../../assets/atlatopics.json');
 const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 
+let ignoredTopics = require('../../../assets/IgnoredATLATopics.json');
+
 const COMMAND_COOLDOWN = 600000;
 
 class ATLA extends Command {
@@ -70,13 +72,18 @@ class ATLA extends Command {
             return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
         }
 
-        const topic = Math.floor(Math.random() * atlatopics.length);
+        let topic = Math.floor(Math.random() * atlatopics.length);
+
+        while (ignoredTopics.includes(topic)) {
+            topic = Math.floor(Math.random() * atlatopics.length);
+        };
+
         return this.sendMessage(msg.channel, {
             embed: {
                 color: this.utils.getColor('blue'),
                 description: atlatopics[topic]
             }
-        }).then(writeFileSync('src/assets/atlacooldown.json', JSON.stringify(msg.createdAt)));
+        }).then(writeFileSync('src/assets/atlacooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredATLATopics.json', JSON.stringify(ignoredTopics)));
     }
 }
 

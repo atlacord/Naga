@@ -95,7 +95,7 @@ class CommandHandler {
                                 color: getColor('blue'),
                                 description: topics[topic],
                             }
-                        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
+                        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(interaction.createdAt)));
                     default: {
                         return interaction.createMessage("test");
                     }
