@@ -108,7 +108,7 @@ class Serverinfo extends Command {
             { name: 'Voice Channels', value: voiceChannels.toLocaleString(), inline: true },
             { name: 'Rules Channel', value: `<#${guild.rulesChannelID}>`, inline: true },
             { name: 'Roles', value: roles.toLocaleString(), inline: true },
-            { name: 'Emojis', value: roles.toLocaleString(), inline: true },
+            { name: 'Emojis', value: emojis.toLocaleString(), inline: true },
             { name: 'Owner', value: `<@${guild.ownerID}>`, inline: true },
             // { name: `Created`, value: `${moment(guild.createdAt).tz("America/New_York").format("dddd, MMMM D, YYYY h:mm A")}`, inline: false }
             { name: 'Created', value: `<t:${Math.floor(guild.createdAt / 1000)}:f>`, inline: true }, // This one uses Discord's timestamp formatting

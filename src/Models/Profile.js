@@ -36,6 +36,7 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
       timestamp: {type: Number, default: 0}
     },
     xp: {type: Array, default: []},
+    last_level_up: {type: Date, default: 0},
     level: {type: Number, default: 0},
     birthdayTimestamp: {type: Date, default: 0 },
   }

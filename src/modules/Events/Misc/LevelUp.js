@@ -33,37 +33,54 @@ class LevelUp extends Listener {
     }
 
     displayName(member) {
-        return member.nick ?? member.user.username;
+        return member.nick ?? member.username;
     }
 
     async execute(msg) {
-        let tatsuProfile = await tatsu.getMemberRanking('370708369951948800', msg.author.id);
-        profile.findById(msg.author.id, async (err, doc) => {
+        if (!msg.author.bot) {
+            let tatsuProfile = await tatsu.getMemberRanking('370708369951948800', msg.author.id);
+            let levelUp = false;
+            let level = null;
+            profile.findById(msg.author.id, (err, doc) => {
+                if (!doc) {
+                    doc = new profile({ _id: msg.author.id });
+                    console.log(`Creating profile for ${msg.author.id}`);
+                    return doc.save(function(err) {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
+                    });
+                };
+                // let level = tatsuProfile.score;
+                let calcXp;
+                console.log(`${this.displayName(msg.member)} (${msg.author.id}) | ${doc.data.global_level}`);
 
-            if (!doc) {
-                doc = new profile({ _id: msg.author.id })
-            }
-            // let level = tatsuProfile.score;
-            let calcXp;
-            console.log(tatsuProfile.score);
-            let c = await this.bot.getChannel('918700274632245288');
-
-            for (let i = 0; i <= 30; i += 1) {
-                calcXp = tatsuProfile.score + i;
-                if (Object.values(this.levels).includes(calcXp)) {
-                    let level = this.getKeyByValue(this.levels, calcXp);
-                    c.createMessage(doc.data.level !== level);
-                    if (doc.data.level === level) return;
-                    else if (doc.data.level !== level) {
-                        // msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just reached **level ${level}**!`);
-                        console.log(`This is a level up for ${msg.author.id}`);
-                        doc.save().then(() => c.createMessage(`Flameo **${this.displayName(msg.member)}**, you just advanced to **level ${level}**!`), console.log(msg.author.id, doc.data.level));
-                        continue;
+                for (let i = 0; i <= 30; i += 1) {
+                    calcXp = tatsuProfile.score + i;
+                    if (Object.values(this.levels).includes(calcXp)) {
+                        level = this.getKeyByValue(this.levels, calcXp);
+                        if (doc.data.global_level !== level) {
+                            levelUp = true;
+                            doc.last_level_up = Date.now();
+                            continue;
+                        }
                     }
                 }
-            }
-        })
-        // let arr = Array.from(new Array(100), (x, i) => i + -100);
+                if ((levelUp === true) && (Date.now() - doc.last_level_up) > 10000) {
+                    return doc.save(
+                        function(err) {
+                            if (err) {
+                                console.error(err);
+                                return;
+                            }
+                        }
+                    ).then(() => msg.channel.createMessage(`Flameo **${this.displayName(msg.member)}**, you just advanced to **level ${level}**!`));
+                    // msg.channel.createMessage(`Flameo, **${this.displayName(msg, msg.member)}**! You just advanced to **level ${level}**!`);
+                };
+            })
+            // let arr = Array.from(new Array(100), (x, i) => i + -100);
+        }
     }
 }
 

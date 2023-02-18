@@ -86,7 +86,8 @@ class RoleRemove extends Command {
         }
 
         return (await member).edit({ roles }, encodeURIComponent(`Responsible User: ${this.utils.fullName(msg.author)}`))
-            .then(() => this.sendSuccess(msg.channel, `Changed roles for ${this.utils.fullName(member)}, ${changes.join(', ')}`))
+            .then(() => this.sendSuccess(msg.channel, `Changed roles for ${this.utils.fullName(member)}, ${changes.join(', ')}`),
+            this.modUtils.sendEmbed('Role Removed', this.utils.getColor('yellow'), { user: member, moderator: msg.member }))
             .catch(err => this.sendError(msg.channel, `I couldn't change the roles for that user. Please check my permissions and role position.\n ${err}`));
     }   
 }
