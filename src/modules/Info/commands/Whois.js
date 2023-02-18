@@ -101,8 +101,10 @@ class Whois extends Command {
         .findIndex(m => m.id === member.id) + 1;
 
         let bio = null;
+        let level = null;
         await profile.findById(member.id, (err, doc) => {
             bio = doc.data.profile.bio;
+            level = doc.data.global_level.toString();
         });
 
         let embed = {  
@@ -113,7 +115,8 @@ class Whois extends Command {
 
             fields: [
                 { name: 'Username', value: `<@!${member.id}>`, inline: true },
-                { name: 'Join Position', value: joinPos || 'None', inline: false },
+                { name: 'Level', value: level || 'N/A', inline: false },
+                { name: 'Join Position', value: joinPos.toLocaleString() || 'None', inline: false },
                 { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:F>`, inline: false },
                 { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:F>`, inline: false },
                 { name: `Roles [${member.roles.length}]`, value: roles, inline: false }
