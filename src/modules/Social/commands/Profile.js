@@ -51,10 +51,12 @@ class Profile extends Command {
             };
 
             const serverRank = await profile.find({ 'data.xp.id': msg.channel.guild.id })
-            .then(docs => Promise.resolve(docs.sort((A,B) => B.data.xp.find(x => x.id === msg.channel.guild.id).xp - A.data.xp.find(x => x.id === msg.channel.guild.id).xp)))
+            // .then(docs => Promise.resolve(docs.sort((A,B) => B.data.xp.find(x => x.id === msg.channel.guild.id).xp - A.data.xp.find(x => x.id === msg.channel.guild.id).xp)))
+            .then(docs => Promise.resolve(docs.sort((A,B) => B.data.global_xp - A.data.global_xp)))
             .then(sorted => sorted.findIndex(x => x._id === doc._id) + 1);
 
-            const serverData = doc.data.xp.find(x => x.id === msg.channel.guild.id) || 1
+            // const serverData = doc.data.xp.find(x => x.id === msg.channel.guild.id) || 1
+            const serverData =  { xp: doc.data.global_xp, level: doc.data.global_level } || 1
             const cap = (50 * Math.pow(serverData.level, 2)) + (250 * serverData.level) || 1;
             const lowerLim = (50 * Math.pow(serverData.level - 1, 2)) + (250 * (serverData.level - 1));
             const range = cap - lowerLim;
