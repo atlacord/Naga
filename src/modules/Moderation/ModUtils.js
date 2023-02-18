@@ -1,4 +1,5 @@
 const { Message, Member, Role } = require('eris');
+const server = require('../../../Models/Server');
 const moment = require('moment');
 
 const helpText = 'Make sure the Dyno role has `Manage Roles` and `Manage Channels` permissions.';
@@ -11,6 +12,10 @@ const protectedError = `That user is protected, I can't do that.`;
 const dmError = `I wasn't able to warn that user, they may have DM's disabled.`;
 
 class ModUtils {
+    constructor() {
+        this.config = server.findById('370708369951948800');
+    }
+
     cleanRegex = new RegExp('([_\*`])', 'g');
 
     clean(str) {
@@ -63,6 +68,24 @@ class ModUtils {
         } else {
             return `Successfully timed out ${this.fullName(member)} until <t:${Math.floor(removeTimeout / 1000)}:f>`;
         }
+    }
+
+    async sendEmbed(data, fields) {
+        let embed = {
+            title: data.action,
+            color: data.color,
+            fields: [
+                { name: 'Member', value: this.fullName(data.user), inline: true },
+                { name: 'Moderator', value: this.fullName(data.moderator), inline: true }
+            ]
+        };
+        if (fields) {
+            for (let i in data.fields) {
+                embed.fields.push(data.fields[i]);
+            }
+        };
+
+        await this.bot.getChannel(this.config.logChannel).createMessage({embed});
     }
 }
 

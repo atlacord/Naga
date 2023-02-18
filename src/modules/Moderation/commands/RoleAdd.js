@@ -1,4 +1,5 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
+const ModUtils = require('../ModUtils');
 
 class RoleAdd extends Command {
     /**
@@ -26,6 +27,8 @@ class RoleAdd extends Command {
             cooldown: 5000,
             guildOnly: true,
         });
+
+        this.modUtils = ModUtils;
 
         /**
          * @type {CommandPermissions}
@@ -86,7 +89,16 @@ class RoleAdd extends Command {
         }
 
         return (await member).edit({ roles }, encodeURIComponent(`Responsible User: ${this.utils.fullName(msg.author)}`))
-            .then(() => this.sendSuccess(msg.channel, `Changed roles for ${this.utils.fullName(member)}, ${changes.join(', ')}`))
+            .then(() => this.sendSuccess(msg.channel, `Changed roles for ${this.utils.fullName(member)}, ${changes.join(', ')}`),
+            this.modUtils.sendEmbed({
+                action: 'Role Added',
+                color: this.utils.getColor('yellow'),
+                member: member,
+                moderator: msg.member,
+                fields: [
+                    { name: 'Roles', value: changes.join(', '), inline: true }
+                ]
+            }, true))
             .catch(err => this.sendError(msg.channel, `I couldn't change the roles for that user. Please check my permissions and role position.\n ${err}`));
     }   
 }
