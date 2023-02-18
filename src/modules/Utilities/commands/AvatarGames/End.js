@@ -40,7 +40,7 @@ class End extends Command {
      */
 
     async execute({ msg }) {
-            await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 1024n, 0n, 0)
+            await this.bot.editChannelPermission('709827097559826553', '370708369951948800', 0n, 1024n, 0)
             this.sendSuccess(msg.channel, 'Ending Avatar Games.');
     }
 }
