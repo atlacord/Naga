@@ -7,7 +7,6 @@ module.exports = {
     Eval: require('./Eval'),
     Exec: require('./Exec'),
     LoadPermissions: require('./LoadPermissions'),
-    MigrateLevels: require('./MigrateLevels'),
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),
     SetAvatar: require('./SetAvatar'),
