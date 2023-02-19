@@ -1,5 +1,4 @@
 module.exports = {
-    AddGuildDB: require('./AddGuildDB'),
     AutoBanner: require('./AutoBanner'),
     Build: require('./Build'),
     ClearIgnoredTopics: require('./ClearIgnoredTopics'),
