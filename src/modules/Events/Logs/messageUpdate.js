@@ -1,6 +1,6 @@
 const { Listener } = require('axoncore');
 
-const ignoredCategories = ['372085914765099008', '828540781291241492'];
+const ignoredCategories = ['372085914765099008', '828540781291241492', '719883529470738523'];
 
 class messageUpdate extends Listener {
     /**

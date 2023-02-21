@@ -2,7 +2,7 @@ const { Listener } = require('axoncore');
 
 const ID_REGEX = new RegExp(/\d{7,}/, 'gm');
 
-class NoteAdd extends Listener {
+class RoleRemove extends Listener {
     /**
      * @param {import('axoncore').Module} module
      * @param {import('axoncore').ListenerData} data
@@ -13,12 +13,12 @@ class NoteAdd extends Listener {
         /** Event Name (Discord name) */
         this.eventName = 'messageCreate';
         /** Event name (Function name) */
-        this.label = 'appaNoteAdd';
+        this.label = 'appaRoleAdd';
 
         this.enabled = true;
 
         this.info = {
-            description: 'Logs Appa notes',
+            description: 'Logs Appa role additions',
         };
     }
 
@@ -47,24 +47,24 @@ class NoteAdd extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—addnote' || '%addnote')) {
+        if (msg.content.startsWith('remove' || '--remove')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
             }
-
             let content = msg.content.split(' ');
-            let reason = content.slice(2).join(' ');
+            let role = content[1];
+            let reason = content[2];
 
             let embed = {
-                color: this.utils.getColor('yellow'),
-                title: 'New Note',
+                color: this.utils.getColor('blue'),
+                title: 'Role Removed',
                 fields: [
-                    { name: 'Member', value: `${await this.fullName(id)} (<@${id}>)` },
-                    { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Member', value: `${await this.fullName(id)} (<@${id}>)`, inline: true },
+                    { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)`, inline: true },
+                    { name: 'Role', value: role, inline: true },
                     { name: 'Reason', value: reason }
                 ],
-                footer: { text: `Member ID: ${id}` },
                 timestamp: new Date()
             };
 
@@ -75,4 +75,4 @@ class NoteAdd extends Listener {
     }
 }
 
-module.exports = NoteAdd;
+module.exports = RoleRemove;
