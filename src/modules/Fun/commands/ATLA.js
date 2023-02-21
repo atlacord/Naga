@@ -74,6 +74,10 @@ class ATLA extends Command {
 
         let topic = Math.floor(Math.random() * atlatopics.length);
 
+        if (ignoredTopics.length === topics.length) {
+            ignoredTopics = [];
+        }
+
         while (ignoredTopics.includes(topic)) {
             topic = Math.floor(Math.random() * atlatopics.length);
         };
