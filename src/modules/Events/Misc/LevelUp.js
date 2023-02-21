@@ -42,7 +42,6 @@ class LevelUp extends Listener {
             let levelUp = false;
             let level = null;
             profile.findById(msg.author.id, (err, doc) => {
-
                 if (!doc) {
                     doc = new profile({ _id: msg.author.id });
                     console.log(`Creating profile for ${msg.author.id}`);
