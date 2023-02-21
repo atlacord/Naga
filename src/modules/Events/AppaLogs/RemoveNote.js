@@ -47,9 +47,9 @@ class NoteRemove extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('%dn')) {//'—delnote' || '--delnote')) {
+        if (msg.content.startsWith('—delnote' || '--delnote')) {
             let content = msg.content.split(' ');
-            let note = content[1]
+            let note = content.slice(1).join(' ');
 
             let embed = {
                 color: this.utils.getColor('yellow'),
@@ -58,7 +58,6 @@ class NoteRemove extends Listener {
                     { name: 'Note', value: note },
                     { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
                 ],
-                footer: { text: `Member ID: ${id}` },
                 timestamp: new Date()
             };
 

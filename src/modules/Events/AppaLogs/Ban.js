@@ -47,7 +47,7 @@ class Ban extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('%b')) {//'—ban' || '--ban')) {
+        if (msg.content.startsWith('—ban' || '--ban')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
