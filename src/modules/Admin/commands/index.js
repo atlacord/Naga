@@ -1,8 +1,10 @@
 module.exports = {
+    AddAcks: require('./AddAcks'),
     AutoBanner: require('./AutoBanner'),
     Build: require('./Build'),
     ClearIgnoredTopics: require('./ClearIgnoredTopics'),
     Config: require('./Configure'),
+    DeleteAcks: require('./DeleteAcks'),
     EditWiki: require('./EditWiki'),
     Eval: require('./Eval'),
     Exec: require('./Exec'),
@@ -14,5 +16,6 @@ module.exports = {
     Speedtest: require('./Speedtest'),
     Staff: require('./Staff'),
     TatsuTest: require('./Tatsu'),
-    TestJoinMessages: require('./TestJoinMessages')
+    TestJoinMessages: require('./TestJoinMessages'),
+    UserDB: require('./UserDB'),
 };

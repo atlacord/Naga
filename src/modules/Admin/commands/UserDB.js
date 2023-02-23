@@ -1,24 +1,27 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const { readFileSync, writeFileSync } = require('fs');
+const { Tatsu } = require('tatsu');
+const profile = require('../../../Models/Profile');
+
+const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
 // const userRegex = /<@([^}]+)>/g;
 
-class ClearIgnoredTopics extends Command {
+class UserDB extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'cit';
-        this.aliases = ['cit'];
+        this.label = 'mp';
+        this.aliases = ['mp'];
 
         this.hasSubcmd = false;
 
         this.info = {
-            name: 'cit',
-            description: 'Clears ignored topics',
-            usage: 'cit',
+            name: 'mp',
+            description: 'Migrate member levels',
+            usage: 'mp',
         };
 
         /**
@@ -38,11 +41,12 @@ class ClearIgnoredTopics extends Command {
         } );
     }
 
-    async execute() {
-        writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify([]));
-        writeFileSync('src/assets/IgnoredATLATopics.json', JSON.stringify([]));
-        writeFileSync('src/assets/IgnoredKorraTopics.json', JSON.stringify([]));
+    async execute({msg, args}) {
+        let m = this.utils.resolveUser(msg.channel.guild, args.join(' '));
+        profile.findById(m.id, async (err, doc) => {
+            msg.channel.createMessage(`\`\`\`js\n${JSON.stringify(doc)}\`\`\``);
+        });
     }
 }
 
-module.exports = ClearIgnoredTopics;
+module.exports = UserDB;
