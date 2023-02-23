@@ -164,7 +164,7 @@ class Whois extends Command {
             embed.fields.push({ name: 'Special Acknowledgements', value: acks.join(', '), inline: false })
         }
 
-        this.sendMessage(msg.channel, { embed })  
+        this.utils.delayFor(2000).then(this.sendMessage(msg.channel, { embed }));
     }
 }
                         
