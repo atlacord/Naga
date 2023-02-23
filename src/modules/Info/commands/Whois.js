@@ -1,7 +1,10 @@
 const { Command, CommandOptions } = require('axoncore');
+const { Tatsu } = require('tatsu');
 const moment = require('moment-timezone');
 const profile = require('../../../Models/Profile');
 require('moment-duration-format');
+
+const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
 class Whois extends Command {
 
@@ -101,10 +104,21 @@ class Whois extends Command {
         .findIndex(m => m.id === member.id) + 1;
 
         let bio = null;
-        let level = null;
+        let level;
+        let acks = [];
+
+        let tatsuProfile = await tatsu.getMemberRanking('370708369951948800', member.id);
+        let score = tatsuProfile.score;
+
         await profile.findById(member.id, (err, doc) => {
             bio = doc.data.profile.bio;
             level = doc.data.global_level.toString();
+
+            if (doc.data.profile.acks.length > 0) {
+                for (let i in doc.data.profile.acks) {
+                    acks.push(doc.data.profile.acks[i]);
+                };
+            }
         });
 
         let embed = {  
@@ -115,7 +129,7 @@ class Whois extends Command {
 
             fields: [
                 { name: 'Username', value: `<@!${member.id}>`, inline: true },
-                { name: 'Level', value: level || 'N/A', inline: false },
+                { name: 'Level', value: `${score.toLocaleString()} XP (Level ${level})` || 'N/A', inline: false },
                 { name: 'Join Position', value: joinPos.toLocaleString() || 'None', inline: false },
                 { name: 'Joined', value: `<t:${Math.floor(member.joinedAt / 1000)}:F>`, inline: false },
                 { name: 'Registered', value: `<t:${Math.floor(member.createdAt / 1000)}:F>`, inline: false },
@@ -143,7 +157,11 @@ class Whois extends Command {
         }
     
         if (staff.length > 0) {
-            embed.fields.push({ name: 'Special Acknowledgements', value: staff.join(', '), inline: false });
+            embed.fields.push({ name: 'Acknowledgements', value: staff.join(', '), inline: false });
+        }
+
+        if (acks.length > 0) {
+            embed.fields.push({ name: 'Special Acknowledgements', value: acks.join(', '), inline: false })
         }
 
         this.sendMessage(msg.channel, { embed })  

@@ -1,4 +1,5 @@
 module.exports = {
+    ChannelInfo: require('./ChannelInfo'),
     Info: require('./Info'),
     Membercount: require('./Membercount'),
     Ping: require('./Ping'),
