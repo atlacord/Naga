@@ -44,14 +44,6 @@ class ChannelInfo extends Command {
 
         let category = await this.bot.getChannel(channel.parentID);
 
-        let threadMembers = [];
-        if ((channel.type === 11) || (channel.type === 12)) {
-            console.log(channel.members);
-            for (let member of channel.members) {
-                threadMembers.push(this.utils.fullName(member));
-            }
-        };
-
         let channelTypes = {
             0: 'Text Channel',
             1: 'DM Channel',
@@ -87,7 +79,6 @@ class ChannelInfo extends Command {
 
         if ((channel.type === 11) || (channel.type === 12)) {
             embed.fields[2].name = 'Parent Channel';
-            embed.fields.push({ name: 'Thread Members', value: threadMembers.join('\n'), inline: false });
         }
         
         msg.channel.createMessage({embed});
