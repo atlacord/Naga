@@ -8,6 +8,7 @@ module.exports = {
     EditWiki: require('./EditWiki'),
     Eval: require('./Eval'),
     Exec: require('./Exec'),
+    ListAcks: require('./ListAcks'),
     LoadPermissions: require('./LoadPermissions'),
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),

@@ -49,7 +49,7 @@ class Restart extends Command {
         try {
             this.sendSuccess(msg.channel, `Restarting ${this.bot.user.username}`);
 
-            process.exec(`pm2 restart NagaV2`, (error, stdout) => {
+            process.exec(`pm2 restart Naga`, (error, stdout) => {
                 const outputType = error || stdout;
                 let output = outputType;
                 if (typeof outputType === 'object') {
