@@ -36,7 +36,7 @@ class ATLA extends Command {
 
         this.permissions = new CommandPermissions(this, {
             channels: {
-                bypass: ['372086844956868618', '721604232532459540']
+                bypass: ['372086844956868618', '721604232532459540', '1008421501487304844']
             }
         });
     }
@@ -74,7 +74,7 @@ class ATLA extends Command {
 
         let topic = Math.floor(Math.random() * atlatopics.length);
 
-        if (ignoredTopics.length === topics.length) {
+        if (ignoredTopics.length === atlatopics.length) {
             ignoredTopics = [];
         }
 
