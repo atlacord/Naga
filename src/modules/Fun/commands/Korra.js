@@ -36,7 +36,7 @@ class Korra extends Command {
 
         this.permissions = new CommandPermissions(this, {
             channels: {
-                bypass: ['372086844956868618', '721604232532459540']
+                bypass: ['372086844956868618', '721604232532459540', '1008421501487304844']
             }
         });
     }
