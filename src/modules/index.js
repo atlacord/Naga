@@ -8,6 +8,7 @@ module.exports = {
     Games: require('./Games/index'),
     Info: require('./Info/index'),
     Manager: require('./Manager/index'),
+    Moderation: require('./Moderation/index'),
     Misc: require('./Misc/index'),
     Social: require('./Social/index'),
     Utilities: require('./Utilities/index')
