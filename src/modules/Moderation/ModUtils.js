@@ -1,5 +1,5 @@
 const { Message, Member, Role } = require('eris');
-const server = require('../../../Models/Server');
+const server = require('../../Models/Server');
 const moment = require('moment');
 
 const helpText = 'Make sure the Dyno role has `Manage Roles` and `Manage Channels` permissions.';
