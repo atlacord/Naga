@@ -2,6 +2,7 @@ module.exports = {
     Archive: require('./Archive'),
     ArchiveAll: require('./ArchiveAll'),
     ArchiveImages: require('./ArchiveImages'),
+    DuplicateBending: require('./DuplicateBending'),
     GetArchive: require('./GetArchive'),
     GetMessage:require('./GetMessage'),
     LoadSuggestion: require('./LoadSuggestion'),
