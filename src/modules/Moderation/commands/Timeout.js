@@ -14,8 +14,6 @@ class Timeout extends Command {
 
         this.hasSubcmd = true;
 
-        this.moderations = new ModUtils();
-
         this.info = {
             name: 'timeout',
             description: 'Times out a member for a specified time (in hours)',
@@ -40,6 +38,8 @@ class Timeout extends Command {
                 bypass: this.axon.staff.owners,
             },
         });
+
+        this.moderations = new ModUtils();
     }
 
     init() {
