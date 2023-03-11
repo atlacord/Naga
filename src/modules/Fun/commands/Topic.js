@@ -2,6 +2,7 @@ const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 const topics = require('../../../assets/topics.json');
+const server = require('../../../Models/Server');
 
 let ignoredTopics = require('../../../assets/IgnoredTopics.json');
 
@@ -50,11 +51,8 @@ class Topic extends Command {
         return [ATLA, Korra]
     }
 
-    handleCooldown() {
-        let data = readFileSync('src/assets/cooldown.json');
-        let lastUsed = JSON.parse(data);
-
-        const timeLeft = Date.now() - lastUsed;
+    handleCooldown(timestamp) {
+        const timeLeft = Date.now() - timestamp;
         if (timeLeft <= COMMAND_COOLDOWN) {
             let time = Math.ceil((600000 - timeLeft) / 100) / 10
             let minutes = Math.floor(time / 60);
@@ -68,30 +66,38 @@ class Topic extends Command {
     }
 
     async execute({ msg }) {
+        try {
+        server.findById(msg.guildID, (err, doc) => {
 
-        // let topics = await axios.get('http://atla.sh/topics.json');
-        // topics = topics.data;
+            // let topics = await axios.get('http://atla.sh/topics.json');
+            // topics = topics.data;
 
-        let timeRemaining = this.handleCooldown();
-        if (timeRemaining !== false) {
-            return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
-        }
-        let topic = Math.floor(Math.random() * topics.length);
+            let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
+            if (timeRemaining !== false) {
+                return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+            };
 
-        if (ignoredTopics.length === topics.length) {
-            ignoredTopics = [];
-        }
+            let topic = Math.floor(Math.random() * topics.length);
 
-        while (ignoredTopics.includes(topic)) {
-            topic = Math.floor(Math.random() * topics.length);
-        }
-        
-        return this.sendMessage(msg.channel, {
-            embed: {
-                color: this.utils.getColor('blue'),
-                description: topics[topic],
-            }
-        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));
+            if (doc.data.ignoredTopics.length === topics.length) {
+                doc.data.ignoredTopics = [];
+            };
+
+            while (doc.data.ignoredTopics.includes(topic)) {
+                topic = Math.floor(Math.random() * topics.length);
+            };
+            
+            this.sendMessage(msg.channel, {
+                embed: {
+                    color: this.utils.getColor('blue'),
+                    description: topics[topic],
+                }
+            }).then(doc.data.ignoredTopics = ignoredTopics, doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
+            // .then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));
+        })
+    } catch (err) {
+        console.error(err);
+    }
     }
 }
 
