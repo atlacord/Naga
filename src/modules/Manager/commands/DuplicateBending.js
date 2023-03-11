@@ -62,10 +62,9 @@ class DuplicateBending extends Command {
         return members.length;
     }
 
-    async execute({msg, args}) {
-        let total = 0
+    async execute({msg}) {
+        let total = 0;
         for (let role in this.roles) {
-            console.log(this.roles[role]);
             if (role !== 'nonbender') {
                 total += await this.checkDuplicates(role, total);
                 // console.log(`This would run the function on ${this.roles[role]}`);
