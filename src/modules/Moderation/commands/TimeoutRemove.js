@@ -36,6 +36,8 @@ class RemoveTimeout extends Command {
                 bypass: this.axon.staff.owners,
             },
         });
+
+        this.moderations = new ModUtils();
     }
 
      /**

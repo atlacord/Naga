@@ -8,7 +8,16 @@ const serverSchema = mongoose.model('server_config', new Schema({
         events: { type: Array, default: null },
         logChannel: { type: String, default: null },
         ignoredChannels: { type: Array, default: null }
-    }
+    },
+    ignoredTopics: { type: Array, default: [] },
+    ignoredKorraTopics: { type: Array, default: [] },
+    ignoredATLATopics: { type: Array, default: [] },
+    ignoredWyrs: { type: Array, default: [] },
+    topicTimestamps: { 
+      normal: { type: Number, default: null },
+      atla: { type: Number, default: null },
+      korra: { type: Number, default: null },
+    },
   }
 }, {
     autoIndex: true,

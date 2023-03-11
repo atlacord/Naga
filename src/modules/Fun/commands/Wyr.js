@@ -2,6 +2,8 @@ const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const questions = require('../../../assets/wyr.json');
 const { readFileSync, writeFileSync } = require('fs');
 
+const server = require('../../../Models/Server');
+
 const COMMAND_COOLDOWN = 600000;
 
 class Wyr extends Command {
@@ -37,11 +39,8 @@ class Wyr extends Command {
         });
     }
 
-    handleCooldown() {
-        let data = readFileSync('src/assets/cooldown.json');
-        let lastUsed = JSON.parse(data);
-
-        const timeLeft = Date.now() - lastUsed;
+    handleCooldown(timestamp) {
+        const timeLeft = Date.now() - timestamp;
         if (timeLeft <= COMMAND_COOLDOWN) {
             let time = Math.ceil((600000 - timeLeft) / 100) / 10
             let minutes = Math.floor(time / 60);
@@ -59,25 +58,38 @@ class Wyr extends Command {
      */
 
     async execute( { msg } ) {
-        let timeRemaining = this.handleCooldown();
-        if (timeRemaining !== false) {
-            return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
-        }
-        let messagetext =  questions[Math.floor(Math.random() * questions.length)]
-        let question = messagetext.split("Would you rather ")[1]
-        let Option1 = question.split(" or ")[0]
-        let Option2 = question.split(" or ")[1]
-        
-        let embed = {
-            title: 'Let\'s play Would You Rather!',
-            color: this.utils.getColor('blue'),
-            description: `Would you rather: \n 🅰️ ${Option1} \n or \n :regional_indicator_b: ${Option2}`
-        }
+        server.findById(msg.guildID, (err, doc) => {
+            let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
+            if (timeRemaining !== false) {
+                return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+            }
 
-        this.sendMessage(msg.channel, {embed}).then(msg => {
-            msg.addReaction('🅰️');
-            msg.addReaction('🇧');
-        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)));
+            if (doc.data.ignoredWyrs.length === questions.length) {
+                doc.data.ignoredWyrs = [];
+            };
+
+            let wyrIndex = Math.floor(Math.random() * questions.length);
+
+            while (doc.data.ignoredWyrs.includes(wyrIndex)) {
+                wyrIndex = Math.floor(Math.random() * questions.length);
+            };
+
+            let messagetext =  questions[wyrIndex];
+            let question = messagetext.split("Would you rather ")[1]
+            let Option1 = question.split(" or ")[0]
+            let Option2 = question.split(" or ")[1]
+            
+            let embed = {
+                title: 'Let\'s play Would You Rather!',
+                color: this.utils.getColor('blue'),
+                description: `Would you rather: \n 🅰️ ${Option1} \n or \n :regional_indicator_b: ${Option2}`
+            }
+
+            this.sendMessage(msg.channel, {embed}).then(msg => {
+                msg.addReaction('🅰️');
+                msg.addReaction('🇧');
+            }).then(doc.data.ignoredWyrs.push(wyrIndex), doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
+        });
     }
 }
 
