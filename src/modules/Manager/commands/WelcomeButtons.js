@@ -55,7 +55,7 @@ class WelcomeButtons extends Command {
                     \n\nFor any questions, feedback, concerns or reports, you can contact the server staff by messaging <@718577208687460482>, our modmail bot. A staff member will reply to you as soon as possible after you have sent a message. To handle the situation quickly and efficiently, please provide the staff with all relevant information.
 
                     \nWant to connect with us more? Check our socials below!
-                    \n[Wiki](https://avatar-the-last-airbender-discord.fandom.com/wiki/Home) - Run by our community, the wiki contains server lore and pages on our active users, events and groups! Wiki writers, denoted by their role, are users who have applied via Hawky with a min requirement ofthe <@&372179082634330112> role (42,000 XP) and as such are the only ones allowed to make edits on the wiki.
+                    \n[Wiki](https://wiki.atla.sh) - Run by our community, the wiki contains server lore and pages on our active users, events and groups! Wiki writers, denoted by their role, are users who have applied via Hawky with a minimum requirement of the <@&372179082634330112> role (42,000 XP) and as such are the only members allowed to make edits on the wiki.
                     \n[Twitter](https://twitter.com/atlacord) 
                     \n[Instagram](https://instagram.com/atlacord)`,
                 },

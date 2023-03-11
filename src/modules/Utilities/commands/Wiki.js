@@ -43,6 +43,9 @@ class Wiki extends Command {
                 let query = args.join(' ');
                 query = query.replace(/(^\w{1})|(\s+\w{1})/g, firstWord => firstWord.toUpperCase()).split(' ').join('_');
 
+                this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \n${wikiHost}/${query}`);
+
+            /*     
                 let res = await axios.get(`${wikiHost}/pages`);
                 let pages = res.data;
                 
@@ -50,7 +53,8 @@ class Wiki extends Command {
                         this.sendMessage(msg.channel, `Showing wiki page for \`${args.join(' ')}\`: \n${wikiHost}/${query}`);
                 } else {
                     return this.sendError(msg.channel, 'Page not found. Make sure you are spelling the title correctly!');
-                }
+                } 
+            */
             }
         } catch (err) {
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');
