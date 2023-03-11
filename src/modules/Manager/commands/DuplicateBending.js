@@ -32,7 +32,7 @@ class DuplicateBending extends Command {
 
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.sentries,
+                needed: this.axon.staff.owners,
                 bypass: this.axon.staff.owners,
             },
         });
@@ -59,7 +59,7 @@ class DuplicateBending extends Command {
             this.bot.removeGuildMemberRole('370708369951948800', a[i].id, this.roles.nonbender, 'Member had multiple bending roles, removing Nonbender');
             members.push(a[i].id);
         }
-        return total += members.length;
+        return members.length;
         // return this.sendSuccess(message.channel, `Removed the Nonbender role from ${members.length} members.`);
     }
 
@@ -68,7 +68,7 @@ class DuplicateBending extends Command {
         for (let role in this.roles) {
             console.log(this.roles[role]);
             if (role !== 'nonbender') {
-                await this.checkDuplicates(role, msg, total);
+                total += await this.checkDuplicates(role, msg, total);
                 // console.log(`This would run the function on ${this.roles[role]}`);
             }
         }
