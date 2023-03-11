@@ -66,10 +66,12 @@ class ATLA extends Command {
             // let atlatopics = await axios.get('http://atla.sh/topics.json');
             // atlatopics = atlatopics.data;
 
-            let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.atla);
-            if (timeRemaining !== false) {
-                return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
-            }
+            if (executionType !== 2) {
+                let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.atla);
+                if (timeRemaining !== false) {
+                    return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+                };
+            };
 
             let topic = Math.floor(Math.random() * atlatopics.length);
 

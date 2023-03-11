@@ -57,12 +57,14 @@ class Wyr extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute( { msg } ) {
+    async execute({ msg, executionType }) {
         server.findById(msg.guildID, (err, doc) => {
-            let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
-            if (timeRemaining !== false) {
-                return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
-            }
+            if (executionType !== 2) {
+                let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
+                if (timeRemaining !== false) {
+                    return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+                };
+            };
 
             if (doc.data.ignoredWyrs.length === questions.length) {
                 doc.data.ignoredWyrs = [];

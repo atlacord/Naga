@@ -60,16 +60,17 @@ class Korra extends Command {
         } else return false;
     }
 
-    async execute( { msg } ) {
+    async execute({ msg, executionType }) {
         server.findById(msg.guildID, (err, doc) => {
 
             // let atlatopics = await axios.get('http://atla.sh/topics.json');
             // atlatopics = atlatopics.data;
-
-            let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.korra);
-            if (timeRemaining !== false) {
-                return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
-            }
+            if (executionType !== 2) {
+                let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.korra);
+                if (timeRemaining !== false) {
+                    return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+                }
+            };
 
             let topic = Math.floor(Math.random() * korratopics.length);
 
