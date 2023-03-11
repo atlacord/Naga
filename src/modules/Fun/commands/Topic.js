@@ -65,16 +65,17 @@ class Topic extends Command {
         } else return false;
     }
 
-    async execute({ msg }) {
-        try {
+    async execute({ msg, executionType }) {
         server.findById(msg.guildID, (err, doc) => {
 
             // let topics = await axios.get('http://atla.sh/topics.json');
             // topics = topics.data;
 
-            let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
-            if (timeRemaining !== false) {
-                return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+            if (executionType !== 2) {
+                let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
+                if (timeRemaining !== false) {
+                    return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
+                };
             };
 
             let topic = Math.floor(Math.random() * topics.length);
@@ -95,9 +96,6 @@ class Topic extends Command {
             }).then(doc.data.ignoredTopics = ignoredTopics, doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
             // .then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));
         })
-    } catch (err) {
-        console.error(err);
-    }
     }
 }
 
