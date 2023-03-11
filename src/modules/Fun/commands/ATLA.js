@@ -60,7 +60,7 @@ class ATLA extends Command {
         } else return false;
     }
 
-    async execute( { msg } ) {
+    async execute({ msg, executionType }) {
         server.findById(msg.guildID, (err, doc) => {
 
             // let atlatopics = await axios.get('http://atla.sh/topics.json');
