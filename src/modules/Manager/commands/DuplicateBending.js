@@ -51,7 +51,7 @@ class DuplicateBending extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async checkDuplicates(role, total) {
+    async checkDuplicates(role) {
         let a = this.bot.guilds.get('370708369951948800').members.filter(m =>
             ((m.roles.includes(this.roles[role])) && (m.roles.includes(this.roles.nonbender))));
         let members = [];
@@ -62,21 +62,18 @@ class DuplicateBending extends Command {
         return members.length;
     }
 
-    async execute({msg}) {
+    async execute() {
         let total = 0;
         for (let role in this.roles) {
             if (role !== 'nonbender') {
-                total += await this.checkDuplicates(role, total);
+                total += await this.checkDuplicates(role);
                 // console.log(`This would run the function on ${this.roles[role]}`);
             }
         }
 
-        if ((total === 0) && (msg.content.length > 0)) {
-            return this.sendError(msg.channel, `No changes made.`);
-        } else {
-            if (msg.content.length > 0) {
-                return this.sendSuccess(msg.channel, `Removed the Nonbender role from ${total} members.`), console.info(`Removed the Nonbender role from ${total} members.`);
-            }
+        if (total === 0) return;
+        else {
+            return console.info(`[Server Utilities] Removed the Nonbender role from ${total} members.`);
         }
     }
 }
