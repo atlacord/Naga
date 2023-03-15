@@ -54,7 +54,7 @@ class Ban extends Listener {
             }
 
             let content = msg.content.split(' ');
-            let reason = content[2]
+            let reason = content.slice(2).join(' ');
 
             let embed = {
                 color: this.utils.getColor('red'),

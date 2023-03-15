@@ -80,7 +80,7 @@ class Mute extends Listener {
                     nl = length + ' weeks';
                 }
             } else nl = 'Indefinite';
-            reason = content[3]
+            reason = content.slice(3).join(' ');
 
             let embed = {
                 color: this.utils.getColor('red'),

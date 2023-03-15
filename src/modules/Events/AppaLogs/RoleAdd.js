@@ -53,7 +53,7 @@ class RoleAdd extends Listener {
                 id = msg.content.match(ID_REGEX)[0]
             }
             let content = msg.content.split(' ');
-            let role = content[1];
+            let role = content.slice(1).join(' ');
 
             let embed = {
                 color: this.utils.getColor('blue'),
