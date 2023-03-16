@@ -27,7 +27,7 @@ Bot.start()
 .then(cron.schedule('0 0 0 * * *', () => {
     Bot.commandRegistry.get('checkbirthday').execute();
     Bot.commandRegistry.get('loadpermissions').execute();
-    Bot.commandRegistry.get('duplicatebending').executre();
+    Bot.commandRegistry.get('duplicatebending').execute();
   console.log('Checking for new birthdays, clearing duplicate bending roles, reloading staff permissions...');
 }),
 // new EventHandler(),
