@@ -63,6 +63,7 @@ class DuplicateBending extends Command {
     }
 
     async execute() {
+        let c = await this.bot.getChannel('411903716996677639');
         let total = 0;
         for (let role in this.roles) {
             if (role !== 'nonbender') {
@@ -73,7 +74,13 @@ class DuplicateBending extends Command {
 
         if (total === 0) return;
         else {
-            return console.info(`[Server Utilities] Removed the Nonbender role from ${total} members.`);
+            return this.sendMessage(c, {
+                embed: {
+                    color: this.utils.getColor('blue'),
+                    description: `Removed the Nonbender role from ${total} members with other bending roles.`,
+                    timestamp: new Date(),
+                }
+            }), console.info(`[Server Utilities] Removed the Nonbender role from ${total} members.`);
         }
     }
 }
