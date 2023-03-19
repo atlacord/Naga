@@ -63,7 +63,7 @@ class DuplicateBending extends Command {
     }
 
     async execute() {
-        let c = await this.bot.getChannel('411903716996677639');
+        let c = await this.bot.getChannel('761932330028892194');
         let total = 0;
         for (let role in this.roles) {
             if (role !== 'nonbender') {
