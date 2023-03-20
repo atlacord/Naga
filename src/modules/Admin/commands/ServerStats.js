@@ -49,6 +49,7 @@ class ServerStats extends Command {
                     name: guild.name,
                     icon_url: guild.iconURL
                 },
+                color: this.utils.getColor('blue'),
                 fields: [
                     { name: 'Server Owner', value: this.utils.fullName(this.utils.resolveUser(guild, guild.ownerID)), inline: false },
                     { name: 'Members', value: guild.memberCount.toLocaleString(), inline: false },
