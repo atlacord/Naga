@@ -1,7 +1,7 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const Wikiapi = require('wikiapi')
 
-const wiki = new Wikiapi('https://avatar-the-last-airbender-discord.fandom.com/api.php');
+const wiki = new Wikiapi('https://wiki.atla.sh/api.php');
 // const userRegex = /<@([^}]+)>/g;
 
 const ID_REGEX = new RegExp(/\d{7,}/, 'gm');
