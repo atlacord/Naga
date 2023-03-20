@@ -41,14 +41,28 @@ class TatsuTest extends Command {
         } );
     }
 
-    async execute({msg }) {
-        msg.channel.createMessage('yuh')
+    sendCode(channel, content, lang = 'js') {
+        return this.sendMessage(channel, {
+            embed: {
+                color: this.utils.getColor('green'),
+                author: {
+                    name: 'Eval Result',
+                    // icon_url: msg.author.avatarURL
+                },
+                description: `\`\`\`${lang}\n${content}\`\`\``
+            }
+        });
+    }
+
+    async execute({msg, args}) {
         try {
-            console.log(await tatsu.addGuildMemberScore(msg.guildID, msg.author.id, 5)); // Adds score to Tatsu
+            let profile = await tatsu.getProfile(args[0]);
+            profile = profile.toJSON();
+            this.sendCode(msg.channel, JSON.stringify(profile.toJSON()));
+            
         } catch (err) {
             this.sendError(msg.channel, `Error ${err.statusCode}: ${err.message}`);
         }
-        msg.channel.createMessage('aye');
     }
 }
 
