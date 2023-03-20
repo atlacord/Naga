@@ -16,7 +16,7 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
       color: {type: String, default: null},
       birthday: {type: String, default: null},
       inventory: {type: Array, default: []},
-      gacks: {type: String, default: null },
+      gacks: {type: String, default: null},
       acks: {type: Array, default: []},
     },
     economy: {

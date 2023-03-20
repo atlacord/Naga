@@ -42,6 +42,7 @@ module.exports = {
     // === Misc ===
     FakeBan: require('./Misc/FakeBan'),
     LevelUp: require('./Misc/LevelUp'),
+    UpdateScore: require('./Misc/UpdateScore'),
     WelcomeMessage: require('./Interactions/WelcomeMessage'),
 
     // === Role Handling ===
