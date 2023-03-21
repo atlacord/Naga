@@ -6,6 +6,10 @@ const server = require('../../../Models/Server');
 
 const COMMAND_COOLDOWN = 600000;
 
+let ignoredUsers = [
+    '591354543942402058' // Axo
+];
+
 class Wyr extends Command {
     /**
      * @param {import('axoncore').Module} module
@@ -58,6 +62,7 @@ class Wyr extends Command {
      */
 
     async execute({ msg, executionType }) {
+        if (ignoredUsers.includes(msg.author.id)) return;
         server.findById(msg.guildID, (err, doc) => {
             if (executionType !== 2) {
                 let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
