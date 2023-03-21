@@ -7,15 +7,15 @@ module.exports = {
     TeamAvatar: require('./Misc/TeamAvatar'),
 
     // === Appa Logs ===
-    AddNote: require('./AppaLogs/AddNote'),
-    Ban: require('./AppaLogs/Ban'),
-    Logwarn: require('./AppaLogs/Logwarn'),
-    Mute: require('./AppaLogs/Mute'),
-    RemoveNote: require('./AppaLogs/RemoveNote'),
-    RoleAdd: require('./AppaLogs/RoleAdd'),
-    RoleRemove: require('./AppaLogs/RoleRemove'),
-    Unban: require('./AppaLogs/Unban'),
-    Warning: require('./AppaLogs/Warning'),
+    // AddNote: require('./AppaLogs/AddNote'),
+    // Ban: require('./AppaLogs/Ban'),
+    //Logwarn: require('./AppaLogs/Logwarn'),
+    // Mute: require('./AppaLogs/Mute'),
+    // RemoveNote: require('./AppaLogs/RemoveNote'),
+    // RoleAdd: require('./AppaLogs/RoleAdd'),
+    // RoleRemove: require('./AppaLogs/RoleRemove'),
+    // Unban: require('./AppaLogs/Unban'),
+    // Warning: require('./AppaLogs/Warning'),
 
     // === logs ===
     // channelCreate: require('./Logs/channelCreate'),
@@ -41,8 +41,8 @@ module.exports = {
 
     // === Misc ===
     FakeBan: require('./Misc/FakeBan'),
-    LevelUp: require('./Misc/LevelUp'),
-    UpdateScore: require('./Misc/UpdateScore'),
+    // LevelUp: require('./Misc/LevelUp'),
+    // UpdateScore: require('./Misc/UpdateScore'),
     WelcomeMessage: require('./Interactions/WelcomeMessage'),
 
     // === Role Handling ===
