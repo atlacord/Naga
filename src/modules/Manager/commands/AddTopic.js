@@ -47,7 +47,7 @@ class AddTopic extends Command {
             }
             
             let topic = args.slice(1).join(' ');
-            data.data.topics.push(topic);
+            doc.data.topics.push(topic);
             
             doc.save().then(() => this.sendSuccess(msg.channel, `Successfully added topic to Naga's library.\nTotal number of topics: ${doc.data.topics.length}`)
             .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.')));
