@@ -63,7 +63,7 @@ class Topic extends Command {
         } else return false;
     }
 
-    async execute({ msg, executionType }) {
+    async execute({ msg, args, executionType }) {
         server.findById(msg.guildID, (err, doc) => {
 
             // let topics = await axios.get('http://atla.sh/topics.json');
@@ -85,13 +85,19 @@ class Topic extends Command {
             while (doc.data.ignoredTopics.includes(topic)) {
                 topic = Math.floor(Math.random() * topics.length);
             };
+
+            doc.data.ignoredTopics.push(topic)
+
+            if ((args.length !== 0) && (parseInt(args[0]) <= topics.length)) {
+                topic = parseInt(args[0]);
+            }
             
             this.sendMessage(msg.channel, {
                 embed: {
                     color: this.utils.getColor('blue'),
                     description: topics[topic],
                 }
-            }).then(doc.data.ignoredTopics.push(topic), doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
+            }).then(doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
             // .then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));
         })
     }
