@@ -4,8 +4,6 @@ const { readFileSync, writeFileSync } = require('fs');
 const topics = require('../../../assets/topics.json');
 const server = require('../../../Models/Server');
 
-let ignoredTopics = require('../../../assets/IgnoredTopics.json');
-
 const ATLA = require('./ATLA');
 const Korra = require('./Korra');
 
@@ -93,7 +91,7 @@ class Topic extends Command {
                     color: this.utils.getColor('blue'),
                     description: topics[topic],
                 }
-            }).then(doc.data.ignoredTopics = ignoredTopics, doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
+            }).then(doc.data.ignoredTopics.push(topic), doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
             // .then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));
         })
     }
