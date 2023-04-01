@@ -3,5 +3,5 @@ module.exports = {
     // Haiku: require('./Haiku'),
     Iroh: require('./Iroh'),
     Topic: require('./Topic'),
-    Wyr: require('./Wyr')
+    // Wyr: require('./Wyr')
 }
