@@ -1,0 +1,545 @@
+[
+    {
+      "id": 1,
+      "name": "Default background",
+      "description": "Default background for profile command.",
+      "type": "background",
+      "deletable": false,
+      "giftable": false,
+      "price": 0,
+      "assets": {
+        "link": "https://i.imgur.com/gcd6h3O.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Default Pattern",
+      "description": "Default pattern for profile command.",
+      "type": "pattern",
+      "deletable": false,
+      "giftable": false,
+      "price": 0,
+      "assets": {
+        "link": "https://i.imgur.com/nx5qJUb.png"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Midas' Golden Wreath",
+      "description": "Rare profile wreath.",
+      "type": "wreath",
+      "deletable": true,
+      "giftable": true,
+      "price": 6000,
+      "assets": {
+        "link": "https://i.imgur.com/xsZHQcW.png"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Bronze Wreath",
+      "description": "Uncommon profile wreath.",
+      "type": "wreath",
+      "deletable": true,
+      "giftable": true,
+      "price": 3500,
+      "assets": {
+        "link": "https://i.imgur.com/NmpP8oU.png"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Green Wreath",
+      "description": "Uncommon profile wreath.",
+      "type": "wreath",
+      "deletable": true,
+      "giftable": true,
+      "price": 2750,
+      "assets": {
+        "link": "https://i.imgur.com/bzhoYpa.png"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Common Wreath",
+      "description": "Common profile wreath.",
+      "type": "wreath",
+      "deletable": true,
+      "giftable": true,
+      "price": 1500,
+      "assets": {
+        "link": "https://i.imgur.com/NSEbnek.png"
+      }
+    },
+    
+    
+    {
+      "id": 7,
+      "name": "Made in Abyss",
+      "description": "Uncommon Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/fT1MO8I.png"
+      }
+    },
+  
+    {
+      "id": 8,
+      "name": "Baby Dragons",
+      "description": "Uncommon Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/hcFTnTl.png"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Starry Night",
+      "description": "Uncommon Pattern",
+      "type": "pattern",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/wSInRoR.png"
+      }
+    },
+  {
+      "id": 10,
+      "name": "Girl by the lake",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/ikXn31n.jpg"
+      }
+    },
+    {
+      "id": 11,
+      "name": "God of War",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/QKraDFg.png"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Sakura Forest",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/UGcL2mt.jpg"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Cherry Blossoms",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/BrzrCOT.png"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Gaang & the Elements",
+      "description": "Uncommon Pattern",
+      "type": "pattern",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/T68CpMX.png"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Autumn ATLA",
+      "description": "Uncommon Pattern",
+      "type": "pattern",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/pWBVMha.png"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Sokka",
+      "description": "Uncommon Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/pjw07bl.png"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Toph",
+      "description": "Uncommon Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/DuN9SsT.png"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Katara",
+      "description": "Uncommon Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/r7wx5jg.png"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Aang",
+      "description": "Uncommon Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/65og3r8.png"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Appa",
+      "description": "Uncommon Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/F3Od5z2.png"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Korra",
+      "description": "Uncommon Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/d732U5X.png"
+      }
+    },
+    {
+      "id": 22,
+      "name": "Jasmine Dragon",
+      "description": "Rare Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/F8y1pE4.png"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Appa Cloud",
+      "description": "Rare Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/fHmvRiJ.png"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Korra",
+      "description": "Rare Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/d732U5X.png"
+      }
+    },
+    {
+      "id": 25,
+      "name": "Ramen Dog",
+      "description": "Epic Emblem",
+      "type": "emblem",
+      "deletable": true,
+      "giftable": true,
+      "price": 30000,
+      "assets": {
+        "link": "https://i.imgur.com/cZ4c8wQ.png"
+      }
+    },
+    {
+      "id": 26,
+      "name": "Puppies Galore",
+      "description": "Uncommon Pattern",
+      "type": "pattern",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/e4PFwBQ.png"
+      }
+    },
+    {
+      "id": 27,
+      "name": "Santa Hat",
+      "description": "Uncommon Hat",
+      "type": "hat",
+      "deletable": true,
+      "giftable": true,
+      "price": 5000,
+      "assets": {
+        "link": "https://i.imgur.com/EqAZQtu.png"
+      }
+    },
+    {
+      "id": 28,
+      "name": "Bunny Ears",
+      "description": "Uncommon Hat",
+      "type": "hat",
+      "deletable": true,
+      "giftable": true,
+      "price": 5000,
+      "assets": {
+        "link": "https://i.imgur.com/9nIybgn.png"
+      }
+    },
+    {
+      "id": 29,
+      "name": "Bear Ears",
+      "description": "Uncommon Hat",
+      "type": "hat",
+      "deletable": true,
+      "giftable": true,
+      "price": 5000,
+      "assets": {
+        "link": "https://i.imgur.com/pR3c11l.png"
+      }
+    },
+    {
+      "id": 30,
+      "name": "Waves",
+      "description": "Uncommon Pattern",
+      "type": "pattern",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/prd8v3I.png"
+      }
+    },
+    {
+      "id": 31,
+      "name": "Strawberry Gingham",
+      "description": "Rare Pattern",
+      "type": "pattern",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/TWEVTxD.png"
+      }
+    },
+    {
+      "id": 32,
+      "name": "A Heaven of Pastel Pink",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/pUCFXUL.png"
+      }
+    },
+    {
+      "id": 33,
+      "name": "Air Temple Island",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/x1E7E0e.jpg"
+      }
+    },
+    {
+      "id": 34,
+      "name": "Amon",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/0ul28Z9.jpg"
+      }
+    },
+    {
+      "id": 35,
+      "name": "Past avatars",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/ZF1aQCe.png"
+      }
+    },
+    {
+      "id": 36,
+      "name": "Gaang Bending",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/fFxiTY6.jpg"
+      }
+    },
+    {
+      "id": 37,
+      "name": "Korra on the Rocks",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/Ga2MbzG.jpg"
+      }
+    },
+    {
+      "id": 38,
+      "name": "Azula Lightning",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/aqDlC2O.jpg"
+      }
+    },
+    {
+      "id": 39,
+      "name": "Azula Menace",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/aNQ7i9W.png"
+      }
+    },
+    {
+      "id": 40,
+      "name": "Gaang Teatime",
+      "description": "Epic Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 20000,
+      "assets": {
+        "link": "https://i.imgur.com/D2Zgf9B.jpg"
+      }
+    }, 
+    {
+      "id": 41,
+      "name": "Gaang Minamilist",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/r92wQuq.png"
+      }
+    },
+    {
+      "id": 42,
+      "name": "Aang Dragon Dance",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/hYbOJyi.jpg"
+      }
+    },
+    {
+      "id": 43,
+      "name": "Azula v Zuko",
+      "description": "Rare Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 15000,
+      "assets": {
+        "link": "https://i.imgur.com/Ws3hfng.png"
+      }
+    },
+    {
+      "id": 44,
+      "name": "Yip Yip",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/9rgWH67.png"
+      }
+    },
+    {
+      "id": 45,
+      "name": "Zuko Dragon Dance",
+      "description": "Common Profile Background",
+      "type": "background",
+      "deletable": true,
+      "giftable": true,
+      "price": 10000,
+      "assets": {
+        "link": "https://i.imgur.com/VTFhfBz.png"
+      }
+    }
+]
