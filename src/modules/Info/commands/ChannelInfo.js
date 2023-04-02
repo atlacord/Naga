@@ -69,7 +69,7 @@ class ChannelInfo extends Command {
                 { name: 'Name', value: channel.name, inline: false },
                 { name: 'Type', value: channelTypes[channel.type], inline: false },
                 { name: 'Category', value: category.name, inline: false },
-                { name: 'Last Active', value: `<t:${Math.floor(this.utils.convertSnowflakeToDate(channel.lastMessageID) / 1000)}:f>`, inline: false }
+                { name: 'Last Active', value: `<t:${Math.floor(this.utils.convertSnowflakeToDate(channel.lastMessageID) / 1000)}:f>`, inline: false },
             ],
             footer: {
                 text: `ID: ${channel.id} | Created at`,
