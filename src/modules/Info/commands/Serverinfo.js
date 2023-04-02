@@ -51,9 +51,12 @@ class Serverinfo extends Command {
 
         let formattedFeatures = {
             'AUTO_MODERATION': 'Automod',
+            'CLYDE_ENABLED': 'ClydeAI',
             'DISCOVERABLE': 'Server Discovery',
             'FEATURABLE': 'Featured Server',
             'GUILD_HOME_TEST': 'Home Beta',
+            'GUILD_SERVER_GUIDE': 'Server Guide',
+            'GUILD_ONBOARDING': 'Community Onboarding',
             'MEMBER_VERIFICATION_GATE_ENABLED': 'Member Screening',
             'MONETIZATION_ENABLED': 'Server Monetization Program',
             'NEWS': 'News Channels',
