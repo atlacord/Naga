@@ -113,7 +113,7 @@ class Mal extends Command {
             thumbnail: {
               url: data.images.jpg.image_url,
             },
-            description: `${data.about ? textTrunctuate(data.about,350,`...[Read More](${data.url})\n\n`) : ``}\n\n• **Gender:** ${data.gender}\n• **From:** ${data.location}\n• **Joined MAL:** <t:${moment(data.joined).unix()}:F>\n• **Last Seen:** <t:${moment(data.last_online).unix()}:F>*`,
+            description: `${data.about ? textTrunctuate(data.about,350,`...[Read More](${data.url})\n\n`) : ``}\n\n• **Gender:** ${data.gender}\n• **From:** ${data.location}\n• **Joined MAL:** <t:${moment(data.joined).unix()}:F>\n• **Last Seen:** <t:${moment(data.last_online).unix()}:F>`,
             color: 16610652,
             fields: [
               {
