@@ -426,25 +426,30 @@ class ExtraUtils extends Utils {
 
 
 
-hyperlinkify(arr) {
-    if (!arr.length) return null
-  
-    let res = ''
-    let lastindex = null
-  
-    for (let i = 0; res.length < 950 && lastindex === null; i++) {
-      let toAdd = ` • [${arr[i].name}](${arr[i].url})`
-  
-      if (toAdd.length + res.length > 950) {
-        lastindex = i
-        return
-      }
-  
-      return res += toAdd
+    hyperlinkify(arr) {
+        if (!arr.length) return null
+    
+        let res = ''
+        let lastindex = null
+    
+        for (let i = 0; res.length < 950 && lastindex === null; i++) {
+            let toAdd;
+            if (arr === ('Characters' || 'People')) {
+                toAdd = ` • [${arr[i].name}](${arr[i].url})`
+            } else {
+                toAdd = ` • [${arr[i].title}](${arr[i].url})`
+            }
+    
+        if (toAdd.length + res.length > 950) {
+            lastindex = i
+            return
+        }
+    
+        return res += toAdd
+        }
+    
+        return `${res}${lastindex && lastindex < arr.length - 1 ? ` and ${arr.length - lastindex - 1} more!`:`.`}`
     }
-  
-    return `${res}${lastindex && lastindex < arr.length - 1 ? ` and ${arr.length - lastindex - 1} more!`:`.`}`
-  }
 
 }
 module.exports = ExtraUtils;
