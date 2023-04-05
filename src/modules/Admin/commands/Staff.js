@@ -75,28 +75,28 @@ class Staff extends Command {
         // }
 
         let admins = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('372084219423490049')));
+            (m.roles.includes('372084219423490049'))); // White Lotus
             for (let i in admins) {
                 let member = await this.bot.getRESTUser(admins[i].id);
                 wl.push(`${member.username}#${member.discriminator}`);
             }
 
         let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('456925799786872868')));
+            (m.roles.includes('456925799786872868') && (!m.roles.includes('372084219423490049')))); // Sentry
             for (let i in srmods) {
                 let member = await this.bot.getRESTUser(srmods[i].id);
                 sentries.push(`${member.username}#${member.discriminator}`);
             }
 
         let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('762573162424565780')));
+            (m.roles.includes('762573162424565780') && (!m.roles.includes('372084219423490049')))); // Dai Li
             for (let i in mods) {
                 let member = await this.bot.getRESTUser(mods[i].id);
                 daili.push(`${member.username}#${member.discriminator}`);
             }
         
         let loastaff = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('1014357399206899732')));
+            (m.roles.includes('1014357399206899732'))); // Vacation Tenzin
             for (let i in loastaff) {
                 let member = await this.bot.getRESTUser(loastaff[i].id);
                 loa.push(this.utils.fullName(member));
