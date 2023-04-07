@@ -1,6 +1,7 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const RespondApprove = require('./RespondApprove');
 const RespondDeny = require('./RespondDeny');
+const RespondEdit = require('./RespondEdit');
 
 class Respond extends Command {
     /**
@@ -37,7 +38,7 @@ class Respond extends Command {
     }
 
     init() {
-        return [RespondApprove, RespondDeny];
+        return [RespondApprove, RespondDeny, RespondEdit];
     }
 
     /**
@@ -48,7 +49,7 @@ class Respond extends Command {
         try {
             this.sendMessage(msg.channel, `Please use \`${this.axon.settings.prefixes}respond approve/deny\`!`)
         } catch (err) {
-            console.log(err)
+            this.utils.logError(msg, err, 'command', `An error occurred: ${err.message}`);
         }
     }
 }
