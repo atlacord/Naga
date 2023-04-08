@@ -1,5 +1,5 @@
 const { Listener } = require('axoncore');
-
+const hammers = require('../../../assets/hammers.json')
 const ID_REGEX = new RegExp(/\d{7,}/, 'gm');
 
 class Ban extends Listener {
@@ -52,10 +52,10 @@ class Ban extends Listener {
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
             }
-
+          let staff = msg.author.id;
+          let hammer = Math.floor(Math.random() * hammers[staff].length);
             let content = msg.content.split(' ');
             let reason = content.slice(2).join(' ');
-
             let embed = {
                 color: this.utils.getColor('red'),
                 title: 'Ban',
@@ -64,6 +64,7 @@ class Ban extends Listener {
                     { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
                     { name: 'Reason', value: reason }
                 ],
+                image: {url: hammers[staff][hammer]},
                 footer: { text: `Member ID: ${id}` },
                 timestamp: new Date()
             };
