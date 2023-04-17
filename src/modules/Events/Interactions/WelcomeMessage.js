@@ -348,7 +348,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('lotus'),
                         description: `**Q: Where's the general chat?**
-                        \nA: <#372087095121936385> and <#1033182943746723910> are the general off-topic chats, while <#372086844956868618> and <#721604232532459540> are for ATLA and Legend of Korra discussions. Be sure to read the channel topics and channels_info for more information.
+                        \nA: <#372087095121936385> and <#1033182943746723910> are the general off-topic chats, while <#372086844956868618> and <#721604232532459540> are for ATLA and Legend of Korra discussions. New users who need a slower environment to ease into the server can chat in ⁠<#761932923217379338>. Be sure to read the channel topics and the Channels section of this guide for more information.
                         \n\n**Q: How do I level up?**
                         \nA: You level up by being active in the server. Posting messages can get you between 15 and 25 XP. However, spamming doesn't help, because you can only gain XP once per minute, regardless of the number of messages. If you want to know your individual rank, type \`!rank\` in <#372087473892884502>. If you want to see the leaderboard, use \`!top\` in the same bot channel.
                         \n\n**Q: Why can't I post images/videos or links?**
