@@ -244,7 +244,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **GENERAL** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                        \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
+                        \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
                         \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
                         \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
                         \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
