@@ -24,12 +24,14 @@ if (config.settings.db === 2) {
     }
 }
 
+console.log(process.env);
+
 Bot.start()
 .then(
     cron.schedule('0 0 0 * * *', () => {
         Bot.commandRegistry.get('checkbirthday').execute();
         Bot.commandRegistry.get('loadpermissions').execute();
-        // Bot.commandRegistry.get('duplicatebending').execute();
+        Bot.commandRegistry.get('duplicatebending').execute();
         console.log('Checking for new birthdays, clearing duplicate bending roles, reloading staff permissions...');
     }),
     cron.schedule('0 0 */12 * * *', () => {

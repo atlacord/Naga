@@ -1,5 +1,6 @@
 const Eris = require('eris');
 require('pluris')(Eris);
+require('dotenv').config();
 
 const { AxonOptions } = require('axoncore');
 
@@ -10,7 +11,7 @@ const secret = require('../configs/secret.json');
 const lang = require('../configs/lang.json');
 const ExtraUtils = require('./ExtraUtils');
 
-const axonOptions = new AxonOptions( {
+const axonOptions = new AxonOptions({
     prefixes: botConfig.prefixes,
     settings: botConfig.settings,
     lang,
@@ -31,7 +32,7 @@ secret.webhooks,
 
     axonConfig: botConfig,
     guildConfig: null,
-} );
+});
 
 /**
  * new AxonClient(token, erisOptions, AxonOptions, modules)
@@ -39,7 +40,7 @@ secret.webhooks,
  * new Client(token, erisOptions, AxonOptions) => Modules imported in Client
  */
 const client = new Eris.Client(
-    secret.bot.token,
+    process.env.TOKEN,
     {
         autoreconnect: true,
         defaultImageFormat: 'png',
