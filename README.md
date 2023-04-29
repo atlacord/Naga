@@ -1,7 +1,7 @@
 # Naga v3 (pre-alpha)
 
 <p align="center">
-  <img width="512" height="512" src="http://img.soda.gg/Naga.png">
+  <img width="128" height="128" src="http://img.soda.gg/Naga.png">
 </p>
 
 Naga is a multi-purpose Discord bot for the Avatar: The Last Airbender community. It is written in TypeScript using the [eris](https://github.com/abalabahaha/eris) library.
