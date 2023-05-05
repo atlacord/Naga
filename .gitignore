@@ -5,6 +5,7 @@ package-lock.json
 configs/secret.json
 src/index.js
 src/modules/Info/listeners/index.js
+.env
 
 # Local directories/files
 Archives
