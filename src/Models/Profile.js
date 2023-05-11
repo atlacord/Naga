@@ -18,7 +18,6 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
       inventory: {type: Array, default: []},
       gacks: {type: String, default: null},
       acks: {type: Array, default: []},
-      flags: {type: Array, default: []},
     },
     economy: {
       bank: {type: Number, default: null},
@@ -41,6 +40,7 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
     last_level_up: {type: Date, default: 0},
     level: {type: Number, default: 0},
     birthdayTimestamp: {type: Date, default: 0 },
+    flags: {type: Array, default: []},
   }
 }, {
     autoIndex: true,
