@@ -1,6 +1,7 @@
 const { Listener } = require('axoncore');
 
-const BLURPLE_ROLE = '1106341185229951016'
+const BLURPLE_ROLE = '1106341185229951016';
+const profile = require('../../../Models/Profile');
 
 class BlurpleCanvas extends Listener {
     /**
@@ -28,9 +29,12 @@ class BlurpleCanvas extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if ((msg.content.startsWith('p/place')) && ((msg.channel.id === '1105276831340433438') || (msg.channel.id === '372087473892884502'))) {//'—ban' || '--ban')) {
-            msg.channel.guild.addMemberRole(msg.author.id, BLURPLE_ROLE, 'Participated in Blurple Canvas 2022')
-        }
+        profile.findById(msg.author.id, (err, doc) => {
+            if ((msg.content.startsWith('p/place')) && ((msg.channel.id === '1105276831340433438') || (msg.channel.id === '372087473892884502'))) {//'—ban' || '--ban')) {
+                profile.flags.push('BLURPLE_ARTIST_2022'),
+                msg.channel.guild.addMemberRole(msg.author.id, BLURPLE_ROLE, 'Participated in Blurple Canvas 2022')
+            }
+        });
     }
 }
 
