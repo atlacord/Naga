@@ -31,7 +31,7 @@ class BlurpleCanvas extends Listener {
         if (msg.author.bot) return;
         profile.findById(msg.author.id, (err, doc) => {
             if ((msg.content.startsWith('p/place')) && ((msg.channel.id === '1105276831340433438') || (msg.channel.id === '372087473892884502'))) {//'—ban' || '--ban')) {
-                profile.flags.push('BLURPLE_ARTIST_2022'),
+                doc.data.flags.push('BLURPLE_ARTIST_2022'),
                 msg.channel.guild.addMemberRole(msg.author.id, BLURPLE_ROLE, 'Participated in Blurple Canvas 2022')
             }
         });
