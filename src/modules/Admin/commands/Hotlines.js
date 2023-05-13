@@ -39,16 +39,16 @@ class Hotlines extends Command {
         let embed = {
             title: 'Self-Care Resources',
             color: this.utils.getColor('pink'),
-            description: `Hi, welcome to the Self Care help channel.
+            description: `Hi, welcome to the Self Care help channel.\n
 
-            You've been added to this channel as there have been indications that you or someone you know is going through a rough time, and just need someone to talk to or some help regarding current circumstances.
+            You've been added to this channel as there have been indications that you or someone you know is going through a rough time, and just need someone to talk to or some help regarding current circumstances.\n
             
-            Whilst we'd love to be that place, since none of us are trained professionals we're unable to offer this. However, we've provided below some resources for you to utilise, and we highly encourage you do so! :bolinhug:
+            Whilst we'd love to be that place, since none of us are trained professionals we're unable to offer this. However, we've provided below some resources for you to utilise, and we highly encourage you do so! :bolinhug:\n
             
-            Being in this channel is not a punishment - you're free to use the exit button at any time. However, we do humbly ask that any further discussion or support requests concerning this topic are directed through these resources.
+            Being in this channel is not a punishment - you're free to use the exit button at any time. However, we do humbly ask that any further discussion or support requests concerning this topic are directed through these resources.\n
             
-            Please click on the "Enter your country" button below.
-            ⚠ If your country is not listed, please call your local emergency number.
+            Please click on the "Enter your country" button below.\n
+            ⚠ If your country is not listed, please call your local emergency number.\n
             ⚠ Don't make a permanent decision to a temporary problem.`
         };
 
