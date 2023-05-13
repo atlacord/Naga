@@ -24,8 +24,6 @@ if (config.settings.db === 2) {
     }
 }
 
-console.log(process.env);
-
 Bot.start()
 .then(
     cron.schedule('0 0 0 * * *', () => {

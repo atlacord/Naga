@@ -17,7 +17,7 @@ module.exports = {
     // Unban: require('./AppaLogs/Unban'),
     // Warning: require('./AppaLogs/Warning'),
 
-    // === logs ===
+    // === Logs ===
     // channelCreate: require('./Logs/channelCreate'),
     // channelDelete: require('./Logs/channelDelete'),
     // channelUpdate: require('./Logs/channelUpdate'),
@@ -40,6 +40,7 @@ module.exports = {
     // voiceChannelLeave: require('./Logs/voiceChannelLeave'),
 
     // === Misc ===
+    BlurpleCanvas: require('./Misc/BlurpleCanvas'),
     FakeBan: require('./Misc/FakeBan'),
     // LevelUp: require('./Misc/LevelUp'),
     // UpdateScore: require('./Misc/UpdateScore'),

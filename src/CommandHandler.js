@@ -3,6 +3,7 @@ const config = require('../configs/config.json');
 const secret = require('../configs/secret.json');
 const { readFileSync, writeFileSync } = require('fs');
 const topics = require('./assets/topics.json');
+require('dotenv').config()
 
 const COMMAND_COOLDOWN = 600000;
 
@@ -10,7 +11,7 @@ const Constants = Eris.Constants;
 
 class CommandHandler {
     constructor() {
-        const bot = new Eris(secret.bot.token, {
+        const bot = new Eris(process.env.TOKEN, {
             intents: [ 
                 'guilds',  
                 'guildBans', 
