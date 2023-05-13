@@ -16,6 +16,10 @@ module.exports = {
     // RoleRemove: require('./AppaLogs/RoleRemove'),
     // Unban: require('./AppaLogs/Unban'),
     // Warning: require('./AppaLogs/Warning'),
+    
+    // === Interactions ===
+    HotlineResources: require('./Interactions/HotlineResources'),
+    WelcomeMessage: require('./Interactions/WelcomeMessage'),
 
     // === Logs ===
     // channelCreate: require('./Logs/channelCreate'),
@@ -44,7 +48,6 @@ module.exports = {
     FakeBan: require('./Misc/FakeBan'),
     // LevelUp: require('./Misc/LevelUp'),
     // UpdateScore: require('./Misc/UpdateScore'),
-    WelcomeMessage: require('./Interactions/WelcomeMessage'),
 
     // === Role Handling ===
     ContestWinner: require('./RoleHandling/ContestWinner'),
