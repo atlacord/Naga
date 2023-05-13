@@ -1,9 +1,76 @@
 const { Utils } = require('axoncore');
 const { Message } = require('eris');
+const { Tatsu } = require('tatsu');
 const secret = require('../configs/secret.json');
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
+
+const profile = require('./Models/Profile');
+const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
 
 const DISCORD_EPOCH = 1420070400000;
+
+let flags = {
+    "STAFF": {
+        "friendly": "<:DiscordStaff:1102389679380246538> Discord Employee",
+        "description": "User is a Discord employee.",
+        "shift": 0,
+    },
+    "PARTNER": {
+        "friendly": "<a:discordPartner:1006803535238811658> Discord Partner",
+        "description": "User is a Discord partner.",
+        "shift": 1,
+    },
+    "HYPESQUAD": {
+        "friendly": "<:HypeSquadEvents:1102390600675901530> HypeSquad Events",
+        "description": "User is a HypeSquad Events member.",
+        "shift": 2,
+    },
+    "BUG_HUNTER_LEVEL_1": {
+        "friendly": "<:BugHunterLvl1:1102390616849141762> Bug Hunter Level 1",
+        "description": "User is a Bug Hunter.",
+        "shift": 3,
+    },
+    "HYPESQUAD_ONLINE_HOUSE_1": {
+        "friendly": "<:Bravery:1102389675550838824> HypeSquad Bravery",
+        "description": "User is part of HypeSquad Bravery.",
+        "shift": 6,
+    },
+    "HYPESQUAD_ONLINE_HOUSE_2": {
+        "friendly": "<:Brilliance:1102389676498767894> HypeSquad Brilliance",
+        "description": "User is part of HypeSquad Brilliance.",
+        "shift": 7,
+    },
+    "HYPESQUAD_ONLINE_HOUSE_3": {
+        "friendly": "<:Balance:1102389669943062611> HypeSquad Balance",
+        "description": "User is a part of HypeSquad Balance.",
+        "shift": 8,
+    },
+    "PREMIUM_EARLY_SUPPORTER": {
+        "friendly": "<:EarlySupporter:1102389681024401478> Legacy Nitro Subscriber",
+        "description": "User is an Early Supporter.",
+        "shift": 9,
+    },
+    "BUG_HUNTER_LEVEL_2": {
+        "friendly": "<:BugHunterLvl2:1102390618673647716> Bug Hunter Level 2",
+        "description": "User has the gold Bug Hunter badge.",
+        "shift": 14,
+    },
+    "VERIFIED_DEVELOPER": {
+        "friendly": "<:VerifiedDev:1102389683520016484> Verified Bot Developer",
+        "description": "User is a verified bot developer.",
+        "shift": 17,
+    },
+    "CERTIFIED_MODERATOR": {
+        "friendly": "<:DiscordModProgram:1102389678340067399> Discord Moderator Program Member",
+        "description": "User is a Discord certified moderator alum.",
+        "shift": 18,
+    },
+    "ACTIVE_DEVELOPER": {
+        "friendly": "<:ActiveDev:1102389668848349264> Active Developer",
+        "description": "User is an active developer. https://discord.com/developers/active-developer",
+        "shift": 22,
+    },
+};
 
 class ExtraUtils extends Utils {
 
@@ -15,6 +82,7 @@ class ExtraUtils extends Utils {
     constructor(client) {
         super(client);
         this.invite = /^(discord.gg\/|discordapp.com\/invite\/)([a-z0-9]+)$/gi;
+        this.levels = require('./assets/levels');
     }
 
     /**
@@ -39,6 +107,7 @@ class ExtraUtils extends Utils {
             green: 4437377,
             blue: 9031664,
             darkblue: 26544,
+            pink: 16736378,
             spotify: 1947988,
             discordgrey: 2632496,
             lotus: 15913095,
@@ -90,6 +159,26 @@ class ExtraUtils extends Utils {
     */
     joinArray(array = []){
         return list.format(array.map(x => String(x)));
+    }
+
+    /**
+     * Returns a list of Discord user flags in a human readable format
+     * @param {Number} flagNumber 
+     * @returns {string} An array of flag strings
+     */
+    getFlags(flagNumber) {
+        let results = [];
+
+        for (let i = 0; i <= 64; i++) {
+            const bitwise = 1n << BigInt(i);
+    
+            if (flagNumber & parseInt(bitwise)) {
+                const flag = Object.entries(flags).find((f) => f[1].shift === i)?.[0] || `UNKNOWN_FLAG_${i}`;
+                if (flag !== `UNKNOWN_FLAG_${i}`) results.push(flags[flag].friendly);
+            }
+        }
+    
+        return results || "None";
     }
 
         /**
@@ -225,7 +314,7 @@ class ExtraUtils extends Utils {
    * @returns {Promise<void>}
    */
     async logError(msg, err, type, message) {
-        await this.bot.getChannel(secret.bot.logChannel).createMessage({
+        await this.bot.getChannel(process.env.LOG_CHANNEL).createMessage({
             embed: {
                 author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
                 title: 'Error',
@@ -451,5 +540,335 @@ class ExtraUtils extends Utils {
         return `${res}${lastindex && lastindex < arr.length - 1 ? ` and ${arr.length - lastindex - 1} more!`:`.`}`
     }
 
+    getKeyByValue(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+    }
+
+    async updateMemberLevel(m) {
+        let guild = this.bot.guilds.get('370708369951948800')
+        let member = this.resolveUser(guild, m);
+        if (!member.bot) {
+            let tatsuProfile = await tatsu.getMemberRanking('370708369951948800', member.id);
+                profile.findById(member.id, async (err, doc) => {
+
+                if (!doc) return;
+
+                let score = tatsuProfile.score;
+                let level;
+                switch (true) {
+                    case (score < this.levels[1]):
+                        level = 0;
+                        break;
+                    case (score < this.levels[2]):
+                        level = 1;
+                        break;
+                    case (score < this.levels[3]):
+                        level = 2;
+                        break;
+                    case (score < this.levels[4]):
+                        level = 3;
+                        break;
+                    case (score < this.levels[5]):
+                        level = 4;
+                        break;
+                    case (score < this.levels[6]):
+                        level = 5;
+                        break;
+                    case (score < this.levels[7]):
+                        level = 6;
+                        break;
+                    case (score < this.levels[8]):
+                        level = 7;
+                        break;
+                    case (score < this.levels[9]):
+                        level = 8;
+                        break;
+                    case (score < this.levels[10]):
+                        level = 9;
+                        break;
+                    case (score < this.levels[11]):
+                        level = 10;
+                        break;
+                    case (score < this.levels[12]):
+                        level = 11;
+                        break;
+                    case (score < this.levels[13]):
+                        level = 12;
+                        break;
+                    case (score < this.levels[14]):
+                        level = 13;
+                        break;
+                    case (score < this.levels[15]):
+                        level = 14;
+                        break;
+                    case (score < this.levels[16]):
+                        level = 15;
+                        break;
+                    case (score < this.levels[17]):
+                        level = 16;
+                        break;
+                    case (score < this.levels[18]):
+                        level = 17;
+                        break;
+                    case (score < this.levels[19]):
+                        level = 18;
+                        break;
+                    case (score < this.levels[20]):
+                        level = 19;
+                        break;
+                    case (score < this.levels[21]):
+                        level = 20;
+                        break;
+                    case (score < this.levels[22]):
+                        level = 21;
+                        break;
+                    case (score < this.levels[23]):
+                        level = 22;
+                        break;
+                    case (score < this.levels[24]):
+                        level = 23;
+                        break;
+                    case (score < this.levels[25]):
+                        level = 24;
+                        break;
+                    case (score < this.levels[26]):
+                        level = 25;
+                        break;
+                    case (score < this.levels[27]):
+                        level = 26;
+                        break;
+                    case (score < this.levels[28]):
+                        level = 27;
+                        break;
+                    case (score < this.levels[29]):
+                        level = 28;
+                        break;
+                    case (score < this.levels[30]):
+                        level = 29;
+                        break;
+                    case (score < this.levels[31]):
+                        level = 30;
+                        break;
+                    case (score < this.levels[32]):
+                        level = 31;
+                        break;
+                    case (score < this.levels[33]):
+                        level = 32;
+                        break;
+                    case (score < this.levels[34]):
+                        level = 33;
+                        break;
+                    case (score < this.levels[35]):
+                        level = 34;
+                        break;
+                    case (score < this.levels[36]):
+                        level = 35;
+                        break;
+                    case (score < this.levels[37]):
+                        level = 36;
+                        break;
+                    case (score < this.levels[38]):
+                        level = 37;
+                        break;
+                    case (score < this.levels[39]):
+                        level = 38;
+                        break;
+                    case (score < this.levels[40]):
+                        level = 39;
+                        break;
+                    case (score < this.levels[41]):
+                        level = 40;
+                        break;
+                    case (score < this.levels[42]):
+                        level = 41;
+                        break;
+                    case (score < this.levels[43]):
+                        level = 42;
+                        break;
+                    case (score < this.levels[44]):
+                        level = 43;
+                        break;
+                    case (score < this.levels[45]):
+                        level = 44;
+                        break;
+                    case (score < this.levels[46]):
+                        level = 45;
+                        break;
+                    case (score < this.levels[47]):
+                        level = 46;
+                        break;
+                    case (score < this.levels[48]):
+                        level = 47;
+                        break;
+                    case (score < this.levels[49]):
+                        level = 48;
+                        break;
+                    case (score < this.levels[50]):
+                        level = 49;
+                        break;
+                    case (score < this.levels[51]):
+                        level = 50;
+                        break;
+                    case (score < this.levels[52]):
+                        level = 51;
+                        break;
+                    case (score < this.levels[53]):
+                        level = 52;
+                        break;
+                    case (score < this.levels[54]):
+                        level = 53;
+                        break;
+                    case (score < this.levels[55]):
+                        level = 54;
+                        break;
+                    case (score < this.levels[56]):
+                        level = 55;
+                        break;
+                    case (score < this.levels[57]):
+                        level = 56;
+                        break;
+                    case (score < this.levels[58]):
+                        level = 57;
+                        break;
+                    case (score < this.levels[59]):
+                        level = 58;
+                        break;
+                    case (score < this.levels[60]):
+                        level = 59;
+                        break;
+                    case (score < this.levels[61]):
+                        level = 60;
+                        break;
+                    case (score < this.levels[62]):
+                        level = 61;
+                        break;
+                    case (score < this.levels[63]):
+                        level = 62;
+                        break;
+                    case (score < this.levels[64]):
+                        level = 63;
+                        break;
+                    case (score < this.levels[65]):
+                        level = 64;
+                        break;
+                    case (score < this.levels[66]):
+                        level = 65;
+                        break;
+                    case (score < this.levels[67]):
+                        level = 66;
+                        break;
+                    case (score < this.levels[68]):
+                        level = 67;
+                        break;
+                    case (score < this.levels[69]):
+                        level = 68;
+                        break;
+                    case (score < this.levels[70]):
+                        level = 69;
+                        break;
+                    case (score < this.levels[71]):
+                        level = 70;
+                        break;
+                    case (score < this.levels[72]):
+                        level = 71;
+                        break;
+                    case (score < this.levels[73]):
+                        level = 72;
+                        break;
+                    case (score < this.levels[74]):
+                        level = 73;
+                        break;
+                    case (score < this.levels[75]):
+                        level = 74;
+                        break;
+                    case (score < this.levels[76]):
+                        level = 75;
+                        break;
+                    case (score < this.levels[77]):
+                        level = 76;
+                        break;
+                    case (score < this.levels[78]):
+                        level = 77;
+                        break;
+                    case (score < this.levels[79]):
+                        level = 78;
+                        break;
+                    case (score < this.levels[80]):
+                        level = 79;
+                        break;
+                    case (score < this.levels[81]):
+                        level = 80;
+                        break;
+                    case (score < this.levels[82]):
+                        level = 81;
+                        break;
+                    case (score < this.levels[83]):
+                        level = 82;
+                        break;
+                    case (score < this.levels[84]):
+                        level = 83;
+                        break;
+                    case (score < this.levels[85]):
+                        level = 84;
+                        break;
+                    case (score < this.levels[86]):
+                        level = 85;
+                        break;
+                    case (score < this.levels[87]):
+                        level = 86;
+                        break;
+                    case (score < this.levels[88]):
+                        level = 87;
+                        break;
+                    case (score < this.levels[89]):
+                        level = 88;
+                        break;
+                    case (score < this.levels[90]):
+                        level = 89;
+                        break;
+                    case (score < this.levels[91]):
+                        level = 90;
+                        break;
+                    case (score < this.levels[92]):
+                        level = 91;
+                        break;
+                    case (score < this.levels[93]):
+                        level = 92;
+                        break;
+                    case (score < this.levels[94]):
+                        level = 93;
+                        break;
+                    case (score < this.levels[95]):
+                        level = 94;
+                        break;
+                    case (score < this.levels[96]):
+                        level = 95;
+                        break;
+                    case (score < this.levels[97]):
+                        level = 96;
+                        break;
+                    case (score < this.levels[98]):
+                        level = 97;
+                        break;
+                    case (score < this.levels[99]):
+                        level = 98;
+                        break;
+                    case (score < this.levels[100]):
+                        level = 99;
+                        break;
+                    case (score < this.levels[101]):
+                        level = 100;
+                        break;
+                }
+
+                doc.data.global_xp = score;
+                doc.data.global_level = level;
+                doc.save();
+                return level;
+            })
+        }
+    }
+
 }
+
 module.exports = ExtraUtils;

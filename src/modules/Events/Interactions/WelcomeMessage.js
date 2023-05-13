@@ -9,7 +9,7 @@ class WelcomeMessage extends Listener {
         super(module, data);
 
         /** Event Name (Discord name) */
-        this.eventName = 'interactionCreate';
+        this.eventName = 'interactionCreate-WelcomeMessage';
         /** Event name (Function name) */
         this.label = 'interactionCreate';
 
