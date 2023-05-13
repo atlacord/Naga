@@ -35,14 +35,17 @@ class Hotlines extends Command {
         } );
     }
 
-    async execute({ msg }) {
+    async execute() {
         let embed = {
             title: 'Self-Care Resources',
             color: this.utils.getColor('pink'),
-            description: `Hi, Welcome to the Self Care help channel.
-            You've been added to this channel, as you have provided information that might indicate that you or someone you know is going through a rough time, and just need someone to talk to or some help regarding current circumstance.
+            description: `Hi, welcome to the Self Care help channel.
+
+            You've been added to this channel as there have been indications that you or someone you know is going through a rough time, and just need someone to talk to or some help regarding current circumstances.
             
-            Whilst we'd love to be that place, unfortunately, we aren't, none of us are trained professionals and as such we are not the proper support facility. However, we've provided below some resources for you to utilise, and we highly encourage you do so! Being in this channel is not a punishment, you're free to use the exit button any time. We do humbly ask, however, that any further discussion or support requests around the topic are directed through these aforementioned resources, as again, unfortunately, we aren't able to offer such here.
+            Whilst we'd love to be that place, since none of us are trained professionals we're unable to offer this. However, we've provided below some resources for you to utilise, and we highly encourage you do so! :bolinhug:
+            
+            Being in this channel is not a punishment - you're free to use the exit button at any time. However, we do humbly ask that any further discussion or support requests concerning this topic are directed through these resources.
             
             Please click on the "Enter your country" button below.
             ⚠ If your country is not listed, please call your local emergency number.
