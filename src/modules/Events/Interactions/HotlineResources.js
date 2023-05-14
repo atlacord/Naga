@@ -1,5 +1,6 @@
 const { Listener } = require('axoncore');
 const countries = require('../../../assets/Hotlines.json');
+const profileSchema = require('../../../Models/Profile');
 const HOTLINE_ROLE = '1106789319240335460'
 
 class HotlineResources extends Listener {
@@ -101,8 +102,16 @@ class HotlineResources extends Listener {
                 embeds: [embed]
             })
         }
-        if (interaction.data.component_type === 2 && interaction.data.custom_id === "hotline_exit_button") {
-            interaction.channel.guild.removeMemberRole(interaction.member.id, HOTLINE_ROLE, "User self-exited the resources channel");
+        if (interaction.data.component_type === 2 && interaction.data.custom_id === 'hotline_exit_button') {
+            profile.findById(member.id, (err, doc) => {
+    
+                if (doc.data.flags.includes('SERIOUS_LOCK')) {
+                    interaction.channel.guild.addMemberRole(interaction.member.id, '388121551779921930', 'User had the Serious role prior to receiving the Self-Care Resources role.');
+                    doc.data.flags.splice(doc.data.flags.indexOf('SERIOUS_LOCK'), 1);
+                    doc.save();
+                };
+            });
+            interaction.channel.guild.removeMemberRole(interaction.member.id, HOTLINE_ROLE, 'User self-exited the resources channel.');
         }
     }
 }
