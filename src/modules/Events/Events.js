@@ -44,7 +44,7 @@ module.exports = {
     // voiceChannelLeave: require('./Logs/voiceChannelLeave'),
 
     // === Misc ===
-    BlurpleCanvas: require('./Misc/BlurpleCanvas'),
+    // BlurpleCanvas: require('./Misc/BlurpleCanvas'),
     FakeBan: require('./Misc/FakeBan'),
     // LevelUp: require('./Misc/LevelUp'),
     // UpdateScore: require('./Misc/UpdateScore'),
