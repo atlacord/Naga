@@ -1,7 +1,7 @@
 const { Listener } = require('axoncore');
 const countries = require('../../../assets/Hotlines.json');
 const profileSchema = require('../../../Models/Profile');
-const HOTLINE_ROLE = '1106789319240335460'
+const HOTLINE_ROLE = '1106789319240335460';
 
 class HotlineResources extends Listener {
     /**
