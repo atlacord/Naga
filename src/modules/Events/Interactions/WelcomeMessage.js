@@ -11,7 +11,7 @@ class WelcomeMessage extends Listener {
         /** Event Name (Discord name) */
         this.eventName = 'interactionCreate';
         /** Event name (Function name) */
-        this.label = 'interactionCreate';
+        this.label = 'interactionCreate-WelcomeMessage';
 
         this.enabled = true;
 
