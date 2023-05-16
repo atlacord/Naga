@@ -53,14 +53,17 @@ class SendHotline extends Command {
             profile.findById(member.id, (err, doc) => {
                 const roles = [...member.roles];
 
+                if (!doc) {
+                    doc = new profile({ _id: member.id });
+                }
+
                 if (roles.includes('388121551779921930')) {
                     doc.data.flags.push('SERIOUS_LOCK');
-                    doc.save();
                 };
             });
 
             await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
-            this.sendSuccess(msg.channel, `Added ${member.username}#${member.discriminator} to the self-care resources channel.`)
+            doc.save().then(() => this.sendSuccess(msg.channel, `Added ${member.username}#${member.discriminator} to the self-care resources channel.`));
             
         } catch (err) {
             this.sendError(msg.channel, err);
