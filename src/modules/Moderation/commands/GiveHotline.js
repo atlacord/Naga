@@ -46,19 +46,28 @@ class SendHotline extends Command {
      */
 
       async execute({ msg, args }) {
-        const guild = msg.channel.guild;
+        try {
+            const guild = msg.channel.guild;
 
-        const member = this.utils.resolveUser(guild, args[0]);
-        profile.findById(member.id, (err, doc) => {
-            const roles = [...member.roles];
+            const member = this.utils.resolveUser(guild, args[0]);
+            profile.findById(member.id, (err, doc) => {
+                const roles = [...member.roles];
 
-            if (roles.includes('388121551779921930')) {
-                doc.data.flags.push('SERIOUS_LOCK');
-                doc.save();
-            };
-        });
+                if (!doc) {
+                    doc = new profile({ _id: member.id });
+                }
 
-        await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
+                if (roles.includes('388121551779921930')) {
+                    doc.data.flags.push('SERIOUS_LOCK');
+                };
+            });
+
+            await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
+            doc.save().then(() => this.sendSuccess(msg.channel, `Added ${member.username}#${member.discriminator} to the self-care resources channel.`));
+            
+        } catch (err) {
+            this.sendError(msg.channel, err);
+        }
     }   
 }
 
