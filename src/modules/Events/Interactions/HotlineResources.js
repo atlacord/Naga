@@ -110,6 +110,7 @@ class HotlineResources extends Listener {
                     doc.data.flags.splice(doc.data.flags.indexOf('SERIOUS_LOCK'), 1);
                     doc.save();
                 };
+                doc.data.flags.splice(doc.data.flags.indexOf('HOTLINE_QUARANTINE'), 1);
             });
             interaction.channel.guild.removeMemberRole(interaction.member.id, HOTLINE_ROLE, 'User self-exited the resources channel.');
         }

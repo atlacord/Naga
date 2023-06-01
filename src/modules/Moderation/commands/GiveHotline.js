@@ -1,5 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const ModUtils = require('../ModUtils');
+const profile = require('../../../Models/Profile');
 
 class SendHotline extends Command {
     /**
@@ -63,6 +64,7 @@ class SendHotline extends Command {
             });
 
             await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
+            doc.data.flags.push('HOTLINE_QUARANTINE');
             doc.save().then(() => this.sendSuccess(msg.channel, `Added ${member.username}#${member.discriminator} to the self-care resources channel.`));
             
         } catch (err) {
