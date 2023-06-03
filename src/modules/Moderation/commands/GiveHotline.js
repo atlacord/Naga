@@ -57,6 +57,7 @@ class SendHotline extends Command {
 
                 if (roles.includes('388121551779921930')) {
                     doc.data.flags.push('SERIOUS_LOCK');
+                    await guild.removeMemberRole(member.id, '388121551779921930');
                 }
 
                 await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
