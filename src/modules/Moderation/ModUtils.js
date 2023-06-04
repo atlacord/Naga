@@ -89,4 +89,4 @@ class ModUtils {
     }
 }
 
-module.exports = ModUtils
+module.exports = ModUtils;
