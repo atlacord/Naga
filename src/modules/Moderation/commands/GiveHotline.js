@@ -1,5 +1,4 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const ModUtils = require('../ModUtils');
 const profile = require('../../../Models/Profile');
 
 class SendHotline extends Command {
@@ -29,8 +28,6 @@ class SendHotline extends Command {
             guildOnly: true,
         });
 
-        this.modUtils = ModUtils;
-
         /**
          * @type {CommandPermissions}
         */
@@ -51,7 +48,7 @@ class SendHotline extends Command {
             const guild = msg.channel.guild;
 
             const member = this.utils.resolveUser(guild, args[0]);
-            profile.findById(member.id, (err, doc) => {
+            profile.findById(member.id, async (err, doc) => {
                 const roles = [...member.roles];
 
                 if (!doc) {
@@ -60,13 +57,13 @@ class SendHotline extends Command {
 
                 if (roles.includes('388121551779921930')) {
                     doc.data.flags.push('SERIOUS_LOCK');
-                };
-            });
+                    await guild.removeMemberRole(member.id, '388121551779921930');
+                }
 
-            await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
-            doc.data.flags.push('HOTLINE_QUARANTINE');
-            doc.save().then(() => this.sendSuccess(msg.channel, `Added ${member.username}#${member.discriminator} to the self-care resources channel.`));
-            
+                await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
+                doc.data.flags.push('HOTLINE_QUARANTINE');
+                doc.save().then(() => this.sendSuccess(msg.channel, `Added ${member.username}#${member.discriminator} to the self-care resources channel.`));
+            });
         } catch (err) {
             this.sendError(msg.channel, err);
         }
