@@ -103,7 +103,7 @@ class HotlineResources extends Listener {
             })
         }
         if (interaction.data.component_type === 2 && interaction.data.custom_id === 'hotline_exit_button') {
-            profile.findById(member.id, (err, doc) => {
+            profileSchema.findById(interaction.member.id, (err, doc) => {
     
                 if (doc.data.flags.includes('SERIOUS_LOCK')) {
                     interaction.channel.guild.addMemberRole(interaction.member.id, '388121551779921930', 'User had the Serious role prior to receiving the Self-Care Resources role.');
