@@ -42,14 +42,15 @@ class Logs extends Command {
       splitResult = splitResult.slice(splitResult.length - 3);
     }
 
+    const embeds = [];
     for(const result of splitResult) {
-      this.sendMessage(msg.channel, {
-        embed: {
-          color: this.utils.getColor('green'),
-          description: `\`\`\`js\n${result}\`\`\``
-        }
+      embeds.push({
+        color: this.utils.getColor('green'),
+        description: `\`\`\`js\n${result}\`\`\``
       });
     }
+
+    msg.channel.createMessage({ embeds: embeds });
   }
 
   async execute({ msg, args }) {
