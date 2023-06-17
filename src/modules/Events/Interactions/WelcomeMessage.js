@@ -55,8 +55,6 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `**__Requestable Roles__**
                         \nThe following roles cannot be self-assigned, but eligible users *who are in good standing with the staff team* may request them by DMing <@718577208687460482> Mod Mail:
-
-                        \n\n <@&991902499516731494> – Given to members who wish to participate in <#812409753602883626>, our safe space for venting, advice, and comfort from other members. There is no requirement for this role, it's assigned on a case-by-case basis.
                             
                         \n\n <@&871374813288083516> – Given to members who want to contribute to our wiki. Grants access to <#869740603557158973>, our channel for discussing anything related to the server's wiki (more info about the wiki can be found above). You must have the <@&372179082634330112> role (42,000 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without actively contributing to the wiki.
                             
