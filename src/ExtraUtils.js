@@ -30,21 +30,21 @@ let flags = {
         "description": "User is a Bug Hunter.",
         "shift": 3,
     },
-    // "HYPESQUAD_ONLINE_HOUSE_1": {
-    //     "friendly": "<:Bravery:1102389675550838824> HypeSquad Bravery",
-    //     "description": "User is part of HypeSquad Bravery.",
-    //     "shift": 6,
-    // },
-    // "HYPESQUAD_ONLINE_HOUSE_2": {
-    //     "friendly": "<:Brilliance:1102389676498767894> HypeSquad Brilliance",
-    //     "description": "User is part of HypeSquad Brilliance.",
-    //     "shift": 7,
-    // },
-    // "HYPESQUAD_ONLINE_HOUSE_3": {
-    //     "friendly": "<:Balance:1102389669943062611> HypeSquad Balance",
-    //     "description": "User is a part of HypeSquad Balance.",
-    //     "shift": 8,
-    // },
+    "HYPESQUAD_ONLINE_HOUSE_1": {
+        "friendly": "<:Bravery:1102389675550838824> HypeSquad Bravery",
+        "description": "User is part of HypeSquad Bravery.",
+        "shift": 6,
+    },
+    "HYPESQUAD_ONLINE_HOUSE_2": {
+        "friendly": "<:Brilliance:1102389676498767894> HypeSquad Brilliance",
+        "description": "User is part of HypeSquad Brilliance.",
+        "shift": 7,
+    },
+    "HYPESQUAD_ONLINE_HOUSE_3": {
+        "friendly": "<:Balance:1102389669943062611> HypeSquad Balance",
+        "description": "User is a part of HypeSquad Balance.",
+        "shift": 8,
+    },
     "PREMIUM_EARLY_SUPPORTER": {
         "friendly": "<:EarlySupporter:1102389681024401478> Legacy Nitro Subscriber",
         "description": "User is an Early Supporter.",
