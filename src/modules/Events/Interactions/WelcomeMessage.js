@@ -55,8 +55,6 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `**__Requestable Roles__**
                         \nThe following roles cannot be self-assigned, but eligible users *who are in good standing with the staff team* may request them by DMing <@718577208687460482> Mod Mail:
-
-                        \n\n <@&991902499516731494> – Given to members who wish to participate in <#812409753602883626>, our safe space for venting, advice, and comfort from other members. There is no requirement for this role, it's assigned on a case-by-case basis.
                             
                         \n\n <@&871374813288083516> – Given to members who want to contribute to our wiki. Grants access to <#869740603557158973>, our channel for discussing anything related to the server's wiki (more info about the wiki can be found above). You must have the <@&372179082634330112> role (42,000 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without actively contributing to the wiki.
                             
@@ -77,9 +75,9 @@ class WelcomeMessage extends Listener {
                                
                         \n\n<@&586128911302131725> – An honorary role given automatically to server boosters. Grants access to <#826851222459514923>, our private chat channel for Team Avatar members.
                                
-                        \n\n<@&433112551195279360> – A role used to temporarily mute server members who misbehave or break our rules (see <#728364994005303307>), preventing them from typing in our chats. This role is removed automatically once the mute duration has been served. To find your mute reason and duration, check the DM you should have received from <@!424659040170409984> (you need to have your DMs open to receive this).
+                        \n\n<@&433112551195279360> – A role used to temporarily mute server members who misbehave or break our rules (see <#1066580298290176121>), preventing them from typing in our chats. This role is removed automatically once the mute duration has been served. To find your mute reason and duration, check the DM you should have received from <@!424659040170409984> (you need to have your DMs open to receive this).
                                
-                        \n\n<@&717748188630482946> – A role used to revoke access to <#812409753602883626> and <#388122648854528001> for server members who misuse those channels. This role also prevents users from re-assigning themselves the <@&991902499516731494> and <@&388121551779921930> roles (see “Channel Access Roles” on our community onboarding page).`
+                        \n\n<@&717748188630482946> – A role used to revoke access to <#388122648854528001> for server members who misuse this channel. This role also prevents users from re-assigning themselves the <@&388121551779921930> role (see <#1065945888507310191>, which you can only access if you have the <@&372163599130558466> role).`
                     }
                 ]
             })        
@@ -124,7 +122,7 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
-                        \nBe sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
+                        \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -239,7 +237,7 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
-                        \nBe sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
+                        \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
