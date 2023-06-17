@@ -1,8 +1,8 @@
 const { Utils } = require('axoncore');
 const { Message } = require('eris');
 const { Tatsu } = require('tatsu');
-const secret = require('../configs/secret.json');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const profile = require('./Models/Profile');
 const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
@@ -164,7 +164,7 @@ class ExtraUtils extends Utils {
     /**
      * Returns a list of Discord user flags in a human readable format
      * @param {Number} flagNumber 
-     * @returns {string} An array of flag strings
+     * @returns {Array} An array of flag strings
      */
     getFlags(flagNumber) {
         let results = [];
@@ -458,7 +458,8 @@ class ExtraUtils extends Utils {
 			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
 		}
 
-		return `${username}#${discrim}`;
+        if (discrim !== '0') return `${username}#${discrim}`;
+		else return username;
 	}
 
     convertSnowflake(snowflake, epoch = DISCORD_EPOCH) {
