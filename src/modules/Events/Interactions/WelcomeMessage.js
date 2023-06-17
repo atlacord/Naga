@@ -122,7 +122,7 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
-                        \nBe sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
+                        \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -237,7 +237,7 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n<:whitelotus:381027716897439744> <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n<:whitelotus:381027716897439744> <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
-                        \nBe sure to give yourself appropriate roles in roles for notifications in all previously listed channels!`
+                        \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
