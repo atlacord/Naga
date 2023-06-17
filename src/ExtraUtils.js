@@ -1,8 +1,8 @@
 const { Utils } = require('axoncore');
 const { Message } = require('eris');
 const { Tatsu } = require('tatsu');
-const secret = require('../configs/secret.json');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const profile = require('./Models/Profile');
 const tatsu = new Tatsu('jjyo4ESeJ0-sxQ9dSRB8zmsB8edoxVuE7');
@@ -30,21 +30,21 @@ let flags = {
         "description": "User is a Bug Hunter.",
         "shift": 3,
     },
-    "HYPESQUAD_ONLINE_HOUSE_1": {
-        "friendly": "<:Bravery:1102389675550838824> HypeSquad Bravery",
-        "description": "User is part of HypeSquad Bravery.",
-        "shift": 6,
-    },
-    "HYPESQUAD_ONLINE_HOUSE_2": {
-        "friendly": "<:Brilliance:1102389676498767894> HypeSquad Brilliance",
-        "description": "User is part of HypeSquad Brilliance.",
-        "shift": 7,
-    },
-    "HYPESQUAD_ONLINE_HOUSE_3": {
-        "friendly": "<:Balance:1102389669943062611> HypeSquad Balance",
-        "description": "User is a part of HypeSquad Balance.",
-        "shift": 8,
-    },
+    // "HYPESQUAD_ONLINE_HOUSE_1": {
+    //     "friendly": "<:Bravery:1102389675550838824> HypeSquad Bravery",
+    //     "description": "User is part of HypeSquad Bravery.",
+    //     "shift": 6,
+    // },
+    // "HYPESQUAD_ONLINE_HOUSE_2": {
+    //     "friendly": "<:Brilliance:1102389676498767894> HypeSquad Brilliance",
+    //     "description": "User is part of HypeSquad Brilliance.",
+    //     "shift": 7,
+    // },
+    // "HYPESQUAD_ONLINE_HOUSE_3": {
+    //     "friendly": "<:Balance:1102389669943062611> HypeSquad Balance",
+    //     "description": "User is a part of HypeSquad Balance.",
+    //     "shift": 8,
+    // },
     "PREMIUM_EARLY_SUPPORTER": {
         "friendly": "<:EarlySupporter:1102389681024401478> Legacy Nitro Subscriber",
         "description": "User is an Early Supporter.",
@@ -164,7 +164,7 @@ class ExtraUtils extends Utils {
     /**
      * Returns a list of Discord user flags in a human readable format
      * @param {Number} flagNumber 
-     * @returns {string} An array of flag strings
+     * @returns {Array} An array of flag strings
      */
     getFlags(flagNumber) {
         let results = [];
@@ -458,7 +458,8 @@ class ExtraUtils extends Utils {
 			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
 		}
 
-		return `${username}#${discrim}`;
+        if (discrim !== '0') return `${username}#${discrim}`;
+		else return username;
 	}
 
     convertSnowflake(snowflake, epoch = DISCORD_EPOCH) {
