@@ -77,7 +77,7 @@ class WelcomeMessage extends Listener {
                                
                         \n\n<@&433112551195279360> – A role used to temporarily mute server members who misbehave or break our rules (see <#1066580298290176121>), preventing them from typing in our chats. This role is removed automatically once the mute duration has been served. To find your mute reason and duration, check the DM you should have received from <@!424659040170409984> (you need to have your DMs open to receive this).
                                
-                        \n\n<@&717748188630482946> – A role used to revoke access to <#812409753602883626> and <#388122648854528001> for server members who misuse those channels. This role also prevents users from re-assigning themselves the <@&991902499516731494> and <@&388121551779921930> roles (see “Channel Access Roles” on our community onboarding page).`
+                        \n\n<@&717748188630482946> – A role used to revoke access to <#388122648854528001> for server members who misuse those channels. This role also prevents users from re-assigning themselves the <@&388121551779921930> role (see <#1065945888507310191>, which you can only access if you have the <@&372163599130558466> role).`
                     }
                 ]
             })        
