@@ -33,7 +33,7 @@ Bot.start()
         console.log('Checking for new birthdays, clearing duplicate bending roles, reloading staff permissions...');
     }),
     cron.schedule('0 0 */12 * * *', () => {
-        // Bot.commandRegistry.get('duplicatebending').execute();
+        Bot.commandRegistry.get('duplicatebending').execute();
         console.log('Clearing duplicate bending roles...');
     }),
     // new EventHandler(),
