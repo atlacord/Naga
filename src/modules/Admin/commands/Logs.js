@@ -10,10 +10,8 @@ class Logs extends Command {
 
     this.info = {
       name: 'logs',
-      description: `Shows the contents of Naga's pm2 logs. Pass \'out\' for .out logs and
-                    'err' or 'error' for .err logs. Omit both arguments to use default values 
-                    (15 for 'lines' and out for 'log type').`,
-      usage: 'logs [number of lines] [log type]',
+      description: `Shows the contents of Naga's pm2 logs. Lines argument defaults to 15 and logs argument defaults to out.`,
+      usage: 'logs [number of lines] [log type (out, err, or error)]',
     };
 
     this.options = new CommandOptions(this, {
