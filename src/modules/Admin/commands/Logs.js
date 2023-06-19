@@ -41,7 +41,7 @@ class Logs extends Command {
     }
 
     const embeds = [];
-    for(const result of splitResult) {
+    for (const result of splitResult) {
       embeds.push({
         color: this.utils.getColor('green'),
         description: `\`\`\`js\n${result}\`\`\``
