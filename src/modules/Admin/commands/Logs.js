@@ -33,8 +33,8 @@ class Logs extends Command {
   splitSendResults(msg, resultString) {
     let splitResult = resultString.match(/[\s\S]{1,1900}[\n\r]/g) || [resultString];
 
-    if(splitResult.length > 2) {
-      if(splitResult.length > 3) {
+    if (splitResult.length > 2) {
+      if (splitResult.length > 3) {
         this.sendMessage(msg.channel, `Response too long at ${resultString.length} chars! Latest content of the file will still be shown:`)
       }
       splitResult = splitResult.slice(splitResult.length - 3);
@@ -54,30 +54,30 @@ class Logs extends Command {
   async execute({ msg, args }) {
     const lines = args[0] || 15;
 
-    if(lines < 5) {
+    if (lines < 5) {
       return this.sendError(msg.channel, 'At least 5 lines have to be provided')
     }
 
-    if(lines > 200) {
+    if (lines > 200) {
       return this.sendError(msg.channel, 'You can\'t provide more than 200 lines')
     }
 
     const logType = args[1]?.toLowerCase() || 'out';
 
-    if(!['out', 'err', 'error'].includes(logType)) {
+    if (!['out', 'err', 'error'].includes(logType)) {
       return this.sendError(msg.channel, 'Invald log type');
     }
 
     const command = `pm2 logs Naga --raw --nostream --${logType} --lines ${lines}`;
 
     exec(command, async (err, stdout, stderr) => {
-      if(err) {
+      if (err) {
         return this.sendError(msg.channel, err);
       }
 
-      if(logType === 'out') {
+      if (logType === 'out') {
         this.splitSendResults(msg, stdout);
-      } else if(logType === 'err' || logType === 'error') {
+      } else if (logType === 'err' || logType === 'error') {
         this.splitSendResults(msg, stderr);
       }
     });
