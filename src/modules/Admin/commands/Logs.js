@@ -55,17 +55,17 @@ class Logs extends Command {
     const lines = args[0] || 15;
 
     if(lines < 5) {
-      return this.sendError(msg.channel, "At least 5 lines have to be provided")
+      return this.sendError(msg.channel, 'At least 5 lines have to be provided')
     }
 
     if(lines > 200) {
-      return this.sendError(msg.channel, "You can't provide more than 200 lines")
+      return this.sendError(msg.channel, 'You can\'t provide more than 200 lines')
     }
 
-    const logType = args[1]?.toLowerCase() || "out";
+    const logType = args[1]?.toLowerCase() || 'out';
 
-    if(!["out", "err", "error"].includes(logType)) {
-      return this.sendError(msg.channel, "Invald log type");
+    if(!['out', 'err', 'error'].includes(logType)) {
+      return this.sendError(msg.channel, 'Invald log type');
     }
 
     const command = `pm2 logs Naga --raw --nostream --${logType} --lines ${lines}`;
@@ -75,9 +75,9 @@ class Logs extends Command {
         return this.sendError(msg.channel, err);
       }
 
-      if(logType === "out") {
+      if(logType === 'out') {
         this.splitSendResults(msg, stdout);
-      } else if(logType === "err" || logType === "error") {
+      } else if(logType === 'err' || logType === 'error') {
         this.splitSendResults(msg, stderr);
       }
     });
