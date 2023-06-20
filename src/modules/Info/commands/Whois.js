@@ -107,6 +107,8 @@ class Whois extends Command {
         let level;
         let acks = [];
 
+        let flags = this.utils.getFlags(member.user.publicFlags);
+
         let tatsuProfile = await tatsu.getMemberRanking('370708369951948800', member.id);
         let score = tatsuProfile.score;
 
@@ -122,7 +124,7 @@ class Whois extends Command {
         });
 
         let embed = {  
-            author: { name: member.username + '#' + member.discriminator, icon_url: member.avatarURL },
+            author: { name: this.utils.fullName(member), icon_url: member.avatarURL },
             thumbnail: { url: member.avatarURL },
             color: roleColor,
             description: bio || null,
@@ -154,6 +156,10 @@ class Whois extends Command {
             if (infoPerms.length) {
                 embed.fields.push({ name: 'Server Permissions', value: infoPerms.join(', '), inline: false });
             }
+        }
+
+        if (flags !== 'None') {
+            embed.fields.push({ name: 'User Profile Flags', value: flags.join('\n'), inline: false });
         }
     
         if (staff.length > 0) {
