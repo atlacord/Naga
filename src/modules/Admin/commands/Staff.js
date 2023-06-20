@@ -30,7 +30,7 @@ class Staff extends Command {
          */
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.sentries,
+                needed: this.axon.staff.admins,
                 bypass: this.axon.staff.owners,
             },
         } );
@@ -60,7 +60,7 @@ class Staff extends Command {
 
         let bushy = await this.bot.getRESTUser('283451169152696320');
         let bo = await this.bot.getRESTUser('260600155630338048')
-        honorarywl.push(`${bushy.username}#${bushy.discriminator}`, `${bo.username}#${bo.discriminator}`)
+        honorarywl.push(this.utils.fullName(bushy), this.utils.fullName(bo));
 
         // for (let sentry = 0; sentry < this.axon.staff.sentries.length; sentry += 1) {
         //     if (!this.axon.staff.admins.includes(this.axon.staff.sentries[sentry])) {
@@ -78,21 +78,21 @@ class Staff extends Command {
             (m.roles.includes('372084219423490049'))); // White Lotus
             for (let i in admins) {
                 let member = await this.bot.getRESTUser(admins[i].id);
-                wl.push(`${member.username}#${member.discriminator}`);
+                wl.push(this.utils.fullName(member));
             }
 
         let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
             (m.roles.includes('456925799786872868') && (!m.roles.includes('372084219423490049')))); // Sentry
             for (let i in srmods) {
                 let member = await this.bot.getRESTUser(srmods[i].id);
-                sentries.push(`${member.username}#${member.discriminator}`);
+                sentries.push(this.utils.fullName(member));
             }
 
         let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
             (m.roles.includes('762573162424565780') && (!m.roles.includes('372084219423490049')))); // Dai Li
             for (let i in mods) {
                 let member = await this.bot.getRESTUser(mods[i].id);
-                daili.push(`${member.username}#${member.discriminator}`);
+                daili.push(this.utils.fullName(member));
             }
         
         let loastaff = this.bot.guilds.get('370708369951948800').members.filter(m =>
