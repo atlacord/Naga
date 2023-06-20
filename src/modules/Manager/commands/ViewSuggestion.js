@@ -27,9 +27,13 @@ class ViewSuggestion extends Command {
             argsMin: 0,
             cooldown: 5000,
             guildOnly: true,
-        } );
+        });
 
         this.permissions = new CommandPermissions(this, {
+            staff: {
+                needed: this.axon.staff.sentries,
+                bypass: this.axon.staff.owners,
+            },
             channels: {
                 needed: ['570053930193518594', '831909387307319336', '983618760525090869', '411903716996677639', '830427148488933406']
             }
