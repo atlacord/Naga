@@ -70,7 +70,7 @@ class Logs extends Command {
 
     if (logType === 'error') logType = 'err';
 
-    const command = `pm2 logs naga --raw --nostream --${logType} --lines ${lines}`;
+    const command = `pm2 logs Naga --raw --nostream --${logType} --lines ${lines}`;
 
     exec(command, async (err, stdout, stderr) => {
       if (err) {
