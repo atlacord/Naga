@@ -271,7 +271,7 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('372084219423490049')));
                 for (let i in admins) {
                     let member = await this.bot.getRESTUser(admins[i].id);
-                    wl.push(this.utils.fullName(member.user));
+                    wl.push(this.utils.fullName(member));
                 }
                 let ind = wl.indexOf('twodog');
                 wl.splice(ind, 1)[0];
@@ -281,14 +281,14 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('456925799786872868')) && (!m.roles.includes('372084219423490049')));
                 for (let i in srmods) {
                     let member = await this.bot.getRESTUser(srmods[i].id);
-                    sentries.push(this.utils.fullName(member.user));
+                    sentries.push(this.utils.fullName(member));
                 }
     
             let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('762573162424565780')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
-                    daili.push(this.utils.fullName(member.user));
+                    daili.push(this.utils.fullName(member));
                 }
 
             return interaction.createMessage({
