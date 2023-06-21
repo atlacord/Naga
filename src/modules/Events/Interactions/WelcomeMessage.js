@@ -271,7 +271,7 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('372084219423490049')));
                 for (let i in admins) {
                     let member = await this.bot.getRESTUser(admins[i].id);
-                    wl.push(this.utils.fullName(member.user);
+                    wl.push(this.utils.fullName(member.user));
                 }
                 let ind = wl.indexOf('twodog');
                 wl.splice(ind, 1)[0];
