@@ -62,11 +62,13 @@ class Logs extends Command {
       return this.sendError(msg.channel, 'You can\'t provide more than 200 lines')
     }
 
-    const logType = args[1]?.toLowerCase() || 'out';
+    let logType = args[1]?.toLowerCase() || 'out';
 
     if (!['out', 'err', 'error'].includes(logType)) {
       return this.sendError(msg.channel, 'Invald log type');
     }
+
+    if (logType === 'error') logType = 'err';
 
     const command = `pm2 logs Naga --raw --nostream --${logType} --lines ${lines}`;
 
