@@ -12,7 +12,7 @@
     "prefixes": {
         "general": "n.",
         "admin": "na.",
-        "owner": "$"
+        "owner": "%"
     },
     "emotes": {
         "error": "<:no:917982868922335272>",
@@ -29,9 +29,15 @@
             { "name": "soda", "id": "254814547326533632" },
             { "name": "Avatar Bolin", "id": "260600155630338048" }
         ],
-        "admins": [],
-        "sentries": [],
-        "dailis": []
+        "admins": [
+            { "name": "0", "id": "0" }
+        ],
+        "sentries": [
+            { "name": "0", "id": "0" }
+        ],
+        "dailis": [
+            { "name": "0", "id": "0" }
+        ]
     },
     "template": {
         "embeds": {
