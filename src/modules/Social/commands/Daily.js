@@ -70,9 +70,9 @@ class Daily extends Command {
                     }))
                 };
 
-                if ((doc.data.economy.streak.timestamp + 86400000) < now) {
+                if ((doc.data.economy.streak.timestamp * (48 * 3600000)) < now) {
                     doc.data.economy.streak.current = 0;
-                    streakReset = true;
+                    // streakReset = true;
                 };
 
                 if (!streakReset) {
