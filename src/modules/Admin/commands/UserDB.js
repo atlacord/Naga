@@ -35,7 +35,7 @@ class UserDB extends Command {
 
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.owner,
+                needed: this.axon.staff.owners,
                 bypass: this.axon.staff.owners,
             },
         } );
