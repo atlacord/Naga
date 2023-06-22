@@ -115,7 +115,6 @@ class Eval extends Command {
                 color: this.utils.getColor('green'),
                 author: {
                     name: 'Eval Result',
-                    // icon_url: msg.author.avatarURL
                 },
                 description: `\`\`\`${lang}\n${content}\`\`\``
             }
