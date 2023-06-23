@@ -64,7 +64,7 @@ class ViewSuggestion extends Command {
 
                 return this.sendMessage(msg.channel, { 
                     embed: {
-                        author: { name: `${author.username}#${author.discriminator}`, icon_url: author.avatarURL },
+                        author: { name: this.utils.fullName(author), icon_url: author.avatarURL },
                         color: suggestionColor,
                         description: `${doc.data.content}\n\n[Jump to Suggestion](https://discord.com/channels/${msg.guildID}/${suggestionChannel}/${doc._id})`,
                         fields: [
