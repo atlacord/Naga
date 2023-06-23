@@ -53,7 +53,7 @@ class Avatar extends Command {
                 //    },
                     title: 'Avatar',
                     color: roleColor,
-                    description: `${user.username}#${user.discriminator}`,
+                    description: this.utils.fullName(user),
                     image: { 
                         url: user.avatarURL 
                     },
