@@ -49,7 +49,7 @@ class Hug extends Command {
             color: this.utils.getColor('blue'),
             description: `**${this.displayName(msg, member.id)}**, you just got hugged by **${this.displayName(msg, msg.author.id)}**`,
             image: { url: url },
-            footer: { text: `Requested by: ${msg.author.username}#${msg.author.discriminator}` }
+            footer: { text: `Requested by: ${this.utils.fullName(msg.author)}` }
         };
 
         return msg.channel.createMessage({embed});

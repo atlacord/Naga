@@ -38,15 +38,13 @@ class Blush extends Command {
      */
 
     async execute({ msg, args }) {
-
         let embed = {
             color: this.utils.getColor('blue'),
             description: `**${this.displayName(msg, msg.member.id)}** blushes`,
             image: { url: `https://i.imgur.com/${images.blush[Math.floor(Math.random() * images.blush.length)]}.gif` },
         };
         return msg.channel.createMessage({embed});
-
-        }
+    }
 }
 
 
