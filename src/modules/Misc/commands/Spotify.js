@@ -65,7 +65,7 @@ class Spotify extends Command {
                         { name: '**Album**', value: spotify.assets.large_text, inline: false },
                     ],
                     footer: {
-                        text: `${user.username}#${user.discriminator}`,
+                        text: this.utils.fullName(user),
                         icon_url: user.avatarURL
                     }
                 }
