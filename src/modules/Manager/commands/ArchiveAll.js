@@ -132,7 +132,7 @@ class ArchiveAll extends Command {
                         }
                         return [
                             `[${moment(msg.createdAt).format('dddd, Do MMMM YYYY hh:mm:ss')}]`,
-                            `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
+                            `${this.utils.fullName(msg.author)} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
                         ].join(' ');
                     }); 
 

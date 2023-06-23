@@ -94,7 +94,7 @@ class Wiki extends Command {
 
                 parsed.each('template', template_token => {
                     if (template_token.name.startsWith('Users Template')) {
-                        template_token[2][2] = `${member.username}#${member.discriminator}`; // Username + Discrim
+                        template_token[2][2] = this.utils.fullName(member); // Username + Discrim
                         if (isMember === true) {
                             let nick;
                             if (member.nick === undefined) {

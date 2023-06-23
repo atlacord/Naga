@@ -56,7 +56,7 @@ class Members extends Command {
             (m.roles.includes(role.id)));
             for (let i in rolemembers) {
                 let member = await this.bot.getRESTUser(rolemembers[i].id);
-                members.push(`${member.username}#${member.discriminator}`);
+                members.push(this.utils.fullName(member));
             }
 
         let embed = {

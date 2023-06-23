@@ -53,7 +53,7 @@ class RespondApprove extends Command {
                 // let author = msg.channel.guild.members.get(((suggestion.embeds[0].footer.text)).slice(16));
                 let author = msg.channel.guild.members.get(doc.data.author);
 
-                let status = `Approved by **${msg.author.username}#${msg.author.discriminator}**`;
+                let status = `Approved by ${this.utils.fullName(msg.author)}**`;
                 let reason = args.join(' ').replace(/^([^ ]+ ){1}/, '');
 
                 let embed = suggestion.embeds[0];

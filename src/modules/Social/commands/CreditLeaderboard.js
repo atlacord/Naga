@@ -79,7 +79,7 @@ class CreditLeaderboard extends Command {
                             '┃' + ' '.repeat(6-this.utils.ordinalize(rank).length) + this.utils.ordinalize(rank),
                             ' '.repeat(6-this.utils.compactNum(u.wallet).length) + this.utils.compactNum(u.wallet),
                             ' '.repeat(7-this.utils.compactNum(u.bank).length) + this.utils.compactNum(u.bank),
-                            this.utils.truncate('You (' + msg.author.username + ')', 26) + ' '.repeat(27-this.utils.truncate('You (' + `${msg.author.username}#${msg.author.discriminator}` + ')', 26).length) + '┃'
+                            this.utils.truncate('You (' + msg.author.username + ')', 26) + ' '.repeat(27-this.utils.truncate('You (' + `${this.utils.fullName(msg.author)}` + ')', 26).length) + '┃'
                           ].join(' ┃ ')
                         }).join(''),
                         '╰═══════╧════════╧═════════╧════════════════════════════╯',

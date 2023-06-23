@@ -60,7 +60,7 @@ class Hangman extends Command {
             fields: [
                 { name: 'Player', value: `\`\`\`properties\n${hangs[stage]}\n\`\`\``, inline: false },
                 {
-                  name: `${msg.author.username}#${msg.author.discriminator}`, inline: true,
+                  name: this.utils.fullName(msg.author), inline: true,
                   value: [
                     `Word: \`${word.split('').join(' ')}\``,
                     `Guesses: \`${corguess.join(',') || '\u200b'}\``,

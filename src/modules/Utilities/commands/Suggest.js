@@ -41,7 +41,7 @@ class Suggest extends Command {
             let displayName = msg.member.nick ?? msg.author.username;
 
             let embed = {
-                author: { name: `${msg.author.username}#${msg.author.discriminator}`, icon_url: msg.author.avatarURL },
+                author: { name: this.utils.fullName(msg.author), icon_url: msg.author.avatarURL },
                 title: `${displayName} suggests...`,
                 color: this.utils.getColor('yellow'),
                 description: args.join(' '),

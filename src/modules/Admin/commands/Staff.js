@@ -45,7 +45,6 @@ class Staff extends Command {
         let wl = [];
         let sentries = [];
         let daili = [];
-        let honorarywl = [];
         let loa = [];
 
         // for (let admin = 0; admin < this.axon.staff.admins.length; admin += 1) {
@@ -57,10 +56,6 @@ class Staff extends Command {
         // wl.splice(index, 1)
         // index = wl.indexOf('260600155630338048')
         // wl.splice(index, 1)
-
-        let bushy = await this.bot.getRESTUser('283451169152696320');
-        let bo = await this.bot.getRESTUser('260600155630338048')
-        honorarywl.push(this.utils.fullName(bushy), this.utils.fullName(bo));
 
         // for (let sentry = 0; sentry < this.axon.staff.sentries.length; sentry += 1) {
         //     if (!this.axon.staff.admins.includes(this.axon.staff.sentries[sentry])) {
@@ -109,12 +104,11 @@ class Staff extends Command {
             author: { name: msg.channel.guild.name, icon_url: msg.channel.guild.iconURL },
             fields: [
                 { name: `White Lotus [${wl.length}]`, value: wl.join('\n') },
-                { name: `Lotus Emeritus [${honorarywl.length}]`, value: honorarywl.join('\n')},
                 { name: `Sentries [${sentries.length}]`, value: sentries.join('\n') },
                 { name: `Dai Li [${daili.length}]`, value: daili.join('\n') },
                 { name: `Vacation Tenzin - LOA [${loa.length}]`, value: loa.join('\n') }
             ],
-            footer: { text: `Team size: ${Math.floor(wl.length + honorarywl.length + sentries.length + daili.length)}` }
+            footer: { text: `Team size: ${Math.floor(wl.length + sentries.length + daili.length)}` }
         }
 
         this.sendMessage(msg.channel, {embed});

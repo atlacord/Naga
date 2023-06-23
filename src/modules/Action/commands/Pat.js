@@ -45,7 +45,7 @@ class Pat extends Command {
             color: this.utils.getColor('blue'),
             description: `**${this.displayName(msg, msg.author.id)}** faces a good 'ol slap from **${this.displayName(msg, member.id)}**! I wonder what they did to deserve that...`,
             image: { url: `https://i.imgur.com/${images.slap[Math.floor(Math.random() * images.slap.length)]}.gif` },
-            footer: { text: `Requested by: ${msg.author.username}#${msg.author.discriminator}` }
+            footer: { text: `Requested by: ${this.utils.fullName(msg.author)}` }
         };
 
         if (member.id === msg.author.id) embed.description = `I can give you le pats, here u are!`;

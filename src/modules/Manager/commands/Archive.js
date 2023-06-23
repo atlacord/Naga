@@ -113,7 +113,7 @@ class Archive extends Command {
                     }
                     return [
                         `[${moment(this.utils.convertSnowflake(msg.id)).format('MMMM Do YYYY hh:mm a')}]`,
-                        `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
+                        `${this.utils.fullName(msg.author)} (${msg.author.id}):\nContent: ${msg.content}\nAttachments: ${imgurLinks.join(', ') || null}\nMessage ID: ${msg.id}\r\n\r\n`
                     ].join(' ');
                 }); 
 

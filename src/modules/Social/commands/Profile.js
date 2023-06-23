@@ -262,7 +262,7 @@ class Profile extends Command {
             ctx.textAlign = 'center'
             ctx.fillText(this.displayName(msg, member.id), 150, 350, 280)
             ctx.font = '20px sans-serif'
-            ctx.fillText(`${member.user.username}#${member.user.discriminator}`, 150, 375, 280)
+            ctx.fillText(this.utils.fullName(member.user), 150, 375, 280)
 
             // Add xp
             ctx.arc(60,460,35,0,Math.PI*2);
