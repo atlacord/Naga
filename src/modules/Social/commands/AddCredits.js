@@ -62,7 +62,7 @@ class AddCredits extends Command {
             else {
                 doc.data.economy.wallet = doc.data.economy.wallet + Math.floor(amount);
             
-                return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully added **${amount}** to ${member.username}#${member.discriminator}!\nTheir new balance is **${doc.data.economy.wallet}**.`)
+                return doc.save().then(() => this.sendSuccess(msg.channel, `Successfully added **${amount}** to ${this.utils.fullName(member)}!\nTheir new balance is **${doc.data.economy.wallet}**.`)
                 .catch((err) => this.utils.logError(msg, err, 'db', 'Something went wrong.')));
             }
         })
