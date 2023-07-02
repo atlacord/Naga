@@ -45,6 +45,7 @@ module.exports = {
 
     // === Misc ===
     // BlurpleCanvas: require('./Misc/BlurpleCanvas'),
+    EnforceLakeLaogai: require('./Misc/EnforceLakeLaogai'),
     FakeBan: require('./Misc/FakeBan'),
     // LevelUp: require('./Misc/LevelUp'),
     // UpdateScore: require('./Misc/UpdateScore'),
