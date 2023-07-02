@@ -18,6 +18,7 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
       inventory: {type: Array, default: []},
       gacks: {type: String, default: null},
       acks: {type: Array, default: []},
+      mcusername: {type: String, default: null},
     },
     economy: {
       bank: {type: Number, default: null},
