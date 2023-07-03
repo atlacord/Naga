@@ -42,6 +42,7 @@ class Whitelist extends Command {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (doc.data.profile.mcusername !== null) {
                 this.sendError(msg.channel, `You are already whitelisted as **${doc.data.profile.mcusername}**! Replacing that with **${username}**`);
+                doc.data.profile.mcusername = username.toString();
                 consoleChannel.createMessage(`whitelist remove ${doc.data.profile.mcusername}`);
                 consoleChannel.createMessage(`whitelist add ${username.toString()}`)
             } else {
