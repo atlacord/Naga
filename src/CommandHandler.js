@@ -45,6 +45,11 @@ class CommandHandler {
                     type: Constants.ApplicationCommandTypes.CHAT_INPUT //Not required for Chat input type, but recommended
                 }); //Create a chat input command
             }
+            let atlaID = "370708369951948800"; 
+            bot.bulkEditGuildCommands(atlaID, [{
+                name: "Report Message to Server Staff",
+                type: 3
+            }])
         });
 
         bot.on("error", (err) => {
@@ -83,6 +88,18 @@ class CommandHandler {
 
         bot.on("interactionCreate", async (interaction) => {
             if(interaction instanceof Eris.CommandInteraction) {
+                if(interaction.data.name === "Report Message to Server Staff" && interaction.data.type === 3) {
+                    let c = await this.bot.getChannel('761932330028892194');
+                  return this.sendMessage(c, {
+                        embed: {
+                            color: this.utils.getColor('red'),
+                            description: `<@${interaction.member.id}> has reported message: ${interaction.data.target_id}`,
+                            timestamp: new Date(),
+                        }
+
+
+
+                })}
                 switch(interaction.data.name) {
                     case "topic":
                         let timeRemaining = handleCooldown();
