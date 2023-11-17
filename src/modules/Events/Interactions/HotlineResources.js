@@ -112,7 +112,17 @@ class HotlineResources extends Listener {
                 };
                 doc.data.flags.splice(doc.data.flags.indexOf('HOTLINE_QUARANTINE'), 1);
             });
-            interaction.channel.guild.removeMemberRole(interaction.member.id, HOTLINE_ROLE, 'User self-exited the resources channel.');
+            interaction.channel.guild.removeMemberRole(interaction.member.id, HOTLINE_ROLE, 'User self-exited the resources channel.')
+            let c = await interaction.channel.guild.getChannel('761932330028892194');
+            let leaveEmbed = {
+                    color: this.utils.getColor('red'),
+                    description: `<@${interaction.member.id}> Has exited the Self-Care Resources Channel`,
+                    timestamp: new Date(),
+
+            }
+            interaction.createMessage({
+                embeds: [leaveEmbed]
+            });
         }
     }
 }
