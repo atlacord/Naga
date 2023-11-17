@@ -114,14 +114,12 @@ class HotlineResources extends Listener {
             });
             interaction.channel.guild.removeMemberRole(interaction.member.id, HOTLINE_ROLE, 'User self-exited the resources channel.')
             let c = await interaction.channel.guild.getChannel('761932330028892194');
-            let leaveEmbed = {
+            this.sendMessage(c, {
+                embed: {
                     color: this.utils.getColor('red'),
                     description: `<@${interaction.member.id}> Has exited the Self-Care Resources Channel`,
                     timestamp: new Date(),
-
-            }
-            interaction.createMessage({
-                embeds: [leaveEmbed]
+                }
             });
         }
     }
