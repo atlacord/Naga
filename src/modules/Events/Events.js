@@ -6,8 +6,8 @@ module.exports = {
     RuleScreening: require('./RoleHandling/RuleScreening'),
     TeamAvatar: require('./Misc/TeamAvatar'),
 
-    // === Appa Logs ===
-    // AddNote: require('./AppaLogs/AddNote'),
+    // === Appa / Dyno Logs ===
+     AddNote: require('./AppaLogs/AddNote'),
      Ban: require('./AppaLogs/Ban'),
     // Logwarn: require('./AppaLogs/Logwarn'),
     // Mute: require('./AppaLogs/Mute'),
