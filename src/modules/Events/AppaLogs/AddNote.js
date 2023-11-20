@@ -47,7 +47,7 @@ class NoteAdd extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('d.note')) {
+        if (msg.content.startsWith('d.note') && (!msg.content.startsWith('d.notes'))) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
