@@ -12,7 +12,7 @@
     "prefixes": {
         "general": "n.",
         "admin": "na.",
-        "owner": "%"
+        "owner": "$"
     },
     "emotes": {
         "error": "<:no:917982868922335272>",
