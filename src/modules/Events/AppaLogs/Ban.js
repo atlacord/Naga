@@ -70,7 +70,7 @@ class Ban extends Listener {
             };
 
             if (msg.guildID === '370708369951948800' && msg.content !== null) {
-                await this.bot.getChannel('1008421501487304844').createMessage({embed})
+                await this.bot.getChannel('717197861351063573').createMessage({embed})
             }
         }
     }
