@@ -30,13 +30,23 @@
             { "name": "Avatar Bolin", "id": "260600155630338048" }
         ],
         "admins": [
-            { "name": "0", "id": "0" }
+            { "name": "Jules_Zules", "id": "737542058138533950" },
+            { "name": "kra2os", "id": "222634331384840193" },
+            { "name": "airaloriel", "id": "237413954220064770" },
+            { "name": "hcnebun", "id": "510193587430883328" }
+            
         ],
         "sentries": [
-            { "name": "oppatwunk", "id": "791269922617556995" }
+            { "name": "oppatwunk", "id": "791269922617556995" },
+            { "name": "chiblocker", "id": "432156129603354624" },
+            { "name": "garythesnale", "id": "890752824609230959" },
+            { "name": "1nterlnked", "id": "416630867209748483" },
+            { "name": "ashtonabendstern", "id": "681334177928577066" }
         ],
         "dailis": [
-            { "name": "0", "id": "0" }
+            { "name": "pwr_mtlbndr", "id": "449227153905680386" },
+            { "name": "helluvafizz", "id": "784224468116701195" },
+            { "name": "chayt", "id": "596364946045141005" }
         ]
     },
     "template": {
