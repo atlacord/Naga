@@ -8,8 +8,8 @@ module.exports = {
 
     // === Appa Logs ===
     // AddNote: require('./AppaLogs/AddNote'),
-    // Ban: require('./AppaLogs/Ban'),
-    //Logwarn: require('./AppaLogs/Logwarn'),
+     Ban: require('./AppaLogs/Ban'),
+    // Logwarn: require('./AppaLogs/Logwarn'),
     // Mute: require('./AppaLogs/Mute'),
     // RemoveNote: require('./AppaLogs/RemoveNote'),
     // RoleAdd: require('./AppaLogs/RoleAdd'),
