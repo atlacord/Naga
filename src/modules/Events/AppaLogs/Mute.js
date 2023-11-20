@@ -47,7 +47,7 @@ class Mute extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—mute' || '--unmute')) {
+        if (msg.content.startsWith('--mute') || msg.content.startsWith('d.mute')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]

@@ -47,7 +47,7 @@ class Warning extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—warn' || '--warn')) {
+        if (msg.content.startsWith('--warn') || msg.content.startsWith('d.warn')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
