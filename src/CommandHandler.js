@@ -93,7 +93,7 @@ class CommandHandler {
                   return this.sendMessage(c, {
                         embed: {
                             color: this.utils.getColor('red'),
-                            description: `<@${interaction.member.id}> has reported message: ${interaction.data.target_id}`,
+                            description: `<@${interaction.member.id}> has reported a message [BETA TESTING]`,
                             timestamp: new Date(),
                         }
 
