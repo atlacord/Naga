@@ -49,8 +49,8 @@ class AutoContext extends Listener {
         let embed = {
             color: this.utils.getColor('blue'),
             author: { 
-                name: `I detected a message link! Here are the  messages sent in #${message.channel.name}`,
-                icon_url: message.channel.guild.iconURL
+                name: `Messages sent in #${message.channel.name}`,
+                icon_url: msg.channel.guild.iconURL
             },
             description: `${msgContent}`,
             footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` }
@@ -59,7 +59,7 @@ class AutoContext extends Listener {
         if (message.attachments.length > 0) {
             embed.image.url = message.attachments[0].url;
         }
-
+        msg.channel.createMessage(`Is that a message link I see? Magic commencing`)
         msg.channel.createMessage({embed});
         // ends here
          
