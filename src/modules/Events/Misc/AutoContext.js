@@ -28,7 +28,7 @@ class AutoContext extends Listener {
         if (msg.author.bot) return;
         if (msg.content.startsWith('https://discord.com/channels/')) {
         // begins here
-        let msgLink = msg.content.splice(0);
+        let msgLink = msg.content.splice(5);
         let channelID, messageID;
         channelID = msgLink.match(ID_REGEX)[1];
         messageID = msgLink.match(ID_REGEX)[2];
