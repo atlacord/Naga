@@ -26,7 +26,7 @@ class AutoContext extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('https://discord.com/channels/') || msg.content.startsWith('https://canary.discord.com/channels/') && msg.channel.id === '761932330028892194') {
+        if (msg.content.startsWith('https://discord.com/channels/') && msg.channel.id === '761932330028892194') {
         // begins here
         let msgLink = msg.content[0];
         let channelID, messageID;
