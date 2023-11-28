@@ -24,7 +24,7 @@ class AutoContext extends Listener {
      * @param {import('eris').Message} msg
      */
 
-    async execute({msg}) { // eslint-disable-line
+    async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
         if (msg.content.startsWith('https://discord.com/channels/')) {
         // begins here
