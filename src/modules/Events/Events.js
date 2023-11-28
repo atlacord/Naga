@@ -44,6 +44,7 @@ module.exports = {
     // voiceChannelLeave: require('./Logs/voiceChannelLeave'),
 
     // === Misc ===
+    AutoContext: require('./Misc/AutoContext'),
     // BlurpleCanvas: require('./Misc/BlurpleCanvas'),
     EnforceLakeLaogai: require('./Misc/EnforceLakeLaogai'),
     FakeBan: require('./Misc/FakeBan'),
