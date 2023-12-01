@@ -25,7 +25,7 @@ class AutoContext extends Listener {
      */
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.channel.id !== '761932330028892194') return;
+        if (!['761932330028892194', '411903716996677639'].includes(msg.channel.id)) return;
         if (msg.content.includes('https://discord.com/channels/')) {
             let msgLink = msg.content
                               .replaceAll('\n', ' ')
