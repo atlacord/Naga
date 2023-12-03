@@ -54,4 +54,5 @@ module.exports = {
     // === Role Handling ===
     ContestWinner: require('./RoleHandling/ContestWinner'),
     EnforceBending: require('./RoleHandling/EnforceBending'),
+    SuperBending: require('./RoleHandling/SuperBending'),
 };
