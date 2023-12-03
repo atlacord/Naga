@@ -37,14 +37,6 @@ class Superbending extends Command {
             airbender: '372085326165835777',
         }
 
-        this.superroles = {
-            water: '1180969376770441298',
-            earth: '1180969390049607791',
-            fire: '1180969386245378058',
-            air: '1180969398048129166',
-            non: '1180969393841242194'
-        }
-
         this.permissions = new CommandPermissions(this, {
             staff: {
                 needed: this.axon.staff.owners,
@@ -56,37 +48,39 @@ class Superbending extends Command {
     async execute({msg}) {
         msg.channel.createMessage('yass');
         try {
-            let guild = this.bot.guilds.get('370708369951948800');
-            let members = guild.members.filter(m => (m.roles.includes('811411225639518209')));
-            for (let i in members) {
-                let member = members[i];
-                console.log(member.username);
-                
+            let a = this.bot.guilds.get('370708369951948800').members.filter(m =>
+                ((m.roles.includes('811411225639518209'))));
+            let members = [];
+            for (let i in a) {
+                members.push(a[i].id);
+            }
+
+            for (let member in members) {
                 if (member.roles.includes(this.roles.water)) {
-                    await guild.addMemberRole(member.id, this.superroles.water, 'Added super-waterbending role');
+                    await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969376770441298', 'Added super-waterbending role');
                     console.log('water');
                 };
 
                 if (member.roles.includes(this.roles.earth)) {
-                    await guild.addMemberRole(member.id, this.superroles.earth, 'Added super-earthbending role');
+                    await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969390049607791', 'Added super-earthbending role');
                     console.log('earth');
                 };
 
                 if (member.roles.includes(this.roles.fire)) {
-                    await guild.addMemberRole(member.id, this.superroles.fire, 'Added super-firebending role');
+                    await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969386245378058', 'Added super-firebending role');
                     console.log('fire');
                 };
 
                 if (member.roles.includes(this.roles.air)) {
-                    await guild.addMemberRole(member.id, this.superroles.air, 'Added super-airbending role');
+                    await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969398048129166', 'Added super-airbending role');
                     console.log('air');
                 };
 
                 if (member.roles.includes(this.roles.non)) {
-                    await guild.addMemberRole(member.id, this.superroles.non, 'Added super-nonbending role');
+                    await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969393841242194', 'Added super-nonbending role');
                     console.log('non');
                 };
-            }
+            };
         } catch (err) {
             this.utils.logError(msg, err, 'internal', 'Something went wrong.');
         }
