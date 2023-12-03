@@ -66,7 +66,7 @@ class Superbending extends Command {
         return res;
     };
 
-    async execute() {
+    async execute({msg}) {
         msg.channel.createMessage('yass');
         try {
             let members = this.bot.guilds.get('370708369951948800').members.filter(m => (m.roles.includes('811411225639518209')));
