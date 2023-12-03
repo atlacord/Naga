@@ -54,24 +54,24 @@ class SuperBending extends Listener {
             return res;
         };
 
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.water ])) {
-            guild.addMember(member.id, superbending.water, 'Added super-waterbending role');
+        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.water ])) {
+            guild.addMemberRole(member.id, superbending.water, 'Added super-waterbending role');
         }
 
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.earth ])) {
-            guild.addMember(member.id, superbending.earth, 'Added super-earthbending role');
+        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.earth ])) {
+            guild.addMemberRole(member.id, superbending.earth, 'Added super-earthbending role');
         }
 
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.fire ])) {
+        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.fire ])) {
             guild.addMember(member.id, superbending.fire, 'Added super-firebending role');
         }
 
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.air ])) {
-            guild.addMember(member.id, superbending.air, 'Added super-airbending role');
+        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.air ])) {
+            guild.addMemberRole(member.id, superbending.air, 'Added super-airbending role');
         }
 
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.non ])) {
-            guild.addMember(member.id, superbending.non, 'Added super-nonbending role');
+        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.non ])) {
+            guild.addMemberRole(member.id, superbending.non, 'Added super-nonbending role');
         }
 
      Promise.resolve();

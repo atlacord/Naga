@@ -19,6 +19,7 @@ module.exports = {
     SetGame: require('./SetGame'),
     Speedtest: require('./Speedtest'),
     Staff: require('./Staff'),
+    Superbending: require('./Superbending'),
     TatsuTest: require('./Tatsu'),
     TestJoinMessages: require('./TestJoinMessages'),
     UserDB: require('./UserDB'),
