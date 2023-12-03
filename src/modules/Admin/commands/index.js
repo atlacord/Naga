@@ -10,7 +10,6 @@ module.exports = {
     Exec: require('./Exec'),
     ListAcks: require('./ListAcks'),
     LoadPermissions: require('./LoadPermissions'),
-    Logs: require('./Logs'),
     MigrateTopics: require('./MigrateTopics'),
     Restart: require('./Restart'),
     ScrapeLeaderboard: require('./ScrapeLeaderboard'),
