@@ -92,8 +92,9 @@ class Superbending extends Command {
                     guild.addMemberRole(member.id, this.superroles.non, 'Added super-nonbending role');
                 };
             }
-      } catch (err) {
-        this.utils.logError(msg, err, 'internal', 'Something went wrong.');
+        } catch (err) {
+            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
+        }
     }
 }
 
