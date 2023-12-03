@@ -73,6 +73,7 @@ class Superbending extends Command {
             let members = guild.members.filter(m => (m.roles.includes('811411225639518209')));
             for (let i in members) {
                 let member = members[i];
+                console.log(member.username);
                 if (this.checkRoles(member.roles, [ this.roles.water ])) {
                     guild.addMemberRole(member.id, this.superroles.water, 'Added super-waterbending role');
                 };
