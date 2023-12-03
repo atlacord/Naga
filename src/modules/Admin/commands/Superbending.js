@@ -43,7 +43,7 @@ class Superbending extends Command {
             let a = this.bot.guilds.get('370708369951948800').members.filter(m => ((m.roles.includes('811411225639518209'))));
             let members = [];
             for (let i in a) {
-                members.push(a[i].id);
+                members.push(a[i]);
             }
 
             for (let i in members) {
