@@ -53,19 +53,6 @@ class Superbending extends Command {
         });
     };
 
-    checkRoles(array, values) {
-        let res;
-        for (let i in values) {
-            if (array.includes(values[i]) === true) {
-                res = true;
-                break;
-            } else {
-                res = false;
-            }
-        }
-        return res;
-    };
-
     async execute({msg}) {
         msg.channel.createMessage('yass');
         try {
@@ -74,27 +61,28 @@ class Superbending extends Command {
             for (let i in members) {
                 let member = members[i];
                 console.log(member.username);
-                if (this.checkRoles(member.roles, [ this.roles.water ])) {
+                
+                if (member.roles.includes(this.roles.water)) {
                     await guild.addMemberRole(member.id, this.superroles.water, 'Added super-waterbending role');
                     console.log('water');
                 };
 
-                if (this.checkRoles(member.roles, [ this.roles.earth ])) {
+                if (member.roles.includes(this.roles.earth)) {
                     await guild.addMemberRole(member.id, this.superroles.earth, 'Added super-earthbending role');
                     console.log('earth');
                 };
 
-                if (this.checkRoles(member.roles, [ this.roles.fire ])) {
+                if (member.roles.includes(this.roles.fire)) {
                     await guild.addMemberRole(member.id, this.superroles.fire, 'Added super-firebending role');
                     console.log('fire');
                 };
 
-                if (this.checkRoles(member.roles, [ this.roles.air ])) {
+                if (member.roles.includes(this.roles.air)) {
                     await guild.addMemberRole(member.id, this.superroles.air, 'Added super-airbending role');
                     console.log('air');
                 };
 
-                if (this.checkRoles(member.roles, [ this.roles.non ])) {
+                if (member.roles.includes(this.roles.non)) {
                     await guild.addMemberRole(member.id, this.superroles.non, 'Added super-nonbending role');
                     console.log('non');
                 };
