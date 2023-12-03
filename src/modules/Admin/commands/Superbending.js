@@ -55,28 +55,28 @@ class Superbending extends Command {
                 members.push(a[i].id);
             }
 
-            for (let member in members) {
-                if (member.roles.includes(this.roles.water)) {
+            for (let i in members) {
+                if (members[i].roles.includes(this.roles.water)) {
                     await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969376770441298', 'Added super-waterbending role');
                     console.log('water');
                 };
 
-                if (member.roles.includes(this.roles.earth)) {
+                if (members[i].roles.includes(this.roles.earth)) {
                     await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969390049607791', 'Added super-earthbending role');
                     console.log('earth');
                 };
 
-                if (member.roles.includes(this.roles.fire)) {
+                if (members[i].roles.includes(this.roles.fire)) {
                     await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969386245378058', 'Added super-firebending role');
                     console.log('fire');
                 };
 
-                if (member.roles.includes(this.roles.air)) {
+                if (members[i].roles.includes(this.roles.air)) {
                     await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969398048129166', 'Added super-airbending role');
                     console.log('air');
                 };
 
-                if (member.roles.includes(this.roles.non)) {
+                if (members[i].roles.includes(this.roles.non)) {
                     await this.bot.addGuildMemberRole('370708369951948800', member.id, '1180969393841242194', 'Added super-nonbending role');
                     console.log('non');
                 };
