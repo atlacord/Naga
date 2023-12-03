@@ -75,23 +75,28 @@ class Superbending extends Command {
                 let member = members[i];
                 console.log(member.username);
                 if (this.checkRoles(member.roles, [ this.roles.water ])) {
-                    guild.addMemberRole(member.id, this.superroles.water, 'Added super-waterbending role');
+                    await guild.addMemberRole(member.id, this.superroles.water, 'Added super-waterbending role');
+                    console.log('water');
                 };
 
                 if (this.checkRoles(member.roles, [ this.roles.earth ])) {
-                    guild.addMemberRole(member.id, this.superroles.earth, 'Added super-earthbending role');
+                    await guild.addMemberRole(member.id, this.superroles.earth, 'Added super-earthbending role');
+                    console.log('earth');
                 };
 
                 if (this.checkRoles(member.roles, [ this.roles.fire ])) {
-                    guild.addMemberRole(member.id, this.superroles.fire, 'Added super-firebending role');
+                    await guild.addMemberRole(member.id, this.superroles.fire, 'Added super-firebending role');
+                    console.log('fire');
                 };
 
                 if (this.checkRoles(member.roles, [ this.roles.air ])) {
-                    guild.addMemberRole(member.id, this.superroles.air, 'Added super-airbending role');
+                    await guild.addMemberRole(member.id, this.superroles.air, 'Added super-airbending role');
+                    console.log('air');
                 };
 
                 if (this.checkRoles(member.roles, [ this.roles.non ])) {
-                    guild.addMemberRole(member.id, this.superroles.non, 'Added super-nonbending role');
+                    await guild.addMemberRole(member.id, this.superroles.non, 'Added super-nonbending role');
+                    console.log('non');
                 };
             }
         } catch (err) {
