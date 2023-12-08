@@ -268,11 +268,11 @@ class ExtraUtils extends Utils {
             staff.push('White Lotus');
         };
 
-        if ((user.roles.includes('456925799786872868')) && (!user.roles.includes('372084219423490049'))) {
+        if ((user.roles.includes('1182448979288527029')) && (!user.roles.includes('372084219423490049'))) {
             staff.push('Sentry');
         }
 
-        if (user.roles.includes('762573162424565780')) {
+        if (user.roles.includes('1182449762583191592')) {
             staff.push('Dai Li');
         }
     

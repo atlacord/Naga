@@ -278,14 +278,14 @@ class WelcomeMessage extends Listener {
                 wl.unshift('twodog  |  Server Owner');
     
             let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
-                (m.roles.includes('456925799786872868')) && (!m.roles.includes('372084219423490049')));
+                (m.roles.includes('1182448979288527029')) && (!m.roles.includes('372084219423490049')));
                 for (let i in srmods) {
                     let member = await this.bot.getRESTUser(srmods[i].id);
                     sentries.push(this.utils.fullName(member));
                 }
     
             let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
-                (m.roles.includes('762573162424565780')) && (!m.roles.includes('372084219423490049')));
+                (m.roles.includes('1182449762583191592')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
                     daili.push(this.utils.fullName(member));
