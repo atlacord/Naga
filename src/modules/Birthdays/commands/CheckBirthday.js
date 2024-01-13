@@ -5,6 +5,10 @@ const moment = require('moment');
 const GUILD_ID = '370708369951948800';
 const BIRTHDAY_ROLE = '787644908705153024'
 
+const IGNORED_MEMBERS = [
+	'83773809529716736' // Aura
+];
+
 class CheckBirthday extends Command {
     /**
      * @param {import('axoncore').Module} module
@@ -47,9 +51,8 @@ class CheckBirthday extends Command {
         let lastMsg = await this.bot.getChannel(announcementChannel).lastMessageID;
         
         try {
-
-		    let existingBirthdays = this.bot.guilds.get(GUILD_ID).members.filter(m =>
-            m.roles.includes(BIRTHDAY_ROLE));
+	    let existingBirthdays = this.bot.guilds.get(GUILD_ID).members.filter(m =>
+            (m.roles.includes(BIRTHDAY_ROLE)) && (!IGNORED_MEMBERS.includes(m.id)));
 
             for (let i in existingBirthdays) {
                 this.bot.removeGuildMemberRole(GUILD_ID, existingBirthdays[i].id, BIRTHDAY_ROLE, 'Birthday ended');
