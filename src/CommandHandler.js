@@ -3,6 +3,7 @@ const config = require('../configs/config.json');
 const secret = require('../configs/secret.json');
 const { readFileSync, writeFileSync } = require('fs');
 const topics = require('./assets/topics.json');
+const server = require('./Models/Server');
 require('dotenv').config()
 
 const COMMAND_COOLDOWN = 600000;
@@ -102,19 +103,36 @@ class CommandHandler {
                 })}
                 switch(interaction.data.name) {
                     case "topic":
-                        let timeRemaining = handleCooldown();
-                        console.log(timeRemaining);
-                        if (timeRemaining !== false) {
-                            return interaction.createMessage(`This command has already been used recently!\nTry again in **${timeRemaining}**!`);
-                        }
-                        const topic = Math.floor(Math.random() * topics.length);
-                        
-                        return interaction.createMessage({
-                            embed: {
-                                color: getColor('blue'),
-                                description: topics[topic],
+                        server.findById(msg.guildID, (err, doc) => {
+                            let timeRemaining = handleCooldown(doc.data.topicTimestamps.normal);
+                            console.log(timeRemaining);
+                            if (timeRemaining !== false) {
+                                return interaction.createMessage({
+                                    embed: {
+                                        color: getColor('red'),
+                                        description: `This command has already been used recently!\nTry again in **${timeRemaining}**!`
+                                    }
+                                });
                             }
-                        }).then(writeFileSync('src/assets/cooldown.json', JSON.stringify(interaction.createdAt)));
+                            
+                            let topic = Math.floor(Math.random() * topics.length);
+
+                            if (doc.data.ignoredTopics.length === topics.length) {
+                                doc.data.ignoredTopics = [];
+                            };
+                
+                            while (doc.data.ignoredTopics.includes(topic)) {
+                                topic = Math.floor(Math.random() * topics.length);
+                            };
+                
+                            doc.data.ignoredTopics.push(topic);
+                            
+                            return interaction.createMessage({
+                                embed: {
+                                    color: getColor('blue'),
+                                    description: topics[topic],
+                                }
+                            }).then(doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
                     default: {
                         return interaction.createMessage("test");
                     }
