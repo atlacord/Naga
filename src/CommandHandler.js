@@ -133,6 +133,7 @@ class CommandHandler {
                                     description: topics[topic],
                                 }
                             }).then(doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
+                        }
                     default: {
                         return interaction.createMessage("test");
                     }
