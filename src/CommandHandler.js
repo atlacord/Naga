@@ -103,7 +103,7 @@ class CommandHandler {
                 })}
                 switch(interaction.data.name) {
                     case "topic":
-                        server.findById(msg.guildID, (err, doc) => {
+                        server.findById('370708369951948800', (err, doc) => {
                             let timeRemaining = handleCooldown(doc.data.topicTimestamps.normal);
                             if (timeRemaining !== false) {
                                 return interaction.createMessage({
