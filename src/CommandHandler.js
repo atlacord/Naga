@@ -57,11 +57,8 @@ class CommandHandler {
             console.error(err); // or your preferred logger
         });
 
-        function handleCooldown() {
-            let data = readFileSync('src/assets/cooldown.json');
-            let lastUsed = JSON.parse(data);
-
-            const timeLeft = Date.now() - lastUsed;
+        handleCooldown(timestamp) {
+            const timeLeft = Date.now() - timestamp;
             if (timeLeft <= COMMAND_COOLDOWN) {
                 let time = Math.ceil((600000 - timeLeft) / 100) / 10
                 let minutes = Math.floor(time / 60);
