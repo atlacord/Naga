@@ -26,7 +26,7 @@
     "staff": {
         "owners": [
             { "name": "TwoDog", "id": "123261299864895489" },
-            { "name": "soda", "id": "254814547326533632" },
+            { "name": "soda", "id": "254814547326533632" }
         ],
         "admins": [
             { "name": "Jules_Zules", "id": "737542058138533950" },
@@ -37,11 +37,9 @@
         ],
         "sentries": [
             { "name": "oppatwunk", "id": "791269922617556995" },
-            { "name": "chiblocker", "id": "432156129603354624" },
             { "name": "garythesnale", "id": "890752824609230959" },
             { "name": "1nterlnked", "id": "416630867209748483" },
             { "name": "ashtonabendstern", "id": "681334177928577066" },
-            { "name": "oppatwunk", "id": "791269922617556995" },
             { "name": "helluvafizz", "id": "784224468116701195" },
             { "name": "chayt", "id": "596364946045141005" }
         ],
