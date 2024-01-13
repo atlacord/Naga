@@ -131,7 +131,7 @@ class CommandHandler {
                                     color: getColor('blue'),
                                     description: topics[topic],
                                 }
-                            }).then(doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
+                            }).then(doc.data.topicTimestamps.normal = interaction.createdAt, doc.save());
                         });
                     default: {
                         return interaction.createMessage("test");
