@@ -105,7 +105,6 @@ class CommandHandler {
                     case "topic":
                         server.findById(msg.guildID, (err, doc) => {
                             let timeRemaining = handleCooldown(doc.data.topicTimestamps.normal);
-                            console.log(timeRemaining);
                             if (timeRemaining !== false) {
                                 return interaction.createMessage({
                                     embed: {
@@ -133,7 +132,7 @@ class CommandHandler {
                                     description: topics[topic],
                                 }
                             }).then(doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
-                        }
+                        });
                     default: {
                         return interaction.createMessage("test");
                     }
