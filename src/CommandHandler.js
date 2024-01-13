@@ -103,6 +103,7 @@ class CommandHandler {
                 switch(interaction.data.name) {
                     case "topic":
                         let timeRemaining = handleCooldown();
+                        console.log(timeRemaining);
                         if (timeRemaining !== false) {
                             return interaction.createMessage(`This command has already been used recently!\nTry again in **${timeRemaining}**!`);
                         }
