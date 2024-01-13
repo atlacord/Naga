@@ -57,7 +57,7 @@ class CommandHandler {
             console.error(err); // or your preferred logger
         });
 
-        handleCooldown(timestamp) {
+        function handleCooldown(timestamp) {
             const timeLeft = Date.now() - timestamp;
             if (timeLeft <= COMMAND_COOLDOWN) {
                 let time = Math.ceil((600000 - timeLeft) / 100) / 10
