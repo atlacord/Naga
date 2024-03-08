@@ -1,15 +1,9 @@
-.DS_Store
+build
 node_modules
+
+*.vscode
 *.code-workspace
-package-lock.json
-configs/secret.json
-src/index.js
-src/modules/Info/listeners/index.js
+
 .env
 
-# Local directories/files
-Archives
-src/modules/Games/data.csv
-src/assets/wordle/wordledata.csv
-
-.npmrc
+.DS_Store
