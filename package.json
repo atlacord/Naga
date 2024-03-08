@@ -1,41 +1,30 @@
 {
-  "name": "Naga",
-  "version": "2.0.0",
-  "description": "Discord bot",
-  "main": "index.js",
-  "dependencies": {
-    "animequote": "^1.1.1",
-    "axios": "^0.27.2",
-    "axoncore": "git+https://github.com/sodacova/AxonCore.git",
-    "canvas": "^2.9.3",
-    "davie-eris-embed": "^1.0.3",
-    "eris": "^0.17.1",
-    "esm": "^3.2.25",
-    "hastebin": "^0.2.1",
-    "imgur": "^2.2.0",
-    "jquery-csv": "^1.0.21",
-    "kitsu.js": "^2.0.0",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.3",
-    "moment-duration-format": "^2.3.2",
-    "moment-timezone": "^0.5.31",
-    "mongoose": "^5.10.7",
-    "node-cron": "^3.0.1",
-    "pluris": "^0.3.7",
-    "replace-in-file": "^6.3.5",
-    "semver": "^7.3.2",
-    "syllable": "^4.1.0",
-    "tatsu": "^1.1.0",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {},
+  "name": "naga",
+  "version": "3.0.0",
+  "author": "Kyle S (nonsequential)",
+  "description": "A multi-purpose  Discord application",
+  "main": "build/start.js",
   "scripts": {
-    "test": "n!ping"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://github.com/atlacord/naga#readme",
   "repository": {
     "type": "git",
-    "url": "git://github.com/TwoDoggo/umi"
+    "url": "git+https://github.com/atlacord/naga.git"
   },
-  "author": "TwoDog#0002, Kyle#0103",
+  "bugs": {
+    "url": "https://github.com/atlacord/naga/issues"
+  },
+  "keywords": [
+    "Discord",
+    "Discord",
+    "Bot"
+  ],
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25"
+  },
   "license": "ISC"
 }
