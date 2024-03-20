@@ -1,15 +1,21 @@
 import * as djs from 'discord.js';
 
-import Utils from '../Structures/Utils';
+import Logger from './Logger';
+import { Utils } from '../Structures';
 
 import PermissionsManager from '../Managers/PermissionsManager';
+import CommandManager from '../Managers/CommandManager';
+import ModuleManager from '../Managers/ModuleManager';
 
 export default class Naga {
-    private _client!: djs.Client;
+    private _client: djs.Client;
     public isReady: boolean;
 
     public _utils: Utils;
+    public _logger: Logger;
     public permissions: PermissionsManager;
+    public commands: CommandManager;
+    public modules: ModuleManager;
 
     constructor() {
         this.isReady = false;
@@ -23,6 +29,10 @@ export default class Naga {
         return this._utils;
     }
 
+    public get logger() {
+        return this._logger;
+    }
+
     /**
      * Initializes the bot client
      * @param opts Client options
@@ -33,15 +43,20 @@ export default class Naga {
         options.allowedMentions = opts.allowedMentions || { parse: [ 'roles'] };
         options.intents = opts.intents || [djs.GatewayIntentBits.Guilds];
 
+        this._logger = new Logger();
+        this._utils = new Utils();
+
         // Initialize the discord.js client
         this._client = new djs.Client(options);
 
         // Initialize manager classes
         this.permissions = new PermissionsManager(this);
+        this.commands = new CommandManager(this);
+        this.modules = new ModuleManager(this);
 
         // Event functions
         this.client.once('ready', this.ready.bind(this));
-        this.client.on('error', err => console.error(err))
+        this.client.on('error', err => this.logger.error(err))
 
         // Connect to Discord
         const token = process.env.TOKEN as string;
@@ -54,7 +69,7 @@ export default class Naga {
      */
     public async login(t: string): Promise<void> {
         const token = 'Bot ' + t;
-        console.info('Connecting to Discord...');
+        this.logger.info('Connecting to Discord...', 'BotClient');
         await this.client.login(token);
     }
 
@@ -71,7 +86,7 @@ export default class Naga {
      * Executes when the bot fires the "ready" event
      */
     public async ready(): Promise<void> {
-        console.log(`Successfully connected to Discord as ${this.client.user!.username}`)
+        this.logger.info(`Successfully connected to Discord as ${this.utils.fullName(this.client.user)}`, 'BotClient');
         this.isReady = true;
 
         await this.editStatus({name: 'Testing', type: 0})

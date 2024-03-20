@@ -1,4 +1,7 @@
 import * as djs from 'discord.js';
+import path from 'path';
+
+const MAX_ITERATIONS_PER_TICK = 500;
 
 /**
  * Utility functions, from the Utils class of @dyno.gg/dyno-core.
@@ -29,7 +32,7 @@ export default class Utils {
 		return str.replace(this.cleanRegex, '\\$&');
 	}
 
-    public fullName(user: djs.User): string {
+    public fullName(user: djs.User|djs.ClientUser): string {
         user = user;
 
         let username = user.username;
@@ -112,6 +115,4 @@ export default class Utils {
 	public hexToInt(color: string): number {
 		return color.startsWith('#') ? parseInt(color.replace('#', ''), 16) : parseInt(color, 16);
 	}
-}
-
-export const utils = new Utils();
+};

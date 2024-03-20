@@ -6,14 +6,13 @@ export default class Base {
     public guild!: djs.Guild;
     private _naga: Naga;
 
-    constructor(naga: Naga, guild: djs.Guild) {
+    constructor(naga: Naga, guild?: djs.Guild) {
         this._naga = naga;
 
         if (guild) {
             this.guild = guild;
         }
     }
-
 
     /**
      * The Naga instance
@@ -32,6 +31,30 @@ export default class Base {
     public get utils(): Utils {
         return this.naga.utils;
     }
+
+    public toJSON(): object {
+		const copy: {[key: string]: any} = {};
+
+		for (const key in this) {
+			if (!this.hasOwnProperty(key) || key.startsWith('_')) {
+				continue;
+			}
+
+			if (!this[key]) {
+				copy[key] = this[key];
+			} else if (<any>this[key] instanceof Set) {
+				copy[key] = Array.from(<any>this[key]);
+			} else if (<any>this[key] instanceof Map) {
+				copy[key] = Array.from((<any>this[key]).values());
+			} else if ((<any>this[key]).toJSON != undefined) {
+				copy[key] = (<any>this[key]).toJSON();
+			} else {
+				copy[key] = this[key];
+			}
+		}
+
+		return copy;
+	}
 
     /**
      * Checks if user is a developer
