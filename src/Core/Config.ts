@@ -4,7 +4,7 @@ import * as djs from 'discord.js';
 const pkg = require('../../package.json');
 
 let config: Naga.NagaConfig = {
-    name: pkg.name,
+    name: pkg.name.charAt(0).toUpperCase() + pkg.name.slice(1),
     version: pkg.version,
     author: 'Kyle S',
     prefix: 'n.',

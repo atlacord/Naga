@@ -18,14 +18,13 @@
   },
   "keywords": [
     "Discord",
-    "Discord",
-    "Bot"
+    "Discord Bot"
   ],
   "dependencies": {
     "async-each": "^1.0.6",
     "discord.js": "^14.14.1",
-    "glob-promise": "^6.0.5",
-    "minimatch": "^9.0.3"
+    "mongoose": "^8.2.2",
+    "mongoose-long": "^0.8.0"
   },
   "license": "ISC"
 }

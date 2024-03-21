@@ -1,11 +1,14 @@
 import * as djs from 'discord.js';
 
+import config from './Config';
 import Logger from './Logger';
 import { Utils } from '../Structures';
 
 import PermissionsManager from '../Managers/PermissionsManager';
 import CommandManager from '../Managers/CommandManager';
 import ModuleManager from '../Managers/ModuleManager';
+
+import SpiritLibrary from './Database/Database';
 
 export default class Naga {
     private _client: djs.Client;
@@ -16,6 +19,7 @@ export default class Naga {
     public permissions: PermissionsManager;
     public commands: CommandManager;
     public modules: ModuleManager;
+    public _db: SpiritLibrary;
 
     constructor() {
         this.isReady = false;
@@ -25,12 +29,24 @@ export default class Naga {
         return this._client;
     }
 
+    public get config() {
+        return config;
+    }
+
     public get utils() {
         return this._utils;
     }
 
     public get logger() {
         return this._logger;
+    }
+
+    public get db() {
+        return this._db;
+    }
+
+    public get models() {
+        return this.db.models;
     }
 
     /**
@@ -43,6 +59,7 @@ export default class Naga {
         options.allowedMentions = opts.allowedMentions || { parse: [ 'roles'] };
         options.intents = opts.intents || [djs.GatewayIntentBits.Guilds];
 
+        this._db = new SpiritLibrary(this.config.database.uri);
         this._logger = new Logger();
         this._utils = new Utils();
 
