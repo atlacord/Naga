@@ -5,25 +5,36 @@ declare module Naga {
         name: string;
         author: string;
         version: string|number;
+        state: number;
+        stateName: string;
         prefix: string;
         adminPrefix: string;
         developers: string[];
-        contributors: object[];
-        test: boolean;
+        contributors: string[];
         pkg: any;
         avatarGuild: string;
         testGuilds: string[];
-        modules: string[];
         client: ClientConfig;
+        database: {
+            uri: string;
+        };
+        emojis: {
+            success: string;
+            error: string;
+            info: string;
+        };
+        status: object;
     }
 
     export interface ClientConfig {
         id: string;
         token: string;
-        allowedMentions: string[];
-        fetchAllUsers: boolean;
-        intents: djs.IntentsBitField;
-        messageCacheSize: number;
+        options: {
+            allowedMentions: djs.MessageMentionOptions;
+            fetchAllUsers: boolean;
+            intents: djs.IntentsBitField;
+            messageCacheSize: number;
+        }
     }
 
     export interface GlobalConfig {
@@ -123,7 +134,6 @@ declare module Naga {
         public isDeveloper(user: djs.User): boolean;
         public isServerAdmin(member: djs.GuildMember, channel: djs.GuildChannel): boolean;
         public isServerMod(member: djs.GuildMember): boolean;
-
     }
 }
 

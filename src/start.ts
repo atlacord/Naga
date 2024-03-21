@@ -1,11 +1,8 @@
 import Naga from './Core/Naga';
 
-const config: any = {
-    client: {
-        intents: process.env.INTENTS
-    }
-}
-
 const naga = new Naga();
 
-naga.setup(config.client);
+console.info('NAGA - Version: 3.0.0, Build: 17\n\n');
+
+console.info('Initializing client');
+naga.setup(naga.config.client.options);
