@@ -30,6 +30,7 @@ declare module Naga {
         id: string;
         token: string;
         options: {
+            maxShards: number;
             allowedMentions: djs.MessageMentionOptions;
             fetchAllUsers: boolean;
             intents: djs.IntentsBitField;

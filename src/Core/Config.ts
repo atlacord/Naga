@@ -3,7 +3,7 @@ import * as djs from 'discord.js';
 
 const pkg = require('../../package.json');
 
-let config: Naga.NagaConfig = {
+let config: any = {
     name: pkg.name.charAt(0).toUpperCase() + pkg.name.slice(1),
     version: pkg.version,
     author: 'Kyle S',
@@ -15,6 +15,7 @@ let config: Naga.NagaConfig = {
         id: '966189242969636866',
         token: process.env.TOKEN,
         options: {
+            maxShards: 1,
             allowedMentions: { parse: [ 'roles'] },
             fetchAllUsers: true,
             intents: process.env.INTENTS as unknown as djs.IntentsBitField,

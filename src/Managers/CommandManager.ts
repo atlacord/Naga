@@ -32,6 +32,6 @@ export default class CommandManager extends EventCollection {
 
         this.logger.info(`Registering command ${command.name}`);
 
-        this.naga.models.Command.update({ name: command.name, _state: this.naga.config.state }, command.toJSON(), { upsert: true })
+        this.naga.models.Command.updateMany({ name: command.name, _state: this.naga.config.state }, command.toJSON(), { upsert: true })
     }
 }

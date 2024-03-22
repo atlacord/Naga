@@ -30,10 +30,9 @@ export default class ModuleManager extends Collection {
             try {
                 this.register(module);
             } catch (e) {
-                this.logger.error(__filename, e);
+                this.logger.error(e);
             }
         }
-
         this.logger.info(`Registered ${Object.keys(modules).length} modules.`)
     }
 
