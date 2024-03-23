@@ -1,20 +1,12 @@
 import * as djs from 'discord.js';
 
 /**
- * Utility functions, from the Utils class of @dyno.gg/dyno-core.
- * @license Creative-Commons-Attribution-NonCommercial-NoDerivs-4.0
- * @author Dyno Developers <https://dyno.gg>
+ * Utility functions, based on @dyno.gg/dyno-core
  */
 export default class Utils {
 
-    private channelRegex: RegExp = new RegExp('{#([a-zA-Z0-9-_]+)}', 'g');
-	private roleRegex: RegExp = new RegExp('{&([^}]+)}', 'g');
-	private userRegex: RegExp = new RegExp('{@([^}]+)}', 'g');
-	private emojiRegex: RegExp = new RegExp(/<(a)?:(\w+):(\d+)>/, 'g');
 	private cleanRegex: RegExp = new RegExp('([_\*`])', 'g');
-    private lastMessage: number;
-
-    constructor() {}
+	private lastMessage: number;
 
     /**
      * Escapes special characters from regex
@@ -29,18 +21,16 @@ export default class Utils {
 		return str.replace(this.cleanRegex, '\\$&');
 	}
 
-    public fullName(user: djs.User): string {
+    public fullName(user: djs.User|djs.ClientUser): string {
         user = user;
 
         let username = user.username;
         let discrim = user.discriminator;
 
         if (!username) return user.id;
-
         username = this.clean(username);
 
         if (discrim === '0') return username;
-
         return `${username}#${discrim}`;
     }
 
@@ -112,6 +102,4 @@ export default class Utils {
 	public hexToInt(color: string): number {
 		return color.startsWith('#') ? parseInt(color.replace('#', ''), 16) : parseInt(color, 16);
 	}
-}
-
-export const utils = new Utils();
+};

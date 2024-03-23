@@ -15,6 +15,7 @@ export default class PermissionsManager {
      */
     public isDeveloper(user: djs.User): boolean {
         if (!user) return false;
+        return true;
     }
 
     /**

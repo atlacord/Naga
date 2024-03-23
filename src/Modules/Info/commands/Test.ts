@@ -1,15 +1,14 @@
-'use-strict';
-
 import { Message } from 'discord.js';
 
 import Command from '../../../Structures/Command';
 import CommandMetadata from '../../../Structures/CommandMetadata';
 
-export class Ping extends Command {
-    public aliases      : string[]  = ['ping'];
+export class Test extends Command {
+
+    public aliases      : string[]  = ['test'];
     public description  : string    = 'Displays the ping between Naga and the Discord API';
-    public usage        : string    = 'ping';
-    public example      : string    = 'ping';
+    public usage        : string    = 'test';
+    public example      : string    = 'test';
     public cooldown     : number    = 5000;
     public expectedArgs : number    = 0;
 

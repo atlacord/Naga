@@ -1,5 +1,4 @@
 import * as djs from 'discord.js';
-import * as naga from '../Core/Naga';
 import Base from './Base';
 
 interface Module {
@@ -15,6 +14,17 @@ abstract class Module extends Base {
     public abstract enabled: boolean;
 
     public abstract start(client: djs.Client, ...args: any[]): any;
+
+    public ensureInterface() {
+		// required properties
+		if (this.module == undefined) {
+			throw new Error(`${this.constructor.name} command must define module property.`);
+		}
+		if (this.enabled == undefined) {
+			throw new Error(`${this.constructor.name} command must define enabled property.`);
+		}
+	}
+
 
     public _start(client: djs.Client, ...args: any[]): any {
         if (this.start) {

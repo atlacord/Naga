@@ -4,6 +4,7 @@
   "author": "Kyle S (nonsequential)",
   "description": "A multi-purpose  Discord application",
   "main": "build/start.js",
+  "typings": "src/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,14 +18,13 @@
   },
   "keywords": [
     "Discord",
-    "Discord",
-    "Bot"
+    "Discord Bot"
   ],
   "dependencies": {
-    "discord.js": "^14.14.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.25"
+    "async-each": "^1.0.6",
+    "discord.js": "^14.14.1",
+    "mongoose": "^8.2.2",
+    "mongoose-long": "^0.8.0"
   },
   "license": "ISC"
 }

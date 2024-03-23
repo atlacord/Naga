@@ -6,6 +6,7 @@ interface Command {
     cooldown?: number;
     defaultCommand?: string;
     disableDM?: boolean;
+    [key: string]: any;
 }
 
 /**
@@ -21,10 +22,34 @@ abstract class Command extends Base {
     public abstract example: string|string[];
     public abstract expectedArgs: number;
 
-    public abstract execute(e: any): Promise<any>;
+    public abstract execute(e: CommandMetadata): Promise<any>;
+
+    public ensureInterface() {
+		// required properties
+		if (this.aliases == undefined) {
+			throw new Error(`${this.constructor.name} command must define aliases property.`);
+		}
+		if (this.description == undefined) {
+			throw new Error(`${this.constructor.name} command must define description property.`);
+		}
+		if (this.usage == undefined) {
+			throw new Error(`${this.constructor.name} command must define usage property.`);
+		}
+
+		// required methods
+		if (this.execute == undefined) {
+			throw new Error(`${this.constructor.name} command must have an execute method.`);
+		}
+
+		// warnings
+		if (this.expectedArgs == undefined) {
+			this.logger.warn(`${this.constructor.name} should defined the expectedArgs property.`);
+		}
+		this.expectedArgs = this.expectedArgs || 0;
+	}
 
     public help(message: djs.Message): Promise<any> {
-        const msg = [];
+        const msg: string[] = [];
         const command: any = this;
         const name = this.name;
         const description = `**Description:**`
@@ -54,7 +79,7 @@ abstract class Command extends Base {
     public _execute(e: CommandMetadata): Promise<any> {
         const { message, args, command } = e;
 
-        if ((this.expectedArgs && args.length < this.expectedArgs) || (args && args[0] == 'help')) {
+        if ((this.expectedArgs && args!.length < this.expectedArgs) || (args && args[0] == 'help')) {
             return this.help(message);
         }
 
