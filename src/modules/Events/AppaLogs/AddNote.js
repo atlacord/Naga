@@ -53,15 +53,19 @@ class NoteAdd extends Listener {
                 id = msg.content.match(ID_REGEX)[0]
             }
 
+	    let member = await this.bot.getRESTUser(id);
             let content = msg.content.split(' ');
             let reason = content.slice(2).join(' ');
 
             let embed = {
                 color: this.utils.getColor('yellow'),
-                title: 'New Note',
+                author {
+		    icon_url: member.avatarURL,
+		    name: `Note | ${this.fullName(member.id)}`
+	    	}
                 fields: [
-                    { name: 'Member', value: `${await this.fullName(id)} (<@${id}>)` },
-                    { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Member', value: `${this.fullName(id)} (<@${id}>)` },
+                    { name: 'Moderator', value: `${this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
                     { name: 'Reason', value: reason }
                 ],
                 footer: { text: `Member ID: ${id}` },
