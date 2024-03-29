@@ -22,6 +22,32 @@ class NoteAdd extends Listener {
         };
     }
 
+    cleanRegex = new RegExp('([_\*`])', 'g');
+
+    clean(str) {
+	return str.replace(this.cleanRegex, '\\$&');
+    }
+
+    fullName(user, escape = true) {
+	user = user.user || user;
+
+	const discrim = user.discriminator || user.discrim;
+	let username = user.username || user.name;
+
+	if (!username) {
+	    return user.id;
+	}
+
+	username = this.clean(username);
+
+	if (escape) {
+	    username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
+	}
+
+        if (discrim === '0') return username;
+	else return `${username}#${discrim}`;
+    }
+
     /**
      * @param {import('eris').Message} msg
      */
@@ -41,11 +67,11 @@ class NoteAdd extends Listener {
                 color: this.utils.getColor('yellow'),
                 author: {
 		    icon_url: member.avatarURL,
-		    name: `Note | ${this.utils.fullName(member.id)}`
+		    name: `Note | ${this.fullName(member.id)}`
 	    	},
                 fields: [
-                    { name: 'Member', value: `${this.utils.fullName(id)} (<@${id}>)` },
-                    { name: 'Moderator', value: `${this.utils.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Member', value: `${this.fullName(id)} (<@${id}>)` },
+                    { name: 'Moderator', value: `${this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
                     { name: 'Reason', value: reason }
                 ],
                 footer: { text: `Member ID: ${id}` },
