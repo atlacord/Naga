@@ -67,11 +67,11 @@ class NoteAdd extends Listener {
                 color: this.utils.getColor('yellow'),
                 author: {
 		    icon_url: member.avatarURL,
-		    name: `Note | ${this.fullName(member.id)}`
+		    name: `Note | ${this.fullName(member)}`
 	    	},
                 fields: [
-                    { name: 'Member', value: `${this.fullName(id)} (<@${id}>)` },
-                    { name: 'Moderator', value: `${this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Member', value: `${this.fullName(member)} (<@${id}>)` },
+                    { name: 'Moderator', value: `${this.fullName(msg.author)} (<@${msg.author.id}>)` },
                     { name: 'Reason', value: reason }
                 ],
                 footer: { text: `Member ID: ${id}` },
