@@ -25,26 +25,6 @@ class NoteAdd extends Listener {
     /**
      * @param {import('eris').Message} msg
      */
-
-    async fullName(user, escape = true) {
-        user = await this.bot.getRESTUser(user);
-
-		const discrim = user.discriminator || user.discrim;
-		let username = user.username || user.name;
-
-		if (!username) {
-			return user.id;
-		}
-
-		username = this.utils.clean(username);
-
-		if (escape) {
-			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
-		}
-
-		return `${username}#${discrim}`;
-	}
-
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
         if (msg.content.startsWith('d.note') && (!msg.content.startsWith('d.notes'))) {
@@ -59,13 +39,13 @@ class NoteAdd extends Listener {
 
             let embed = {
                 color: this.utils.getColor('yellow'),
-                author {
+                author: {
 		    icon_url: member.avatarURL,
-		    name: `Note | ${this.fullName(member.id)}`
+		    name: `Note | ${this.utils.fullName(member.id)}`
 	    	}
                 fields: [
-                    { name: 'Member', value: `${this.fullName(id)} (<@${id}>)` },
-                    { name: 'Moderator', value: `${this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Member', value: `${this.utils.fullName(id)} (<@${id}>)` },
+                    { name: 'Moderator', value: `${this.utils.fullName(msg.author.id)} (<@${msg.author.id}>)` },
                     { name: 'Reason', value: reason }
                 ],
                 footer: { text: `Member ID: ${id}` },
