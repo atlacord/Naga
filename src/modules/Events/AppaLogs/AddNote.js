@@ -42,7 +42,7 @@ class NoteAdd extends Listener {
                 author: {
 		    icon_url: member.avatarURL,
 		    name: `Note | ${this.utils.fullName(member.id)}`
-	    	}
+	    	},
                 fields: [
                     { name: 'Member', value: `${this.utils.fullName(id)} (<@${id}>)` },
                     { name: 'Moderator', value: `${this.utils.fullName(msg.author.id)} (<@${msg.author.id}>)` },
