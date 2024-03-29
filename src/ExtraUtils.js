@@ -458,8 +458,8 @@ class ExtraUtils extends Utils {
 			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
 		}
 
-        if (discrim !== '0') return `${username}#${discrim}`;
-		else return username;
+        	if (discrim === '0') return username;
+		else return `${username}#${discrim}`;
 	}
 
     convertSnowflake(snowflake, epoch = DISCORD_EPOCH) {
