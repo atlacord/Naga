@@ -171,8 +171,6 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 7 in <#728364994005303307>.
                         \n<:whitelotus:381027716897439744> <#884990489756045332> – For discussing art or other creative works posted in <#372087240270151680>!
                         \n<:whitelotus:381027716897439744> <#487958065690312724> – For discussing sports, music, movies, TV shows, games or books! Be sure to use spoiler tags if something recently released is being discussed! Any announcements regarding gaming offers will be posted and pinned in this channel too! 
-                        \n<:whitelotus:381027716897439744> <#388122648854528001> – Discuss serious/controversial topics, including but not limited to politics and moral issues. To reference an article or similar, post a link for others to read it themselves.
-                        \n<:whitelotus:381027716897439744> <#812409753602883626> – Your personal safe space where you can vent out and/or seek guidance, advice or comfort from others. The community is here to help.
                         \n<:whitelotus:381027716897439744> <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
                     },
                     {
