@@ -161,7 +161,6 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **META** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#1093583806813970444> — Post your suggestions here for the staff to review!
-                        \n<:whitelotus:381027716897439744> <#824762715952119818> – Channel for potential discussion of suggestions posted in <#792616452770627594> 
                         \n<:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!`
                     },
                     {
@@ -184,10 +183,11 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **VOICE CHANNELS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n<:whitelotus:381027716897439744> <#372383669727526912> – The channel when using the Beach Cave VC for typing music commands or just for texting.
-                        \n<:whitelotus:381027716897439744> <#719924386228076576>  – The channel when using the Black Cliffs VC for typing music commands or just for texting.
-                        \n<:whitelotus:381027716897439744> <#456158655650201611> – Channel for talking about an ongoing stream happening in the Movers Club Voice chat.
-                        \n<:whitelotus:381027716897439744> <#836266701489831967> – For chatting when using the Ember Island Theatre Stage channel.`
+                        \n The text chat for each voice channel is located within that VC itself.
+                        \n<:whitelotus:381027716897439744> <#372087824083845130> – Use this channel to listen to music or just chat!
+                        \n<:whitelotus:381027716897439744> <#370708369951948804>  – Secondary VC for when <#372087824083845130> is busy.
+                        \n<:whitelotus:381027716897439744> <#1056703542745890899> – For hosting our streams! Stay up to date by checking out our Events tab!
+                        \n<:whitelotus:381027716897439744> <#836266973746692116> – For our non-streaming stage events!`
                     }                 
                 ]
             })
