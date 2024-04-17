@@ -161,8 +161,7 @@ class WelcomeMessage extends Listener {
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **META** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#792616452770627594> – Suggestions which you can post in <#372087473892884502> are sent here for us to review.
                         \n<:whitelotus:381027716897439744> <#824762715952119818> – Channel for potential discussion of suggestions posted in <#792616452770627594> 
-                        \n<:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                        \n<:whitelotus:381027716897439744> <#972950132242939964> – Forum channel for our ongoing gaming events, such as <#972950661186617375>, <#1004666132910841939>, <#1016619223830773771>, and <#972950772545384519>!`
+                        \n<:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
