@@ -177,7 +177,7 @@ class WelcomeMessage extends Listener {
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **SATO'S WORKSHOP** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                         \n<:whitelotus:381027716897439744> <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
                         \n<:whitelotus:381027716897439744> <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
-                        \n<:whitelotus:381027716897439744> <#372087473892884502> – The standard channel for sending bot commands, including suggestions for the <#792616452770627594> channel.
+                        \n<:whitelotus:381027716897439744> <#372087473892884502> – The standard channel for sending bot commands.
                         \n<:whitelotus:381027716897439744> <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
                     },
                     {
