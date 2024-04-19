@@ -102,7 +102,7 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
+                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**SERVER GUIDE**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n<:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                         \n<:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
@@ -215,7 +215,7 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
+                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**SERVER GUIDE**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n<:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                         \n<:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
