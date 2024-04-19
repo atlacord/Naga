@@ -43,7 +43,7 @@ class WelcomeMessage extends Listener {
                         \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details). Also grants access to the <@&388121551779921930> role.
                         \n__4,675 XP__     • <@&372178560254869504>
                         \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below)
-                        \n__42,000 XP__    • <@&372179082634330112> – Grants permission to request the <@&871374813288083516> role (see “Requestable Roles” below)
+                        \n__42,000 XP__    • <@&372179082634330112> 
                         \n__101,675 XP__   • <@&372179236842242048> 
                         \n__200,850 XP__   • <@&423269295930343424> 
                         \n__349,525 XP__   • <@&434950614997401600> 
