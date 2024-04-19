@@ -126,13 +126,14 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
                         \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
                         \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+                        \n<:whitelotus:381027716897439744> <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes!
                         \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n<:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
+                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
                         \n<:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
                         \n<:whitelotus:381027716897439744> <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n<:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
@@ -239,13 +240,14 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
                         \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
                         \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+                        \n<:whitelotus:381027716897439744> <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes!
                         \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n<:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
+                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
                         \n<:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
                         \n<:whitelotus:381027716897439744> <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n<:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
