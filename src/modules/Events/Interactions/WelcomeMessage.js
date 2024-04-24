@@ -58,7 +58,7 @@ class WelcomeMessage extends Listener {
                             
                         \n\n <@&830138455337730049>  – Given to members who want to host events here. Grants access to <#832247862988898334>, our channel where Event Masters organize and coordinate activities for the server. You must have the <@&372163599130558466> role (11,825 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without hosting any events.
                             
-                        \n\n<@&413564353829404672> – Anyone can use our music bots (<@547905866255433758> and <@483377420494176258>) in the general voice channels (<#372383669727526912> and <#719924386228076576>), but higher control is reserved for users with this role. You must have the <@&720343753805660183> role (1,150 XP) to be eligible for the role.`
+                        \n\n<@&413564353829404672> – Anyone can use our music bots (<@547905866255433758> and <@483377420494176258>) in the general voice channels (<#372087824083845130> and <#370708369951948804>), but higher control is reserved for users with this role. You must have the <@&720343753805660183> role (1,150 XP) to be eligible for the role.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
