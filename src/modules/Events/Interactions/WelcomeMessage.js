@@ -186,7 +186,7 @@ class WelcomeMessage extends Listener {
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **VOICE CHANNELS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                         \n The text chat for each voice channel is located within that VC itself.
                         \n<:whitelotus:381027716897439744> <#372087824083845130> – Use this channel to listen to music or just chat!
-                        \n<:whitelotus:381027716897439744> <#370708369951948804>  – Secondary VC for when <#372087824083845130> is busy.
+                        \n<:whitelotus:381027716897439744> <#370708369951948804>  – Secondary VC for users with <@&720343753805660183> rank and above.
                         \n<:whitelotus:381027716897439744> <#1056703542745890899> – For hosting our streams! Stay up to date by checking out our Events tab!
                         \n<:whitelotus:381027716897439744> <#836266973746692116> – For our non-streaming stage events!`
                     }                 
