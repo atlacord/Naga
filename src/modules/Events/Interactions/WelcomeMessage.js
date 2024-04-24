@@ -40,10 +40,10 @@ class WelcomeMessage extends Listener {
                         description: `**__Ranks__**
                         \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                         
-                        \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details). Also grants access to the <@&388121551779921930> role.
+                        \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details).
                         \n__4,675 XP__     • <@&372178560254869504>
                         \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below)
-                        \n__42,000 XP__    • <@&372179082634330112> – Grants permission to request the <@&871374813288083516> role (see “Requestable Roles” below)
+                        \n__42,000 XP__    • <@&372179082634330112> 
                         \n__101,675 XP__   • <@&372179236842242048> 
                         \n__200,850 XP__   • <@&423269295930343424> 
                         \n__349,525 XP__   • <@&434950614997401600> 
@@ -56,11 +56,9 @@ class WelcomeMessage extends Listener {
                         description: `**__Requestable Roles__**
                         \nThe following roles cannot be self-assigned, but eligible users *who are in good standing with the staff team* may request them by DMing <@718577208687460482> Mod Mail:
                             
-                        \n\n <@&871374813288083516> – Given to members who want to contribute to our wiki. Grants access to <#869740603557158973>, our channel for discussing anything related to the server's wiki (more info about the wiki can be found above). You must have the <@&372179082634330112> role (42,000 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without actively contributing to the wiki.
-                            
                         \n\n <@&830138455337730049>  – Given to members who want to host events here. Grants access to <#832247862988898334>, our channel where Event Masters organize and coordinate activities for the server. You must have the <@&372163599130558466> role (11,825 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without hosting any events.
                             
-                        \n\n<@&413564353829404672> – Anyone can use our music bots (<@547905866255433758> and <@483377420494176258>) in the general voice channels (<#372383669727526912> and <#719924386228076576>), but higher control is reserved for users with this role. You must have the <@&720343753805660183> role (1,150 XP) to be eligible for the role.`
+                        \n\n<@&413564353829404672> – Anyone can use our music bots (<@411916947773587456> and <@412347257233604609>) in the general voice channels (<#372087824083845130> and <#370708369951948804>), but higher control is reserved for users with this role. You must have the <@&720343753805660183> role (1,150 XP) to be eligible for the role.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -75,9 +73,7 @@ class WelcomeMessage extends Listener {
                                
                         \n\n<@&586128911302131725> – An honorary role given automatically to server boosters. Grants access to <#826851222459514923>, our private chat channel for Team Avatar members.
                                
-                        \n\n<@&433112551195279360> – A role used to temporarily mute server members who misbehave or break our rules (see <#1066580298290176121>), preventing them from typing in our chats. This role is removed automatically once the mute duration has been served. To find your mute reason and duration, check the DM you should have received from <@!424659040170409984> (you need to have your DMs open to receive this).
-                               
-                        \n\n<@&717748188630482946> – A role used to revoke access to <#388122648854528001> for server members who misuse this channel. This role also prevents users from re-assigning themselves the <@&388121551779921930> role (see <#1065945888507310191>, which you can only access if you have the <@&372163599130558466> role).`
+                        \n\n<@&433112551195279360> – A role used to temporarily mute server members who misbehave or break our rules (see <#1066580298290176121>), preventing them from typing in our chats. This role is removed automatically once the mute duration has been served. To find your mute reason and duration, check the DM you should have received from <@!380453326216626176> (you need to have your DMs open to receive this).`
                     }
                 ]
             })        
@@ -106,7 +102,7 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
+                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**SERVER GUIDE**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n<:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                         \n<:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
@@ -130,14 +126,16 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
                         \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
                         \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+                        \n<:whitelotus:381027716897439744> <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes!
                         \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n<:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
-                        \n<:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
+                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
+                        \n<:whitelotus:381027716897439744> <#721604232532459540> – The main channel for Legend of Korra discussions.
+                        \n<:whitelotus:381027716897439744> <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n<:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
                         \n<:whitelotus:381027716897439744> <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n<:whitelotus:381027716897439744> <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
@@ -163,20 +161,16 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **META** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
-                        \n<:whitelotus:381027716897439744> <#792616452770627594> – Suggestions which you can post in <#372087473892884502> are sent here for us to review.
-                        \n<:whitelotus:381027716897439744> <#824762715952119818> – Channel for potential discussion of suggestions posted in <#792616452770627594> 
-                        \n<:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                        \n<:whitelotus:381027716897439744> <#972950132242939964> – Forum channel for our ongoing gaming events, such as <#972950661186617375>, <#1004666132910841939>, <#1016619223830773771>, and <#972950772545384519>!`
+                        \n<:whitelotus:381027716897439744> <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n<:whitelotus:381027716897439744> <#794360973963165716> – Place your emote ideas which you would like to see in the server!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **MISCELLANEOUS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#726405096132575322> – For pictures of your pets, food, or any other amazing things you'd like to share.
-                        \n<:whitelotus:381027716897439744> <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 7 in <#728364994005303307>.
+                        \n<:whitelotus:381027716897439744> <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 6 in <#1066580298290176121>.
                         \n<:whitelotus:381027716897439744> <#884990489756045332> – For discussing art or other creative works posted in <#372087240270151680>!
                         \n<:whitelotus:381027716897439744> <#487958065690312724> – For discussing sports, music, movies, TV shows, games or books! Be sure to use spoiler tags if something recently released is being discussed! Any announcements regarding gaming offers will be posted and pinned in this channel too! 
-                        \n<:whitelotus:381027716897439744> <#388122648854528001> – Discuss serious/controversial topics, including but not limited to politics and moral issues. To reference an article or similar, post a link for others to read it themselves.
-                        \n<:whitelotus:381027716897439744> <#812409753602883626> – Your personal safe space where you can vent out and/or seek guidance, advice or comfort from others. The community is here to help.
                         \n<:whitelotus:381027716897439744> <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
                     },
                     {
@@ -184,16 +178,17 @@ class WelcomeMessage extends Listener {
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **SATO'S WORKSHOP** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
                         \n<:whitelotus:381027716897439744> <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
                         \n<:whitelotus:381027716897439744> <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
-                        \n<:whitelotus:381027716897439744> <#372087473892884502> – The standard channel for sending bot commands, including suggestions for the <#792616452770627594> channel.
+                        \n<:whitelotus:381027716897439744> <#372087473892884502> – The standard channel for sending bot commands.
                         \n<:whitelotus:381027716897439744> <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **VOICE CHANNELS** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n<:whitelotus:381027716897439744> <#372383669727526912> – The channel when using the Beach Cave VC for typing music commands or just for texting.
-                        \n<:whitelotus:381027716897439744> <#719924386228076576>  – The channel when using the Black Cliffs VC for typing music commands or just for texting.
-                        \n<:whitelotus:381027716897439744> <#456158655650201611> – Channel for talking about an ongoing stream happening in the Movers Club Voice chat.
-                        \n<:whitelotus:381027716897439744> <#836266701489831967> – For chatting when using the Ember Island Theatre Stage channel.`
+                        \n The text chat for each voice channel is located within that VC itself.
+                        \n<:whitelotus:381027716897439744> <#372087824083845130> – Use this channel to listen to music or just chat!
+                        \n<:whitelotus:381027716897439744> <#370708369951948804>  – Secondary VC for users with <@&720343753805660183> rank and above.
+                        \n<:whitelotus:381027716897439744> <#1056703542745890899> – For hosting our streams! Stay up to date by checking out our Events tab!
+                        \n<:whitelotus:381027716897439744> <#836266973746692116> – For our non-streaming stage events!`
                     }                 
                 ]
             })
@@ -221,7 +216,7 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**VISITOR'S CENTER**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
+                        description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696>**SERVER GUIDE**<:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296> 
                         \n<:whitelotus:381027716897439744> <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n<:whitelotus:381027716897439744> <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                         \n<:whitelotus:381027716897439744> <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
@@ -245,14 +240,16 @@ class WelcomeMessage extends Listener {
                         \n<:whitelotus:381027716897439744> <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
                         \n<:whitelotus:381027716897439744> <#826851222459514923> – A private channel for server boosters.
                         \n<:whitelotus:381027716897439744> <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+                        \n<:whitelotus:381027716897439744> <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes!
                         \n<:whitelotus:381027716897439744> <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n<:whitelotus:381027716897439744> <#719848144719970324> – The best jokes and moments go here.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **AVATAR** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for both ATLA and TLOK Discussions only. Off-topic goes in <#372087095121936385>.
-                        \n<:whitelotus:381027716897439744> <#721604232532459540> – The secondary channel for mainly discussing The Legend of Korra series, but ATLA talk is also allowed.
+                        \n<:whitelotus:381027716897439744> <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
+                        \n<:whitelotus:381027716897439744> <#721604232532459540> – The main channel for Legend of Korra discussions.
+                        \n<:whitelotus:381027716897439744> <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n<:whitelotus:381027716897439744> <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
                         \n<:whitelotus:381027716897439744> <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n<:whitelotus:381027716897439744> <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
@@ -354,7 +351,7 @@ class WelcomeMessage extends Listener {
                         \n\n**Q: How can I choose a sub-bending role?**
                         \nA: Members with the <@&372163599130558466> role are granted access to our sub-bending roles located in <#1065945888507310191>. This role is automatically assigned after reaching **11,825 XP**.
                         \n\n**Q: Why can't I control the music bot?**
-                        \nA: This server has 2 music bots: Hydra (<@!547905866255433758>) and Aiode (<@!483377420494176258>). Use of both is available for all members, but certain commands are limited to those who have the <@&413564353829404672> role. To obtain this role, you must be at least at the rank of <@&720343753805660183> (**1,150 XP**, more info in roles). You may ask for the role by messaging <@!718577208687460482>, our modmail bot. The staff team will grant you the role after checking your recent behavior and past infractions. Abuse of the role will result in its removal from you.`
+                        \nA: This server has 2 music bots: Joo Dee (<@!411916947773587456>) and Joo Dee (<@!412347257233604609>). Use of both is available for all members, but certain commands are limited to those who have the <@&413564353829404672> role. To obtain this role, you must be at least at the rank of <@&720343753805660183> (**1,150 XP**, more info in roles). You may ask for the role by messaging <@!718577208687460482>, our modmail bot. The staff team will grant you the role after checking your recent behavior and past infractions. Abuse of the role will result in its removal from you.`
                     },
                 ]
             })
