@@ -37,7 +37,8 @@ class EnforceBending extends Listener {
             bloodbender: '372198311517618176',
             foggyswamp: '835948368177528842',
             healer: '372162970282622976',
-            spiritbender: '488393283031269407'
+            spiritbender: '488393283031269407',
+            fifthnation: '1229466991237267560'
         };
 
         const earth = {
