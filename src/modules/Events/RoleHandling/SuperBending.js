@@ -63,7 +63,7 @@ class SuperBending extends Listener {
         }
 
         if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.fire ])) {
-            guild.addMember(member.id, superbending.fire, 'Added super-firebending role');
+            guild.addMemberRole(member.id, superbending.fire, 'Added super-firebending role');
         }
 
         if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.air ])) {
