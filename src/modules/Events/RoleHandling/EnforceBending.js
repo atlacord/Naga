@@ -28,7 +28,7 @@ class EnforceBending extends Listener {
         const basebending = {
             water: '372085492910522370',
             earth: '372085752319967236',
-            fire: '372085669142724608',
+            fire: '1172722062876495963',
             air: '372085326165835777',
             non: '372093851600683011'
         };
