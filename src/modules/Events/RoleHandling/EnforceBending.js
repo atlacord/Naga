@@ -28,7 +28,7 @@ class EnforceBending extends Listener {
         const basebending = {
             water: '372085492910522370',
             earth: '372085752319967236',
-            fire: '372085669142724608',
+            fire: '1172722062876495963',
             air: '372085326165835777',
             non: '372093851600683011'
         };
@@ -37,7 +37,8 @@ class EnforceBending extends Listener {
             bloodbender: '372198311517618176',
             foggyswamp: '835948368177528842',
             healer: '372162970282622976',
-            spiritbender: '488393283031269407'
+            spiritbender: '488393283031269407',
+            fifthnation: '1229466991237267560'
         };
 
         const earth = {
