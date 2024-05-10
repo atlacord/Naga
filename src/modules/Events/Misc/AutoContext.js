@@ -1,6 +1,7 @@
 const { Listener } = require('axoncore');
 
-const LOG_CATEGORIES = ['372085914765099008', '372088029495689226'];
+const LOG_CATEGORIES = ['372085914765099008', '372088029495689226']; // Moderation and Logs
+const UPPER_STAFF_CATEGORIES = ['828540781291241492', '719883529470738523']; // Garden Gate and Lake Laogai
 const MESSAGE_LINK_REGEX = /https:\/\/(?:canary|ptb)?\.?discord\.com\/channels\/(\d+)\/(\d+)\/(\d+)/
 
 class AutoContext extends Listener {
@@ -39,6 +40,8 @@ class AutoContext extends Listener {
         let quantity = 5;
 
         let embed, message = await this.bot.getMessage(channelID, messageID);
+        if (UPPER_STAFF_CATEGORIES.includes(message.channel.parentID)) return; 
+
         if (message.embeds.length && LOG_CATEGORIES.includes(message.channel.parentID)) {
             embed = message.embeds[0];
         } else {
