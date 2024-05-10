@@ -42,7 +42,7 @@ class AutoContext extends Listener {
         let embed, message = await this.bot.getMessage(channelID, messageID);
         if (UPPER_STAFF_CATEGORIES.includes(message.channel.parentID)) return; 
 
-        if (message.embeds.length && LOG_CATEGORIES.includes(message.channel.parentID)) {
+        if (message.embeds.length && (LOG_CATEGORIES.includes(message.channel.parentID) || message.channel.id === '372098279615496192')) {
             embed = message.embeds[0];
         } else {
             let oldMessages;
