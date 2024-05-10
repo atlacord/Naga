@@ -1,6 +1,7 @@
 const { Listener } = require('axoncore');
 
 const LOG_CATEGORIES = ['372085914765099008', '372088029495689226'];
+const MESSAGE_LINK_REGEX = /https:\/\/(?:canary|ptb)?\.?discord\.com\/channels\/(\d+)\/(\d+)\/(\d+)/
 
 class AutoContext extends Listener {
     /**
@@ -29,54 +30,48 @@ class AutoContext extends Listener {
         if (msg.author.bot) return;
         if (msg.channel.id !== '761932330028892194' && msg.channel.id !== '411903716996677639') return;
 
-        if (msg.content.includes('https://discord.com/channels/')) {
-            let msgLink = msg.content
-                              .replaceAll('\n', ' ')
-                              .split(' ')
-                              .find(word => word.startsWith('https://discord.com/channels/'))
-                              .split('/');
+        let msgLink = msg.content.match(MESSAGE_LINK_REGEX);
+        if (!msgLink) return;
 
-            let channelID, messageID;
-            channelID = msgLink[5];
-            messageID = msgLink[6];
+        let channelID = msgLink[2];
+        let messageID = msgLink[3];
 
-            let quantity = 5;
+        let quantity = 5;
 
-            let embed, message = await this.bot.getMessage(channelID, messageID);
-            if (message.embeds.length && LOG_CATEGORIES.includes(message.channel.parentID)) {
-                embed = message.embeds[0];
-            } else {
-                let oldMessages;
-                await this.bot.getMessages(channelID, { before: messageID, limit: quantity })
-                .then(async messages => {
-                    messages = messages.filter(Boolean).map(msg => {
-                        return `**${this.utils.fullName(msg.author)}** (<t:${Math.floor(msg.createdAt / 1000)}:R>)  –  ${msg.content}\n`;
-                    })
-                    oldMessages = messages.reverse();
-                });
-                oldMessages.push(`__**${this.utils.fullName(message.author)} (<t:${Math.floor(message.createdAt / 1000)}:R>)  –  ${message.content}**__`);
-                let msgContent = oldMessages.join('\n');
-                embed = {
-                    color: this.utils.getColor('blue'),
-                    author: { 
-                        name: `Messages sent in #${message.channel.name}`,
-                        icon_url: msg.channel.guild.iconURL
-                    },
-                    description: `${msgContent}`,
-                    footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` }
-                }
-
-                if (message.attachments.length > 0) {
-                    embed.image.url = message.attachments[0].url;
-                }
+        let embed, message = await this.bot.getMessage(channelID, messageID);
+        if (message.embeds.length && LOG_CATEGORIES.includes(message.channel.parentID)) {
+            embed = message.embeds[0];
+        } else {
+            let oldMessages;
+            await this.bot.getMessages(channelID, { before: messageID, limit: quantity })
+            .then(async messages => {
+                messages = messages.filter(Boolean).map(msg => {
+                    return `**${this.utils.fullName(msg.author)}** (<t:${Math.floor(msg.createdAt / 1000)}:R>)  –  ${msg.content}\n`;
+                })
+                oldMessages = messages.reverse();
+            });
+            oldMessages.push(`__**${this.utils.fullName(message.author)} (<t:${Math.floor(message.createdAt / 1000)}:R>)  –  ${message.content}**__`);
+            let msgContent = oldMessages.join('\n');
+            embed = {
+                color: this.utils.getColor('blue'),
+                author: { 
+                    name: `Messages sent in #${message.channel.name}`,
+                    icon_url: msg.channel.guild.iconURL
+                },
+                description: `${msgContent}`,
+                footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` }
             }
 
-            msg.channel.createMessage({ 
-                content: `Is that a message link I see? Magic commencing`, 
-                embed, 
-                messageReference: { messageID: msg.id } 
-            });
+            if (message.attachments.length > 0) {
+                embed.image.url = message.attachments[0].url;
+            }
         }
+
+        msg.channel.createMessage({ 
+            content: `Is that a message link I see? Magic commencing`, 
+            embed, 
+            messageReference: { messageID: msg.id } 
+        });
     }
 }
 
