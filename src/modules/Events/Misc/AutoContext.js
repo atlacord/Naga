@@ -66,7 +66,7 @@ class AutoContext extends Listener {
             }
 
             if (message.attachments.length > 0) {
-                embed.image.url = message.attachments[0].url;
+                embed.image = { url: message.attachments[0].url };
             }
         }
 
