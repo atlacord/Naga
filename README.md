@@ -21,4 +21,4 @@ Naga has a relatively wide range of features that is constantly growing based on
 
 ## Contributions
 
-Any and all contributions to Naga are welcome (if you have access to this readme, you are a contributor!) Feel free to look at Naga's Trello page to view our roadmap, and ask any questions you may have in #dev_hub!
+Any and all contributions to Naga are welcome! Feel free to look at Naga's Trello page to view our roadmap, and ask any questions you may have in our Discord server!
