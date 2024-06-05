@@ -37,20 +37,19 @@ class Whitelist extends Command {
         const consoleChannel = await this.bot.getChannel('1125212172230856794');
 
         profile.findById(msg.author.id, (err, doc) => {
-
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
-            } else if (doc.data.profile.mcusername !== null) {
-                this.sendError(msg.channel, `You are already whitelisted as **${doc.data.profile.mcusername}**! Replacing that with **${username}**`);
+            } else if (!doc) {
+                doc = new profile({ _id: msg.author.id });
+            } else if ((doc.data.profile.mcusername !== null) && (doc.data.profile.mcusername !== username)) {
+                this.sendError(msg.channel, `You are already whitelisted as **${doc.data.profile.mcusername}**! Replacing with **${username}**.`);
                 doc.data.profile.mcusername = username.toString();
                 consoleChannel.createMessage(`whitelist remove ${doc.data.profile.mcusername}`);
                 consoleChannel.createMessage(`whitelist add ${username.toString()}`)
             } else {
-                doc.data.profile.mcusername = username.toString();
-                consoleChannel.createMessage(`whitelist add ${username.toString()}`);
-                
+                doc.data.profile.mcusername = username.toString();              
                 return doc.save()
-                .then(() => this.sendSuccess(msg.channel, `**${username}** is now whitelisted! You can join the server at **mc.atla.sh** (Java Edition 1.19.4)`));
+                .then(() => this.sendSuccess(msg.channel, `**${username}** is now whitelisted! You can join the server at **mc.atla.sh** (Java Edition 1.20.6)`), consoleChannel.createMessage(`whitelist add ${username.toString()}`));
             }
         })
     }
