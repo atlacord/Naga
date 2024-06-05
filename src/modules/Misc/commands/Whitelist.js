@@ -39,6 +39,8 @@ class Whitelist extends Command {
         profile.findById(msg.author.id, (err, doc) => {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
+            } else if (!doc) {
+                doc = new profile({ _id: msg.author.id });
             } else if ((doc.data.profile.mcusername !== null) && (doc.data.profile.mcusername !== username)) {
                 this.sendError(msg.channel, `You are already whitelisted as **${doc.data.profile.mcusername}**! Replacing with **${username}**.`);
                 doc.data.profile.mcusername = username.toString();
