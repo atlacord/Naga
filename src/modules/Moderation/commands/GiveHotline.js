@@ -17,7 +17,7 @@ class SendHotline extends Command {
         this.info = {
             name: 'sendhotline',
             description: 'Gives the Self Care Resources role to a member',
-            usage: 'sendhotline [member',
+            usage: 'sendhotline [member]',
         };
 
         this.modUtils = new ModUtils();
@@ -36,7 +36,7 @@ class SendHotline extends Command {
         */
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.dailis,
+                needed: [...this.axon.staff.dailis, ...this.axon.staff.sentries, ...this.axon.staff.admins],
                 bypass: this.axon.staff.owners,
             },
         });
