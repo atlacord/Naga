@@ -14,7 +14,7 @@ class JoinMessages extends Listener {
         /** Event Name (Discord name) */
         this.eventName = 'guildMemberAdd';
         /** Event name (Function name) */
-        this.label = 'guildMemberAdd';
+        this.label = 'JoinMessages';
 
         this.enabled = true;
 
@@ -26,7 +26,7 @@ class JoinMessages extends Listener {
     /**
      * @param {import('eris').Message} msg
      */
-    
+
     async execute(guild, member) { // eslint-disable-line
         if (config.settings.joinLogs === true) {
             let joinmsg = Math.floor(Math.random() * messages.length);
