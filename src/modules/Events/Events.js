@@ -48,6 +48,7 @@ module.exports = {
     // BlurpleCanvas: require('./Misc/BlurpleCanvas'),
     EnforceLakeLaogai: require('./Misc/EnforceLakeLaogai'),
     FakeBan: require('./Misc/FakeBan'),
+    JoinMessages: require('./Misc/JoinMessages'),
     // LevelUp: require('./Misc/LevelUp'),
     // UpdateScore: require('./Misc/UpdateScore'),
 
