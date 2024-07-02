@@ -1,6 +1,7 @@
 const { Listener } = require('axoncore');
 
 const config = require('../../../../configs/config.json');
+const messages = require('../../../assets/joinmessages.json');
 
 class JoinMessages extends Listener {
     /**
@@ -13,7 +14,7 @@ class JoinMessages extends Listener {
         /** Event Name (Discord name) */
         this.eventName = 'guildMemberAdd';
         /** Event name (Function name) */
-        this.label = 'guildMemberAdd';
+        this.label = 'JoinMessages';
 
         this.enabled = true;
 
