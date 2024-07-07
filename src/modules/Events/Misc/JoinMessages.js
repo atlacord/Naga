@@ -28,7 +28,7 @@ class JoinMessages extends Listener {
      */
 
     async execute(guild, member) { // eslint-disable-line
-        if (config.settings.joinLogs === true) {
+        if (config.settings.joinLogs === true && guild.id === '370708369951948800') {
             let joinmsg = Math.floor(Math.random() * messages.length);
             let msg = messages[joinmsg]
             msg = msg.replace(/['"]+/g, "'")
