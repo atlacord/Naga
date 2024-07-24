@@ -9,7 +9,7 @@
     "axoncore": "git+https://github.com/sodacova/AxonCore.git",
     "canvas": "^2.9.3",
     "davie-eris-embed": "^1.0.3",
-    "eris": "^0.17.1",
+    "eris": "CaptainM777/eris",
     "esm": "^3.2.25",
     "hastebin": "^0.2.1",
     "imgur": "^2.2.0",
