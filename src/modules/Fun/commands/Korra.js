@@ -75,7 +75,7 @@ class Korra extends Command {
             let topic = Math.floor(Math.random() * korratopics.length);
 
             if (doc.data.ignoredKorraTopics.length === korratopics.length) {
-                doc.data.ignoredTopics = [];
+                doc.data.ignoredKorraTopics = [];
             }
 
             while (doc.data.ignoredKorraTopics.includes(topic)) {
