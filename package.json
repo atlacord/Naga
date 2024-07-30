@@ -9,6 +9,7 @@
     "axoncore": "git+https://github.com/sodacova/AxonCore.git",
     "canvas": "^2.9.3",
     "davie-eris-embed": "^1.0.3",
+    "dotenv": "^16.0.3",
     "eris": "CaptainM777/eris",
     "esm": "^3.2.25",
     "hastebin": "^0.2.1",
@@ -23,12 +24,13 @@
     "node-cron": "^3.0.1",
     "pluris": "^0.3.7",
     "replace-in-file": "^6.3.5",
+    "require-text": "^0.0.1",
     "semver": "^7.3.2",
     "syllable": "^4.1.0",
     "tatsu": "^1.1.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "wikiapi": "^1.19.4"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "n!ping"
   },
