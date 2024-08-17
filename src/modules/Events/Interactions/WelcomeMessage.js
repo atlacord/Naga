@@ -41,13 +41,13 @@ class WelcomeMessage extends Listener {
                         \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                         
                         \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details).
-                        \n__4,675 XP__     • <@&372178560254869504>
-                        \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below)
+                        \n__4,675 XP__     • <@&372178560254869504> - Grants access to Discord polls.
+                        \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below).
                         \n__42,000 XP__    • <@&372179082634330112> 
-                        \n__101,675 XP__   • <@&372179236842242048> 
+                        \n__101,675 XP__   • <@&372179236842242048> - Allows a [Wiki](https://wiki.atla.sh/) page for the user.
                         \n__200,850 XP__   • <@&423269295930343424> 
-                        \n__349,525 XP__   • <@&434950614997401600> 
-                        \n__557,700 XP__   • <@&811411225639518209> 
+                        \n__349,525 XP__   • <@&434950614997401600> - Allows custom bot commands, made in <#1093583806813970444>.
+                        \n__557,700 XP__   • <@&811411225639518209> - Grants high level roles (Water Tribe Chief, Earth Monarch, Fire Lord, Monk and Cabbage Merchant) based on the bending of your choice.
                         \n__835,375 XP__   • <@&811411331621191721> 
                         \n__1,192,550 XP__ • <@&811411413573697556>`
                     },
@@ -260,9 +260,12 @@ class WelcomeMessage extends Listener {
         }
 
         if (interaction.data.component_type === 2 && interaction.data.custom_id === "TeamButton") {
+            interaction.defer(64); // Send initial response here to avoid the interaction token expiring after 3 seconds
+
             let wl = [];
             let sentries = [];
             let daili = [];
+            let moverstars = [];
 
             let admins = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('372084219423490049')));
@@ -286,6 +289,13 @@ class WelcomeMessage extends Listener {
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
                     daili.push(this.utils.fullName(member));
+                }
+
+            let mvrstars = this.bot.guilds.get('370708369951948800').members.filter(m =>
+                (m.roles.includes('1224072458206711928')) && (!m.roles.includes('372084219423490049')));
+                for (let i in mvrstars) {
+                    let member = await this.bot.getRESTUser(mvrstars[i].id);
+                    moverstars.push(this.utils.fullName(member));
                 }
 
             return interaction.createMessage({
@@ -325,6 +335,14 @@ class WelcomeMessage extends Listener {
                         },
                         title: `Dai Li - Mods`,
                         description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.join('\n')}`
+                    },
+                    {
+                        color: this.utils.getColor('moverstars'), 
+                        thumbnail: {
+                            url: `https://cdn.discordapp.com/emojis/1248340108374179950.webp?size=96&quality=lossless`
+                        },
+                        title: `Mover Stars - Community Engagement and Operations`,
+                        description: `Mover Stars handle operations regarding our presence in the community and large-scale server events.\n\n${moverstars.join('\n')}`
                     }
                 ],
             })
