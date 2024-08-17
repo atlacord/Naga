@@ -113,7 +113,8 @@ class ExtraUtils extends Utils {
             lotus: 15913095,
             whitelotus: 16777215,
             sentry: 9725695,
-            daili: 5628531
+            daili: 5628531,
+            moverstars: 54998
         };
 
         return colors[color];
