@@ -76,8 +76,8 @@ class Haiku extends Command {
         let ids = data.map((obj) => obj.id);
         let haikus = data.map((obj) => obj.haiku);
 
-        let roleIds = msg.member.roles.map((r) => r.id);
-        let staffRoleId = '736365465353453663'
+        let roleIds = msg.member.roles;
+        let staffRoleId = '736365465353453663';
 
         if (!roleIds.includes(staffRoleId) && ids.includes(msg.member.id)) {
             return msg.channel.createMessage({
