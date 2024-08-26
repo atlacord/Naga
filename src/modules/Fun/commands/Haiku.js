@@ -78,7 +78,7 @@ class Haiku extends Command {
                 }
             });
         }
-        else if ((haikus.includes(args.join(' '))) || args.join(' ').includes('haiku')) {
+        else if ((haikus.includes(args.join(' ')))) {
             return msg.channel.createMessage({
                 embed: {
                     color: this.utils.getColor('red'),
