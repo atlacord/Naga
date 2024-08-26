@@ -45,9 +45,15 @@ class Haiku extends Command {
         }
       
         const syllables = this.lookupSyllables(lines);
+
+        const isHaiku = syllables[0] === 5 && syllables[1] === 7 && syllables[2] === 6;
       
-        // 5 7 5
-        return syllables[0] === 5 && syllables[1] === 7 && syllables[2] === 6;
+        if (isHaiku) {
+            return 'Sokka Haiku!';
+        } else {
+            let haikuSyllableBreakdown = lines.map((line, index) => `${line} | Syllables: ${syllables[index]}`).join('\n');
+            return haikuSyllableBreakdown;
+        }
     }
 
     lookupSyllables (lines) {
@@ -91,7 +97,7 @@ class Haiku extends Command {
         }
 
         let res = this.haiku(args.join(' '));
-        if (res) {
+        if (res === 'Sokka Haiku!') {
             msg.channel.createMessage({ 
                 embed: {
                     color: this.utils.getColor('green'),
@@ -105,7 +111,8 @@ class Haiku extends Command {
             msg.channel.createMessage({
                 embed: {
                     color: this.utils.getColor('red'),
-                    title: '<:sokkasad:725833135757197417> That was not a Sokka haiku! :('
+                    title: '<:sokkasad:725833135757197417> That was not a Sokka haiku! :(',
+                    description: res
                 }
             });
         }
