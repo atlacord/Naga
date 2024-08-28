@@ -30,7 +30,7 @@ class Haiku extends Command {
         });
 
         this.permissions = new CommandPermissions(this, {
-            custom: (msg) => (msg.channel.id === '1273986973450764363')
+            // custom: (msg) => (msg.channel.id === '1273986973450764363')
         });
     }
     /**
@@ -41,7 +41,7 @@ class Haiku extends Command {
         const lines = this.parseLines(str);
       
         if (lines.length !== 3) {
-          return false;
+          return 'Your submission must be 3 lines!';
         }
       
         const syllables = this.lookupSyllables(lines);
