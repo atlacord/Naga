@@ -47,8 +47,6 @@ class CheckBirthday extends Command {
 
     async checkBirthday() {
         let birthdayMentions = [];
-        const announcementChannel = '1007044599287656559';
-        let lastMsg = await this.bot.getChannel(announcementChannel).lastMessageID;
         
         try {
 	    let existingBirthdays = this.bot.guilds.get(GUILD_ID).members.filter(m =>
@@ -77,12 +75,13 @@ class CheckBirthday extends Command {
                     image: { url: 'https://cdn.discordapp.com/attachments/411903716996677639/890018048298332160/happy-birthday-avatar.gif' }
                 }
                 if (birthdayMentions.length >= 1) {
-                    try {
-                        // await this.bot.getChannel(announcementChannel).messages.get(lastMsg).delete();
-                        await this.bot.getChannel(announcementChannel).createMessage({ content: birthdayMentions.join(', '), embed: embed });
-                    } catch(err) {
-                        this.sendError('1008421501487304844', err)
-                    }
+                    const birthdayChannel = this.bot.getChannel('1007044599287656559');
+
+                    let birthdayChannelMessages = await this.bot.getMessages(birthdayChannel.id);
+                    birthdayChannelMessages.pop(); // First message in birthday channel won't be deleted
+
+                    if (birthdayChannelMessages.length >= 1) birthdayChannelMessages.forEach((msg) => msg.delete());
+                    await birthdayChannel.createMessage({ content: birthdayMentions.join(', '), embed: embed });
                 }
                 })
             } catch (err) {
