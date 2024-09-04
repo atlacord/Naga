@@ -40,7 +40,7 @@ class WelcomeMessage extends Listener {
                         description: `**__Ranks__**
                         \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                         
-                        \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links as well as to request the <@&413564353829404672> role (see “Requestable Roles” below for details).
+                        \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links.
                         \n__4,675 XP__     • <@&372178560254869504> - Grants access to Discord polls.
                         \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below).
                         \n__42,000 XP__    • <@&372179082634330112> 
