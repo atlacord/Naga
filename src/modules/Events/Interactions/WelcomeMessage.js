@@ -365,9 +365,7 @@ class WelcomeMessage extends Listener {
                         \n\n**Q: Why can't I post images/videos or links?**
                         \nA: Image/file posting permissions are available to users that have the <@&720343753805660183> role. This role is automatically assigned after reaching **1,150 XP**. This is to prevent potential raids and spams by users who join the server for the first time.
                         \n\n**Q: How can I choose a sub-bending role?**
-                        \nA: Members with the <@&372163599130558466> role are granted access to our sub-bending roles located in <#1065945888507310191>. This role is automatically assigned after reaching **11,825 XP**.
-                        \n\n**Q: Why can't I control the music bot?**
-                        \nA: This server has 2 music bots: Joo Dee (<@!411916947773587456>) and Joo Dee (<@!412347257233604609>). Use of both is available for all members, but certain commands are limited to those who have the <@&413564353829404672> role. To obtain this role, you must be at least at the rank of <@&720343753805660183> (**1,150 XP**, more info in roles). You may ask for the role by messaging <@!718577208687460482>, our modmail bot. The staff team will grant you the role after checking your recent behavior and past infractions. Abuse of the role will result in its removal from you.`
+                        \nA: Members with the <@&372163599130558466> role are granted access to our sub-bending roles located in <#1065945888507310191>. This role is automatically assigned after reaching **11,825 XP**.`
                     },
                 ]
             })
