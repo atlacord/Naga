@@ -90,11 +90,14 @@ class Archive extends Command {
 
         let channel = args[0].replace('<#','');
         channel = channel.replace('>', '').toString();
-        channel = this.bot.getChannel(channel) || await this.bot.getRESTChannel(channel);
-        if (!channel) {
-            msg.channel.createMessage('Invalid channel.')
-            return;
+
+        try {
+            channel = this.bot.getChannel(channel) || await this.bot.getRESTChannel(channel);
+        } catch (err) {
+            console.log(err);
+            return this.sendError(msg.channel, 'Invalid channel!');
         }
+
         const quantity = Math.round(args[1] || MESSAGE_QUANTITY);
 
         try {
