@@ -101,7 +101,6 @@ class Archive extends Command {
         const quantity = Math.round(args[1] || MESSAGE_QUANTITY);
 
         try {
-
             let lastMsg = channel.lastMessageID;
             const archivePath = `Archives/${channel.name}.md`;
 
@@ -140,7 +139,7 @@ class Archive extends Command {
                 console.info(`Finished archiving ${channel.name}.`)
         } catch (err) {
             console.log(err)
-            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
+            this.sendError(msg.channel, `Something went wrong! Error: ${err}`)
         }
     }
 }
