@@ -110,10 +110,10 @@ class WelcomeMessage extends Listener {
                     { 
                         color: this.utils.getColor('lotus'),
                         description:`<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **BULLETIN** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
                         \n- <#372088315467399170> – For announcing news, updates and special occasions.
                         \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
                         \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
+                        \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
                         \n- <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                         \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
@@ -224,10 +224,10 @@ class WelcomeMessage extends Listener {
                     { 
                         color: this.utils.getColor('lotus'),
                         description:`<:nation_watertribes:381027860288241665> <:nation_earthkingdom:381027789303709696> **BULLETIN** <:nation_firenation:381027816466022400> <:nation_airnomads:381027763882295296>
-                        \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
                         \n- <#372088315467399170> – For announcing news, updates and special occasions.
                         \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
                         \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
+                        \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
                         \n- <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                         \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
