@@ -90,12 +90,19 @@ class Archive extends Command {
 
         let channel = args[0].replace('<#','');
         channel = channel.replace('>', '').toString();
-        channel = this.bot.getChannel(channel);
+
+        try {
+            channel = this.bot.getChannel(channel) || await this.bot.getRESTChannel(channel);
+        } catch (err) {
+            console.log(err);
+            return this.sendError(msg.channel, 'Invalid channel!');
+        }
+
         const quantity = Math.round(args[1] || MESSAGE_QUANTITY);
 
         try {
-
             let lastMsg = channel.lastMessageID;
+            const archivePath = `Archives/${channel.name}.md`;
 
             this.sendSuccess(msg.channel, `Archiving ${channel.name}. Quantity: ${quantity}`);
             console.info(`Now archiving ${channel.name}. Quantity: ${quantity}`)
@@ -121,14 +128,18 @@ class Archive extends Command {
                 messages = messages.reverse().join('');
 
                 const data = Buffer.from(messages, 'utf8');
-                fs.writeFile(`Archives/${channel.name}.md`, data, (err) => {
-                    if (err !== null) { this.sendError(msg.channel, `An error occurred while creating the text file: ${err}`) };
-                });
+                fs.writeFileSync(archivePath, data);
             })
                 this.sendSuccess(msg.channel, `Successfully archived ${channel.name}`)
+                const file = fs.readFileSync(archivePath);
+                msg.channel.createMessage({}, {
+                    name: `${channel.name}.md`,
+                    file: file
+                })
                 console.info(`Finished archiving ${channel.name}.`)
         } catch (err) {
-            this.utils.logError(msg, err, 'internal', 'Something went wrong.');
+            console.log(err)
+            this.sendError(msg.channel, `Something went wrong! Error: ${err}`)
         }
     }
 }

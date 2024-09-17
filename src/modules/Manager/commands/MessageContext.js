@@ -12,7 +12,7 @@ class MessageContext extends Command {
         super(module);
 
         this.label = 'context';
-        this.aliases = [ 'context' ];
+        this.aliases = [ 'context', 'c'];
 
         this.hasSubcmd = false;
 

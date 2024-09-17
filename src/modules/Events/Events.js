@@ -3,13 +3,13 @@ module.exports = {
 
     ExistingTeamAvatar: require('./Misc/ExistingTeamAvatar'),
     Ready: require('./Misc/Ready'),
-    RuleScreening: require('./RoleHandling/RuleScreening'),
+    // RuleScreening: require('./RoleHandling/RuleScreening'),
     TeamAvatar: require('./Misc/TeamAvatar'),
 
-    // === Appa Logs ===
-    // AddNote: require('./AppaLogs/AddNote'),
-    // Ban: require('./AppaLogs/Ban'),
-    //Logwarn: require('./AppaLogs/Logwarn'),
+    // === Appa / Dyno Logs ===
+     AddNote: require('./AppaLogs/AddNote'),
+     Ban: require('./AppaLogs/Ban'),
+    // Logwarn: require('./AppaLogs/Logwarn'),
     // Mute: require('./AppaLogs/Mute'),
     // RemoveNote: require('./AppaLogs/RemoveNote'),
     // RoleAdd: require('./AppaLogs/RoleAdd'),
@@ -44,13 +44,16 @@ module.exports = {
     // voiceChannelLeave: require('./Logs/voiceChannelLeave'),
 
     // === Misc ===
+    AutoContext: require('./Misc/AutoContext'),
     // BlurpleCanvas: require('./Misc/BlurpleCanvas'),
     EnforceLakeLaogai: require('./Misc/EnforceLakeLaogai'),
     FakeBan: require('./Misc/FakeBan'),
+    JoinMessages: require('./Misc/JoinMessages'),
     // LevelUp: require('./Misc/LevelUp'),
     // UpdateScore: require('./Misc/UpdateScore'),
 
     // === Role Handling ===
     ContestWinner: require('./RoleHandling/ContestWinner'),
     EnforceBending: require('./RoleHandling/EnforceBending'),
+    SuperBending: require('./RoleHandling/SuperBending'),
 };

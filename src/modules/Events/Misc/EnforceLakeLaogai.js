@@ -21,6 +21,7 @@ class EnforceLakeLaogai extends Listener {
     }
 
     async execute(guild, member) {
+        if (member.roles.includes('736365465353453663')) return; // Ignores staff members
         // let bans = this.bot.guilds.get('370708369951948800').getBans();
         let ban = await this.bot.guilds.get('370708369951948800').getBan(member.id).catch((e) => { if (e.message === 'Unknown Ban') { return false } else return true });
         if ((guild.id === '736344840253472830') && (ban === false)) {

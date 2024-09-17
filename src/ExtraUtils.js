@@ -113,7 +113,8 @@ class ExtraUtils extends Utils {
             lotus: 15913095,
             whitelotus: 16777215,
             sentry: 9725695,
-            daili: 5628531
+            daili: 5628531,
+            moverstars: 54998
         };
 
         return colors[color];
@@ -268,11 +269,11 @@ class ExtraUtils extends Utils {
             staff.push('White Lotus');
         };
 
-        if ((user.roles.includes('456925799786872868')) && (!user.roles.includes('372084219423490049'))) {
+        if ((user.roles.includes('1182448979288527029')) && (!user.roles.includes('372084219423490049'))) {
             staff.push('Sentry');
         }
 
-        if (user.roles.includes('762573162424565780')) {
+        if (user.roles.includes('1182449762583191592')) {
             staff.push('Dai Li');
         }
     
@@ -458,8 +459,8 @@ class ExtraUtils extends Utils {
 			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
 		}
 
-        if (discrim !== '0') return `${username}#${discrim}`;
-		else return username;
+        	if (discrim === '0') return username;
+		else return `${username}#${discrim}`;
 	}
 
     convertSnowflake(snowflake, epoch = DISCORD_EPOCH) {

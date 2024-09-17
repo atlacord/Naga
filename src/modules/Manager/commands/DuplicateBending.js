@@ -41,7 +41,7 @@ class DuplicateBending extends Command {
             nonbender: '372093851600683011',
             waterbender: '372085492910522370',
             earthbender: '372085752319967236',
-            firebender: '372085669142724608',
+            firebender: '1172722062876495963',
             airbender: '372085326165835777',
             
         }

@@ -47,7 +47,7 @@ class Unban extends Listener {
 
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—unban' || '--unban')) {
+        if (msg.content.startsWith('--unban') || msg.content.startsWith('d.unban')) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
@@ -69,7 +69,7 @@ class Unban extends Listener {
             };
 
             if (msg.guildID === '370708369951948800' && msg.content !== null) {
-                await this.bot.getChannel('1008421501487304844').createMessage({embed})
+                await this.bot.getChannel('717197861351063573').createMessage({embed})
             }
         }
     }

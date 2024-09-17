@@ -56,7 +56,7 @@ class LoadPermissions extends Command {
             this.axon.staff.dailis.push(bushy.id, bo.id);
 
         let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('456925799786872868')));
+            (m.roles.includes('1182448979288527029')));
             for (let i in srmods) {
                 this.log(srmods[i]);
                 this.axon.staff.sentries.push(srmods[i].id);
@@ -64,7 +64,7 @@ class LoadPermissions extends Command {
             }
 
         let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('762573162424565780')));
+            (m.roles.includes('1182449762583191592')));
             for (let i in mods) {
                 this.log(mods[i]);
                 this.axon.staff.dailis.push(mods[i].id);

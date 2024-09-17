@@ -17,7 +17,7 @@ class SendHotline extends Command {
         this.info = {
             name: 'sendhotline',
             description: 'Gives the Self Care Resources role to a member',
-            usage: 'sendhotline [member',
+            usage: 'sendhotline [member]',
         };
 
         this.modUtils = new ModUtils();
@@ -36,7 +36,7 @@ class SendHotline extends Command {
         */
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.dailis,
+                needed: [...this.axon.staff.dailis, ...this.axon.staff.sentries, ...this.axon.staff.admins],
                 bypass: this.axon.staff.owners,
             },
         });
@@ -58,9 +58,9 @@ class SendHotline extends Command {
                     doc = new profile({ _id: member.id });
                 }
 
-                if (roles.includes('388121551779921930')) {
-                    doc.data.flags.push('SERIOUS_LOCK');
-                    await guild.removeMemberRole(member.id, '388121551779921930');
+                if (roles.includes('830138455337730049')) {
+                    doc.data.flags.push('EVENT_MASTER_LOCK');
+                    await guild.removeMemberRole(member.id, '830138455337730049');
                 }
 
                 await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');

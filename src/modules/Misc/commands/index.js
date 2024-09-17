@@ -5,5 +5,5 @@ module.exports = {
     Randomcolor: require('./Randomcolor'),
     Say: require('./Say'),
     Spotify: require('./Spotify'),
-    Whitelist: require('./Whitelist')
+    // Whitelist: require('./Whitelist')
 };

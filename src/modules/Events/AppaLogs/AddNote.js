@@ -22,46 +22,56 @@ class NoteAdd extends Listener {
         };
     }
 
+    cleanRegex = new RegExp('([_\*`])', 'g');
+
+    clean(str) {
+	return str.replace(this.cleanRegex, '\\$&');
+    }
+
+    fullName(user, escape = true) {
+	user = user.user || user;
+
+	const discrim = user.discriminator || user.discrim;
+	let username = user.username || user.name;
+
+	if (!username) {
+	    return user.id;
+	}
+
+	username = this.clean(username);
+
+	if (escape) {
+	    username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
+	}
+
+        if (discrim === '0') return username;
+	else return `${username}#${discrim}`;
+    }
+
     /**
      * @param {import('eris').Message} msg
      */
-
-    async fullName(user, escape = true) {
-        user = await this.bot.getRESTUser(user);
-
-		const discrim = user.discriminator || user.discrim;
-		let username = user.username || user.name;
-
-		if (!username) {
-			return user.id;
-		}
-
-		username = this.utils.clean(username);
-
-		if (escape) {
-			username.replace(/\\/g, '\\\\').replace(/`/g, `\`${String.fromCharCode(8203)}`);
-		}
-
-		return `${username}#${discrim}`;
-	}
-
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.content.startsWith('—addnote' || '%addnote')) {
+        if (msg.content.startsWith('d.note') && (!msg.content.startsWith('d.notes'))) {
             let id;
             if (ID_REGEX.test(msg.content) === true) {
                 id = msg.content.match(ID_REGEX)[0]
             }
 
+	    let member = await this.bot.getRESTUser(id);
             let content = msg.content.split(' ');
             let reason = content.slice(2).join(' ');
 
             let embed = {
                 color: this.utils.getColor('yellow'),
-                title: 'New Note',
+                author: {
+		    icon_url: member.avatarURL,
+		    name: `Note | ${this.fullName(member)}`
+	    	},
                 fields: [
-                    { name: 'Member', value: `${await this.fullName(id)} (<@${id}>)` },
-                    { name: 'Moderator', value: `${await this.fullName(msg.author.id)} (<@${msg.author.id}>)` },
+                    { name: 'Member', value: `${this.fullName(member)} (<@${id}>)` },
+                    { name: 'Moderator', value: `${this.fullName(msg.author)} (<@${msg.author.id}>)` },
                     { name: 'Reason', value: reason }
                 ],
                 footer: { text: `Member ID: ${id}` },
@@ -69,7 +79,7 @@ class NoteAdd extends Listener {
             };
 
             if (msg.guildID === '370708369951948800' && msg.content !== null) {
-                await this.bot.getChannel('1008421501487304844').createMessage({embed})
+                await this.bot.getChannel('717197861351063573').createMessage({embed})
             }
         }
     }

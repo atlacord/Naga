@@ -38,7 +38,7 @@ class GetArchive extends Command {
 
         this.info = {
             name: 'getarchive',
-            description: 'Uploads archive files to Discord',
+            description: 'Uploads archive files to Discord. Use without an argument to get all files or provide a channel ID to get a specific file.',
             usage: 'getarchive',
         };
 
@@ -64,18 +64,38 @@ class GetArchive extends Command {
      * @param {import('axoncore').CommandEnvironment} env
      */
 
-    async execute({msg}) {
+    async execute({msg, args}) {
         let files = readdirSync('Archives');
-        files.forEach(channel => {
-            let channelName = channel.slice(0, -3);
-            if (path.extname(channel) === ('.md')) {
-                let file = readFileSync(`Archives/${channel}`);
-                msg.channel.createMessage({}, {
-                    name: `${channelName}.md`,
-                    file: file      
-                })
+
+        if (args.length === 0) {
+            files.forEach(channel => {
+                let channelName = channel.slice(0, -3);
+                if (path.extname(channel) === ('.md')) {
+                    let file = readFileSync(`Archives/${channel}`);
+                    msg.channel.createMessage({}, {
+                        name: `${channelName}.md`,
+                        file: file      
+                    })
+                }
+            })
+        } else {
+            let channel;
+            try {
+                channel = this.bot.getChannel(args[0]) || await this.bot.getRESTChannel(args[0])
+            } catch (err) {
+                console.log(err);
+                return this.sendError(msg.channel, 'Invalid channel!');
             }
-        })
+
+            const fileName = files.find((f) => f.startsWith(channel.name));
+            if (!fileName) return this.sendError(msg.channel, 'Could not find archive file!');
+
+            const file = readFileSync(`Archives/${fileName}`);
+            msg.channel.createMessage({}, {
+                name: `${msg.channel.name}.md`,
+                file: file
+            });
+        }
     }
 }
 

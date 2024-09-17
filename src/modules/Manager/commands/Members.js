@@ -32,7 +32,7 @@ class Members extends Command {
          */
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.dailis,
+                needed: [...this.axon.staff.admins, ...this.axon.staff.sentries, ...this.axon.staff.dailis],
                 bypass: this.axon.staff.owners,
             },
         } );
@@ -54,8 +54,7 @@ class Members extends Command {
 
         let rolemembers = this.bot.guilds.get('370708369951948800').members.filter(m =>
             (m.roles.includes(role.id)));
-            for (let i in rolemembers) {
-                let member = await this.bot.getRESTUser(rolemembers[i].id);
+            for (let member of rolemembers) {
                 members.push(this.utils.fullName(member));
             }
 
