@@ -294,7 +294,9 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('1224072458206711928')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mvrstars) {
                     let member = await this.bot.getRESTUser(mvrstars[i].id);
-                    moverstars.push(this.utils.fullName(member));
+                    let memberFullName = this.utils.fullName(member)
+                    if (wl.includes(memberFullName) || sentries.includes(memberFullName) || daili.includes(memberFullName)) continue;
+                    moverstars.push(memberFullName);
                 }
 
             return interaction.createMessage({
