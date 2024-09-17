@@ -52,7 +52,7 @@ class ChangeBanner extends Command {
         let res = await this.convertImage(banner);
 
         try {
-            await this.bot.guilds.get('370708369951948800').edit({ banner: res }, 'Monthly autochange');
+            await this.bot.guilds.get('370708369951948800').edit({ banner: res }, 'Weekly autochange');
         } catch (err) {
             console.error(`Failed to change the banner: ${err}`)
         };
