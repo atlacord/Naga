@@ -54,26 +54,6 @@ class SuperBending extends Listener {
             return res;
         };
 
-<<<<<<< HEAD
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.water ])) {
-            guild.addMember(member.id, superbending.water, 'Added super-waterbending role');
-        }
-
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.earth ])) {
-            guild.addMember(member.id, superbending.earth, 'Added super-earthbending role');
-        }
-
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.fire ])) {
-            guild.addMember(member.id, superbending.fire, 'Added super-firebending role');
-        }
-
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.air ])) {
-            guild.addMember(member.id, superbending.air, 'Added super-airbending role');
-        }
-
-        if (member.roles.includes('811411331621191721') && checkRoles(member.roles, [ basebending.non ])) {
-            guild.addMember(member.id, superbending.non, 'Added super-nonbending role');
-=======
         function removeOldSuperbendingRoles(newRole) {
             for (let role of Object.values(superbending)) {
                 if (role !== newRole) {
@@ -105,7 +85,6 @@ class SuperBending extends Listener {
         if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.non ])) {
             guild.addMemberRole(member.id, superbending.non, 'Added super-nonbending role');
             removeOldSuperbendingRoles(superbending.non);
->>>>>>> 5ee38fcac802210ed78a754f40de9c4431c8e71f
         }
 
      Promise.resolve();
