@@ -37,7 +37,7 @@ Bot.start()
         console.log('Clearing duplicate bending roles...');
     }),
     cron.schedule('0 0 * * 0', () => {
-        Bot.commandRegistry.get('autobanner').execute();
+        Bot.commandRegistry.get('changebanner').execute();
         console.log('Changing server banner.');
     }),
     // new EventHandler(),
