@@ -1,7 +1,12 @@
 const { Listener } = require('axoncore');
 
-const LOG_CATEGORIES = ['372085914765099008', '372088029495689226']; // Moderation and Logs
-const UPPER_STAFF_CATEGORIES = ['828540781291241492', '719883529470738523']; // Garden Gate and Lake Laogai
+const ALLOWED_CATEGORIES = [
+    '372085914765099008', // Moderation
+    '372088029495689226', // Logs
+    '828540781291241492', // Garden Gate
+    '719883529470738523', // Lake Laogai
+    '1039274712905298062' // Community
+]; // Moderation and Logs
 const MESSAGE_LINK_REGEX = /https:\/\/(?:canary|ptb)?\.?discord\.com\/channels\/(\d+)\/(\d+)\/(\d+)/
 
 class AutoContext extends Listener {
@@ -29,7 +34,7 @@ class AutoContext extends Listener {
      */
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.channel.id !== '761932330028892194' && msg.channel.id !== '411903716996677639') return;
+        if (!ALLOWED_CATEGORIES.includes(msg.channel.parentID)) return;
 
         let msgLink = msg.content.match(MESSAGE_LINK_REGEX);
         if (!msgLink) return;
@@ -42,7 +47,7 @@ class AutoContext extends Listener {
         let embed, message = await this.bot.getMessage(channelID, messageID);
         if (UPPER_STAFF_CATEGORIES.includes(message.channel.parentID)) return; 
 
-        if (message.embeds.length && (LOG_CATEGORIES.includes(message.channel.parentID) || message.channel.id === '372098279615496192')) {
+        if (message.embeds.length && (ALLOWED_CATEGORIES.includes(message.channel.parentID) || message.channel.id === '372098279615496192')) {
             embed = message.embeds[0];
         } else {
             let oldMessages;
@@ -62,7 +67,8 @@ class AutoContext extends Listener {
                     icon_url: msg.channel.guild.iconURL
                 },
                 description: `${msgContent}`,
-                footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` }
+                footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` },
+                timestamp: message.createdAt,
             }
 
             if (message.attachments.length > 0) {
@@ -71,7 +77,6 @@ class AutoContext extends Listener {
         }
 
         msg.channel.createMessage({ 
-            content: `Is that a message link I see? Magic commencing`, 
             embed, 
             messageReference: { messageID: msg.id } 
         });
