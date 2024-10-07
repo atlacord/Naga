@@ -9,7 +9,7 @@ module.exports = {
     Daily: require('./Daily'),
     Deposit: require('./Deposit'),
     Find: require('./Find'),
-    Market: require('./Market'),
+    // Market: require('./Market'),
     Profile: require('./Profile'),
     Register: require('./Register'),
     Sell: require('./Sell'),
