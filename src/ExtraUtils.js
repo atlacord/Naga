@@ -111,12 +111,11 @@ class ExtraUtils extends Utils {
             spotify: 1947988,
             discordgrey: 2632496,
             lotus: 15913095,
-            whitelotus: 16777215,
-            sentry: 9725695,
+            whitelotus: 15458257,
+            sentry: 11250431,
             daili: 5628531,
             moverstars: 54998
         };
-
         return colors[color];
     }
     
@@ -126,7 +125,7 @@ class ExtraUtils extends Utils {
     };
 
     getStaff() {
-        return this.axon.staff
+        return this.axon.staff;
     }
 
     /**

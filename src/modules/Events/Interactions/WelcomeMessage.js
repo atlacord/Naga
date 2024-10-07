@@ -38,7 +38,7 @@ class WelcomeMessage extends Listener {
                     */
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `# Activity-based Ranks
+                        description: `## Activity-based Ranks
                         \nAs you gain XP in the server (see the FAQ section in this channel for more information about XP), you will automatically receive special rank roles:
                         
                         \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links.
@@ -54,14 +54,14 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `# Requestable Roles
+                        description: `## Requestable Roles
                         \nThe following roles cannot be self-assigned, but eligible users *who are in good standing with the staff team* may request them by DMing <@718577208687460482> Mod Mail:
                             
                         \n\n <@&830138455337730049>  – Given to members who want to host events here. Grants access to <#832247862988898334>, our channel where Event Masters organize and coordinate activities for the server. You must have the <@&372163599130558466> role (11,825 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without hosting any events.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `# Honorary Roles, Prize Roles, and Other Non-Assignable Roles
+                        description: `## Honorary Roles, Prize Roles, and Other Non-Assignable Roles
                         \n The following roles are not regularly available and can only be obtained under special circumstances:
                                
                         \n\n<@&787644908705153024> – A special birthday role given automatically by <@772934946200485938> to users on their birthday (UTC time). You must have your birthday added to your Naga profile for this to work; you can set this up by using the ` + '`n.setbirthday`' +  ` command in <#372087473892884502>.
@@ -317,7 +317,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('whitelotus'),
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/emojis/889079239146627122.webp?size=160&quality=lossless`
+                            url: `https://cdn.discordapp.com/role-icons/372084219423490049/902dcd91993b5ad9af73b0057473b0dd.png?quality=lossless`
                         },
                         title: `White Lotus - Admins`,
                         description: `The server admins. They handle operations regarding server management.\n\n${wl.join('\n')}`
@@ -325,7 +325,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('sentry'),
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/emojis/771008569431949312.webp?size=80&quality=lossless`
+                            url: `https://cdn.discordapp.com/role-icons/1182448979288527029/2779c1a6e89ef34940c8b763990dc1a5.png?quality=lossless`
                         },
                         title: `Sentry - Senior Mods`,
                         description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.join('\n')}`
@@ -333,7 +333,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('daili'), 
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/attachments/761932330028892194/1051301088386633788/dai_li_tile.png`
+                            url: `https://cdn.discordapp.com/role-icons/1182449762583191592/a18ecc6e56d679bc4e4a4cd924826cab.png?quality=lossless`
                         },
                         title: `Dai Li - Mods`,
                         description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.join('\n')}`
@@ -341,7 +341,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('moverstars'), 
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/emojis/1248340108374179950.webp?size=96&quality=lossless`
+                            url: `https://cdn.discordapp.com/role-icons/1224072458206711928/85f4a7faf1da5e32217c47b0718be6dc.png?quality=lossless`
                         },
                         title: `Mover Stars - Community Engagement & Operations`,
                         description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.join('\n')}`

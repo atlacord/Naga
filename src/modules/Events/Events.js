@@ -2,13 +2,13 @@ module.exports = {
     CheckServer: require('./Misc/CheckServer'),
 
     ExistingTeamAvatar: require('./Misc/ExistingTeamAvatar'),
-    Ready: require('./Misc/Ready'),
+    // Ready: require('./Misc/Ready'),
     // RuleScreening: require('./RoleHandling/RuleScreening'),
     TeamAvatar: require('./Misc/TeamAvatar'),
 
     // === Appa / Dyno Logs ===
-     AddNote: require('./AppaLogs/AddNote'),
-     Ban: require('./AppaLogs/Ban'),
+    // AddNote: require('./AppaLogs/AddNote'),
+    // Ban: require('./AppaLogs/Ban'),
     // Logwarn: require('./AppaLogs/Logwarn'),
     // Mute: require('./AppaLogs/Mute'),
     // RemoveNote: require('./AppaLogs/RemoveNote'),

@@ -1,7 +1,13 @@
 const { Listener } = require('axoncore');
 
-const LOG_CATEGORIES = ['372085914765099008', '372088029495689226']; // Moderation and Logs
-const UPPER_STAFF_CATEGORIES = ['828540781291241492', '719883529470738523']; // Garden Gate and Lake Laogai
+const ALLOWED_CATEGORIES = [
+    '372085914765099008', // Moderation
+    '372088029495689226', // Logs
+    '828540781291241492', // Garden Gate
+    '719883529470738523', // Lake Laogai
+    '1039274712905298062' // Community
+];
+
 const MESSAGE_LINK_REGEX = /https:\/\/(?:canary|ptb)?\.?discord\.com\/channels\/(\d+)\/(\d+)\/(\d+)/
 
 class AutoContext extends Listener {
@@ -11,16 +17,11 @@ class AutoContext extends Listener {
      */
     constructor(module, data = {} ) {
         super(module, data);
-
-        /** Event Name (Discord name) */
         this.eventName = 'messageCreate';
-        /** Event name (Function name) */
         this.label = 'AutoContext';
-
         this.enabled = true;
-
         this.info = {
-            description: 'Automatically expands upon message links sent in Dai Li',
+            description: 'Automatically expands upon message links sent in staff channels',
         };
     }
 
@@ -29,7 +30,7 @@ class AutoContext extends Listener {
      */
     async execute(msg) { // eslint-disable-line
         if (msg.author.bot) return;
-        if (msg.channel.id !== '761932330028892194' && msg.channel.id !== '411903716996677639') return;
+        if (!ALLOWED_CATEGORIES.includes(msg.channel.parentID)) return;
 
         let msgLink = msg.content.match(MESSAGE_LINK_REGEX);
         if (!msgLink) return;
@@ -42,18 +43,18 @@ class AutoContext extends Listener {
         let embed, message = await this.bot.getMessage(channelID, messageID);
         if (UPPER_STAFF_CATEGORIES.includes(message.channel.parentID)) return; 
 
-        if (message.embeds.length && (LOG_CATEGORIES.includes(message.channel.parentID) || message.channel.id === '372098279615496192')) {
-            embed = message.embeds[0];
+        if (message.embeds.length && (ALLOWED_CATEGORIES.includes(message.channel.parentID)) || message.channel.id === '372098279615496192') {
+            embed = message.embeds[0]; // Ssend embed for bot messages sent in log channels or #avatar-feeds without additional context
         } else {
             let oldMessages;
             await this.bot.getMessages(channelID, { before: messageID, limit: quantity })
             .then(async messages => {
                 messages = messages.filter(Boolean).map(msg => {
-                    return `**${this.utils.fullName(msg.author)}** (<t:${Math.floor(msg.createdAt / 1000)}:R>)  –  ${msg.content}\n`;
+                    return `**${this.utils.fullName(msg.author)}** (<t:${Math.floor(msg.createdAt / 1000)}:R>)  -  ${msg.content}\n`;
                 })
                 oldMessages = messages.reverse();
             });
-            oldMessages.push(`__**${this.utils.fullName(message.author)} (<t:${Math.floor(message.createdAt / 1000)}:R>)  –  ${message.content}**__`);
+            oldMessages.push(`__**${this.utils.fullName(message.author)} (<t:${Math.floor(message.createdAt / 1000)}:R>)  -  ${message.content}**__`);
             let msgContent = oldMessages.join('\n');
             embed = {
                 color: this.utils.getColor('blue'),
@@ -62,7 +63,8 @@ class AutoContext extends Listener {
                     icon_url: msg.channel.guild.iconURL
                 },
                 description: `${msgContent}`,
-                footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` }
+                footer: { text: `Message ID: ${message.id} | Author ID: ${message.author.id}` },
+                timestamp: message.createdAt
             }
 
             if (message.attachments.length > 0) {
@@ -71,7 +73,6 @@ class AutoContext extends Listener {
         }
 
         msg.channel.createMessage({ 
-            content: `Is that a message link I see? Magic commencing`, 
             embed, 
             messageReference: { messageID: msg.id } 
         });
