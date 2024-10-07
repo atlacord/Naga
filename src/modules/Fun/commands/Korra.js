@@ -4,8 +4,6 @@ const server = require('../../../Models/Server');
 const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 
-let ignoredTopics = require('../../../assets/IgnoredKorraTopics.json');
-
 const COMMAND_COOLDOWN = 600000;
 
 class Korra extends Command {
