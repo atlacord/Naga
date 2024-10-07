@@ -5,7 +5,6 @@ module.exports = {
     ArchiveImages: require('./ArchiveImages'),
     DuplicateBending: require('./DuplicateBending'),
     GetArchive: require('./GetArchive'),
-    GetMessage:require('./GetMessage'),
     IgnoreChannel: require('./IgnoreChannel'),
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
