@@ -28,11 +28,11 @@ class Start extends Command {
         });
 
         this.permissions = new CommandPermissions(this, {
-            // staff: {
-            //     needed: this.axon.staff.sentries,
-            //     bypass: this.axon.staff.owners,
-            // },
-            custom: (msg) => msg.member.roles.includes('830138455337730049') // Event Masters
+            custom: (msg) => {
+                return msg.member.roles.includes('830138455337730049') || // Event Master
+                msg.member.roles.includes('871374249808527380') || // + role
+                msg.member.roles.includes('1182448979288527029') // Sentry
+            }
         });
     }
     /**
