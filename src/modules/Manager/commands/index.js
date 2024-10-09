@@ -9,6 +9,7 @@ module.exports = {
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
     MessageContext: require('./MessageContext'),
+    MigrateJoinMessages: require('./MigrateJoinMessages'),
     Nick: require('./Nick'),
     // Prefix: require('./Prefix'),
     // Setnick: require('./Setnick'),
