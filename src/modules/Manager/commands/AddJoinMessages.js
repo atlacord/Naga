@@ -46,12 +46,12 @@ class AddJoinMessages extends Command {
           return;
         }
 
-        const userPlaceholderRegex = /{USER}+/;
-        const newJoinMessages = args.join(' ').split('|').map((m) => m.trim());
+        const userPlaceholderRegex = /\B{USER}\B/;
+        const newJoinMessages = args.join(' ').split('|').map((m) => m.trim().replaceAll(/[\n\r]/g, ''));
 
         for (let m of newJoinMessages) {
           if (!userPlaceholderRegex.test(m)) {
-            return this.sendError(msg.channel, 'You need to have {USER} (case sensitive) present in your join message(s)!');
+            return this.sendError(msg.channel, 'Incorrect format! Correct examples: `The name\'s {USER} Pippenpaddle-Oppsocopolis... the Third`, `{USER} spins the wheel of judgement and got community service`');
           }
         }
 
