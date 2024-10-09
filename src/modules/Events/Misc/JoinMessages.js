@@ -1,7 +1,7 @@
 const { Listener } = require('axoncore');
 
 const config = require('../../../../configs/config.json');
-const messages = require('../../../assets/joinmessages.json');
+const server = require('../../../Models/Server.js');
 
 class JoinMessages extends Listener {
     /**
@@ -19,18 +19,19 @@ class JoinMessages extends Listener {
         this.enabled = true;
 
         this.info = {
-            description: 'Naga join messages (for when appa goes down)',
+            description: 'Naga join messages',
         };
     }
 
     /**
      * @param {import('eris').Message} msg
      */
-
+    
     async execute(guild, member) { // eslint-disable-line
         if (config.settings.joinLogs === true && guild.id === '370708369951948800') {
+            const messages = (await server.findById(guild.id).exec()).data.joinMessages;
             let joinmsg = Math.floor(Math.random() * messages.length);
-            let msg = messages[joinmsg]
+            let msg = messages[joinmsg];
             msg = msg.replace(/['"]+/g, "'")
             msg = msg.replace(/{\w[{USER}]+/g, `${member.mention}`);
             await this.bot.getChannel('761932923217379338').createMessage(msg);
