@@ -1,4 +1,5 @@
 module.exports = {
+    AddJoinMessages: require('./AddJoinMessages'),
     AddTopic: require('./AddTopic'),
     Archive: require('./Archive'),
     ArchiveAll: require('./ArchiveAll'),
@@ -9,11 +10,9 @@ module.exports = {
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
     MessageContext: require('./MessageContext'),
-    MigrateJoinMessages: require('./MigrateJoinMessages'),
     Nick: require('./Nick'),
     // Prefix: require('./Prefix'),
     // Setnick: require('./Setnick'),
-    // PollResults: require('./PollResults'),
     Respond: require('./Respond'),
     SetLogChannel: require('./SetLogChannel'),
     ViewSuggestion: require('./ViewSuggestion'),
