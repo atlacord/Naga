@@ -12,6 +12,11 @@ const UPPER_STAFF_CATEGORIES = [
     '719883529470738523', // Lake Laogai
 ];
 
+const ADMIN_CHANNELS = [
+    '370708369951948802', // old-people-camp
+    '1108139717955944488', // internal-changelog
+]
+
 const ALLOWED_CATEGORIES = [ ...SHARED_STAFF_CATEGORIES, ...UPPER_STAFF_CATEGORIES ];
 
 const MESSAGE_LINK_REGEX = /https:\/\/(?:canary|ptb)?\.?discord\.com\/channels\/(\d+)\/(\d+)\/(\d+)/
@@ -65,8 +70,14 @@ class AutoContext extends Listener {
         let embed, linkedMessage = await this.bot.getMessage(channelID, messageID);
         let linkedMessageCategoryID = this.getCategoryID(linkedMessage.channel);
 
+        // Links from admin channels and threads can only embed in admin channels
+        if ((ADMIN_CHANNELS.includes(linkedMessage.channel.id) || ADMIN_CHANNELS.includes(linkedMessage.parentID)) && !ADMIN_CHANNELS.includes(msg.channel.id)) return;
+
         // Prevent links from upper staff categories from embedding in shared staff categories
-        if (UPPER_STAFF_CATEGORIES.includes(linkedMessageCategoryID) && SHARED_STAFF_CATEGORIES.includes(parentID)) return; 
+        if (UPPER_STAFF_CATEGORIES.includes(linkedMessageCategoryID) && SHARED_STAFF_CATEGORIES.includes(parentID)) return;
+
+        // Prevent links from the Moderation and Logs categories from embedding in the Community category
+        if ((linkedMessageCategoryID === '372085914765099008' || linkedMessageCategoryID === '372088029495689226') && parentID === '1039274712905298062') return;
 
         if (linkedMessage.embeds.length && (ALLOWED_CATEGORIES.includes(linkedMessageCategoryID)) || linkedMessage.channel.id === '372098279615496192') {
             embed = linkedMessage.embeds[0]; // Send embed for bot messages sent in log channels or #avatar-feeds without additional context
