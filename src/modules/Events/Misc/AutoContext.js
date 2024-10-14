@@ -17,6 +17,12 @@ const ADMIN_CHANNELS = [
     '1108139717955944488', // internal-changelog
 ]
 
+const MOVER_STARS_CHANNELS = [
+    '1032450052112793700', // mover-stars
+    '1049810187650879498', // partners-chat
+    '869740603557158973', // wiki
+]
+
 const ALLOWED_CATEGORIES = [ ...SHARED_STAFF_CATEGORIES, ...UPPER_STAFF_CATEGORIES ];
 
 const MESSAGE_LINK_REGEX = /https:\/\/(?:canary|ptb)?\.?discord\.com\/channels\/(\d+)\/(\d+)\/(\d+)/
@@ -68,10 +74,26 @@ class AutoContext extends Listener {
         let quantity = 5;
 
         let embed, linkedMessage = await this.bot.getMessage(channelID, messageID);
-        let linkedMessageCategoryID = this.getCategoryID(linkedMessage.channel);
+        if (linkedMessage.channel instanceof Eris.PrivateThreadChannel) return;
 
-        // Links from admin channels and threads can only embed in admin channels
-        if ((ADMIN_CHANNELS.includes(linkedMessage.channel.id) || ADMIN_CHANNELS.includes(linkedMessage.parentID)) && !ADMIN_CHANNELS.includes(msg.channel.id)) return;
+        // Links from admin channels and threads can only embed in those same places
+        if (
+            (ADMIN_CHANNELS.includes(linkedMessage.channel.id) || ADMIN_CHANNELS.includes(linkedMessage.channel.parentID)) && 
+            (!ADMIN_CHANNELS.includes(msg.channel.id) && !ADMIN_CHANNELS.includes(msg.channel.parentID))
+        ) {
+           return;
+        }
+
+        // Links from Mover Stars channels and threads can only embed in those same places
+        if (
+            (MOVER_STARS_CHANNELS.includes(linkedMessage.channel.id) || MOVER_STARS_CHANNELS.includes(linkedMessage.channel.parentID)) && 
+            (!MOVER_STARS_CHANNELS.includes(msg.channel.id) && !MOVER_STARS_CHANNELS.includes(msg.channel.parentID)) &&
+            (!ADMIN_CHANNELS.includes(msg.channel.id) && !ADMIN_CHANNELS.includes(msg.channel.parentID))
+        ) {
+           return;
+        }
+
+        let linkedMessageCategoryID = this.getCategoryID(linkedMessage.channel);
 
         // Prevent links from upper staff categories from embedding in shared staff categories
         if (UPPER_STAFF_CATEGORIES.includes(linkedMessageCategoryID) && SHARED_STAFF_CATEGORIES.includes(parentID)) return;
