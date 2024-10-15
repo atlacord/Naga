@@ -1,6 +1,7 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const banners = require('../../../assets/banners.json');
 const axios = require('axios');
+const server = require('../../../Models/Server.js');
 
 class ChangeBanner extends Command {
     /**
@@ -46,16 +47,30 @@ class ChangeBanner extends Command {
         return res;
     }
 
-    async execute() {
-        let banner = Math.floor(Math.random() * banners.length);
-        banner = banners[banner];
-        let res = await this.convertImage(banner);
+    async execute({ msg }) {
+        server.findById(msg.guildID, async (err, doc) => {
+            if (doc.data.usedBanners.length === banners.length) {
+                doc.data.usedBanners = doc.data.usedBanners.slice(-1); // Keep last element only to prevent it from being used again
+            }
 
-        try {
-            await this.bot.guilds.get('370708369951948800').edit({ banner: res }, 'Weekly autochange');
-        } catch (err) {
-            console.error(`Failed to change the banner: ${err}`)
-        };
+            let index, banner;
+            do { 
+                index = Math.floor(Math.random() * banners.length);
+                banner = banners[index]; 
+            } while(doc.data.usedBanners.includes(banner));
+
+            doc.data.usedBanners.push(banner);
+
+            let res = await this.convertImage(banner);
+
+            doc.save().then(async () => {
+                try {
+                    await this.bot.guilds.get('370708369951948800').edit({ banner: res }, 'Weekly autochange');
+                } catch (err) {
+                    console.error(`Failed to change the banner: ${err}`)
+                };
+            });
+        });
     }
 }
 
