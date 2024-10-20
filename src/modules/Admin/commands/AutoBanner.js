@@ -47,8 +47,8 @@ class ChangeBanner extends Command {
         return res;
     }
 
-    async execute({ msg }) {
-        server.findById(msg.guildID, async (err, doc) => {
+    async execute() {
+        server.findById('370708369951948800', async (err, doc) => {
             if (doc.data.usedBanners.length === banners.length) {
                 doc.data.usedBanners = doc.data.usedBanners.slice(-1); // Keep last element only to prevent it from being used again
             }
