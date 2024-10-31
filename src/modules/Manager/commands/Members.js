@@ -52,6 +52,8 @@ class Members extends Command {
 
         const role = this.utils.resolveRole(msg.channel.guild, args.join(' '));
 
+        if (!role) return this.sendError(msg.channel, 'That role doesn\'t exist!');
+
         let rolemembers = this.bot.guilds.get('370708369951948800').members.filter(m =>
             (m.roles.includes(role.id)));
             for (let member of rolemembers) {
