@@ -7,6 +7,7 @@ module.exports = {
     DuplicateBending: require('./DuplicateBending'),
     GetArchive: require('./GetArchive'),
     IgnoreChannel: require('./IgnoreChannel'),
+    JoinMessagesList: require('./JoinMessagesList'),
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
     MessageContext: require('./MessageContext'),

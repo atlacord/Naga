@@ -11,6 +11,7 @@
     "davie-eris-embed": "^1.0.3",
     "dotenv": "^16.0.3",
     "eris": "CaptainM777/eris",
+    "eris-pagination": "github:CaptainM777/eris-pagination",
     "esm": "^3.2.25",
     "hastebin": "^0.2.1",
     "imgur": "^2.2.0",
