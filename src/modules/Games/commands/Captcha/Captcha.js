@@ -2,7 +2,7 @@ const { Command, CommandOptions } = require('axoncore');
 const { createCanvas, registerFont } = require('canvas');
 const _ = require('lodash');
 const profile = require('../../../../Models/Profile');
-registerFont('src/assets/captcha.ttf', { family: 'Captcha'});
+// registerFont('src/assets/captcha.ttf', { family: 'Captcha'});
 
 class Captcha extends Command {
     /**
@@ -90,6 +90,8 @@ class Captcha extends Command {
     
     async execute({ msg }) {
         profile.findById(msg.author.id, async (err, doc) => {
+            if (!doc) return msg.channel.createMessage('You don\'t have a wallet yet! Register one with `n.register`.');
+            
             let baseCredits = 100;
             let captchaCount = 0;
             let hasNotEnded = true;
