@@ -73,6 +73,7 @@ class FlagQuiz extends Command {
 
     async execute({ msg }) {
         profile.findById(msg.author.id, async (err, doc) => {
+            if (!doc) return msg.channel.createMessage('You don\'t have a wallet yet! Register one with `n.register`.');
 
             let hasNotEnded = true, attempts = 0, baseCredits = 200;
             let reason = null;
