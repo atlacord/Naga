@@ -4,7 +4,7 @@ module.exports = {
     Bank: require('./Bank'),
     Beg: require('./Beg'),
     Bet: require('./Bet'),
-    Buy: require('./Buy'),
+    // Buy: require('./Buy'),
     CreditLeaderboard: require('./CreditLeaderboard'),
     Daily: require('./Daily'),
     Deposit: require('./Deposit'),
@@ -12,7 +12,7 @@ module.exports = {
     // Market: require('./Market'),
     Profile: require('./Profile'),
     Register: require('./Register'),
-    Sell: require('./Sell'),
+    // Sell: require('./Sell'),
     SetBio: require('./SetBio'),
     SetBirthday: require('./SetBirthday'),
     Withdraw: require('./Withdraw')
