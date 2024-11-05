@@ -36,14 +36,14 @@ class TopicsList extends Command {
         }
 
         const topics = doc.data.topics.map((joinMsg, index) => `**${index + 1}:** ${joinMsg}`);
-        const numberOfPages = Math.ceil(topics.length / 20);
+        const numberOfPages = Math.ceil(topics.length / 50);
 
         let embeds = [];
 
         let startingIndex = 0;
         for (let i=0; i < numberOfPages; i++) {
-            let topicsOnPage = topics.slice(startingIndex, startingIndex + 20);
-            startingIndex += 20; // starting point for next iteration
+            let topicsOnPage = topics.slice(startingIndex, startingIndex + 50);
+            startingIndex += 50; // starting point for next iteration
 
             embeds.push({ 
                 color: this.utils.getColor('blue'), 
