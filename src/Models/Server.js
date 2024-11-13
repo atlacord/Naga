@@ -9,6 +9,8 @@ const serverSchema = mongoose.model('server_config', new Schema({
         logChannel: { type: String, default: null },
         ignoredChannels: { type: Array, default: null }
     },
+    joinMessages: { type: Array, default: [] },
+    usedBanners: { type: Array, default: [] },
     topics: { type: Array, default: [] },
     wyrs: { type: Array, default: [] },
     ignoredTopics: { type: Array, default: [] },

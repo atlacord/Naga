@@ -3,7 +3,7 @@ const { createCanvas, registerFont } = require('canvas');
 const _ = require('lodash');
 const topic = require('../../../../assets/typingtopics.json');
 const profile = require('../../../../Models/Profile');
-registerFont('src/assets/handwriting.ttf', { family: 'Handwriting'});
+// registerFont('src/assets/handwriting.ttf', { family: 'Handwriting'});
 
 class TypingQuiz extends Command {
     /**
@@ -41,6 +41,8 @@ class TypingQuiz extends Command {
 
     async execute({ msg }) {
         profile.findById(msg.author.id, async (err, doc) => {
+            if (!doc) return msg.channel.createMessage('You don\'t have a wallet yet! Register one with `n.register`.');
+            
             let quote = Math.floor(Math.random() * topic.length);
             quote = topic[quote];
             let failed = false;

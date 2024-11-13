@@ -74,13 +74,14 @@ class DuplicateBending extends Command {
 
         if (total === 0) return;
         else {
-            return this.sendMessage(c, {
-                embed: {
-                    color: this.utils.getColor('blue'),
-                    description: `Removed the Nonbender role from ${total} members with other bending roles.`,
-                    timestamp: new Date(),
-                }
-            }), console.info(`[Server Utilities] Removed the Nonbender role from ${total} members.`);
+            return console.info(`[Server Utilities] Removed the Nonbender role from ${total} members.`);
+            // this.sendMessage(c, {
+            //     embed: {
+            //         color: this.utils.getColor('blue'),
+            //         description: `Removed the Nonbender role from ${total} members with other bending roles.`,
+            //         timestamp: new Date(),
+            //     }
+            // }), console.info(`[Server Utilities] Removed the Nonbender role from ${total} members.`);
         }
     }
 }

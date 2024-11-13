@@ -39,6 +39,7 @@ class LogoQuiz extends Command {
 
     async execute({ msg }) {
         profile.findById(msg.author.id, async (err, doc) => {
+            if (!doc) return msg.channel.createMessage('You don\'t have a wallet yet! Register one with `n.register`.');
 
             const meta =  logos[Math.floor(Math.random() * logos.length)];
 

@@ -4,8 +4,6 @@ const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 const server = require('../../../Models/Server');
 
-let ignoredTopics = require('../../../assets/IgnoredATLATopics.json');
-
 const COMMAND_COOLDOWN = 600000;
 
 class ATLA extends Command {
