@@ -104,7 +104,7 @@ class WelcomeMessage extends Listener {
                         \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                         \n- <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
-                        \n- <#1066599364967006228> - Our partnered Discord servers which you can also join and enjoy!
+                        \n- <#1305666414610350090> - Our partnered Discord servers which you can also join and enjoy!
                         \n- <#1200650255524438096> - Our hall of fame for past contest winners!`
                     },
                     { 
@@ -219,7 +219,7 @@ class WelcomeMessage extends Listener {
                         \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
                         \n- <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
-                        \n- <#1066599364967006228> - Our partnered Discord servers which you can also join and enjoy!
+                        \n- <#1305666414610350090> - Our partnered Discord servers which you can also join and enjoy!
                         \n- <#529791576545951744> - Our hall of fame for past contest winners!`
                     },
                     { 
