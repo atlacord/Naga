@@ -1,23 +1,20 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const server = require('../../../Models/Server.js');
+const server = require('../../../../Models/Server.js');
 
-class AddJoinMessages extends Command {
+class Add extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'addjoinmessages';
-        this.aliases = [ 'addjoin', 'addjoinmessage' ];
-
-        this.hasSubcmd = false;
+        this.label = 'add';
 
         this.info = {
-            name: 'addjoinmessages',
+            name: 'joinmsgs add',
             description: 'Adds one or more join messages. Separate multiple messages with the pipe symbol (|).',
-            usage: 'addjoinmessages [message(s)]',
-            examples: [ 'addjoinmessages Get over here, {USER}. Being part of the group also means being part of group hugs.|Asami and {USER} have returned from their vacation in the spirit world.' ]
+            usage: 'joinmsgs add [message(s)]',
+            examples: [ 'joinmsgs add Get over here, {USER}. Being part of the group also means being part of group hugs.|Asami and {USER} have returned from their vacation in the spirit world.' ]
         };
 
         /**
@@ -26,13 +23,6 @@ class AddJoinMessages extends Command {
         this.options = new CommandOptions(this, {
             argsMin: 1,
             guildOnly: true,
-        } );
-
-        this.permissions = new CommandPermissions(this, {
-            staff: {
-                needed: [...this.axon.staff.sentries, ...this.axon.staff.admins],
-                bypass: this.axon.staff.owners,
-            },
         } );
     }
     /**
@@ -61,5 +51,5 @@ class AddJoinMessages extends Command {
     }
 }
 
-module.exports = AddJoinMessages;
+module.exports = Add;
 
