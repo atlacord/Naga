@@ -1,29 +1,21 @@
 const { Command, CommandPermissions } = require('axoncore');
-const server = require('../../../Models/Server.js');
+const server = require('../../../../Models/Server.js');
 const embedPaginator = require('eris-pagination');
 
-class JoinMessagesList extends Command {
+class List extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'joinmessageslist';
-        this.aliases = [ 'joinlist', 'joinmessagelist' ];
+        this.label = 'list';
 
         this.info = {
-            name: 'joinmessageslist',
+            name: 'joinmsgs list',
             description: 'Shows all of the join messages.',
-            usage: 'joinmessageslist',
+            usage: 'joinmsgs list',
         };
-
-        this.permissions = new CommandPermissions(this, {
-            staff: {
-                needed: [...this.axon.staff.dailis, ...this.axon.staff.sentries, ...this.axon.staff.admins],
-                bypass: this.axon.staff.owners,
-            },
-        } );
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env
@@ -58,5 +50,5 @@ class JoinMessagesList extends Command {
     }
 }
 
-module.exports = JoinMessagesList;
+module.exports = List;
 

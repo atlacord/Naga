@@ -1,5 +1,4 @@
 module.exports = {
-    AddJoinMessages: require('./AddJoinMessages'),
     AddTopic: require('./AddTopic'),
     Archive: require('./Archive'),
     ArchiveAll: require('./ArchiveAll'),
@@ -7,7 +6,7 @@ module.exports = {
     DuplicateBending: require('./DuplicateBending'),
     GetArchive: require('./GetArchive'),
     IgnoreChannel: require('./IgnoreChannel'),
-    JoinMessagesList: require('./JoinMessagesList'),
+    JoinMessages: require('./JoinMessages'),
     LoadSuggestion: require('./LoadSuggestion'),
     Members: require('./Members'),
     MessageContext: require('./MessageContext'),
