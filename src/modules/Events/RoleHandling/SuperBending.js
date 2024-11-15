@@ -41,6 +41,12 @@ class SuperBending extends Listener {
             non: '1180969393841242194'
         }
 
+        const rankRoles = [
+            '811411225639518209', // Elder
+            '811411331621191721', // Luminary
+            '811411413573697556' // Enlightened
+        ]
+
         function checkRoles(array, values) {
             let res;
             for (let i in values) {
@@ -62,27 +68,34 @@ class SuperBending extends Listener {
             }
         };
 
-        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.water ])) {
+        function hasRankRole(memberRoles) {
+            for (let role of rankRoles) {
+                if (memberRoles.includes(role)) return true;
+            }
+            return false;
+        };
+
+        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.water ])) {
             guild.addMemberRole(member.id, superbending.water, 'Added super-waterbending role');
             removeOldSuperbendingRoles(superbending.water);
         }
 
-        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.earth ])) {
+        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.earth ])) {
             guild.addMemberRole(member.id, superbending.earth, 'Added super-earthbending role');
             removeOldSuperbendingRoles(superbending.earth);
         }
 
-        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.fire ])) {
+        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.fire ])) {
             guild.addMemberRole(member.id, superbending.fire, 'Added super-firebending role');
             removeOldSuperbendingRoles(superbending.fire);
         }
 
-        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.air ])) {
+        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.air ])) {
             guild.addMemberRole(member.id, superbending.air, 'Added super-airbending role');
             removeOldSuperbendingRoles(superbending.air);
         }
 
-        if (member.roles.includes('811411225639518209') && checkRoles(member.roles, [ basebending.non ])) {
+        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.non ])) {
             guild.addMemberRole(member.id, superbending.non, 'Added super-nonbending role');
             removeOldSuperbendingRoles(superbending.non);
         }
