@@ -92,7 +92,7 @@ class Staff extends Command {
             }
 
         let moverstars = this.bot.guilds.get('370708369951948800').members.filter(m =>
-            (m.roles.includes('1182449762583191592') && (!m.roles.includes('1224072458206711928')))); // Mover Star
+            (m.roles.includes('1224072458206711928') && (!m.roles.includes('372084219423490049')))); // Mover Star
             for (let i in moverstars) {
                 let member = await this.bot.getRESTUser(moverstars[i].id);
                 moverstar.push(this.utils.fullName(member));
