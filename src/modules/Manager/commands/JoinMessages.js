@@ -1,8 +1,8 @@
 const { Command, CommandPermissions } = require('axoncore');
-const List = require('./JoinMessages/List.js');
-const Edit = require('./JoinMessages/Edit.js');
-const Add = require('./JoinMessages/Add.js');
-const Remove = require('./JoinMessages/Remove.js');
+const List = require('./List.js');
+const Edit = require('./Edit.js');
+const Add = require('./Add.js');
+const Remove = require('./Remove.js');
 
 class JoinMessages extends Command {
     /**
@@ -33,7 +33,7 @@ class JoinMessages extends Command {
         return [List, Edit, Add, Remove];
     }
     
-    async execute({ msg, args }) {
+    async execute({ msg }) {
       msg.channel.createMessage('Subcommands available: `n.joinmsgs add`, `n.joinmsgs remove`, `n.joinmsgs edit`, and `n.joinmsgs list`. For more info about one, run the subcommand with no arguments.');
     }
 }
