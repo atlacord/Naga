@@ -1,5 +1,6 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const { readFileSync, writeFileSync } = require('fs');
+const Eris = require('eris');
 // const axios = require('axios');
 const topics = require('../../../assets/topics.json');
 const server = require('../../../Models/Server');
@@ -8,6 +9,14 @@ const ATLA = require('./ATLA');
 const Korra = require('./Korra');
 
 const COMMAND_COOLDOWN = 600000;
+
+const ignoredCategories = [
+    '372086709950611456', // Avatar
+    '765832566875095040', // Miscellaneous
+    '372085914765099008', // Moderation
+    '719883529470738523', // Lake Laogai
+    '828540781291241492' // The Garden Gate
+]; // Ignore mod categories to avoid conflict with n.topics command
 
 class Topic extends Command {
     /**
@@ -38,7 +47,17 @@ class Topic extends Command {
         } );
 
         this.permissions = new CommandPermissions(this, {
-            custom: (msg) => (msg.channel.parentID !== '372086709950611456' || '765832566875095040' || '765832566875095040'),
+            custom: (msg) => {
+                let categoryID;
+                if (msg.channel instanceof Eris.PublicThreadChannel || msg.channel instanceof Eris.PrivateThreadChannel) {
+                    let parentTextChannel = this.bot.getChannel(msg.channel.parentID);
+                    categoryID = parentTextChannel.parentID;
+                } else {
+                    categoryID = msg.channel.parentID;
+                }
+
+                return !ignoredCategories.includes(categoryID); 
+            },
         });
     }
     /**
