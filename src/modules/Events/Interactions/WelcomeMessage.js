@@ -57,7 +57,7 @@ class WelcomeMessage extends Listener {
                         description: `## Requestable Roles
                         \nThe following roles cannot be self-assigned, but eligible users *who are in good standing with the staff team* may request them by DMing <@718577208687460482> Mod Mail:
                             
-                        \n\n <@&830138455337730049>  – Given to members who want to host events here. Grants access to <#832247862988898334>, our channel where Event Masters organize and coordinate activities for the server. You must have the <@&372163599130558466> role (11,825 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without hosting any events.`
+                        \n\n <@&830138455337730049>  – Given to members who want to host events here. Grants access to <#1281662631698108486>, our channel where Event Masters organize and coordinate activities for the server. You must have the <@&372163599130558466> role (11,825 XP) to be eligible for the role; our staff team also reserves the right to remove this role from a user if they go a prolonged period without hosting any events.`
                     },
                     {
                         color: this.utils.getColor('lotus'),
