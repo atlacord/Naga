@@ -45,7 +45,7 @@ class WelcomeMessage extends Listener {
                         \n__4,675 XP__     • <@&372178560254869504> - Grants access to Discord polls.
                         \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below).
                         \n__42,000 XP__    • <@&372179082634330112> 
-                        \n__101,675 XP__   • <@&372179236842242048> - Allows a [Wiki](https://wiki.atla.sh/) page for the user.
+                        \n__101,675 XP__   • <@&372179236842242048>
                         \n__200,850 XP__   • <@&423269295930343424> 
                         \n__349,525 XP__   • <@&434950614997401600> - Allows custom bot commands, made in <#1093583806813970444>.
                         \n__557,700 XP__   • <@&811411225639518209> - Grants high level roles (<@&1180969376770441298>, <@&1180969390049607791>, <@&1180969386245378058>, <@&1180969398048129166> and <@&1180969393841242194>) based on the bending of your choice.
