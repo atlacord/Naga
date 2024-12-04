@@ -55,7 +55,6 @@ class WelcomeButtons extends Command {
                     \n\nFor any questions, feedback, concerns or reports, you can contact the server staff by messaging <@718577208687460482>, our modmail bot. A staff member will reply to you as soon as possible after you have sent a message. To handle the situation quickly and efficiently, please provide the staff with all relevant information.
 
                     \nWant to connect with us more? Check out these links below!
-                    \n[Community Wiki](https://wiki.atla.sh) - Run by our community, the wiki contains server lore and pages on our active users, events and groups!
                     \n[Linktree](https://atla.sh/) - Check us out on social media!`,
                 },
             ],
