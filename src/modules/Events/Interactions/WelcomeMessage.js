@@ -119,6 +119,13 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
+                        description: `## Meta
+                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
+                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
                         description: `## General Channels
                         \n- <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
                         \n- <#826851222459514923> – A private channel for server boosters.
@@ -135,7 +142,6 @@ class WelcomeMessage extends Listener {
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
                         \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
                 ]
@@ -155,12 +161,6 @@ class WelcomeMessage extends Listener {
                 }],
 
                 embeds: [
-                    {
-                        color: this.utils.getColor('lotus'),
-                        description: `## Meta
-                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
-                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!`
-                    },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `## Miscellaneous
@@ -233,6 +233,13 @@ class WelcomeMessage extends Listener {
                     },
                     {
                         color: this.utils.getColor('lotus'),
+                        description: `## Meta
+                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
+                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
                         description: `## General Channels
                         \n- <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
                         \n- <#826851222459514923> – A private channel for server boosters.
@@ -249,7 +256,6 @@ class WelcomeMessage extends Listener {
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
                         \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
                 ]
