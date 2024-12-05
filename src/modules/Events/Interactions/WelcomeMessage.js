@@ -122,7 +122,8 @@ class WelcomeMessage extends Listener {
                         description: `## Meta
                         \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
                         \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.`
+                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+                        \nAny ongoing contest channels will go into this category as well!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -168,7 +169,7 @@ class WelcomeMessage extends Listener {
                         \n- <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 6 in <#1066580298290176121>.
                         \n- <#884990489756045332> – For discussing art or other creative works posted in <#372087240270151680>!
                         \n- <#487958065690312724> – For discussing sports, music, movies, TV shows, games or books! Be sure to use spoiler tags if something recently released is being discussed! Any announcements regarding gaming offers will be posted and pinned in this channel too! 
-                        \n- <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
+                        \n- <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord! Also be sure to participate in our Wholesome Wednesdays, and give yourself the appropriate role (see "Choose your notifications!" in <id:customize>) to be pinged for these!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -236,7 +237,8 @@ class WelcomeMessage extends Listener {
                         description: `## Meta
                         \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
                         \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.`
+                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+                        \nAny ongoing contest channels will go into this category as well!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
