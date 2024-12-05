@@ -175,7 +175,6 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `## Sato's Workshop
                         \n- <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
-                        \n- <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
                         \n- <#372087473892884502> – The standard channel for sending bot commands.
                         \n- <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
                     },
@@ -184,7 +183,7 @@ class WelcomeMessage extends Listener {
                         description: `## Voice Channels
                         \n The text chat for each voice channel is located within that VC itself.
                         \n- <#372087824083845130> – Use this channel to listen to music or just chat!
-                        \n- <#370708369951948804>  – Secondary VC for users with <@&720343753805660183> rank and above.
+                        \n- <#370708369951948804>  – Secondary VC, same purpose as above channel
                         \n- <#1056703542745890899> – For hosting our streams! Stay up to date by checking out our Events tab!
                         \n- <#836266973746692116> – For our non-streaming stage events!`
                     }                 
