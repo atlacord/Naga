@@ -45,7 +45,7 @@ class WelcomeMessage extends Listener {
                         \n__4,675 XP__     • <@&372178560254869504> - Grants access to Discord polls.
                         \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below).
                         \n__42,000 XP__    • <@&372179082634330112> 
-                        \n__101,675 XP__   • <@&372179236842242048> - Allows a [Wiki](https://wiki.atla.sh/) page for the user.
+                        \n__101,675 XP__   • <@&372179236842242048>
                         \n__200,850 XP__   • <@&423269295930343424> 
                         \n__349,525 XP__   • <@&434950614997401600> - Allows custom bot commands, made in <#1093583806813970444>.
                         \n__557,700 XP__   • <@&811411225639518209> - Grants high level roles (<@&1180969376770441298>, <@&1180969390049607791>, <@&1180969386245378058>, <@&1180969398048129166> and <@&1180969393841242194>) based on the bending of your choice.
@@ -66,9 +66,9 @@ class WelcomeMessage extends Listener {
                                
                         \n\n<@&787644908705153024> – A special birthday role given automatically by <@772934946200485938> to users on their birthday (UTC time). You must have your birthday added to your Naga profile for this to work; you can set this up by using the ` + '`n.setbirthday`' +  ` command in <#372087473892884502>.
                                
-                        \n\n<@&709818677532557343> – A temporary (1-week) role given to the winner(s) of Avatar games that we hold in the server. To get notifications for when such games are held, grab yourself the <@&709837040895656028> role (see “Notification Roles” on our community onboarding page).
+                        \n\n<@&709818677532557343> – A temporary (1-week) role given to the winner(s) of Avatar games that we hold in the server. To get notifications for when such games are held, grab yourself the <@&709837040895656028> role (see "Choose your notifications!" in <id:customize>).
                                
-                        \n\n<@&516790566017564684> – A temporary (1-month) role given to the winner(s) of contest events that we hold in the server. To get notifications for when such events are held, grab yourself the <@&497208797039689749> role (see “Notification Roles” below). After 1 month, this role is removed and replaced with <@&530972685610778635> instead.
+                        \n\n<@&516790566017564684> – A temporary (1-month) role given to the winner(s) of contest events that we hold in the server. To get notifications for when such events are held, grab yourself the <@&497208797039689749> role (see "Choose your notifications!" in <id:customize>). After 1 month, this role is removed and replaced with <@&530972685610778635> instead.
                                
                         \n\n<@&586128911302131725> – An honorary role given automatically to server boosters. Grants access to <#826851222459514923>, our private chat channel for Team Avatar members.`
                     }
@@ -100,6 +100,10 @@ class WelcomeMessage extends Listener {
                     */
                     {
                         color: this.utils.getColor('lotus'),
+                        description: `- <#1178886255644250122> - Get to know our staff!`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
                         description: `## Server Guide
                         \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
@@ -114,9 +118,16 @@ class WelcomeMessage extends Listener {
                         \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
                         \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                        \n- <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                         \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
+                        description: `## Meta
+                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
+                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+                        \nAny ongoing contest channels will go into this category as well!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -124,7 +135,7 @@ class WelcomeMessage extends Listener {
                         \n- <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
                         \n- <#826851222459514923> – A private channel for server boosters.
                         \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes!
+                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Be sure to check out the [pinned post](https://discord.com/channels/370708369951948800/1307805274593169489)!
                         \n- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n- <#719848144719970324> – The best jokes and moments go here.`
                     },
@@ -136,7 +147,6 @@ class WelcomeMessage extends Listener {
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
                         \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
                 ]
@@ -158,24 +168,17 @@ class WelcomeMessage extends Listener {
                 embeds: [
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Meta
-                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
-                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!`
-                    },
-                    {
-                        color: this.utils.getColor('lotus'),
                         description: `## Miscellaneous
                         \n- <#726405096132575322> – For pictures of your pets, food, or any other amazing things you'd like to share.
                         \n- <#372087240270151680> – For all forms of art! Be sure to credit the artist by posting a link to the source. Discussions of these works should be done in <#884990489756045332>! Infringement and theft of intellectual property is forbidden and subject to punishment by rule 6 in <#1066580298290176121>.
                         \n- <#884990489756045332> – For discussing art or other creative works posted in <#372087240270151680>!
                         \n- <#487958065690312724> – For discussing sports, music, movies, TV shows, games or books! Be sure to use spoiler tags if something recently released is being discussed! Any announcements regarding gaming offers will be posted and pinned in this channel too! 
-                        \n- <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord!   `
+                        \n- <#902485012337799189> – For wholesome content of all forms such as nice things that happened in life, or wholesome things from around Discord! Also be sure to participate in our Wholesome Wednesdays, and give yourself the appropriate role (see "Choose your notifications!" in <id:customize>) to be pinged for these!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `## Sato's Workshop
                         \n- <#829563592173027369> – Channel for playing with our <@772934946200485938> multi-purpose bot through various games!
-                        \n- <#1004827258210504754> –  Secondary channel for playing with the Naga bot, same as above.
                         \n- <#372087473892884502> – The standard channel for sending bot commands.
                         \n- <#418988592740958208> – The Trivia Rumble channel for playing Trivia games with our custom <@631650441477750808> trivia bot!`
                     },
@@ -184,7 +187,7 @@ class WelcomeMessage extends Listener {
                         description: `## Voice Channels
                         \n The text chat for each voice channel is located within that VC itself.
                         \n- <#372087824083845130> – Use this channel to listen to music or just chat!
-                        \n- <#370708369951948804>  – Secondary VC for users with <@&720343753805660183> rank and above.
+                        \n- <#370708369951948804>  – Secondary VC, same purpose as above channel
                         \n- <#1056703542745890899> – For hosting our streams! Stay up to date by checking out our Events tab!
                         \n- <#836266973746692116> – For our non-streaming stage events!`
                     }                 
@@ -215,6 +218,10 @@ class WelcomeMessage extends Listener {
                     */
                     {
                         color: this.utils.getColor('lotus'),
+                        description: `- <#1178886255644250122> - Get to know our staff!`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
                         description: `## Server Guide
                         \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
@@ -229,9 +236,16 @@ class WelcomeMessage extends Listener {
                         \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
                         \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                        \n- <#773478447242674207> – For announcing all server giveaways! Entry requirements will still be limited to certain level roles by <@!380453326216626176>.
                         \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                         \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
+                        description: `## Meta
+                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
+                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+                        \nAny ongoing contest channels will go into this category as well!`
                     },
                     {
                         color: this.utils.getColor('lotus'),
@@ -239,7 +253,7 @@ class WelcomeMessage extends Listener {
                         \n- <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
                         \n- <#826851222459514923> – A private channel for server boosters.
                         \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes!
+                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Be sure to check out the [pinned post](https://discord.com/channels/370708369951948800/1307805274593169489)!
                         \n- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n- <#719848144719970324> – The best jokes and moments go here.`
                     },
@@ -251,7 +265,6 @@ class WelcomeMessage extends Listener {
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
                         \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
                 ]
@@ -364,7 +377,7 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('lotus'),
                         description: `## Where's the general chat?
-                        \n<#372087095121936385> and <#1033182943746723910> are the general off-topic chats, while <#372086844956868618> and <#721604232532459540> are for ATLA and Legend of Korra discussions. New users who need a slower environment to ease into the server can chat in ⁠<#761932923217379338>. Be sure to read the channel topics and the Channels section of this guide for more information.
+                        \n- <#372087095121936385> and <#1033182943746723910> are the general off-topic chats\n- <#372086844956868618> and <#721604232532459540> are for ATLA and Legend of Korra discussions\n- Netflix's live-action adaptation of ATLA can be discussed in <#1120464986230239332>\n- New users who need a slower environment to ease into the server can chat in ⁠<#761932923217379338>\nBe sure to read the channel topics and the Channels section of this guide for more information.
                         \n\n## How do I level up?
                         \nYou level up by being active in the server. Posting messages can get you between 15 and 25 XP. However, spamming doesn't help, because you can only gain XP once per minute, regardless of the number of messages. If you want to know your individual rank, type \`!rank\` in <#372087473892884502>. If you want to see the leaderboard, use \`!top\` in the same bot channel.
                         \n\n## Why can't I post images/videos or links?
