@@ -100,6 +100,10 @@ class WelcomeMessage extends Listener {
                     */
                     {
                         color: this.utils.getColor('lotus'),
+                        description: `- <#1178886255644250122> - Get to know our staff!`
+                    },
+                    {
+                        color: this.utils.getColor('lotus'),
                         description: `## Server Guide
                         \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
                         \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
@@ -212,6 +216,10 @@ class WelcomeMessage extends Listener {
                         } 
                     },
                     */
+                    {
+                        color: this.utils.getColor('lotus'),
+                        description: `- <#1178886255644250122> - Get to know our staff!`
+                    },
                     {
                         color: this.utils.getColor('lotus'),
                         description: `## Server Guide
