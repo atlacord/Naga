@@ -263,7 +263,7 @@ class WelcomeMessage extends Listener {
                         \n- <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
                         \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
-                        \n- <#372087003669331969> – Here you can discuss Avatar related comics, novels, and fan fictions! 
+                        \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios. 
                         \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
