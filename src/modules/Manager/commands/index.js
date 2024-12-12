@@ -15,6 +15,7 @@ module.exports = {
     // Setnick: require('./Setnick'),
     Respond: require('./Respond'),
     SetLogChannel: require('./SetLogChannel'),
+    Topics: require('./Topics'),
     TopicsList: require('./TopicsList'),
     ViewSuggestion: require('./ViewSuggestion'),
     WeBo: require('./WelcomeButtons')

@@ -4,21 +4,20 @@ const Edit = require('./Edit.js');
 const Add = require('./Add.js');
 const Remove = require('./Remove.js');
 
-class JoinMessages extends Command {
+class Topics extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'joinmsgs';
-        this.aliases = ['joinmsg'];
+        this.label = 'topics';
 
         this.hasSubcmd = true;
 
         this.info = {
-            name: 'joinmsgs',
-            description: 'Master command for operations related to join messages',
+            name: 'topics',
+            description: 'Master command for operations related to topics',
         };
 
         this.permissions = new CommandPermissions(this, {
@@ -34,9 +33,9 @@ class JoinMessages extends Command {
     }
     
     async execute({ msg }) {
-      msg.channel.createMessage('Subcommands available: `n.joinmsgs add`, `n.joinmsgs remove`, `n.joinmsgs edit`, and `n.joinmsgs list`. For more info about one, run the subcommand with no arguments.');
+      msg.channel.createMessage('Subcommands available: `n.topics add`, `n.topics remove`, `n.topics edit`, and `n.topics list`. For more info about one, run the subcommand with no arguments.');
     }
 }
 
-module.exports = JoinMessages;
+module.exports = Topics;
 
