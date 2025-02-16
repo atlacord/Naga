@@ -285,10 +285,7 @@ class WelcomeMessage extends Listener {
                     let member = await this.bot.getRESTUser(admins[i].id);
                     wl.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
                 }
-                let ind = wl.indexOf('twodog');
-                wl.splice(ind, 1)[0];
-                wl.unshift('twodog  |  Server Owner');
-    
+
             let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1182448979288527029')) && (!m.roles.includes('372084219423490049')));
                 for (let i in srmods) {
