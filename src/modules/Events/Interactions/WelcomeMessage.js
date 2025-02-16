@@ -331,7 +331,7 @@ class WelcomeMessage extends Listener {
                             url: `https://cdn.discordapp.com/role-icons/372084219423490049/902dcd91993b5ad9af73b0057473b0dd.png?quality=lossless`
                         },
                         title: `White Lotus - Admins`,
-                        description: `The server admins. They handle operations regarding server management.\n\n${wl.join('\n')}`
+                        description: `The server admins. They handle operations regarding server management.\n\n${wl.sort().join('\n')}`
                     },
                     {
                         color: this.utils.getColor('sentry'),
@@ -339,7 +339,7 @@ class WelcomeMessage extends Listener {
                             url: `https://cdn.discordapp.com/role-icons/1182448979288527029/2779c1a6e89ef34940c8b763990dc1a5.png?quality=lossless`
                         },
                         title: `Sentry - Senior Mods`,
-                        description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.join('\n')}`
+                        description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.sort().join('\n')}`
                     },
                     {
                         color: this.utils.getColor('daili'), 
@@ -347,7 +347,7 @@ class WelcomeMessage extends Listener {
                             url: `https://cdn.discordapp.com/role-icons/1182449762583191592/a18ecc6e56d679bc4e4a4cd924826cab.png?quality=lossless`
                         },
                         title: `Dai Li - Mods`,
-                        description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.join('\n')}`
+                        description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.sort().join('\n')}`
                     },
                     {
                         color: this.utils.getColor('moverstars'), 
@@ -355,7 +355,7 @@ class WelcomeMessage extends Listener {
                             url: `https://cdn.discordapp.com/role-icons/1224072458206711928/85f4a7faf1da5e32217c47b0718be6dc.png?quality=lossless`
                         },
                         title: `Mover Stars - Community Engagement & Operations`,
-                        description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.join('\n')}`
+                        description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.sort().join('\n')}`
                     }
                 ],
             })
