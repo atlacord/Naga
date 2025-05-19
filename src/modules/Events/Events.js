@@ -50,6 +50,7 @@ module.exports = {
     FakeBan: require('./Misc/FakeBan'),
     JoinMessages: require('./Misc/JoinMessages'),
     // LevelUp: require('./Misc/LevelUp'),
+    XPBoost: require('./Misc/XPBoost'),
     // UpdateScore: require('./Misc/UpdateScore'),
 
     // === Role Handling ===
