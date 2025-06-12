@@ -23,6 +23,12 @@ class XPBoost extends Listener {
         this.allowedUsers = [];
         this.allowedChannels = [];
         this.allowedRoles = [];
+        
+        this.multipliers = {
+            booster: 1.05,
+            event_master: 1.03,
+            staff: 1.10
+        };
 
         this.info = {
             description: 'Experimental feature to grant XP multipliers to random users.',
@@ -50,15 +56,26 @@ class XPBoost extends Listener {
      * @param {import('eris').Message} msg
     */
     async execute(msg) { // eslint-disable-line
-        const MAX = 20;
+        const MAX = 25;
         const MIN = 10;
-        let ranking = await tatsu.getMemberRanking(this.avatarGuild, msg.author.id);
-
+        
         if (msg.author.bot) return;
-        if (await this.isAllowed(msg)) {
-            let xp = Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
-            await tatsu.addGuildMemberScore(this.avatarGuild, msg.author.id, xp)
-        }
+        // if (!this.isAllowed) return;
+        profile.findById(msg.member.id, (err, doc) => {
+
+            let multi;
+        
+            if (!doc.data.xpBoost.lastMessage > Date.now() - 300) return;
+
+            if (doc.data.xpBoost.type !== null) {
+                multi = this.multipliers[doc.data.xpBoost.type];
+            }
+        })
+
+        let xp = Math.floor((Math.random() * (MAX - MIN + 1) + MIN) * multi);
+        await tatsu.addGuildMemberScore(this.avatarGuild, msg.author.id, xp)
+        doc.data.xpBoost.lastMessage = msg.createdAt;
+        doc.save();
     }
 }
 
