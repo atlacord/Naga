@@ -30,7 +30,7 @@ class Haiku extends Command {
         });
 
         this.permissions = new CommandPermissions(this, {
-            custom: (msg) => (msg.channel.id === '1273986973450764363')
+            custom: (msg) => (msg.channel.id === '1389288126039462089')
         });
     }
     /**
