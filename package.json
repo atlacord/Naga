@@ -27,7 +27,9 @@
     "replace-in-file": "^6.3.5",
     "require-text": "^0.0.1",
     "semver": "^7.3.2",
+    "syllabificate": "^2.0.3",
     "syllable": "^4.1.0",
+    "syllables": "^1.0.0",
     "tatsu": "^1.1.0",
     "uuid": "^8.3.2",
     "wikiapi": "^1.19.4"
