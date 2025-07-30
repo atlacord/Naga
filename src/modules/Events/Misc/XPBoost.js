@@ -23,6 +23,12 @@ class XPBoost extends Listener {
         this.allowedUsers = [];
         this.allowedChannels = [];
         this.allowedRoles = [];
+        
+        this.multipliers = {
+            booster: 1.05,
+            event_master: 1.03,
+            staff: 1.10
+        };
 
         this.info = {
             description: 'Experimental feature to grant XP multipliers to random users.',
@@ -46,20 +52,48 @@ class XPBoost extends Listener {
         return false; // no whitelist? no bonus.
     }
 
+    async setMultiplier(m) {
+        let multi;
+        if (m.roles.includes('1169309301316276406')) {
+            multi = this.multipliers[staff];
+        };
+
+        if (m.roles.includes('830138455337730049')) {
+            multi = this.multipliers[event_master];
+        };
+
+        if (m.roles.includes('586128911302131725')) {
+            multi = this.multipliers[booster];
+        };
+        
+        return multi;
+    }
+
     /**
      * @param {import('eris').Message} msg
     */
     async execute(msg) { // eslint-disable-line
-        const MAX = 20;
+        const MAX = 25;
         const MIN = 10;
-        let ranking = await tatsu.getMemberRanking(this.avatarGuild, msg.author.id);
-
+        
         if (msg.author.bot) return;
-        if (await this.isAllowed(msg)) {
-            let xp = Math.floor(Math.random() * (MAX - MIN + 1) + MIN);
-            await tatsu.addGuildMemberScore(this.avatarGuild, msg.author.id, xp)
-        }
+        if (!this.isAllowed(msg)) return;
+        // if (!this.isAllowed) return;
+        profile.findById(msg.member.id, (err, doc) => {
+        
+            if (!doc.data.xpBoost.lastMessage > Date.now() - 300) return;
+
+            if (doc.data.xpBoost.type === null) {
+                doc.data.xpBoost.type = this.setMultiplier(msg.member);
+            };
+        })
+
+        let xp = Math.floor((Math.random() * (MAX - MIN + 1) + MIN) * multi);
+        await tatsu.addGuildMemberScore(this.avatarGuild, msg.author.id, xp)
+        doc.data.xpBoost.lastMessage = msg.createdAt;
+        doc.save();
     }
 }
 
 module.exports = XPBoost;
+
