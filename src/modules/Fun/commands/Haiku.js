@@ -88,7 +88,7 @@ class Haiku extends Command {
           .split(/[\n\r]+/);
     }
 
-    async execute({ msg, args }) {c
+    async execute({ msg, args }) {
         let data = JSON.parse(readFileSync('assets/haikus.json'));
 
         let ids = data.map((obj) => obj.id);
