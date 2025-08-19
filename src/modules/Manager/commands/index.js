@@ -1,5 +1,4 @@
 module.exports = {
-    AddTopic: require('./AddTopic'),
     Archive: require('./Archive'),
     ArchiveAll: require('./ArchiveAll'),
     ArchiveImages: require('./ArchiveImages'),
