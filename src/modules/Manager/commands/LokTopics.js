@@ -12,7 +12,6 @@ class LokTopics extends Command {
         super(module);
 
         this.label = 'loktopics';
-        this.aliases = ['tloktopics', 'korratopics'];
 
         this.hasSubcmd = true;
 
