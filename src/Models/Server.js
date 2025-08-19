@@ -12,6 +12,8 @@ const serverSchema = mongoose.model('server_config', new Schema({
     joinMessages: { type: Array, default: [] },
     usedBanners: { type: Array, default: [] },
     topics: { type: Array, default: [] },
+    atlaTopics: { type: Array, default: [] },
+    lokTopics: { type: Array, default: [] },
     wyrs: { type: Array, default: [] },
     ignoredTopics: { type: Array, default: [] },
     ignoredKorraTopics: { type: Array, default: [] },
