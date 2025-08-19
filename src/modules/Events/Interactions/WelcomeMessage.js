@@ -338,14 +338,14 @@ class WelcomeMessage extends Listener {
                         title: `Sentry - Senior Mods`,
                         description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.sort().join('\n')}`
                     },
-                    {
-                        color: this.utils.getColor('daili'), 
-                        thumbnail: {
-                            url: `https://cdn.discordapp.com/role-icons/1182449762583191592/a18ecc6e56d679bc4e4a4cd924826cab.png?quality=lossless`
-                        },
-                        title: `Dai Li - Mods`,
-                        description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.sort().join('\n')}`
-                    },
+                    // {
+                    //    color: this.utils.getColor('daili'), 
+                    //    thumbnail: {
+                    //        url: `https://cdn.discordapp.com/role-icons/1182449762583191592/a18ecc6e56d679bc4e4a4cd924826cab.png?quality=lossless`
+                    //    },
+                    //    title: `Dai Li - Mods`,
+                    //    description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.sort().join('\n')}`
+                    // },
                     {
                         color: this.utils.getColor('moverstars'), 
                         thumbnail: {
