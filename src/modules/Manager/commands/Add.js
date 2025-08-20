@@ -52,10 +52,19 @@ class Add extends Command {
 
           doc.data.joinMessages.push(...newJoinMessages);
           successMessage = 'Join message(s) successfully added!';
-        } else if (command.startsWith('topics')) {
+        } else {
           const newTopics = args.join(' ').split('|').map((m) => m.trim().replaceAll(/[\n\r]/g, ''));
-          doc.data.topics.push(...newTopics); 
-          successMessage = 'Topic(s) successfully added!';
+
+          if (command.startsWith('topics')) {
+            doc.data.topics.push(...newTopics); 
+            successMessage = 'Topic(s) successfully added!';
+          } else if (command.startsWith('atlatopics')) {
+            doc.data.atlaTopics.push(...newTopics);
+            successMessage = 'ATLA topic(s) successfully added!';
+          } else if (command.startsWith('loktopics')) {
+            doc.data.lokTopics.push(...newTopics);
+            successMessage = 'Korra topic(s) successfully added!';
+          }
         }
 
         doc.save().then(() => this.sendSuccess(msg.channel, successMessage));
