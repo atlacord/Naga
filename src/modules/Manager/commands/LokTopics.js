@@ -37,5 +37,5 @@ class LokTopics extends Command {
     }
 }
 
-module.exports = Topics;
+module.exports = LokTopics;
 
