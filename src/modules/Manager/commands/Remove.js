@@ -46,6 +46,12 @@ class Remove extends Command {
         } else if (command.startsWith('topics')) {
           dataSet = doc.data.topics;
           baseCommand = 'n.topics';
+        } else if (command.startsWith('atlatopics')) {
+          dataSet = doc.data.atlaTopics;
+          baseCommand = 'n.atlatopics';
+        } else if (command.startsWith('loktopics')) {
+          dataSet = doc.data.lokTopics;
+          baseCommand = 'n.loktopics';
         }
 
         let index;
