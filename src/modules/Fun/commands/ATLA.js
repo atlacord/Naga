@@ -84,7 +84,8 @@ class ATLA extends Command {
             return this.sendMessage(msg.channel, {
                 embed: {
                     color: this.utils.getColor('blue'),
-                    description: atlatopics[topic]
+                    description: atlatopics[topic],
+                    footer: { text: `Topic ${topic}` }
                 }
             }).then(doc.data.ignoredATLATopics.push(topic), doc.data.topicTimestamps.atla = msg.createdAt, doc.save());
         });
