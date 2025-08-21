@@ -12,6 +12,7 @@ class AtlaTopics extends Command {
         super(module);
 
         this.label = 'atlatopics';
+        this.aliases = ['atla'];
 
         this.hasSubcmd = true;
 

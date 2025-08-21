@@ -58,10 +58,10 @@ class Add extends Command {
           if (command.startsWith('topics')) {
             doc.data.topics.push(...newTopics); 
             successMessage = 'Topic(s) successfully added!';
-          } else if (command.startsWith('atlatopics')) {
+          } else if (command.startsWith('atla')) {
             doc.data.atlaTopics.push(...newTopics);
             successMessage = 'ATLA topic(s) successfully added!';
-          } else if (command.startsWith('loktopics')) {
+          } else if (command.startsWith('lok')) {
             doc.data.lokTopics.push(...newTopics);
             successMessage = 'Korra topic(s) successfully added!';
           }

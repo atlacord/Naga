@@ -32,11 +32,11 @@ class List extends Command {
             dataSet = doc.data.topics.map((topic, index) => `**${index + 1}:** ${topic}`);
             entriesPerPage = 50;
             embedTitle = 'Current Topics';
-        } else if (command.startsWith('atlatopics')) {
+        } else if (command.startsWith('atla')) {
             dataSet = doc.data.atlaTopics.map((topic, index) => `**${index + 1}:** ${topic}`);
             entriesPerPage = 30;
             embedTitle = 'Current ATLA Topics';
-        } else if (command.startsWith('loktopics')) {
+        } else if (command.startsWith('lok')) {
             dataSet = doc.data.lokTopics.map((topic, index) => `**${index + 1}:** ${topic}`);
             entriesPerPage = 10;
             embedTitle = 'Current Korra Topics';
