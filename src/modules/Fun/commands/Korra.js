@@ -83,7 +83,8 @@ class Korra extends Command {
             return this.sendMessage(msg.channel, {
                 embed: {
                     color: this.utils.getColor('blue'),
-                    description: korratopics[topic]
+                    description: korratopics[topic],
+                    footer: { text: `Topic ${topic}` }
                 }
             }).then(doc.data.ignoredKorraTopics.push(topic), doc.data.topicTimestamps.korra = msg.createdAt, doc.save());
         });

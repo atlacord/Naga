@@ -1,21 +1,21 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const server = require('../../../Models/Server');
-const joinMessages = require('../../../assets/joinmessages.json');
+const atlaTopics = require('../../../assets/atlatopics.json');
+const lokTopics = require('../../../assets/korratopics.json');
 
-class MigrateJoinMessages extends Command {
+class MigrateAvatarTopics extends Command {
     /**
      * @param {import('axoncore').Module} module
      */
     constructor(module) {
         super(module);
 
-        this.label = 'migratejoinmessages';
-        this.aliases = [ 'migratejoin' ];
+        this.label = 'migrateavatar';
 
         this.info = {
-            name: 'migratejoin',
-            description: 'Migrates join messages to the database.',
-            usage: 'migratejoin'
+            name: 'migrateavatar',
+            description: 'Migrates atla and lok topics to the database.',
+            usage: 'migrateavatar',
         };
 
         this.permissions = new CommandPermissions(this, {
@@ -32,11 +32,13 @@ class MigrateJoinMessages extends Command {
           this.sendError(msg.channel, `An error occurred!\n\`\`\`${err}\`\`\``);
         }
 
-        doc.data.joinMessages = [ ...joinMessages ];
-        doc.save().then(() => this.sendSuccess(msg.channel, 'Successfully migrated join messages!'));
+        doc.data.atlaTopics = [ ...atlaTopics ];
+        doc.data.lokTopics = [ ...lokTopics ];
+        
+        doc.save().then(() => this.sendSuccess(msg.channel, 'Successfully migrated Avatar topics!'));
       });
     }
 }
 
-module.exports = MigrateJoinMessages;
+module.exports = MigrateAvatarTopics;
 
