@@ -1,4 +1,5 @@
 const { Listener, Guild, Message } = require('axoncore');
+const profile = require('../../../Models/Profile');
 
 class TeamAvatar extends Listener {
     /**
