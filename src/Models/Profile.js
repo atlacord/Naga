@@ -19,6 +19,7 @@ const profileSchema = mongoose.model('user_profiles', new Schema({
       gacks: {type: String, default: null},
       acks: {type: Array, default: []},
       mcusername: {type: String, default: null},
+      staffTenure: {type: Number, default: null},
     },
     economy: {
       bank: {type: Number, default: null},
