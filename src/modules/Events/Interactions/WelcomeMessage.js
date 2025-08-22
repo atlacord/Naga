@@ -1,4 +1,5 @@
 const { Listener } = require('axoncore');
+const profile = require('../../../Models/Profile');
 
 class WelcomeMessage extends Listener {
     /**
@@ -283,28 +284,36 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('372084219423490049')));
                 for (let i in admins) {
                     let member = await this.bot.getRESTUser(admins[i].id);
-                    wl.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
+                    profile.findById(member.id, async (err, doc) => {
+                        wl.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                    });
                 }
 
             let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1182448979288527029')) && (!m.roles.includes('372084219423490049')));
                 for (let i in srmods) {
                     let member = await this.bot.getRESTUser(srmods[i].id);
-                    sentries.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
+                    profile.findById(member.id, async (err, doc) => {
+                        sentries.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                    });
                 }
     
             let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1182449762583191592')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
-                    daili.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
+                    profile.findById(member.id, async (err, doc) => {
+                        daili.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                    });
                 }
 
             let mvrstars = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1224072458206711928')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mvrstars) {
                     let member = await this.bot.getRESTUser(mvrstars[i].id);
-                    moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
+                    profile.findById(member.id, async (err, doc) => {
+                        moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                    });
                 }
 
             return interaction.createMessage({
