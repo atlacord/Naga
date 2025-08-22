@@ -30,7 +30,7 @@ class TeamAvatar extends Listener {
 
         async execute(guild, member, oldMember, guildConfig) { // eslint-disable-line
             const TAChannel = await this.bot.getChannel('826851222459514923');
-            profile.findById(msg.member.id, (err, doc) => {
+            profile.findById(member.id, (err, doc) => {
                 if (!oldMember.roles.includes('586128911302131725') && member.roles.includes('586128911302131725')) { // If member did not previously have the TA role but since received it
                 this.sendMessage(TAChannel, `A new member joins the fold! A big thanks to ${member.mention} for boosting the server! Please make sure you read the pins for info on how to get the TA Colour role and more!`);
                 
