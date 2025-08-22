@@ -52,6 +52,23 @@ class XPBoost extends Listener {
         return false; // no whitelist? no bonus.
     }
 
+    async setMultiplier(m) {
+        let multi;
+        if (m.roles.includes('1169309301316276406')) {
+            multi = this.multipliers[staff];
+        };
+
+        if (m.roles.includes('830138455337730049')) {
+            multi = this.multipliers[event_master];
+        };
+
+        if (m.roles.includes('586128911302131725')) {
+            multi = this.multipliers[booster];
+        };
+        
+        return multi;
+    }
+
     /**
      * @param {import('eris').Message} msg
     */
@@ -60,16 +77,15 @@ class XPBoost extends Listener {
         const MIN = 10;
         
         if (msg.author.bot) return;
+        if (!this.isAllowed(msg)) return;
         // if (!this.isAllowed) return;
         profile.findById(msg.member.id, (err, doc) => {
-
-            let multi;
         
             if (!doc.data.xpBoost.lastMessage > Date.now() - 300) return;
 
-            if (doc.data.xpBoost.type !== null) {
-                multi = this.multipliers[doc.data.xpBoost.type];
-            }
+            if (doc.data.xpBoost.type === null) {
+                doc.data.xpBoost.type = this.setMultiplier(msg.member);
+            };
         })
 
         let xp = Math.floor((Math.random() * (MAX - MIN + 1) + MIN) * multi);
@@ -80,3 +96,4 @@ class XPBoost extends Listener {
 }
 
 module.exports = XPBoost;
+

@@ -1,6 +1,8 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const syllable = require('syllable');
 // const haikus = require('../../../assets/haikus.json');
+const syllableOne = require('syllables');
+const syllableTwo = require('syllable');
+const syllableThree = require('syllabificate');
 const { readFileSync, writeFileSync } = require('fs');
 
 class Haiku extends Command {
@@ -30,7 +32,7 @@ class Haiku extends Command {
         });
 
         this.permissions = new CommandPermissions(this, {
-            custom: (msg) => (msg.channel.id === '1273986973450764363')
+            custom: (msg) => (msg.channel.id === '1389288126039462089')
         });
     }
     /**
@@ -58,8 +60,24 @@ class Haiku extends Command {
 
     lookupSyllables (lines) {
         return lines.map(function (line) {
-            let syllables = syllable(line);
-            return syllables;
+            let syllablesInLine;
+
+            let syllableCounts = [
+                syllableOne(line),
+                syllableTwo(line),
+                syllableThree.countSyllables(line)
+            ];
+
+            let counter = {};
+            for (let syllableCount of syllableCounts) {
+                counter[syllableCount] = (counter[syllableCount] || 0) + 1;
+
+                if (counter[syllableCount] === 2) {
+                    syllablesInLine = syllableCount;
+                }
+            }
+
+            return syllablesInLine;
         });
     }
 

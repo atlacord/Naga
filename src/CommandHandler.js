@@ -127,6 +127,7 @@ class CommandHandler {
                                 embed: {
                                     color: getColor('blue'),
                                     description: topics[topic],
+                                    footer: { text: `Topic ${topic}` }
                                 }
                             }).then(doc.data.topicTimestamps.normal = interaction.createdAt, doc.save());
                     });

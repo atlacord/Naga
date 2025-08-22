@@ -283,33 +283,28 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('372084219423490049')));
                 for (let i in admins) {
                     let member = await this.bot.getRESTUser(admins[i].id);
-                    wl.push(this.utils.fullName(member));
+                    wl.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
                 }
-                let ind = wl.indexOf('twodog');
-                wl.splice(ind, 1)[0];
-                wl.unshift('twodog  |  Server Owner');
-    
+
             let srmods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1182448979288527029')) && (!m.roles.includes('372084219423490049')));
                 for (let i in srmods) {
                     let member = await this.bot.getRESTUser(srmods[i].id);
-                    sentries.push(this.utils.fullName(member));
+                    sentries.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
                 }
     
             let mods = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1182449762583191592')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
-                    daili.push(this.utils.fullName(member));
+                    daili.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
                 }
 
             let mvrstars = this.bot.guilds.get('370708369951948800').members.filter(m =>
                 (m.roles.includes('1224072458206711928')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mvrstars) {
                     let member = await this.bot.getRESTUser(mvrstars[i].id);
-                    let memberFullName = this.utils.fullName(member)
-                    if (wl.includes(memberFullName) || sentries.includes(memberFullName) || daili.includes(memberFullName)) continue;
-                    moverstars.push(memberFullName);
+                    moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>)`);
                 }
 
             return interaction.createMessage({
@@ -330,34 +325,34 @@ class WelcomeMessage extends Listener {
                     {
                         color: this.utils.getColor('whitelotus'),
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/role-icons/372084219423490049/902dcd91993b5ad9af73b0057473b0dd.png?quality=lossless`
+                            url: this.bot.guilds.get('370708369951948800').roles.get('372084219423490049').iconURL
                         },
                         title: `White Lotus - Admins`,
-                        description: `The server admins. They handle operations regarding server management.\n\n${wl.join('\n')}`
+                        description: `The server admins. They handle operations regarding server management.\n\n${wl.sort().join('\n')}`
                     },
                     {
                         color: this.utils.getColor('sentry'),
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/role-icons/1182448979288527029/2779c1a6e89ef34940c8b763990dc1a5.png?quality=lossless`
+                            url: this.bot.guilds.get('370708369951948800').roles.get('1182448979288527029').iconURL
                         },
                         title: `Sentry - Senior Mods`,
-                        description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.join('\n')}`
+                        description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.sort().join('\n')}`
                     },
-                    {
-                        color: this.utils.getColor('daili'), 
-                        thumbnail: {
-                            url: `https://cdn.discordapp.com/role-icons/1182449762583191592/a18ecc6e56d679bc4e4a4cd924826cab.png?quality=lossless`
-                        },
-                        title: `Dai Li - Mods`,
-                        description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.join('\n')}`
-                    },
+                    // {
+                    //    color: this.utils.getColor('daili'), 
+                    //    thumbnail: {
+                    //        url: this.bot.guilds.get('370708369951948800').roles.get('1182449762583191592').iconURL
+                    //    },
+                    //    title: `Dai Li - Mods`,
+                    //    description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.sort().join('\n')}`
+                    // },
                     {
                         color: this.utils.getColor('moverstars'), 
                         thumbnail: {
-                            url: `https://cdn.discordapp.com/role-icons/1224072458206711928/85f4a7faf1da5e32217c47b0718be6dc.png?quality=lossless`
+                            url: this.bot.guilds.get('370708369951948800').roles.get('1224072458206711928').iconURL
                         },
                         title: `Mover Stars - Community Engagement & Operations`,
-                        description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.join('\n')}`
+                        description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.sort().join('\n')}`
                     }
                 ],
             })

@@ -21,6 +21,8 @@ class List extends Command {
             return this.sendError(msg.channel, `An error occurred: ${err}`);
         }
 
+        // come up with system to dynamically determine the number of entries per page instead of hardcoding the values
+
         let dataSet, entriesPerPage, embedTitle;
         if (command.startsWith('joinmsgs')) {
             dataSet = doc.data.joinMessages.map((joinMsg, index) => `**${index + 1}:** ${joinMsg}`);
@@ -29,7 +31,15 @@ class List extends Command {
         } else if (command.startsWith('topics')) {
             dataSet = doc.data.topics.map((topic, index) => `**${index + 1}:** ${topic}`);
             entriesPerPage = 50;
-            embedTitle = 'Current Topics'
+            embedTitle = 'Current Topics';
+        } else if (command.startsWith('atla')) {
+            dataSet = doc.data.atlaTopics.map((topic, index) => `**${index + 1}:** ${topic}`);
+            entriesPerPage = 30;
+            embedTitle = 'Current ATLA Topics';
+        } else if (command.startsWith('lok')) {
+            dataSet = doc.data.lokTopics.map((topic, index) => `**${index + 1}:** ${topic}`);
+            entriesPerPage = 10;
+            embedTitle = 'Current Korra Topics';
         }
 
         const numberOfPages = Math.ceil(dataSet.length / entriesPerPage);

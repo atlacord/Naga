@@ -63,7 +63,7 @@ class SendHotline extends Command {
                     await guild.removeMemberRole(member.id, '830138455337730049');
                 }
 
-                await guild.addMemberRole(member.id, '1106789319240335460', 'Given access to self-care resources');
+                await guild.addMemberRole(member.id, '1366234195231510569', 'Given access to self-care resources');
                 doc.data.flags.push('HOTLINE_QUARANTINE');
                 doc.save().then(() => this.sendSuccess(msg.channel, `Added ${this.modUtils.fullName(member.user)} to the self-care resources channel.`));
             });

@@ -43,6 +43,12 @@ class Edit extends Command {
         } else if (command.startsWith('topics')) {
           dataSet = doc.data.topics;
           baseCommand = 'n.topics';
+        } else if (command.startsWith('atla')) {
+          dataSet = doc.data.atlaTopics;
+          baseCommand = 'n.atlatopics';
+        } else if (command.startsWith('lok')) {
+          dataSet = doc.data.lokTopics;
+          baseCommand = 'n.loktopics';
         }
 
         let oldEntry, replacementEntry;
