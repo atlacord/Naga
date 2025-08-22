@@ -285,7 +285,7 @@ class WelcomeMessage extends Listener {
                 for (let i in admins) {
                     let member = await this.bot.getRESTUser(admins[i].id);
                     profile.findById(member.id, async (err, doc) => {
-                        wl.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                        wl.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${doc.data.profile.staffTenure}:R>`);
                     });
                 }
 
@@ -294,7 +294,7 @@ class WelcomeMessage extends Listener {
                 for (let i in srmods) {
                     let member = await this.bot.getRESTUser(srmods[i].id);
                     profile.findById(member.id, async (err, doc) => {
-                        sentries.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                        sentries.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${doc.data.profile.staffTenure}:R>`);
                     });
                 }
     
@@ -303,7 +303,7 @@ class WelcomeMessage extends Listener {
                 for (let i in mods) {
                     let member = await this.bot.getRESTUser(mods[i].id);
                     profile.findById(member.id, async (err, doc) => {
-                        daili.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                        daili.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${doc.data.profile.staffTenure}:R>`);
                     });
                 }
 
@@ -312,7 +312,7 @@ class WelcomeMessage extends Listener {
                 for (let i in mvrstars) {
                     let member = await this.bot.getRESTUser(mvrstars[i].id);
                     profile.findById(member.id, async (err, doc) => {
-                        moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${profile.staffTenure}:R>`);
+                        moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${doc.data.profile.staffTenure}:R>`);
                     });
                 }
 
