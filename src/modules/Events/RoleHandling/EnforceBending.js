@@ -46,7 +46,8 @@ class EnforceBending extends Listener {
             lavabender: '372358222725775381',
             metalbender: '372116528692199434',
             sandbender: '473941824684163101',
-            seismicsense: '721283880983855225'
+            seismicsense: '721283880983855225',
+            crystalbender: '1407009805176143933'
         };
         
         const fire = {
