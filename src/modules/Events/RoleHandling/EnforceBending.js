@@ -67,7 +67,9 @@ class EnforceBending extends Listener {
             chiblocker: '372423189264990209',
             kyoshiwarrior: '488393191981187102',
             swordmaster: '488393019444166658',
-            yuyanarcher: '894475920780460045'
+            yuyanarcher: '894475920780460045',
+            equalist: '1407010101868499055',
+            knifethrower: '1407010154565865553'
         };
 
         function checkRoles(array, values) {
