@@ -46,7 +46,8 @@ class EnforceBending extends Listener {
             lavabender: '372358222725775381',
             metalbender: '372116528692199434',
             sandbender: '473941824684163101',
-            seismicsense: '721283880983855225'
+            seismicsense: '721283880983855225',
+            crystalbender: '1407009805176143933'
         };
         
         const fire = {
@@ -60,14 +61,17 @@ class EnforceBending extends Listener {
             breathbender: '740838540337741894',
             projection: '372183490508357632',
             weightless: '372182341109547018',
-            soundbender: '1253356107574018123'
+            soundbender: '1253356107574018123',
+            cloudbender: '1407010197465202829'
         }
         
         const non = {
             chiblocker: '372423189264990209',
             kyoshiwarrior: '488393191981187102',
             swordmaster: '488393019444166658',
-            yuyanarcher: '894475920780460045'
+            yuyanarcher: '894475920780460045',
+            equalist: '1407010101868499055',
+            knifethrower: '1407010154565865553'
         };
 
         function checkRoles(array, values) {

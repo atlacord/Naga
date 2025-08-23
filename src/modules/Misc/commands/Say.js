@@ -33,7 +33,7 @@ class Say extends Command {
 
         this.permissions = new CommandPermissions(this, {
             staff: {
-                needed: this.axon.staff.sentries,
+                needed: [...this.axon.staff.sentries, this.axon.staff.moverstars],
                 bypass: this.axon.staff.owners,
             },
         });

@@ -1,5 +1,4 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const korratopics = require('../../../assets/korratopics.json');
 const server = require('../../../Models/Server');
 const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
@@ -69,6 +68,8 @@ class Korra extends Command {
                     return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
                 }
             };
+
+            const korratopics = doc.data.lokTopics;
 
             let topic = Math.floor(Math.random() * korratopics.length);
 
