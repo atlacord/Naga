@@ -1,5 +1,4 @@
 const { Command, CommandOptions, CommandPermissions } = require('axoncore');
-const atlatopics = require('../../../assets/atlatopics.json');
 const { readFileSync, writeFileSync } = require('fs');
 // const axios = require('axios');
 const server = require('../../../Models/Server');
@@ -70,6 +69,8 @@ class ATLA extends Command {
                     return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
                 };
             };
+
+            const atlatopics = doc.data.atlaTopics;
 
             let topic = Math.floor(Math.random() * atlatopics.length);
 
