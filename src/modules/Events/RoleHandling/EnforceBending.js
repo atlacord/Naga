@@ -61,7 +61,8 @@ class EnforceBending extends Listener {
             breathbender: '740838540337741894',
             projection: '372183490508357632',
             weightless: '372182341109547018',
-            soundbender: '1253356107574018123'
+            soundbender: '1253356107574018123',
+            cloudbender: '1407010197465202829'
         }
         
         const non = {
