@@ -38,7 +38,7 @@ class List extends Command {
             embedTitle = 'Current ATLA Topics';
         } else if (command.startsWith('lok')) {
             dataSet = doc.data.lokTopics.map((topic, index) => `**${index + 1}:** ${topic}`);
-            entriesPerPage = 10;
+            entriesPerPage = 30;
             embedTitle = 'Current Korra Topics';
         }
 
