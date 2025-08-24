@@ -146,6 +146,7 @@ class WelcomeMessage extends Listener {
                         description: `## Avatar Discussion Channels
                         \n- <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
                         \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
+                        \n- <#1342212629225013354> - If you'll be watching the new show, Seven Havens, check this channel out.
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios.
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
@@ -264,6 +265,7 @@ class WelcomeMessage extends Listener {
                         description: `## Avatar Discussion Channels
                         \n- <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
                         \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
+                        \n- <#1342212629225013354> - If you'll be watching the new show, Seven Havens, check this channel out.
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios. 
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
