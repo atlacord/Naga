@@ -12,14 +12,18 @@ class Edit extends Command {
         this.aliases = ['update']
 
         this.info = {
-            name: 'joinmsgs edit, topics edit',
+            name: 'joinmsgs edit, topics edit, atlatopics edit, loktopics edit',
             description: 'Edit a join message or topic. Can specify either the join message/topic number or the message/topic itself. If it\'s the latter, wrap it in square brackets!',
             usage: 'joinmsgs/n.topics edit [number] [replacement], n.joinmsgs/topics [current join message/topic] [replacement]',
             examples: [ 
               'joinmsgs edit 5 Little soldier {USER} comes marching home',
               'joinmsgs edit [Little soldier {USER} comes marching home] Little soldier {USER} comes walking home',
               'topics edit 17 If you were to perform in the circus, how long would you stay?',
-              'topics edit [If you were to perform in the circus, what would you do?] If you were to perform in the circus, how long would you stay?' 
+              'topics edit [If you were to perform in the circus, what would you do?] If you were to perform in the circus, how long would you stay?',
+              'atlatopics edit 54 What is the best friendship in ATLA universe?',
+              'atlatopics edit [What is the best friendship in ATLA universe?] What is the best friendship in the ATLA universe?',
+              'loktopics edit 73 Do you think the connection to the past lives should be restored?',
+              'loktopics edit [Do you think the connection to the past lives should restored?] Do you think the connection to the past lives should be restored?'
             ]
         };
 

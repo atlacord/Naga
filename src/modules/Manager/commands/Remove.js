@@ -12,14 +12,18 @@ class Remove extends Command {
         this.aliases = ['delete'];
 
         this.info = {
-            name: 'joinmsgs remove, topics remove',
+            name: 'joinmsgs remove, topics remove, atlatopics remove, loktopics remove',
             description: 'Remove a join message or topic. Can specify either the join message/topic number or the message/topic itself.',
             usage: 'joinmsgs remove [number or join message], n.topics remove [number or topic]',
             examples: [ 
               'joinmsgs remove 55', 
               'joinmsgs remove Little soldier {USER} comes marching home',
               'topics remove 806',
-              'topics remove If you could create a sequel to any game, what would you choose?'
+              'topics remove If you could create a sequel to any game, what would you choose?',
+              'atlatopics remove 50',
+              'atlatopics remove If you were the Avatar, what would be your motto? How would you take action when faced with threats?',
+              'loktopics remove 75',
+              'loktopics remove Did Tenzin have a false perception of himself the whole time?'
             ]
         };
 

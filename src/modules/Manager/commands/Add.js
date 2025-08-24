@@ -11,12 +11,14 @@ class Add extends Command {
         this.label = 'add';
 
         this.info = {
-            name: 'joinmsgs add, topics add',
+            name: 'joinmsgs add, topics add, atlatopics add, loktopics add',
             description: 'Adds one or more join messages or topics. Separate multiple arguments with the pipe symbol (|). If adding a join message, be sure to include {USER}!',
             usage: 'joinmsgs add [message(s)], n.topics add [topic(s)]',
             examples: [ 
               'joinmsgs add Get over here, {USER}. Being part of the group also means being part of group hugs.|Asami and {USER} have returned from their vacation in the spirit world.', 
-              'topics add Where is the worst place you have been stuck for a long time?|What is your favorite car model?'
+              'topics add Where is the worst place you have been stuck for a long time?|What is your favorite car model?',
+              'atlatopics add If you were a nonbender living in avatar world, what would you do to become more powerful?',
+              'loktopics add Did you like the addition of Raava and Vaatu or do you prefer ATLA\'s, more simple, version of Avatar cycle?'
             ]
         };
 
