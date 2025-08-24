@@ -126,6 +126,7 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `## Meta
                         \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
                         \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \nAny ongoing contest channels will go into this category as well!`
@@ -147,7 +148,6 @@ class WelcomeMessage extends Listener {
                         \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios.
-                        \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
                 ]
@@ -244,6 +244,7 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `## Meta
                         \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
+                        \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
                         \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \nAny ongoing contest channels will go into this category as well!`
@@ -265,7 +266,6 @@ class WelcomeMessage extends Listener {
                         \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
                         \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
                         \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios. 
-                        \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
                         \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
                     }
                 ]
