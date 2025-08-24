@@ -72,7 +72,8 @@ class Remove extends Command {
         }
 
         const deletedEntry = dataSet.splice(index, 1);
-        const successMessage = `The following join message/topic has been deleted: \`${deletedEntry}\`\n\nUse \`${baseCommand} list\` to see the updated list.`
+        const successMessage = `The following join message/topic has been deleted: \`${deletedEntry}\`\n\nUse \`${baseCommand} list\` to see the updated list.\n\n`
+                               + `**IMPORTANT:** Do not use previous lists for topic/join message numbers if removing or editing another entry. The spot numbers change when an entry is removed.`
 
         doc.save().then(() => this.sendSuccess(msg.channel, successMessage));
       });
