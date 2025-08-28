@@ -127,6 +127,7 @@ class WelcomeMessage extends Listener {
                         description: `## Meta
                         \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
                         \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
+                        \n- <#1396614280266256505> - A periodically open channel to submit your entries that could make it into the monthly newsletter! Feel free to equip the <@&1396614534810304522> role in <id:customize> (select 'Elemental Times').
                         \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
                         \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
                         \nAny ongoing contest channels will go into this category as well!`
