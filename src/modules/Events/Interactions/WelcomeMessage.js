@@ -45,7 +45,7 @@ class WelcomeMessage extends Listener {
                         \n\n__1,150 XP__   • <@&720343753805660183> – Grants permissions to send images and embedded links.
                         \n__4,675 XP__     • <@&372178560254869504> - Grants access to Discord polls.
                         \n__11,825 XP__    • <@&372163599130558466> – Grants access to one sub-bending role of your choice, as well as permission to request the <@&830138455337730049> role (see "Requestable Roles" below).
-                        \n__42,000 XP__    • <@&372179082634330112> 
+                        \n__42,000 XP__    • <@&372179082634330112> - Grants the ability to create threads in ⁠<#1033182943746723910> and to receive the Knowledge Seeker role if other requirements are met.
                         \n__101,675 XP__   • <@&372179236842242048>
                         \n__200,850 XP__   • <@&423269295930343424> 
                         \n__349,525 XP__   • <@&434950614997401600> - Allows custom bot commands, made in <#1093583806813970444>.
