@@ -354,11 +354,10 @@ class WelcomeMessage extends Listener {
 
             let teamEmbeds = [];
 
-            if (moverstars.length > 0) teamEmbeds.push(commEmbed);
-            if (daili.length > 0) teamEmbeds.push(modEmbed);
-            if (sentries.length > 0) teamEmbeds.push(seniorModEmbed);
             if (wl.length > 0) teamEmbeds.push (adminEmbed);
-
+            if (sentries.length > 0) teamEmbeds.push(seniorModEmbed);
+            if (daili.length > 0) teamEmbeds.push(modEmbed);
+            if (moverstars.length > 0) teamEmbeds.push(commEmbed);
 
             return interaction.createMessage({
                 flags: 64,
