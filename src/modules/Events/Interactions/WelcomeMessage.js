@@ -316,54 +316,53 @@ class WelcomeMessage extends Listener {
                     });
                 }
 
+            let commEmbed = {
+                color: this.utils.getColor('moverstars'), 
+                thumbnail: {
+                    url: this.bot.guilds.get('370708369951948800').roles.get('1224072458206711928').iconURL
+                },
+                title: `Mover Stars - Community Engagement & Operations`,
+                description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.sort().join('\n')}`
+            };
+
+            let modEmbed = {
+                color: this.utils.getColor('daili'), 
+                thumbnail: {
+                    url: this.bot.guilds.get('370708369951948800').roles.get('1182449762583191592').iconURL
+                },
+                title: `Dai Li - Mods`,
+                description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.sort().join('\n')}`
+            };
+
+            let seniorModEmbed = {
+                color: this.utils.getColor('sentry'),
+                thumbnail: {
+                    url: this.bot.guilds.get('370708369951948800').roles.get('1182448979288527029').iconURL
+                },
+                title: `Sentry - Senior Mods`,
+                description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.sort().join('\n')}`
+            };
+
+            let adminEmbed = {
+                color: this.utils.getColor('whitelotus'),
+                thumbnail: {
+                    url: this.bot.guilds.get('370708369951948800').roles.get('372084219423490049').iconURL
+                },
+                title: `White Lotus - Admins`,
+                description: `The server admins. They handle operations regarding server management.\n\n${wl.sort().join('\n')}`
+            };
+
+            let teamEmbeds = [];
+
+            if (moverstars.length > 0) teamEmbeds.push(commEmbed);
+            if (daili.length > 0) teamEmbeds.push(modEmbed);
+            if (sentries.length > 0) teamEmbeds.push(seniorModEmbed);
+            if (wl.length > 0) teamEmbeds.push (adminEmbed);
+
+
             return interaction.createMessage({
                 flags: 64,
-                embeds: [
-                    /* {
-                        color: this.utils.getColor('lotus'),
-                        image: {
-                            url: `https://cdn.discordapp.com/attachments/411903716996677639/1051295564601491556/staff2.png`
-                        } 
-                    },
-                    */
-                    {
-                        color: this.utils.getColor('lotus'),
-                        description: `The staff members are here to make sure that everyone has a great time, to answer questions related to the server, or if you have trouble figuring out the server and might have questions or suggestions! 
-                        \nYou can also DM us through our modmail, <@718577208687460482>, and a staff member will respond to you as soon as possible!`,                   
-                    },
-                    {
-                        color: this.utils.getColor('whitelotus'),
-                        thumbnail: {
-                            url: this.bot.guilds.get('370708369951948800').roles.get('372084219423490049').iconURL
-                        },
-                        title: `White Lotus - Admins`,
-                        description: `The server admins. They handle operations regarding server management.\n\n${wl.sort().join('\n')}`
-                    },
-                    {
-                        color: this.utils.getColor('sentry'),
-                        thumbnail: {
-                            url: this.bot.guilds.get('370708369951948800').roles.get('1182448979288527029').iconURL
-                        },
-                        title: `Sentry - Senior Mods`,
-                        description: `Sentries handle community moderation, as well as having a larger role in day-to-day community operations.\n\n${sentries.sort().join('\n')}`
-                    },
-                    // {
-                    //    color: this.utils.getColor('daili'), 
-                    //    thumbnail: {
-                    //        url: this.bot.guilds.get('370708369951948800').roles.get('1182449762583191592').iconURL
-                    //    },
-                    //    title: `Dai Li - Mods`,
-                    //    description: `The Dai Li, together with Sentries, enforce our rules and maintain a friendly environment.\n\n${daili.sort().join('\n')}`
-                    // },
-                    {
-                        color: this.utils.getColor('moverstars'), 
-                        thumbnail: {
-                            url: this.bot.guilds.get('370708369951948800').roles.get('1224072458206711928').iconURL
-                        },
-                        title: `Mover Stars - Community Engagement & Operations`,
-                        description: `Mover Stars handle operations regarding our presence in the Avatar community and large-scale server events.\n\n${moverstars.sort().join('\n')}`
-                    }
-                ],
+                embeds: teamEmbeds
             })
         }
 
