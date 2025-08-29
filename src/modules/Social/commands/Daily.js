@@ -42,7 +42,7 @@ class Daily extends Command {
             if (err) {
                 return this.utils.logError(msg, err, 'db', 'Something went wrong.');
             } else if (!doc || doc.data.economy.wallet === null) {
-                return msg.channel.sendError(msg.channel, `**${displayName}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
+                return this.sendError(msg.channel, `**${displayName}**, you don't have a wallet yet! To create one, type \`${this.axon.settings.prefixes}register\`!`);
             } else {
 
                 const boostID = '586128911302131725';
