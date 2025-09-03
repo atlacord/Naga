@@ -1,6 +1,49 @@
 const { Listener } = require('axoncore');
 const profile = require('../../../Models/Profile');
 
+const meetTheTeam = `- <#1178886255644250122> - Get to know our staff!`;
+
+const serverGuide = `## Server Guide
+- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
+- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
+- <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
+- <#1305666414610350090> - Our partnered Discord servers which you can also join and enjoy!
+- <#1200650255524438096> - Our hall of fame for past contest winners!`;
+
+const bulletin = `## Bulletin
+- <#372088315467399170> – For announcing news, updates and special occasions.
+- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
+- <#835240650051944469> – For announcing news related to the Avatar Universe.
+- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
+Be sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`;
+
+const meta = `## Meta
+- <#1093583806813970444> — Post your suggestions here for the staff to review!
+- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
+- <#1396614280266256505> - A periodically open channel to submit your entries that could make it into the monthly newsletter! Feel free to equip the <@&1396614534810304522> role in <id:customize> (select 'Elemental Times').
+- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
+- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
+Any ongoing contest channels will go into this category as well!`;
+
+const generalChannels = `## General Channels
+- <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
+- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. Feel free to congratulate and shout-out the Pink Lotus members there as well.
+- <#826851222459514923> – A private channel for server boosters.
+- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
+- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
+- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
+- <#719848144719970324> – The best jokes and moments go here.`;
+
+const avatarChannels = `## Avatar Discussion Channels
+- <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
+- <#721604232532459540> – The main channel for Legend of Korra discussions.
+- <#1342212629225013354> - If you'll be watching the new show, Seven Havens, check this channel out.
+- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
+- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios.
+- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`;
+
+
+
 class WelcomeMessage extends Listener {
     /**
      * @param {import('axoncore').Module} module
@@ -103,56 +146,27 @@ class WelcomeMessage extends Listener {
                     */
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `- <#1178886255644250122> - Get to know our staff!`
+                        description: meetTheTeam
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Server Guide
-                        \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
-                        \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
-                        \n- <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
-                        \n- <#1305666414610350090> - Our partnered Discord servers which you can also join and enjoy!
-                        \n- <#1200650255524438096> - Our hall of fame for past contest winners!`
+                        description: serverGuide
                     },
                     { 
                         color: this.utils.getColor('lotus'),
-                        description:`## Bulletin
-                        \n- <#372088315467399170> – For announcing news, updates and special occasions.
-                        \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
-                        \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
-                        \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                        \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
+                        description: bulletin
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Meta
-                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
-                        \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                        \n- <#1396614280266256505> - A periodically open channel to submit your entries that could make it into the monthly newsletter! Feel free to equip the <@&1396614534810304522> role in <id:customize> (select 'Elemental Times').
-                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
-                        \nAny ongoing contest channels will go into this category as well!`
+                        description: meta
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## General Channels
-                        \n- <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
-                        \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. Feel free to congratulate and shout-out the Pink Lotus members there as well.
-                        \n- <#826851222459514923> – A private channel for server boosters.
-                        \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
-                        \n- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
-                        \n- <#719848144719970324> – The best jokes and moments go here.`
+                        description: generalChannels
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Avatar Discussion Channels
-                        \n- <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
-                        \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
-                        \n- <#1342212629225013354> - If you'll be watching the new show, Seven Havens, check this channel out.
-                        \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
-                        \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios.
-                        \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
+                        description: avatarChannels
                     }
                 ]
             })                                
@@ -224,55 +238,27 @@ class WelcomeMessage extends Listener {
                     */
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `- <#1178886255644250122> - Get to know our staff!`
+                        description: meetTheTeam
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Server Guide
-                        \n- <#1066580298290176121> - Our server rules. Be sure to read them before participating in the server!
-                        \n- <#1053064927935467530> - The channel you're in now! The important information hub of the server. 
-                        \n- <#1065945888507310191> - Our channel for assigning level-restricted roles (eg. sub-bending)!
-                        \n- <#1305666414610350090> - Our partnered Discord servers which you can also join and enjoy!
-                        \n- <#529791576545951744> - Our hall of fame for past contest winners!`
+                        description: serverGuide
                     },
                     { 
                         color: this.utils.getColor('lotus'),
-                        description:`## Bulletin
-                        \n- <#372088315467399170> – For announcing news, updates and special occasions.
-                        \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
-                        \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
-                        \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                        \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
+                        description: bulletin
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Meta
-                        \n- <#1093583806813970444> — Post your suggestions here for the staff to review!
-                        \n- <#498253602788343827> – Discuss the latest weekly topic, as long as it's within the rules!
-                        \n- <#794360973963165716> – Place your emote ideas which you would like to see in the server!
-                        \n- <#709827097559826553> – Avatar Games channel that opens periodically when a game is hosted. Users with the Avatar Games role will be notified when it's open.
-                        \nAny ongoing contest channels will go into this category as well!`
+                        description: meta
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## General Channels
-                        \n- <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
-                        \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. Feel free to congratulate and shout-out the Pink Lotus members there as well.
-                        \n- <#826851222459514923> – A private channel for server boosters.
-                        \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
-                        \n- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
-                        \n- <#719848144719970324> – The best jokes and moments go here.`
+                        description: generalChannels
                     },
                     {
                         color: this.utils.getColor('lotus'),
-                        description: `## Avatar Discussion Channels
-                        \n- <#372086844956868618> – The main channel for Avatar: The Last Airbender discussions.
-                        \n- <#721604232532459540> – The main channel for Legend of Korra discussions.
-                        \n- <#1342212629225013354> - If you'll be watching the new show, Seven Havens, check this channel out.
-                        \n- <#1120464986230239332> — Discuss Netflix's live-action adaptation of Avatar: The Last Airbender here!
-                        \n- <#1315885439885901846> – Here you can discuss anything else within our beloved Avatarverse! Also the go-to spot for threads on the latest from Avatar Studios. 
-                        \n- <#372098279615496192> – Posts content directly from our partnered subreddit and the official ATLA YouTube channel.`
+                        description: avatarChannels
                     }
                 ]
             })    
