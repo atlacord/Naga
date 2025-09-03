@@ -1,4 +1,4 @@
-const { Command, CommandOptions } = require('axoncore');
+const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const moment = require('moment');
 const profile = require('../../../Models/Profile');
 
@@ -28,9 +28,15 @@ class SetBirthday extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 1,
-            cooldown: 5000,
+            // cooldown: 5000,
             guildOnly: true,
         } );
+
+        this.permissions = new CommandPermissions(this, {
+            channels: {
+                needed: ['372087473892884502', '411903716996677639'] // #bot-commands and #bot-interface
+            }
+        });
     }
     /**
      * @param {import('axoncore').CommandEnvironment} env
