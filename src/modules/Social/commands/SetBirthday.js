@@ -28,7 +28,7 @@ class SetBirthday extends Command {
          */
         this.options = new CommandOptions(this, {
             argsMin: 1,
-            // cooldown: 5000,
+            cooldown: 5000,
             guildOnly: true,
         } );
 
