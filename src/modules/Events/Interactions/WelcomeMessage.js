@@ -66,6 +66,8 @@ class WelcomeMessage extends Listener {
                         \n The following roles are not regularly available and can only be obtained under special circumstances:
                                
                         \n\n<@&787644908705153024> – A special birthday role given automatically by <@772934946200485938> to users on their birthday (UTC time). You must have your birthday added to your Naga profile for this to work; you can set this up by using the ` + '`n.setbirthday`' +  ` command in <#372087473892884502>.
+
+                        \n\n<@&1102546823459131455> - A temporary (1 month) role given to the users who show great initiative and active participation in the server. The role comes with a bunch of perks like: hoist, custom gradient, access to our Team Avatar channel etc.
                                
                         \n\n<@&709818677532557343> – A temporary (1-week) role given to the winner(s) of Avatar games that we hold in the server. To get notifications for when such games are held, grab yourself the <@&709837040895656028> role (see "Choose your notifications!" in <id:customize>).
                                
