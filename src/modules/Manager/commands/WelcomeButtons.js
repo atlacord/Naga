@@ -51,7 +51,7 @@ class WelcomeButtons extends Command {
                 {
                     color: 15913095,
                     description: `# Welcome to the Avatar: The Last Airbender Discord community!
-                    \n\nThis is a Discord community for fans of the Avatar Legends universe (ATLA, Legend of Korra, and all other related media). This is a volunteer-run community to make a space for all fans of the show to come together. We are not associated with Nickelodeon or Avatar Studios.
+                    \n\nThis is a Discord community for fans of the Avatar Legends universe (ATLA, Legend of Korra, Seven Havens, and all other related media). This is a volunteer-run community to make a space for all fans of the show to come together. We are not associated with Nickelodeon or Avatar Studios.
                     \n\nFor any questions, feedback, concerns or reports, you can contact the server staff by messaging <@718577208687460482>, our modmail bot. A staff member will reply to you as soon as possible after you have sent a message. To handle the situation quickly and efficiently, please provide the staff with all relevant information.
 
                     \nWant to connect with us more? Check out these links below!
