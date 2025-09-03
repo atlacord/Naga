@@ -140,7 +140,7 @@ class WelcomeMessage extends Listener {
                         \n- <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
                         \n- <#826851222459514923> – A private channel for server boosters.
                         \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Be sure to check out the [pinned post](https://discord.com/channels/370708369951948800/1307805274593169489)!
+                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
                         \n- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n- <#719848144719970324> – The best jokes and moments go here.`
                     },
@@ -259,7 +259,7 @@ class WelcomeMessage extends Listener {
                         \n- <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
                         \n- <#826851222459514923> – A private channel for server boosters.
                         \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
-                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Be sure to check out the [pinned post](https://discord.com/channels/370708369951948800/1307805274593169489)!
+                        \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
                         \n- <#372087205063163907> – Post your memes and other videos and images here. No NSFW/NSFL content and any content that breaks the rules.
                         \n- <#719848144719970324> – The best jokes and moments go here.`
                     },
