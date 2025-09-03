@@ -191,8 +191,9 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `## Voice Channels
                         \n The text chat for each voice channel is located within that VC itself.
-                        \n- <#372087824083845130> – Use this channel to listen to music or just chat!
-                        \n- <#370708369951948804>  – Secondary VC, same purpose as above channel
+                        \n- <#1320181228254658572> - Use this channel to listen to music or just chat!
+                        \n- <#372087824083845130> – Second VC, same purpose as above channel
+                        \n- <#370708369951948804>  – Third VC, same purpose as above channel
                         \n- <#1056703542745890899> – For hosting our streams! Stay up to date by checking out our Events tab!
                         \n- <#836266973746692116> – For our non-streaming stage events!`
                     }                 
