@@ -121,7 +121,6 @@ class WelcomeMessage extends Listener {
                         \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
                         \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                        \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                         \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
                     },
                     {
@@ -138,6 +137,7 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `## General Channels
                         \n- <#761932923217379338> – Channel for the arrival of new members and for us to greet them!
+                        \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. Feel free to congratulate and shout-out the Pink Lotus members there as well.
                         \n- <#826851222459514923> – A private channel for server boosters.
                         \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
                         \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
@@ -242,7 +242,6 @@ class WelcomeMessage extends Listener {
                         \n- <#831063798873587743> – For announcing community events such as streams, gaming/book/music nights and much more!
                         \n- <#835240650051944469> – For announcing news related to the Avatar Universe.
                         \n- <#782411596679872542> – Channel for all minor server changes and updates for channels and features.
-                        \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. 
                         \nBe sure to give yourself appropriate roles in <id:customize> for notifications in all previously listed channels!`
                     },
                     {
@@ -258,6 +257,7 @@ class WelcomeMessage extends Listener {
                         color: this.utils.getColor('lotus'),
                         description: `## General Channels
                         \n- <#761932923217379338> – Channel for new users to chat in and get acquainted with the community until they feel comfortable to chat in the general chats regularly!
+                        \n- <#1007044599287656559> – For announcing Birthdays of our server members! Info on how to sign up in this channel. Feel free to congratulate and shout-out the Pink Lotus members there as well.
                         \n- <#826851222459514923> – A private channel for server boosters.
                         \n- <#372087095121936385> – Our general chat of the server, off-topic conversations and A:TLA&TLOK talk is allowed.
                         \n- <#1033182943746723910> — A forum channel for users to discuss general topics at their own pace. Anything goes! Pinned posts rotate weekly.
