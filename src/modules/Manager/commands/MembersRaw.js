@@ -1,4 +1,5 @@
 const { Command, CommandPermissions, CommandOptions } = require('axoncore');
+const fs = require('fs');
 
 class MembersRaw extends Command {
     constructor(module) {
@@ -52,6 +53,17 @@ class MembersRaw extends Command {
                 members.push(`${this.utils.fullName(member)} (${member.id})`);
             }
 
+        if (members.length < 100) {
+            let path = `Archives/members-${role.id}.txt`;
+            const data = Buffer.from(member.join('\n'), 'utf8');
+            fs.writeFileSync(path, data);
+            let file = fs.readFileSync(path);
+            msg.channel.createMessage({}, {
+                    name: `${role.id}.txt`,
+                    file: file
+                })
+            console.info(`Archived members of ${role.name} to ${path}.`)
+        }
         this.sendMessage(msg.channel, members.join('\n'));
     }
 }
