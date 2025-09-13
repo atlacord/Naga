@@ -115,7 +115,7 @@ class Topic extends Command {
                 embed: {
                     color: this.utils.getColor('blue'),
                     description: topics[topic],
-                    footer: { text: `Topic ${topic}` }
+                    footer: { text: `Topic ${topic + 1}` }
                 }
             }).then(doc.data.topicTimestamps.normal = msg.createdAt, doc.save());
             // .then(writeFileSync('src/assets/cooldown.json', JSON.stringify(msg.createdAt)), ignoredTopics.push(topic), writeFileSync('src/assets/IgnoredTopics.json', JSON.stringify(ignoredTopics)));

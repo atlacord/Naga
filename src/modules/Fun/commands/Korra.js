@@ -85,7 +85,7 @@ class Korra extends Command {
                 embed: {
                     color: this.utils.getColor('blue'),
                     description: korratopics[topic],
-                    footer: { text: `Topic ${topic}` }
+                    footer: { text: `Topic ${topic + 1}` }
                 }
             }).then(doc.data.ignoredKorraTopics.push(topic), doc.data.topicTimestamps.korra = msg.createdAt, doc.save());
         });
