@@ -97,7 +97,7 @@ class Topic extends Command {
 
             let topic = Math.floor(Math.random() * topics.length);
 
-            if (doc.data.ignoredTopics.length === topics.length) {
+            if (doc.data.ignoredTopics.length >= topics.length) {
                 doc.data.ignoredTopics = [];
             };
 
