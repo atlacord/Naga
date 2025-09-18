@@ -3,6 +3,7 @@ const List = require('./List.js');
 const Edit = require('./Edit.js');
 const Add = require('./Add.js');
 const Remove = require('./Remove.js');
+const server = require('../../../Models/Server.js');
 
 class AtlaTopics extends Command {
     /**
@@ -33,8 +34,28 @@ class AtlaTopics extends Command {
         return [List, Edit, Add, Remove];
     }
     
-    async execute({ msg }) {
-      msg.channel.createMessage('Subcommands available: `n.atlatopics add`, `n.atlatopics remove`, `n.atlatopics edit`, and `n.atlatopics list`. For more info about one, run the subcommand with no arguments.');
+    async execute({ msg, args }) {
+        if (args.length === 1 && parseInt(args[0])) {
+            server.findById(msg.guildID, async (err, doc) => {
+                const index = parseInt(args[0]) - 1;
+                const topics = doc.data.atlaTopics;
+
+                if (index > topics.length - 1 || index < 0) {
+                    return this.sendError(msg.channel, 'Position out of bounds!');
+                }
+
+                const topic = topics[index];
+                msg.channel.createMessage({
+                    embed: {
+                        color: this.utils.getColor('blue'),
+                        title: `ATLA Topic ${args[0]}`,
+                        description: topic
+                    }
+                })
+            });
+        } else {
+            msg.channel.createMessage('Subcommands available: `n.atlatopics add`, `n.atlatopics remove`, `n.atlatopics edit`, and `n.atlatopics list`. For more info about one, run the subcommand with no arguments. To view a specific topic, run `n.atlatopics [topic number]`.');
+        }
     }
 }
 
