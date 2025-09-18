@@ -10,6 +10,8 @@ const Korra = require('./Korra');
 
 const COMMAND_COOLDOWN = 600000;
 
+const MODERATOR_ROLE_ID = '736365465353453663';
+
 const ignoredCategories = [
     '372086709950611456', // Avatar
     '765832566875095040', // Miscellaneous
@@ -88,7 +90,9 @@ class Topic extends Command {
             // let topics = await axios.get('http://atla.sh/topics.json');
             // topics = topics.data;
 
-            if (executionType !== 2) {
+            const roles = msg.member.roles;
+
+            if (executionType !== 2 && ! roles.includes(MODERATOR_ROLE_ID)) {
                 let timeRemaining = this.handleCooldown(doc.data.topicTimestamps.normal);
                 if (timeRemaining !== false) {
                     return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
