@@ -55,6 +55,7 @@ class EnforceBending extends Listener {
             combustion: '372358681448284160',
             lightning: '372155442131894282',
             sunwarrior: '822980412699181066',
+            dragonfire: '1420096311755014224'
         };
         
         const air = {
