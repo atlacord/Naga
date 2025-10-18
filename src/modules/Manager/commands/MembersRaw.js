@@ -55,7 +55,7 @@ class MembersRaw extends Command {
 
         if (members.length < 100) {
             let path = `Archives/members-${role.id}.txt`;
-            const data = Buffer.from(member.join('\n'), 'utf8');
+            const data = Buffer.from(members.join('\n'), 'utf8');
             fs.writeFileSync(path, data);
             let file = fs.readFileSync(path);
             msg.channel.createMessage({}, {
