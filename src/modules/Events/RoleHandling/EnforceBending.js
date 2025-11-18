@@ -72,7 +72,8 @@ class EnforceBending extends Listener {
             swordmaster: '488393019444166658',
             yuyanarcher: '894475920780460045',
             equalist: '1407010101868499055',
-            knifethrower: '1407010154565865553'
+            knifethrower: '1407010154565865553',
+            freedomfighter: '1424846294307831858'
         };
 
         function checkRoles(array, values) {
