@@ -99,7 +99,7 @@ class Topic extends Command {
                 };
             };
 
-            if (msg.member.id = '805583058631000085') {
+            if (msg.member.id = '805583058631000085' || '1399822420239716554') {
                 return this.sendError(msg.channel, `No.`)
             }
 
