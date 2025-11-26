@@ -99,6 +99,10 @@ class Topic extends Command {
                 };
             };
 
+            if (msg.member.id = '805583058631000085') {
+                return this.sendError(msg.channel, `No.`)
+            }
+
             let topic = Math.floor(Math.random() * topics.length);
 
             if (doc.data.ignoredTopics.length >= topics.length) {
