@@ -102,8 +102,9 @@ class Topic extends Command {
                     return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
                 };
             };
+
             const ids = msg.member.id
-            if (ids.includes(NoTopics)) {
+            if (NoTopics.includes(ids)) {
                 return this.sendError(msg.channel, `No.`)
             }
 
