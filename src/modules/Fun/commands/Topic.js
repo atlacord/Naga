@@ -11,6 +11,10 @@ const Korra = require('./Korra');
 const COMMAND_COOLDOWN = 600000;
 
 const MODERATOR_ROLE_ID = '736365465353453663';
+const NoTopics = [
+    '805583058631000085', // Moon4
+    '1399822420239716554' // Kat
+]; // Ignore these users for shits and gigs
 
 const ignoredCategories = [
     '372086709950611456', // Avatar
@@ -98,8 +102,8 @@ class Topic extends Command {
                     return this.sendError(msg.channel, `This command has already been used recently!\nTry again in **${timeRemaining}**!`);
                 };
             };
-
-            if (msg.member.id = '805583058631000085' || '1399822420239716554') {
+            const ids = msg.member.id
+            if (ids.includes(NoTopics)) {
                 return this.sendError(msg.channel, `No.`)
             }
 
