@@ -2,7 +2,7 @@ const { Command, CommandOptions, CommandPermissions } = require('axoncore');
 const { readFileSync, writeFileSync } = require('fs');
 const Eris = require('eris');
 // const axios = require('axios');
-const topics = require('../../../assets/topics.json');
+// const topics = require('../../../assets/topics.json');
 const server = require('../../../Models/Server');
 
 const ATLA = require('./ATLA');
@@ -93,6 +93,8 @@ class Topic extends Command {
 
             // let topics = await axios.get('http://atla.sh/topics.json');
             // topics = topics.data;
+
+            const topics = doc.data.topics;
 
             const roles = msg.member.roles;
 
