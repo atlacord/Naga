@@ -18,14 +18,8 @@ class SuperBending extends Listener {
         this.info = {
             description: 'Assigns superbending roles to members who meet the level requirement.',
         };
-    }
 
-    /**
-     * @param {import('eris').Message} message
-     * @param {import('axoncore').GuildConfig} guildConfig
-     */
-    async execute(guild, member, oldMember, guildConfig) { // eslint-disable-line
-        const basebending = {
+        this.basebending = {
             water: '372085492910522370',
             earth: '372085752319967236',
             fire: '1172722062876495963',
@@ -33,21 +27,44 @@ class SuperBending extends Listener {
             non: '372093851600683011'
         };
 
-        const superbending = {
+        this.superbending = {
             water: '1180969376770441298',
             earth: '1180969390049607791',
             fire: '1180969386245378058',
             air: '1180969398048129166',
             non: '1180969393841242194'
-        }
+        };
 
-        const rankRoles = [
+        this.rankRoles = [
             '811411225639518209', // Elder
             '811411331621191721', // Luminary
             '811411413573697556' // Enlightened
         ]
+    }
 
-        function checkRoles(array, values) {
+    hasRankRole(memberRoles) {
+        for (let role of this.rankRoles) {
+            if (memberRoles.includes(role)) return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param {import('eris').Message} message
+     * @param {import('axoncore').GuildConfig} guildConfig
+     */
+    async execute(guild, member, oldMember, guildConfig) { // eslint-disable-line
+        if (!this.hasRankRole(member.roles)) return;
+
+        (() => {
+            const basebendingRoles = member.roles.filter(r => Object.values(this.basebending).includes(r));
+            if (basebendingRoles.length > 1) {
+                const rolesToRemove = basebendingRoles.filter(r => oldMember.roles.includes(r));
+                rolesToRemove.forEach(r => guild.removeMemberRole(member.id, r, 'Removed extra base-bending role'));
+            }
+        })();
+
+        const checkRoles = (array, values) => {
             let res;
             for (let i in values) {
                 if (array.includes(values[i]) === true) {
@@ -58,46 +75,45 @@ class SuperBending extends Listener {
                 }
             }
             return res;
-        };
+        }
 
-        function removeOldSuperbendingRoles(newRole) {
-            for (let role of Object.values(superbending)) {
+        const removeOldSuperbendingRoles = (newRole) => {
+            for (let role of Object.values(this.superbending)) {
                 if (role !== newRole) {
                     guild.removeMemberRole(member.id, role, 'Removed old super-bending role');
                 }
             }
-        };
-
-        function hasRankRole(memberRoles) {
-            for (let role of rankRoles) {
-                if (memberRoles.includes(role)) return true;
-            }
-            return false;
-        };
-
-        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.water ])) {
-            guild.addMemberRole(member.id, superbending.water, 'Added super-waterbending role');
-            removeOldSuperbendingRoles(superbending.water);
         }
 
-        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.earth ])) {
-            guild.addMemberRole(member.id, superbending.earth, 'Added super-earthbending role');
-            removeOldSuperbendingRoles(superbending.earth);
+        const rankRoles = [
+            '811411225639518209', // Elder
+            '811411331621191721', // Luminary
+            '811411413573697556' // Enlightened
+        ]
+
+        if (checkRoles(member.roles, [ this.basebending.water ])) {
+            guild.addMemberRole(member.id, this.superbending.water, 'Added super-waterbending role');
+            return removeOldSuperbendingRoles(this.superbending.water);
         }
 
-        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.fire ])) {
-            guild.addMemberRole(member.id, superbending.fire, 'Added super-firebending role');
-            removeOldSuperbendingRoles(superbending.fire);
+        if (checkRoles(member.roles, [ this.basebending.earth ])) {
+            guild.addMemberRole(member.id, this.superbending.earth, 'Added super-earthbending role');
+            return removeOldSuperbendingRoles(this.superbending.earth);
         }
 
-        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.air ])) {
-            guild.addMemberRole(member.id, superbending.air, 'Added super-airbending role');
-            removeOldSuperbendingRoles(superbending.air);
+        if (checkRoles(member.roles, [ this.basebending.fire ])) {
+            guild.addMemberRole(member.id, this.superbending.fire, 'Added super-firebending role');
+            return removeOldSuperbendingRoles(this.superbending.fire);
         }
 
-        if (hasRankRole(member.roles) && checkRoles(member.roles, [ basebending.non ])) {
-            guild.addMemberRole(member.id, superbending.non, 'Added super-nonbending role');
-            removeOldSuperbendingRoles(superbending.non);
+        if (checkRoles(member.roles, [ this.basebending.air ])) {
+            guild.addMemberRole(member.id, this.superbending.air, 'Added super-airbending role');
+            return removeOldSuperbendingRoles(this.superbending.air);
+        }
+
+        if (checkRoles(member.roles, [ this.basebending.non ])) {
+            guild.addMemberRole(member.id, this.superbending.non, 'Added super-nonbending role');
+            return removeOldSuperbendingRoles(this.superbending.non);
         }
 
      Promise.resolve();
