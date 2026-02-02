@@ -85,12 +85,6 @@ class SuperBending extends Listener {
             }
         }
 
-        const rankRoles = [
-            '811411225639518209', // Elder
-            '811411331621191721', // Luminary
-            '811411413573697556' // Enlightened
-        ]
-
         if (checkRoles(member.roles, [ this.basebending.water ])) {
             guild.addMemberRole(member.id, this.superbending.water, 'Added super-waterbending role');
             return removeOldSuperbendingRoles(this.superbending.water);
