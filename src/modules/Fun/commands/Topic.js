@@ -13,7 +13,7 @@ const COMMAND_COOLDOWN = 600000;
 const MODERATOR_ROLE_ID = '736365465353453663';
 const NoTopics = [
   //  '805583058631000085' // Moon4
-     '1399822420239716554' // Kat
+   //  '1399822420239716554' // Kat
 ]; // Ignore these users for shits and gigs
 
 const ignoredCategories = [
