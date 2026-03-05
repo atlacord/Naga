@@ -303,9 +303,8 @@ class WelcomeMessage extends Listener {
                 (m.roles.includes('1224072458206711928')) && (!m.roles.includes('372084219423490049')));
                 for (let i in mvrstars) {
                     let member = await this.bot.getRESTUser(mvrstars[i].id);
-                    profile.findById(member.id, async (err, doc) => {
-                        moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${doc.data.profile.staffTenure}:R>`);
-                    });
+                    const doc = await profile.findById(member.id);
+                    moverstars.push(`${this.utils.fullName(member)} (<@${member.id}>) - Joined the team <t:${doc.data.profile.staffTenure}:R>`);
                 }
 
             let commEmbed = {
